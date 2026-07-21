@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search: master password — LastPass Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+ body{font-family:'Source Sans 3',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+ #nav.is-scrolled{box-shadow:0 8px 24px -18px rgba(5,6,6,.4)}
+ .navlink{position:relative}.navlink::after{content:'';position:absolute;left:0;bottom:-7px;height:2px;width:0;background:#d71340;transition:width .28s cubic-bezier(.2,.7,.2,1)}.navlink:hover::after{width:100%}
+ .btn{transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s,background-color .18s}.btn:hover{transform:translateY(-1px)}
+ .searchwrap{transition:box-shadow .25s,border-color .2s}.searchwrap:focus-within{box-shadow:0 0 0 4px rgba(215,19,64,.18);border-color:#d71340}
+ .result{transition:background-color .2s,box-shadow .25s,transform .25s cubic-bezier(.16,1,.3,1)}.result:hover{box-shadow:0 18px 40px -26px rgba(5,6,6,.4)}
+ mark{background:#fdf1f4;color:#c50b3a;border-radius:2px;padding:0 2px}
+ .aipanel{background:linear-gradient(120deg,#fbf5f7 0%,#f7eef8 100%)}
+ .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}.reveal.in{opacity:1;transform:none}
+ [data-stagger].in>*{animation:rise .6s cubic-bezier(.16,1,.3,1) both}[data-stagger].in>*:nth-child(2){animation-delay:.06s}[data-stagger].in>*:nth-child(3){animation-delay:.12s}[data-stagger].in>*:nth-child(4){animation-delay:.18s}[data-stagger].in>*:nth-child(5){animation-delay:.24s}
+ @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+ @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.001ms!important}.reveal{opacity:1!important;transform:none!important}}
+</style></head>
+<body class="bg-white text-ink">
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-3 focus:left-3 focus:bg-white focus:px-4 focus:py-2 focus:rounded-md focus:ring-2 focus:ring-brand-600 focus:font-semibold">Skip to results</a>
+
+<!-- Utility bar -->
+<div class="hidden sm:block border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-6 h-10 flex items-center justify-end gap-6 text-[14px] text-slate-600">
+    <div class="langsel relative"><button type="button" class="langbtn flex items-center gap-1.5 hover:text-ink transition" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> <span class="langcur">English</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><ul class="langmenu hidden absolute right-0 top-full mt-2 w-52 bg-white rounded-xl ring-1 ring-slate-200 shadow-xl py-1.5 z-[70] text-left" role="listbox" aria-label="Language">
+    <li role="option" aria-selected="true"><a href="#" hreflang="en" lang="en" class="flex items-center justify-between gap-2 px-3.5 py-2 text-[14px] text-ink font-semibold hover:bg-slate-50">English <span class="text-brand-600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></a></li>
+    <li role="option" aria-selected="false"><a href="#" hreflang="de" lang="de" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Deutsch</a></li>
+    <li role="option" aria-selected="false"><a href="#" hreflang="es" lang="es" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Español</a></li>
+    <li role="option" aria-selected="false"><a href="#" hreflang="fr" lang="fr" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Français</a></li>
+    <li role="option" aria-selected="false"><a href="#" hreflang="it" lang="it" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Italiano</a></li>
+    <li role="option" aria-selected="false"><a href="#" hreflang="nl" lang="nl" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Nederlands</a></li>
+    <li role="option" aria-selected="false"><a href="#" hreflang="pt-BR" lang="pt-BR" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Português (Brasil)</a></li>
+  </ul></div>
+    <a href="#" class="flex items-center gap-1.5 hover:text-ink transition"><span class="w-1.5 h-1.5 rounded-full bg-grass-500"></span>Service status</a>
+    <a href="contact.html" class="hover:text-ink transition">Contact us</a>
+    <a href="#" class="hover:text-ink transition">Log in</a>
+  </div>
+</div>
+
+<!-- Header -->
+<nav id="nav" class="sticky top-0 z-50 bg-white/95 border-b border-slate-100 transition-shadow duration-200" style="backdrop-filter:saturate(1.4) blur(10px)">
+  <div class="max-w-7xl mx-auto px-6 h-[68px] flex items-center gap-8">
+    <a href="index.html" aria-label="LastPass Support home" class="flex items-center gap-2.5 shrink-0">
+      <img src="img/logo-lastpass.png" alt="LastPass" class="h-[26px] w-auto">
+      <span class="hidden md:flex items-center gap-2.5"><span class="h-5 w-px bg-slate-200" aria-hidden="true"></span><span class="text-[15px] font-normal text-slate-600 leading-none">Support</span></span>
+    </a>
+    <div class="hidden lg:flex items-center gap-8 text-base">
+      <a href="index.html#browse" class="navlink font-bold text-slate-700 hover:text-ink transition-colors">Learn</a>
+      <a href="contact.html" class="navlink font-bold text-slate-700 hover:text-ink transition-colors">Connect</a>
+      <a href="index.html#popular" class="navlink font-bold text-slate-700 hover:text-ink transition-colors">Support</a>
+      <a href="#" class="navlink font-bold text-slate-700 hover:text-ink transition-colors">Discover</a>
+    </div>
+    <div class="ml-auto flex items-center gap-3">
+      <a href="#" class="btn hidden sm:inline-flex items-center h-10 px-5 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-[15px] font-bold shadow-sm">Get LastPass free</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Search band -->
+<div class="bg-slate-50 border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-6 py-6">
+    <form class="searchwrap flex items-center bg-white rounded-xl border border-slate-200 max-w-3xl pl-4 pr-1.5 h-[54px] shadow-sm" role="search">
+      <span class="text-slate-400 shrink-0"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+      <input type="search" aria-label="Search the LastPass Knowledge Base" value="master password" class="flex-1 px-3 h-full text-[16px] bg-transparent outline-none text-ink">
+      <button class="btn shrink-0 h-10 px-6 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-bold text-[15px] inline-flex items-center">Search</button>
+    </form>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-12 gap-8 py-8" id="main">
+  <!-- Facets -->
+  <aside class="hidden lg:block col-span-3"><div class="sticky top-28 rounded-2xl border border-slate-200 bg-white p-1 pb-2">
+    <div class="flex items-center justify-between px-4 pt-4 pb-1"><h2 class="font-semibold text-ink flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg> Filters</h2><a href="#" class="text-[13px] font-semibold text-brand-700 hover:text-brand-800">Clear all</a></div>
+    <div class="px-3 py-3 border-b border-slate-100"><h3 class="text-[12px] font-bold uppercase tracking-wide text-slate-500 px-1 mb-2">Type</h3>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" checked class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Article</span><span class="text-[13px] text-slate-400">31</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Video</span><span class="text-[13px] text-slate-400">6</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Release note</span><span class="text-[13px] text-slate-400">3</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Community</span><span class="text-[13px] text-slate-400">2</span></label>
+    </div>
+    <div class="px-3 py-3 border-b border-slate-100"><h3 class="text-[12px] font-bold uppercase tracking-wide text-slate-500 px-1 mb-2">Topic</h3>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Get started</span><span class="text-[13px] text-slate-400">12</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Passwords &amp; security</span><span class="text-[13px] text-slate-400">18</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Account &amp; billing</span><span class="text-[13px] text-slate-400">7</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Multifactor auth</span><span class="text-[13px] text-slate-400">5</span></label>
+    </div>
+    <div class="px-3 py-3"><h3 class="text-[12px] font-bold uppercase tracking-wide text-slate-500 px-1 mb-2">Updated</h3>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Past month</span><span class="text-[13px] text-slate-400">9</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" checked class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Any time</span><span class="text-[13px] text-slate-400">42</span></label>
+    </div>
+  </div></aside>
+
+  <!-- Results -->
+  <main class="col-span-12 lg:col-span-9 min-w-0">
+    <!-- AI generated answer -->
+    <div class="aipanel rounded-2xl border border-[#e7cfe0] p-6 reveal in">
+      <div class="flex items-center gap-2 mb-3"><span class="text-plum-600"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3-1.9 5.8-5.8 1.9 5.8 1.9L12 18.4l1.9-5.8 5.8-1.9-5.8-1.9z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg></span><span class="text-[15px] font-bold text-plum-700">AI-generated answer</span><span class="text-[12px] font-semibold px-2 py-0.5 rounded-full bg-white/70 text-plum-600 ring-1 ring-plum-200">Beta</span></div>
+      <p class="text-[15px] text-slate-700 leading-relaxed">Your <mark>master password</mark> is the single password that unlocks your LastPass vault — it's the only one you need to remember. LastPass never stores it and uses zero-knowledge encryption, so no one else can access your vault. Choose a strong passphrase of at least 12 characters, and set up <strong>account recovery</strong> in advance, because LastPass cannot reset a forgotten master password for you.</p>
+      <div class="flex flex-wrap items-center gap-2 mt-4">
+        <span class="text-[13px] text-slate-500 mr-1">Sources</span>
+        <a href="reader.html" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-plum-700 bg-white ring-1 ring-plum-200 rounded-full px-2.5 py-1 hover:ring-plum-300">1 · Get started with LastPass</a>
+        <a href="reader.html" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-plum-700 bg-white ring-1 ring-plum-200 rounded-full px-2.5 py-1 hover:ring-plum-300">2 · Change your master password</a>
+        <a href="reader.html" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-plum-700 bg-white ring-1 ring-plum-200 rounded-full px-2.5 py-1 hover:ring-plum-300">3 · Account recovery</a>
+      </div>
+      <div class="flex items-center gap-2 mt-4 pt-3 border-t border-[#e7cfe0]/70 text-slate-400">
+        <span class="text-[13px] mr-1">Was this helpful?</span>
+        <button class="hover:text-grass-600" aria-label="Yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg></button>
+        <button class="hover:text-brand-600" aria-label="No"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"/></svg></button>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between mt-7 mb-4">
+      <p class="text-[15px] text-slate-500">About <span class="font-semibold text-ink">42 results</span> for <span class="font-semibold text-ink">&ldquo;master password&rdquo;</span></p>
+      <label class="flex items-center gap-2 text-[15px] text-slate-500">Sort by <select class="rounded-lg border border-slate-300 px-3 py-1.5 text-[15px] font-medium text-ink focus:ring-2 focus:ring-brand-400 outline-none"><option>Relevance</option><option>Newest</option><option>Most viewed</option></select></label>
+    </div>
+
+    <ul class="space-y-4 reveal" data-stagger>
+      <li class="result rounded-2xl border border-slate-200 bg-white p-5">
+        <div class="flex items-center gap-2 mb-2"><span class="text-[12px] font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-brand-50 text-brand-700">Article</span><span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Get started</span><span class="ml-auto text-[13px] text-slate-400 flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg> Jul 14, 2026</span></div>
+        <a href="reader.html" class="text-lg font-semibold text-ink hover:text-brand-600">Get started with LastPass</a>
+        <p class="text-[13px] text-slate-400 mt-1">Home › Get started › Installing &amp; setup</p>
+        <p class="text-[15px] text-slate-600 mt-2 leading-relaxed">Create your account and choose a strong <mark>master password</mark> — the one password you need to remember. LastPass encrypts your vault locally so no one else can read it.</p>
+      </li>
+      <li class="result rounded-2xl border border-slate-200 bg-white p-5">
+        <div class="flex items-center gap-2 mb-2"><span class="text-[12px] font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-brand-50 text-brand-700">Article</span><span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Passwords &amp; security</span><span class="ml-auto text-[13px] text-slate-400 flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg> Jun 30, 2026</span></div>
+        <a href="reader.html" class="text-lg font-semibold text-ink hover:text-brand-600">Change your <mark>master password</mark></a>
+        <p class="text-[13px] text-slate-400 mt-1">Home › Passwords &amp; security › Account</p>
+        <p class="text-[15px] text-slate-600 mt-2 leading-relaxed">You can change your <mark>master password</mark> at any time from your vault. Learn how to update it safely and re-encrypt your data across devices.</p>
+      </li>
+      <li class="result rounded-2xl border border-slate-200 bg-white p-5">
+        <div class="flex items-center gap-2 mb-2"><span class="text-[12px] font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-brand-50 text-brand-700">Article</span><span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Passwords &amp; security</span><span class="ml-auto text-[13px] text-slate-400 flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg> Jun 18, 2026</span></div>
+        <a href="reader.html" class="text-lg font-semibold text-ink hover:text-brand-600">Recover a forgotten <mark>master password</mark></a>
+        <p class="text-[13px] text-slate-400 mt-1">Home › Passwords &amp; security › Account recovery</p>
+        <p class="text-[15px] text-slate-600 mt-2 leading-relaxed">If you forget your <mark>master password</mark>, account recovery is the only way back in. Set up recovery options before you need them.</p>
+      </li>
+      <li class="result rounded-2xl border border-slate-200 bg-white p-5">
+        <div class="flex items-center gap-2 mb-2"><span class="text-[12px] font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-amber-50 text-amber-700">Video</span><span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Get started</span><span class="ml-auto text-[13px] text-slate-400 flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg> May 22, 2026</span></div>
+        <a href="reader.html" class="text-lg font-semibold text-ink hover:text-brand-600">Video: Choosing a strong <mark>master password</mark></a>
+        <p class="text-[13px] text-slate-400 mt-1">Home › Videos › Get started</p>
+        <p class="text-[15px] text-slate-600 mt-2 leading-relaxed">A two-minute walkthrough on building a memorable passphrase and why length beats complexity.</p>
+      </li>
+      <li class="result rounded-2xl border border-slate-200 bg-white p-5">
+        <div class="flex items-center gap-2 mb-2"><span class="text-[12px] font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-grass-100 text-grass-700">Release note</span><span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Security</span><span class="ml-auto text-[13px] text-slate-400 flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg> May 05, 2026</span></div>
+        <a href="reader.html" class="text-lg font-semibold text-ink hover:text-brand-600"><mark>Master password</mark> strength meter improvements</a>
+        <p class="text-[13px] text-slate-400 mt-1">Home › Release notes › Security</p>
+        <p class="text-[15px] text-slate-600 mt-2 leading-relaxed">The sign-up flow now gives clearer, real-time guidance as you create your <mark>master password</mark>.</p>
+      </li>
+    </ul>
+
+    <nav class="flex items-center justify-center gap-1 mt-8" aria-label="Pagination">
+      <a href="#" class="w-9 h-9 grid place-items-center rounded-lg text-slate-400 hover:bg-slate-100" aria-label="Previous"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>L</a>
+      <a href="#" aria-current="page" class="w-9 h-9 grid place-items-center rounded-lg bg-brand-600 text-white font-semibold">1</a>
+      <a href="#" class="w-9 h-9 grid place-items-center rounded-lg text-slate-700 hover:bg-slate-100 font-medium">2</a>
+      <a href="#" class="w-9 h-9 grid place-items-center rounded-lg text-slate-700 hover:bg-slate-100 font-medium">3</a>
+      <span class="px-1 text-slate-400">…</span>
+      <a href="#" class="w-9 h-9 grid place-items-center rounded-lg text-slate-700 hover:bg-slate-100 font-medium">9</a>
+      <a href="#" class="w-9 h-9 grid place-items-center rounded-lg text-slate-400 hover:bg-slate-100" aria-label="Next"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </nav>
+  </main>
+</div>
+
+<footer class="bg-[#1b1b1f] text-slate-300">
+  <div class="max-w-7xl mx-auto px-6 pt-14 pb-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="col-span-2 md:col-span-1">
+        <img src="img/logo-lastpass-white.png" alt="LastPass" class="h-6 w-auto">
+        <p class="text-sm mt-4 text-slate-400 leading-relaxed max-w-xs">Setup guides, feature documentation, and troubleshooting for LastPass.</p>
+      </div>
+      <div><h4 class="text-[12px] font-bold uppercase tracking-wider text-slate-500 mb-4">Resources</h4><ul class="space-y-2.5 text-sm"><li><a class="text-slate-300 hover:text-white transition" href="#">LastPass Central</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">LastPass Community</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">Reddit Community</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">LastPass Support Center</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">LastPass University</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">LastPass Blog</a></li></ul></div>
+      <div><h4 class="text-[12px] font-bold uppercase tracking-wider text-slate-500 mb-4">Products &amp; Services</h4><ul class="space-y-2.5 text-sm"><li><a class="text-slate-300 hover:text-white transition" href="#">Personal</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">Business</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">Partners</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">SaaS Protect</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">MSPs</a></li></ul></div>
+      <div><h4 class="text-[12px] font-bold uppercase tracking-wider text-slate-500 mb-4">Our Company</h4><ul class="space-y-2.5 text-sm"><li><a class="text-slate-300 hover:text-white transition" href="#">About Us</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">Careers <span class="text-brand-400">We're hiring</span></a></li><li><a class="text-slate-300 hover:text-white transition" href="#">Legal Center</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">Compliance</a></li><li><a class="text-slate-300 hover:text-white transition" href="contact.html">Contact Us</a></li></ul></div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row-reverse items-center gap-5 justify-between">
+      <div class="flex items-center gap-4 text-slate-400">
+        <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.68 4.53-4.68 1.31 0 2.68.23 2.68.23v2.97h-1.5c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></a>
+        <a href="#" aria-label="X" class="hover:text-white transition"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg></a>
+        <a href="#" aria-label="Instagram" class="hover:text-white transition"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.94c-3.14 0-3.51.01-4.75.07-.9.04-1.38.19-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.33-.28.81-.32 1.71-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.04.9.19 1.38.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.33.13.81.28 1.71.32 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c.9-.04 1.38-.19 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.33.28-.81.32-1.71.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.04-.9-.19-1.38-.32-1.71a2.85 2.85 0 00-.69-1.06 2.85 2.85 0 00-1.06-.69c-.33-.13-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.75-.07zm0 3.3a4.6 4.6 0 110 9.2 4.6 4.6 0 010-9.2zm0 7.59a2.99 2.99 0 100-5.98 2.99 2.99 0 000 5.98zm5.86-7.81a1.08 1.08 0 11-2.15 0 1.08 1.08 0 012.15 0z"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M23.5 6.2a3 3 0 00-2.12-2.12C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.53A3 3 0 00.5 6.2 31.2 31.2 0 000 12a31.2 31.2 0 00.5 5.8 3 3 0 002.12 2.12c1.88.53 9.38.53 9.38.53s7.5 0 9.38-.53a3 3 0 002.12-2.12A31.2 31.2 0 0024 12a31.2 31.2 0 00-.5-5.8zM9.6 15.57V8.43L15.8 12l-6.2 3.57z"/></svg></a>
+        <a href="#" aria-label="LinkedIn" class="hover:text-white transition"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0z"/></svg></a>
+        <a href="#" aria-label="Reddit" class="hover:text-white transition"><svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19" aria-hidden="true"><path d="M24 11.78a2.34 2.34 0 00-3.96-1.66c-1.6-1.05-3.75-1.72-6.14-1.8l1.05-4.93 3.43.73a1.67 1.67 0 103.33-.15 1.67 1.67 0 00-3.17-.73l-3.83-.81a.4.4 0 00-.48.31L12.9 8.3c-2.42.07-4.6.74-6.22 1.8a2.34 2.34 0 10-2.58 3.83 4.6 4.6 0 00-.06.73c0 3.7 4.3 6.7 9.6 6.7s9.6-3 9.6-6.7c0-.24-.02-.49-.06-.72A2.34 2.34 0 0024 11.78zM7.6 13.44a1.67 1.67 0 113.33 0 1.67 1.67 0 01-3.33 0zm9.3 4.4c-1.15 1.15-3.35 1.24-4 1.24-.64 0-2.84-.09-3.99-1.24a.43.43 0 01.61-.61c.73.73 2.28.98 3.38.98 1.1 0 2.66-.25 3.38-.98a.43.43 0 11.61.61zm-.29-2.73a1.67 1.67 0 110-3.34 1.67 1.67 0 010 3.34z"/></svg></a>
+      </div>
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-500">
+        <span>© 2026 LastPass US L.P. All rights reserved.</span>
+        <a class="hover:text-white transition" href="#">Privacy</a>
+        <a class="hover:text-white transition" href="#">Terms</a>
+        <a class="hover:text-white transition" href="#">Imprint</a>
+        <a class="hover:text-white transition" href="#">Your Privacy Choices</a>
+        <a class="hover:text-white transition" href="#">Cookie Preferences</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+var _n=document.getElementById("nav");function _s(){_n.classList.toggle("is-scrolled",window.scrollY>8)}addEventListener("scroll",_s,{passive:true});_s();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+</script>
+<script>
+(function(){
+  var sel=document.querySelector('.langsel'); if(!sel) return;
+  var btn=sel.querySelector('.langbtn'), menu=sel.querySelector('.langmenu'), cur=sel.querySelector('.langcur');
+  function close(){menu.classList.add('hidden');btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(e){e.stopPropagation();var hidden=menu.classList.toggle('hidden');btn.setAttribute('aria-expanded',hidden?'false':'true');});
+  document.addEventListener('click',function(e){if(!sel.contains(e.target))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();cur.textContent=a.getAttribute('lang')==='en'?'English':a.textContent.trim();
+    menu.querySelectorAll('li').forEach(function(li){li.setAttribute('aria-selected', li.contains(a)?'true':'false');});close();});});
+})();
+</script>
+</body></html>

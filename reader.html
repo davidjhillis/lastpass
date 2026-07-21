@@ -1,0 +1,366 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get started with LastPass — LastPass Support</title>
+<meta name="dcx-searchtitle" content="How do I get started with LastPass?">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+ body{font-family:'Source Sans 3',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+ #nav.is-scrolled{box-shadow:0 8px 24px -18px rgba(5,6,6,.4)}
+ .navlink{position:relative}.navlink::after{content:'';position:absolute;left:0;bottom:-7px;height:2px;width:0;background:#d71340;transition:width .28s cubic-bezier(.2,.7,.2,1)}.navlink:hover::after{width:100%}
+ .btn{transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s,background-color .18s}.btn:hover{transform:translateY(-1px)}.btn:active{transform:translateY(0) scale(.985)}
+ .band{position:relative;isolation:isolate;background:linear-gradient(120deg,#160c18 0%,#2b1a30 60%,#3a2440 100%)}
+ .band::after{content:'';position:absolute;inset:0;background:repeating-radial-gradient(circle at 84% -22%,rgba(255,255,255,.11) 0 1.5px,transparent 1.5px 58px);pointer-events:none}
+ .band-glow{position:absolute;right:6%;top:20%;width:420px;height:260px;background:radial-gradient(closest-side,rgba(215,19,64,.5),transparent 72%);filter:blur(60px);pointer-events:none}
+ .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}.reveal.in{opacity:1;transform:none}
+ .prose h2{font-size:1.5rem;font-weight:600;color:#050606;margin:2.2rem 0 .75rem;scroll-margin-top:6rem;letter-spacing:-.01em}
+ .prose h3{font-size:1.15rem;font-weight:600;color:#050606;margin:1.5rem 0 .5rem;scroll-margin-top:6rem}
+ .prose p{color:#3c4a55;line-height:1.75;margin:.85rem 0}
+ .prose ul{margin:.75rem 0;padding-left:0;list-style:none}
+ .prose ul li{position:relative;padding-left:1.5rem;color:#3c4a55;line-height:1.7;margin:.4rem 0}
+ .prose ul li::before{content:'';position:absolute;left:.3rem;top:.62rem;width:6px;height:6px;border-radius:50%;background:#d71340}
+ .prose ol{margin:.75rem 0;padding-left:0;list-style:none;counter-reset:step}
+ .prose ol li{position:relative;padding-left:2.4rem;color:#3c4a55;line-height:1.7;margin:.7rem 0;counter-increment:step}
+ .prose ol li::before{content:counter(step);position:absolute;left:0;top:-.05rem;width:1.6rem;height:1.6rem;border-radius:.5rem;background:#fdf1f4;color:#c50b3a;font-weight:700;font-size:.85rem;display:grid;place-items:center}
+ .prose a{color:#c50b3a;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+ .prose strong{color:#050606;font-weight:600}
+ .callout{border-left:4px solid;border-radius:.6rem;padding:1rem 1.25rem;margin:1.25rem 0;display:flex;gap:.75rem}
+ .callout.info{background:#eef3fb;border-color:#3b70d4}.callout.tip{background:#eef6ef;border-color:#368149}.callout.warn{background:#fdf6e3;border-color:#c98a00}
+ .callout p{margin:0}
+ code.inline{background:#f0f2f5;color:#c50b3a;border-radius:4px;padding:.05rem .35rem;font-family:'JetBrains Mono',monospace;font-size:.86em}
+ table.doc{width:100%;border-collapse:separate;border-spacing:0;margin:1.25rem 0;font-size:.92rem;border:1px solid #e5ecf4;border-radius:.7rem;overflow:hidden}
+ table.doc th{background:#241522;color:#fff;text-align:left;padding:.7rem .9rem;font-weight:600}
+ table.doc td{padding:.7rem .9rem;border-top:1px solid #eef1f5;color:#3c4a55;vertical-align:top}
+ table.doc tr:nth-child(even) td{background:#faf9fb}
+ .tab-btn[aria-selected="true"]{color:#c50b3a;border-color:#d71340}
+ .tab-panel[hidden]{display:none}
+ .toc a{border-left:2px solid transparent;transition:color .2s,border-color .2s}
+ .toc a.active{color:#c50b3a;border-color:#d71340;font-weight:600}
+ /* DITA-map tree + collapsible rail */
+ .tnode[aria-expanded="false"]>ul{display:none}
+ .tchev{transition:transform .2s}.tnode[aria-expanded="false"] .tchev{transform:rotate(-90deg)}
+ #main.navhide .doc-rail{display:none}
+ #main.navhide .article-main{grid-column:span 9/span 9}
+ #navShow{display:none}#main.navhide #navShow{display:inline-flex}
+ @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.001ms!important;scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}}
+</style></head>
+<body class="bg-white text-ink">
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-3 focus:left-3 focus:bg-white focus:px-4 focus:py-2 focus:rounded-md focus:ring-2 focus:ring-brand-600 focus:font-semibold">Skip to main content</a>
+
+<!-- Utility bar -->
+<div class="hidden sm:block border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-6 h-10 flex items-center justify-end gap-6 text-[14px] text-slate-600">
+    <div class="langsel relative"><button type="button" class="langbtn flex items-center gap-1.5 hover:text-ink transition" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> <span class="langcur">English</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><ul class="langmenu hidden absolute right-0 top-full mt-2 w-52 bg-white rounded-xl ring-1 ring-slate-200 shadow-xl py-1.5 z-[70] text-left" role="listbox" aria-label="Language">
+    <li role="option" aria-selected="true"><a href="#" hreflang="en" lang="en" class="flex items-center justify-between gap-2 px-3.5 py-2 text-[14px] text-ink font-semibold hover:bg-slate-50">English <span class="text-brand-600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></a></li>
+    <li role="option" aria-selected="false"><a href="#" hreflang="de" lang="de" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Deutsch</a></li>
+    <li role="option" aria-selected="false"><a href="#" hreflang="es" lang="es" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Español</a></li>
+    <li role="option" aria-selected="false"><a href="#" hreflang="fr" lang="fr" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Français</a></li>
+    <li role="option" aria-selected="false"><a href="#" hreflang="it" lang="it" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Italiano</a></li>
+    <li role="option" aria-selected="false"><a href="#" hreflang="nl" lang="nl" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Nederlands</a></li>
+    <li role="option" aria-selected="false"><a href="#" hreflang="pt-BR" lang="pt-BR" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Português (Brasil)</a></li>
+  </ul></div>
+    <a href="#" class="flex items-center gap-1.5 hover:text-ink transition"><span class="w-1.5 h-1.5 rounded-full bg-grass-500"></span>Service status</a>
+    <a href="contact.html" class="hover:text-ink transition">Contact us</a>
+    <a href="#" class="hover:text-ink transition">Log in</a>
+  </div>
+</div>
+
+<!-- Header -->
+<nav id="nav" class="sticky top-0 z-50 bg-white/95 border-b border-slate-100 transition-shadow duration-200" style="backdrop-filter:saturate(1.4) blur(10px)">
+  <div class="max-w-7xl mx-auto px-6 h-[68px] flex items-center gap-8">
+    <a href="index.html" aria-label="LastPass Support home" class="flex items-center gap-2.5 shrink-0">
+      <img src="img/logo-lastpass.png" alt="LastPass" class="h-[26px] w-auto">
+      <span class="hidden md:flex items-center gap-2.5"><span class="h-5 w-px bg-slate-200" aria-hidden="true"></span><span class="text-[15px] font-normal text-slate-600 leading-none">Support</span></span>
+    </a>
+    <div class="hidden lg:flex items-center gap-8 text-base">
+      <a href="index.html#browse" class="navlink font-bold text-slate-700 hover:text-ink transition-colors">Learn</a>
+      <a href="contact.html" class="navlink font-bold text-slate-700 hover:text-ink transition-colors">Connect</a>
+      <a href="index.html#popular" class="navlink font-bold text-slate-700 hover:text-ink transition-colors">Support</a>
+      <a href="#" class="navlink font-bold text-slate-700 hover:text-ink transition-colors">Discover</a>
+    </div>
+    <div class="ml-auto flex items-center gap-3">
+      <a href="search.html" aria-label="Search" class="w-10 h-10 grid place-items-center rounded-full text-slate-600 hover:bg-slate-100 transition"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></a>
+      <a href="#" class="btn hidden sm:inline-flex items-center h-10 px-5 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-[15px] font-bold shadow-sm">Get LastPass free</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="bg-white border-b border-slate-100"><div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-[15px] text-slate-500 overflow-x-auto whitespace-nowrap">
+  <a href="index.html" class="hover:text-brand-600">Home</a><span class="text-slate-300"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+  <a href="#" class="hover:text-brand-600">Get started</a><span class="text-slate-300"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+  <a href="#" class="hover:text-brand-600">Installing &amp; setup</a><span class="text-slate-300"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+  <span class="text-ink font-medium">Get started with LastPass</span>
+</div></div>
+
+<!-- Aubergine title band -->
+<section class="band overflow-hidden">
+  <div class="band-glow"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-12">
+    <div class="max-w-3xl reveal in">
+      <p class="text-white/60 font-bold uppercase tracking-[.18em] text-[13px] mb-3">Get started · Installing &amp; setup</p>
+      <h1 class="text-4xl md:text-6xl font-medium text-white tracking-tight leading-tight">Get started with LastPass</h1>
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5 text-[15px] text-plum-100">
+        <span class="inline-flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg> Updated Jul 14, 2026</span>
+        <span class="inline-flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 5 min read</span>
+        <span class="inline-flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg> Free · Premium · Families</span>
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 ring-1 ring-white/15 text-white text-[13px] font-semibold"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Zero-knowledge encrypted</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-12 gap-8 py-8" id="main">
+
+  <!-- Left doc tree (DITA maps) — expand/collapse lives here -->
+  <aside class="doc-rail hidden lg:block col-span-3"><div class="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
+    <div class="flex items-center justify-between px-3 mb-2">
+      <span class="text-[13px] font-bold uppercase tracking-wide text-slate-500">LastPass documentation</span>
+      <div class="flex items-center gap-1">
+        <button id="treeExpandAll" class="text-[12px] font-semibold text-brand-700 hover:text-brand-800 px-1.5 py-1 rounded whitespace-nowrap" title="Expand or collapse all topics">Expand</button>
+        <button id="navCollapse" class="text-slate-400 hover:text-ink transition p-1 rounded" title="Hide navigation" aria-label="Hide navigation"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg></button>
+      </div>
+    </div>
+    <ul class="space-y-0.5 text-[15px]">
+      <li class="tnode" aria-expanded="true"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-brand-700 font-semibold bg-brand-50 text-left"><span class="tchev text-brand-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Get started</button>
+        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5">
+          <li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-brand-700 font-semibold bg-brand-50/60">Get started with LastPass</a></li>
+          <li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Create your account</a></li>
+          <li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Install the browser extension</a></li>
+          <li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Add items to your vault</a></li>
+        </ul>
+      </li>
+      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Your vault</button>
+        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Vault overview</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Add &amp; edit items</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Folders &amp; organization</a></li></ul>
+      </li>
+      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Passwords &amp; security</button>
+        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Security Dashboard</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Change your master password</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Dark web monitoring</a></li></ul>
+      </li>
+      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Multifactor authentication</button>
+        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Set up MFA</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">LastPass Authenticator</a></li></ul>
+      </li>
+      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Sharing</button>
+        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Share an item</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Sharing Center</a></li></ul>
+      </li>
+      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Business &amp; Admin Console</button>
+        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Admin Console setup</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Provision users</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Policies &amp; SSO</a></li></ul>
+      </li>
+      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Account &amp; billing</button>
+        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Manage your subscription</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Update payment details</a></li></ul>
+      </li>
+    </ul>
+  </div></aside>
+
+  <!-- Article -->
+  <main class="article-main col-span-12 lg:col-span-6 min-w-0">
+    <!-- Content toolbar -->
+    <div class="flex flex-wrap items-center gap-2 pb-5 border-b border-slate-100">
+      <button id="navShow" class="btn items-center gap-1.5 h-9 px-3 rounded-lg ring-1 ring-slate-300 hover:bg-slate-50 text-[15px] font-semibold text-slate-700"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg> Contents</button>
+      <button class="btn inline-flex items-center gap-1.5 h-9 px-3 rounded-lg ring-1 ring-slate-300 hover:bg-slate-50 text-[15px] font-semibold text-slate-700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V2h12v7"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg> PDF</button>
+      <button class="btn inline-flex items-center gap-1.5 h-9 px-3 rounded-lg ring-1 ring-slate-300 hover:bg-slate-50 text-[15px] font-semibold text-slate-700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4"/><path d="m15.4 6.5-6.8 4"/></svg> Share</button>
+      <button class="btn inline-flex items-center gap-1.5 h-9 px-3 rounded-lg ring-1 ring-slate-300 hover:bg-slate-50 text-[15px] font-semibold text-slate-700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg> Watch</button>
+      <button class="btn inline-flex items-center gap-1.5 h-9 px-3 rounded-lg ring-1 ring-slate-300 hover:bg-slate-50 text-[15px] font-semibold text-slate-700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg> Save</button>
+    </div>
+
+    <div class="prose mt-6">
+      <p class="text-lg text-slate-600">LastPass stores your passwords and other sensitive information in a secure vault, then fills them in for you as you browse. This guide walks you through creating your account, installing LastPass, and adding your first items.</p>
+      <div class="callout info"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><div><p class="font-semibold text-ink">Your master password is the one password you need to remember.</p><p class="text-[15px] mt-1">LastPass uses zero-knowledge encryption — your data is encrypted and decrypted locally on your device, so no one else can read it.</p></div></div>
+
+      <!-- Embedded video (Vimeo) -->
+      <figure class="my-7">
+        <div class="vplay relative rounded-2xl overflow-hidden ring-1 ring-slate-200 aspect-video bg-ink cursor-pointer group">
+          <img src="img/photo-getstarted.jpg" alt="Watch: Getting started with LastPass" class="w-full h-full object-cover opacity-95 group-hover:opacity-100 group-hover:scale-[1.04] transition duration-[600ms]">
+          <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(5,6,6,.15),rgba(5,6,6,.55))"></div>
+          <div class="absolute inset-0 grid place-items-center"><span class="w-[68px] h-[68px] rounded-full bg-white/95 grid place-items-center shadow-xl transition group-hover:scale-110"><svg width="26" height="26" viewBox="0 0 24 24" fill="#d71340" aria-hidden="true"><polygon points="8 5 20 12 8 19 8 5"/></svg></span></div>
+          <span class="absolute top-3 left-3 inline-flex items-center gap-1.5 text-[12px] font-bold text-white bg-ink/65 rounded-md px-2 py-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg> Vimeo</span>
+          <span class="absolute bottom-3 right-3 text-[12px] font-semibold text-white bg-ink/70 rounded px-2 py-0.5">2:14</span>
+          <span class="absolute bottom-3 left-3 text-[14px] font-semibold text-white">Getting started with LastPass</span>
+        </div>
+        <figcaption class="text-[15px] text-slate-500 mt-2">Watch a 2-minute overview, then follow the written steps below.</figcaption>
+      </figure>
+
+      <h2 id="before">Before you begin</h2>
+      <ul>
+        <li>A supported browser — Chrome, Firefox, Edge, or Safari — or a mobile device running iOS or Android.</li>
+        <li>An email address you can access to verify your account.</li>
+        <li>A few minutes to choose a strong, memorable master password.</li>
+      </ul>
+
+      <h2 id="create">Step 1 · Create your account</h2>
+      <ol>
+        <li>Go to <a href="#">lastpass.com</a> and select <strong>Get LastPass Free</strong>.</li>
+        <li>Enter your email address and select <strong>Sign up</strong>.</li>
+        <li>Create your <strong>master password</strong> — at least 12 characters mixing upper- and lower-case letters, numbers, and symbols.</li>
+        <li>Select <strong>Sign up</strong> to create your vault.</li>
+      </ol>
+      <div class="callout tip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg><div><p class="font-semibold text-ink">Tip</p><p class="text-[15px] mt-1">Make your master password a <em>passphrase</em> — several unrelated words strung together are both strong and easy to recall.</p></div></div>
+
+      <h2 id="install">Step 2 · Install LastPass</h2>
+      <p>Install LastPass where you'll use it most. Pick your platform below.</p>
+      <div class="mt-4">
+        <div role="tablist" aria-label="Install platform" class="flex gap-6 border-b border-slate-200">
+          <button role="tab" aria-controls="panel-ext" aria-selected="true" class="tab-btn -mb-px border-b-2 border-transparent pb-2.5 text-[15px] font-bold text-slate-500 hover:text-ink">Google Chrome</button>
+          <button role="tab" aria-controls="panel-desk" aria-selected="false" class="tab-btn -mb-px border-b-2 border-transparent pb-2.5 text-[15px] font-bold text-slate-500 hover:text-ink">Desktop app</button>
+          <button role="tab" aria-controls="panel-mob" aria-selected="false" class="tab-btn -mb-px border-b-2 border-transparent pb-2.5 text-[15px] font-bold text-slate-500 hover:text-ink">Mobile app</button>
+        </div>
+        <div id="panel-ext" role="tabpanel" class="tab-panel pt-3"><ol><li>Open the Chrome Web Store and search for <strong>LastPass</strong>.</li><li>Select <strong>Add to Chrome</strong>, then confirm the permission prompt.</li><li>Pin the LastPass icon to your toolbar, then select it and log in with your master password.</li></ol></div>
+        <div id="panel-desk" role="tabpanel" class="tab-panel pt-3" hidden><ol><li>From your vault, go to <strong>Account Settings</strong> and select <strong>Download</strong>.</li><li>Run the installer for Windows or macOS and follow the prompts.</li><li>Open the LastPass desktop app and log in with your master password.</li></ol></div>
+        <div id="panel-mob" role="tabpanel" class="tab-panel pt-3" hidden><ol><li>Install <strong>LastPass Password Manager</strong> from the App Store or Google Play.</li><li>Open the app and log in with your master password.</li><li>Enable <strong>autofill</strong> and biometric unlock when prompted.</li></ol></div>
+      </div>
+
+      <h2 id="add">Step 3 · Add items to your vault</h2>
+      <p>Your vault holds more than passwords. LastPass can securely store any of the following item types:</p>
+      <table class="doc"><thead><tr><th>Item type</th><th>What it stores</th><th>Autofills</th></tr></thead><tbody>
+        <tr><td>Password</td><td>Site username and password</td><td>Login forms</td></tr>
+        <tr><td>Address</td><td>Name, street, city, postal code</td><td>Checkout &amp; shipping forms</td></tr>
+        <tr><td>Payment card</td><td>Card number, expiry, security code</td><td>Payment forms</td></tr>
+        <tr><td>Secure note</td><td>Free-form encrypted text</td><td>—</td></tr>
+      </tbody></table>
+
+      <h2 id="secure">Step 4 · Check your Security Dashboard</h2>
+      <p>Open the <strong>Security Dashboard</strong> from your vault to see your overall security score, find weak or reused passwords, and turn on dark web monitoring so you're alerted if your email appears in a known breach.</p>
+      <div class="callout warn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div><p class="font-semibold text-ink">Set up account recovery now</p><p class="text-[15px] mt-1">Configure at least one recovery option before you rely on LastPass. If you forget your master password, recovery is the only way back into your vault.</p></div></div>
+
+      <h2 id="next">Next steps</h2>
+      <ul>
+        <li><a href="#">Turn on multifactor authentication</a> for an extra layer of protection.</li>
+        <li><a href="#">Import passwords</a> from another manager or your browser.</li>
+        <li><a href="#">Set up the LastPass Authenticator</a> app on your phone.</li>
+      </ul>
+    </div>
+
+    <!-- Was this helpful -->
+    <div class="mt-10 rounded-2xl ring-1 ring-slate-200 bg-slate-50 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div><p class="font-semibold text-ink">Was this article helpful?</p><p class="text-[15px] text-slate-500 mt-0.5">Your feedback helps us improve the docs.</p></div>
+      <div class="flex flex-wrap items-center gap-2 shrink-0">
+        <button class="btn inline-flex items-center gap-2 h-10 px-4 rounded-full ring-1 ring-slate-300 bg-white hover:bg-slate-50 text-[15px] font-semibold whitespace-nowrap shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg> Yes</button>
+        <button class="btn inline-flex items-center gap-2 h-10 px-4 rounded-full ring-1 ring-slate-300 bg-white hover:bg-slate-50 text-[15px] font-semibold whitespace-nowrap shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"/></svg> No</button>
+        <button id="openFb" class="btn inline-flex items-center gap-2 h-10 px-5 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-[15px] font-bold whitespace-nowrap shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> Send feedback</button>
+      </div>
+    </div>
+
+    <!-- Prev / next -->
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <a href="#" class="group rounded-2xl ring-1 ring-slate-200 bg-white p-4 hover:ring-brand-300 hover:shadow-md transition"><span class="text-[13px] text-slate-400 flex items-center gap-1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>L Previous</span><span class="block font-semibold text-ink mt-1 group-hover:text-brand-600">Welcome to LastPass</span></a>
+      <a href="#" class="group rounded-2xl ring-1 ring-slate-200 bg-white p-4 text-right hover:ring-brand-300 hover:shadow-md transition"><span class="text-[13px] text-slate-400 flex items-center justify-end gap-1">Next <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span><span class="block font-semibold text-ink mt-1 group-hover:text-brand-600">Create your account</span></a>
+    </div>
+  </main>
+
+  <!-- Right rail -->
+  <aside class="hidden xl:block col-span-3"><div class="sticky top-28 space-y-6">
+    <div><p class="text-[13px] font-bold uppercase tracking-wide text-slate-500 mb-2 pl-3">On this page</p>
+      <ul class="toc border-l border-slate-200">
+        <li><a href="#before" class="block py-1.5 text-[14px] text-slate-500 hover:text-brand-600 pl-3 -ml-px">Before you begin</a></li>
+        <li><a href="#create" class="block py-1.5 text-[14px] text-slate-500 hover:text-brand-600 pl-3 -ml-px">1 · Create your account</a></li>
+        <li><a href="#install" class="block py-1.5 text-[14px] text-slate-500 hover:text-brand-600 pl-3 -ml-px">2 · Install LastPass</a></li>
+        <li><a href="#add" class="block py-1.5 text-[14px] text-slate-500 hover:text-brand-600 pl-3 -ml-px">3 · Add items to your vault</a></li>
+        <li><a href="#secure" class="block py-1.5 text-[14px] text-slate-500 hover:text-brand-600 pl-3 -ml-px">4 · Security Dashboard</a></li>
+        <li><a href="#next" class="block py-1.5 text-[14px] text-slate-500 hover:text-brand-600 pl-3 -ml-px">Next steps</a></li>
+      </ul>
+    </div>
+    <div class="rounded-2xl ring-1 ring-slate-200 bg-white p-4">
+      <p class="text-[13px] font-bold uppercase tracking-wide text-slate-500 mb-3">Related content</p>
+      <ul class="space-y-3">
+        <li><a href="#" class="group flex items-start gap-2.5"><span class="text-brand-600 mt-0.5 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></span><span class="text-[15px] text-slate-700 group-hover:text-brand-700 font-medium leading-snug">Import passwords into LastPass</span></a></li>
+        <li><a href="#" class="group flex items-start gap-2.5"><span class="text-brand-600 mt-0.5 shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="text-[15px] text-slate-700 group-hover:text-brand-700 font-medium leading-snug">Set up multifactor authentication</span></a></li>
+        <li><a href="#" class="group flex items-start gap-2.5"><span class="text-brand-600 mt-0.5 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span><span class="text-[15px] text-slate-700 group-hover:text-brand-700 font-medium leading-snug">Video: your first day with LastPass</span></a></li>
+      </ul>
+    </div>
+  </div></aside>
+</div>
+
+<footer class="bg-[#1b1b1f] text-slate-300">
+  <div class="max-w-7xl mx-auto px-6 pt-14 pb-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="col-span-2 md:col-span-1">
+        <img src="img/logo-lastpass-white.png" alt="LastPass" class="h-6 w-auto">
+        <p class="text-sm mt-4 text-slate-400 leading-relaxed max-w-xs">Setup guides, feature documentation, and troubleshooting for LastPass.</p>
+      </div>
+      <div><h4 class="text-[12px] font-bold uppercase tracking-wider text-slate-500 mb-4">Resources</h4><ul class="space-y-2.5 text-sm"><li><a class="text-slate-300 hover:text-white transition" href="#">LastPass Central</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">LastPass Community</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">Reddit Community</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">LastPass Support Center</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">LastPass University</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">LastPass Blog</a></li></ul></div>
+      <div><h4 class="text-[12px] font-bold uppercase tracking-wider text-slate-500 mb-4">Products &amp; Services</h4><ul class="space-y-2.5 text-sm"><li><a class="text-slate-300 hover:text-white transition" href="#">Personal</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">Business</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">Partners</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">SaaS Protect</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">MSPs</a></li></ul></div>
+      <div><h4 class="text-[12px] font-bold uppercase tracking-wider text-slate-500 mb-4">Our Company</h4><ul class="space-y-2.5 text-sm"><li><a class="text-slate-300 hover:text-white transition" href="#">About Us</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">Careers <span class="text-brand-400">We're hiring</span></a></li><li><a class="text-slate-300 hover:text-white transition" href="#">Legal Center</a></li><li><a class="text-slate-300 hover:text-white transition" href="#">Compliance</a></li><li><a class="text-slate-300 hover:text-white transition" href="contact.html">Contact Us</a></li></ul></div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row-reverse items-center gap-5 justify-between">
+      <div class="flex items-center gap-4 text-slate-400">
+        <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.68 4.53-4.68 1.31 0 2.68.23 2.68.23v2.97h-1.5c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></a>
+        <a href="#" aria-label="X" class="hover:text-white transition"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg></a>
+        <a href="#" aria-label="Instagram" class="hover:text-white transition"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.94c-3.14 0-3.51.01-4.75.07-.9.04-1.38.19-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.33-.28.81-.32 1.71-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.04.9.19 1.38.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.33.13.81.28 1.71.32 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c.9-.04 1.38-.19 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.33.28-.81.32-1.71.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.04-.9-.19-1.38-.32-1.71a2.85 2.85 0 00-.69-1.06 2.85 2.85 0 00-1.06-.69c-.33-.13-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.75-.07zm0 3.3a4.6 4.6 0 110 9.2 4.6 4.6 0 010-9.2zm0 7.59a2.99 2.99 0 100-5.98 2.99 2.99 0 000 5.98zm5.86-7.81a1.08 1.08 0 11-2.15 0 1.08 1.08 0 012.15 0z"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M23.5 6.2a3 3 0 00-2.12-2.12C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.53A3 3 0 00.5 6.2 31.2 31.2 0 000 12a31.2 31.2 0 00.5 5.8 3 3 0 002.12 2.12c1.88.53 9.38.53 9.38.53s7.5 0 9.38-.53a3 3 0 002.12-2.12A31.2 31.2 0 0024 12a31.2 31.2 0 00-.5-5.8zM9.6 15.57V8.43L15.8 12l-6.2 3.57z"/></svg></a>
+        <a href="#" aria-label="LinkedIn" class="hover:text-white transition"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0z"/></svg></a>
+        <a href="#" aria-label="Reddit" class="hover:text-white transition"><svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19" aria-hidden="true"><path d="M24 11.78a2.34 2.34 0 00-3.96-1.66c-1.6-1.05-3.75-1.72-6.14-1.8l1.05-4.93 3.43.73a1.67 1.67 0 103.33-.15 1.67 1.67 0 00-3.17-.73l-3.83-.81a.4.4 0 00-.48.31L12.9 8.3c-2.42.07-4.6.74-6.22 1.8a2.34 2.34 0 10-2.58 3.83 4.6 4.6 0 00-.06.73c0 3.7 4.3 6.7 9.6 6.7s9.6-3 9.6-6.7c0-.24-.02-.49-.06-.72A2.34 2.34 0 0024 11.78zM7.6 13.44a1.67 1.67 0 113.33 0 1.67 1.67 0 01-3.33 0zm9.3 4.4c-1.15 1.15-3.35 1.24-4 1.24-.64 0-2.84-.09-3.99-1.24a.43.43 0 01.61-.61c.73.73 2.28.98 3.38.98 1.1 0 2.66-.25 3.38-.98a.43.43 0 11.61.61zm-.29-2.73a1.67 1.67 0 110-3.34 1.67 1.67 0 010 3.34z"/></svg></a>
+      </div>
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-500">
+        <span>© 2026 LastPass US L.P. All rights reserved.</span>
+        <a class="hover:text-white transition" href="#">Privacy</a>
+        <a class="hover:text-white transition" href="#">Terms</a>
+        <a class="hover:text-white transition" href="#">Imprint</a>
+        <a class="hover:text-white transition" href="#">Your Privacy Choices</a>
+        <a class="hover:text-white transition" href="#">Cookie Preferences</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Feedback modal (Send feedback OR ?openFeedback=true) -->
+<div id="fbModal" class="fixed inset-0 z-[100] hidden">
+  <div class="absolute inset-0 bg-ink/50" data-close></div>
+  <div class="absolute inset-0 flex items-center justify-center p-4">
+    <div class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6">
+      <button data-close aria-label="Close" class="absolute top-4 right-4 text-slate-400 hover:text-ink">✕</button>
+      <h2 class="text-xl font-semibold text-ink">Send us feedback</h2>
+      <p class="text-[15px] text-slate-500 mt-1">About “Get started with LastPass”.</p>
+      <div class="flex items-center gap-2 mt-4">
+        <button class="btn inline-flex items-center gap-1.5 h-9 px-3 rounded-full ring-1 ring-slate-300 hover:bg-slate-50 text-[15px] font-semibold"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg> Helpful</button>
+        <button class="btn inline-flex items-center gap-1.5 h-9 px-3 rounded-full ring-1 ring-slate-300 hover:bg-slate-50 text-[15px] font-semibold"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"/></svg> Not helpful</button>
+      </div>
+      <label class="block text-[15px] font-medium text-slate-700 mt-4 mb-1.5">Tell us more</label>
+      <textarea rows="4" class="w-full rounded-xl border border-slate-300 p-3 text-[15px] outline-none focus:ring-2 focus:ring-brand-400" placeholder="What worked well, or what was missing?"></textarea>
+      <div class="flex justify-end gap-2 mt-4">
+        <button data-close class="btn h-10 px-4 rounded-full ring-1 ring-slate-300 hover:bg-slate-50 text-[15px] font-semibold">Cancel</button>
+        <button data-close class="btn h-10 px-5 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-[15px] font-bold">Submit feedback</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var _n=document.getElementById("nav");function _s(){_n.classList.toggle("is-scrolled",window.scrollY>8)}addEventListener("scroll",_s,{passive:true});_s();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+// Choice tabs
+var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+tabs.forEach(function(t){t.addEventListener('click',function(){var lst=t.closest('[role=tablist]');lst.querySelectorAll('[role=tab]').forEach(function(x){x.setAttribute('aria-selected','false');document.getElementById(x.getAttribute('aria-controls')).hidden=true});t.setAttribute('aria-selected','true');document.getElementById(t.getAttribute('aria-controls')).hidden=false});});
+// DITA-map tree expand/collapse (on the rail)
+var tnodes=[].slice.call(document.querySelectorAll('.tnode'));
+document.querySelectorAll('.ttoggle').forEach(function(b){b.addEventListener('click',function(){var n=b.closest('.tnode');n.setAttribute('aria-expanded',n.getAttribute('aria-expanded')!=='true')})});
+var tea=document.getElementById('treeExpandAll');
+tea.addEventListener('click',function(){var anyClosed=tnodes.some(function(n){return n.getAttribute('aria-expanded')!=='true'});tnodes.forEach(function(n){n.setAttribute('aria-expanded',anyClosed?'true':'false')});tea.textContent=anyClosed?'Collapse':'Expand'});
+// Collapse / open the whole navigation rail
+var mainGrid=document.getElementById('main'),nc=document.getElementById('navCollapse'),ns=document.getElementById('navShow');
+if(nc)nc.addEventListener('click',function(){mainGrid.classList.add('navhide')});
+if(ns)ns.addEventListener('click',function(){mainGrid.classList.remove('navhide')});
+// Feedback modal
+var fb=document.getElementById('fbModal');
+document.getElementById('openFb').addEventListener('click',function(){fb.classList.remove('hidden')});
+fb.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(){fb.classList.add('hidden')})});
+if(/[?&]openFeedback=true/.test(location.search))fb.classList.remove('hidden');
+// scroll-spy TOC
+var links=[].slice.call(document.querySelectorAll('.toc a'));
+var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))});
+function spy(){var i=0;for(var j=0;j<secs.length;j++){if(secs[j]&&secs[j].getBoundingClientRect().top<150)i=j}links.forEach(function(a){a.classList.remove('active')});if(links[i])links[i].classList.add('active')}
+addEventListener('scroll',spy,{passive:true});spy();
+</script>
+<script>
+(function(){
+  var sel=document.querySelector('.langsel'); if(!sel) return;
+  var btn=sel.querySelector('.langbtn'), menu=sel.querySelector('.langmenu'), cur=sel.querySelector('.langcur');
+  function close(){menu.classList.add('hidden');btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(e){e.stopPropagation();var hidden=menu.classList.toggle('hidden');btn.setAttribute('aria-expanded',hidden?'false':'true');});
+  document.addEventListener('click',function(e){if(!sel.contains(e.target))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();cur.textContent=a.getAttribute('lang')==='en'?'English':a.textContent.trim();
+    menu.querySelectorAll('li').forEach(function(li){li.setAttribute('aria-selected', li.contains(a)?'true':'false');});close();});});
+})();
+</script>
+</body></html>
