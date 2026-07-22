@@ -7,7 +7,7 @@
 <style>
  body{font-family:'Source Sans 3',Arial,sans-serif;-webkit-font-smoothing:antialiased}
  #nav.is-scrolled{box-shadow:0 8px 24px -18px rgba(5,6,6,.4)}
- .navlink{position:relative}.navlink::after{content:'';position:absolute;left:0;bottom:-7px;height:2px;width:0;background:#d71340;transition:width .28s cubic-bezier(.2,.7,.2,1)}.navlink:hover::after{width:100%}
+ .navlink{position:relative}.navlink::after{content:'';position:absolute;left:0;bottom:14px;height:2px;width:0;background:#d71340;transition:width .28s cubic-bezier(.2,.7,.2,1);z-index:2}.navlink:hover::after,.navdd:hover>.navlink::after,.navdd.open>.navlink::after,.navdd:focus-within>.navlink::after{width:100%}
  .btn{transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s,background-color .18s}.btn:hover{transform:translateY(-1px)}.btn:active{transform:translateY(0) scale(.985)}
  .band{position:relative;isolation:isolate;background:linear-gradient(120deg,#160c18 0%,#2b1a30 58%,#3a2440 100%)}
  /* Same corner arcs as home */
@@ -24,9 +24,9 @@
 
  .navdd{position:relative}
  .navdd-btn{display:inline-flex;align-items:center;gap:.25rem;height:68px}
- .navdd-panel{display:none;position:absolute;left:0;top:100%;padding-top:.35rem;z-index:70}
+ .navdd-panel{display:none;position:absolute;left:0;top:100%;padding-top:.45rem;z-index:60}
  .navdd:hover .navdd-panel,.navdd:focus-within .navdd-panel,.navdd.open .navdd-panel{display:block}
- .navdd-panel ul{min-width:17rem;background:#fff;border-radius:.75rem;box-shadow:0 22px 48px -24px rgba(5,6,6,.45);border:1px solid #e5ecf4;padding:.5rem 0}
+ .navdd-panel ul{min-width:17rem;background:#fff;border-radius:.75rem;box-shadow:0 28px 56px -16px rgba(5,6,6,.38),0 12px 24px -10px rgba(5,6,6,.2);border:1px solid #e5ecf4;padding:.5rem 0}
  .navdd-panel a{display:block;padding:.55rem 1rem;font-size:15px;font-weight:500;color:#3c4a55}
  .navdd-panel a:hover{background:#f8fafc;color:#050606}
 </style></head>
