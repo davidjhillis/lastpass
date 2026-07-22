@@ -10,8 +10,12 @@
  .navlink{position:relative}.navlink::after{content:'';position:absolute;left:0;bottom:-7px;height:2px;width:0;background:#d71340;transition:width .28s cubic-bezier(.2,.7,.2,1)}.navlink:hover::after{width:100%}
  .btn{transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s,background-color .18s}.btn:hover{transform:translateY(-1px)}.btn:active{transform:translateY(0) scale(.985)}
  .band{position:relative;isolation:isolate;background:linear-gradient(120deg,#160c18 0%,#2b1a30 58%,#3a2440 100%)}
- .band::after{content:'';position:absolute;inset:0;background:repeating-radial-gradient(circle at 92% -10%,rgba(255,255,255,.05) 0 1px,transparent 1px 50px);pointer-events:none}
- .band-glow{position:absolute;left:8%;top:30%;width:460px;height:280px;background:radial-gradient(closest-side,rgba(215,19,64,.4),transparent 72%);filter:blur(24px);pointer-events:none;opacity:.85}
+ /* Same corner arcs as home */
+ .band-arcs{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+ .band-arc{position:absolute;width:min(72%,820px);aspect-ratio:1;background:repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,.2) 0 1px,transparent 1px 5.5px);-webkit-mask-image:radial-gradient(circle at 50% 50%,transparent 6%,#000 14%,#000 38%,transparent 56%);mask-image:radial-gradient(circle at 50% 50%,transparent 6%,#000 14%,#000 38%,transparent 56%)}
+ .band-arc--tr{top:0;right:0;transform:translate(50%,-50%)}
+ .band-arc--bl{bottom:0;left:0;transform:translate(-50%,50%)}
+ .band-glow{position:absolute;left:8%;top:30%;width:460px;height:280px;z-index:2;background:radial-gradient(closest-side,rgba(215,19,64,.4),transparent 72%);filter:blur(24px);pointer-events:none;opacity:.85}
  .cardp{transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s}.cardp:hover{transform:translateY(-5px);box-shadow:0 30px 60px -30px rgba(120,15,60,.45)}
  .reveal{opacity:0;transform:translateY(12px);transition:opacity .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1)}.reveal.in{opacity:1;transform:none}
  [data-stagger].in>*{animation:rise .35s cubic-bezier(.16,1,.3,1) both}[data-stagger].in>*:nth-child(2){animation-delay:.05s}[data-stagger].in>*:nth-child(3){animation-delay:.1s}
@@ -82,6 +86,7 @@
 <main id="main">
 <!-- Aubergine hero band -->
 <section class="band overflow-hidden">
+  <div class="band-arcs" aria-hidden="true"><span class="band-arc band-arc--tr"></span><span class="band-arc band-arc--bl"></span></div>
   <div class="band-glow"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-24 text-center">
     <p class="text-white/60 font-bold uppercase tracking-[.2em] text-[13px] mb-4">We're here to help</p>

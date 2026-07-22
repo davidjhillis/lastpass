@@ -11,8 +11,11 @@
  .navlink{position:relative}.navlink::after{content:'';position:absolute;left:0;bottom:-7px;height:2px;width:0;background:#d71340;transition:width .28s cubic-bezier(.2,.7,.2,1)}.navlink:hover::after{width:100%}
  .btn{transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s,background-color .18s}.btn:hover{transform:translateY(-1px)}.btn:active{transform:translateY(0) scale(.985)}
  .band{position:relative;isolation:isolate;background:linear-gradient(120deg,#160c18 0%,#2b1a30 60%,#3a2440 100%)}
- .band::after{content:'';position:absolute;inset:0;background:repeating-radial-gradient(circle at 84% -22%,rgba(255,255,255,.11) 0 1.5px,transparent 1.5px 58px);pointer-events:none}
- .band-glow{position:absolute;right:6%;top:20%;width:420px;height:260px;background:radial-gradient(closest-side,rgba(215,19,64,.4),transparent 72%);filter:blur(24px);pointer-events:none;opacity:.85}
+ .band-arcs{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+ .band-arc{position:absolute;width:min(72%,820px);aspect-ratio:1;background:repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,.2) 0 1px,transparent 1px 5.5px);-webkit-mask-image:radial-gradient(circle at 50% 50%,transparent 6%,#000 14%,#000 38%,transparent 56%);mask-image:radial-gradient(circle at 50% 50%,transparent 6%,#000 14%,#000 38%,transparent 56%)}
+ .band-arc--tr{top:0;right:0;transform:translate(50%,-50%)}
+ .band-arc--bl{bottom:0;left:0;transform:translate(-50%,50%)}
+ .band-glow{position:absolute;right:6%;top:20%;width:420px;height:260px;z-index:2;background:radial-gradient(closest-side,rgba(215,19,64,.4),transparent 72%);filter:blur(24px);pointer-events:none;opacity:.85}
  .reveal{opacity:0;transform:translateY(12px);transition:opacity .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1)}.reveal.in{opacity:1;transform:none}
  .prose h2{font-size:1.5rem;font-weight:600;color:#050606;margin:2.2rem 0 .75rem;scroll-margin-top:6rem;letter-spacing:-.01em}
  .prose h3{font-size:1.15rem;font-weight:600;color:#050606;margin:1.5rem 0 .5rem;scroll-margin-top:6rem}
@@ -24,6 +27,8 @@
  .prose ol li{position:relative;padding-left:2.4rem;color:#3c4a55;line-height:1.7;margin:.7rem 0;counter-increment:step}
  .prose ol li::before{content:counter(step);position:absolute;left:0;top:-.05rem;width:1.6rem;height:1.6rem;border-radius:.5rem;background:#fdf1f4;color:#c50b3a;font-weight:700;font-size:.85rem;display:grid;place-items:center}
  .prose a{color:#c50b3a;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+ .prose a.btn{color:#fff;text-decoration:none}
+ .prose a.btn:hover{color:#fff}
  .prose strong{color:#050606;font-weight:600}
  .callout{border-left:4px solid;border-radius:.6rem;padding:1rem 1.25rem;margin:1.25rem 0;display:flex;gap:.75rem}
  .callout.info{background:#eef3fb;border-color:#3b70d4}.callout.tip{background:#eef6ef;border-color:#368149}.callout.warn{background:#fdf6e3;border-color:#c98a00}
@@ -38,8 +43,25 @@
  .toc a{border-left:2px solid transparent;transition:color .2s,border-color .2s}
  .toc a.active{color:#c50b3a;border-color:#d71340;font-weight:600}
  /* DITA-map tree + collapsible rail */
+ .doc-rail-scroll{scrollbar-width:thin;scrollbar-color:rgba(148,163,184,.55) transparent;padding-right:.15rem}
+ .doc-rail-scroll::-webkit-scrollbar{width:4px}
+ .doc-rail-scroll::-webkit-scrollbar-track{background:transparent;margin:4px 0}
+ .doc-rail-scroll::-webkit-scrollbar-thumb{background:rgba(148,163,184,.55);border-radius:999px}
+ .doc-rail-scroll::-webkit-scrollbar-thumb:hover{background:rgba(100,116,139,.75)}
  .tnode[aria-expanded="false"]>ul{display:none}
- .tchev{transition:transform .2s}.tnode[aria-expanded="false"] .tchev{transform:rotate(-90deg)}
+ .ttoggle{width:100%;display:flex;align-items:center;gap:.55rem;padding:.55rem .65rem;border-radius:.5rem;text-align:left;font-size:15px;font-weight:600;color:#3c4a55;line-height:1.3}
+ .ttoggle:hover{background:#f8fafc;color:#050606}
+ .tchev{display:grid;place-items:center;width:1.1rem;height:1.1rem;flex-shrink:0;color:#94a3b8;transition:transform .18s cubic-bezier(.2,.7,.2,1),color .15s}
+ .ttoggle:hover .tchev{color:#64748b}
+ .tnode[aria-expanded="false"]>.ttoggle .tchev{transform:rotate(-90deg)}
+ .tnode[aria-expanded="true"]>.ttoggle .tchev{color:#64748b}
+ .tchildren{margin:.1rem 0 .3rem .85rem;padding-left:.5rem;border-left:1px solid #e5ecf4}
+ .tchildren a{display:block;padding:.42rem .65rem;margin:.05rem 0;border-radius:.4rem;font-size:14px;color:#3c4a55;line-height:1.35}
+ .tchildren a:hover{background:#f8fafc;color:#050606}
+ .tchildren a.is-current{color:#c50b3a;font-weight:600;background:#fdf1f4}
+ .tree-all{font-size:12px;font-weight:600;color:#64748b;padding:.28rem .5rem;border-radius:.4rem}
+ .tree-all:hover{color:#c50b3a;background:#f8fafc}
+ .tree-all[data-mode="collapse"]{color:#c50b3a}
  #main.navhide .doc-rail{display:none}
  #main.navhide .article-main{grid-column:span 9/span 9}
  #navShow{display:none}#main.navhide #navShow{display:inline-flex}
@@ -115,6 +137,7 @@
 
 <!-- Aubergine title band -->
 <section class="band overflow-hidden">
+  <div class="band-arcs" aria-hidden="true"><span class="band-arc band-arc--tr"></span><span class="band-arc band-arc--bl"></span></div>
   <div class="band-glow"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-6 py-12">
     <div class="max-w-3xl reveal in">
@@ -131,58 +154,100 @@
 <div class="max-w-7xl mx-auto px-6 grid grid-cols-12 gap-8 py-8" id="main">
 
   <!-- Left doc tree (DITA maps) — expand/collapse lives here -->
-  <aside class="doc-rail hidden lg:block col-span-3"><div class="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
-    <div class="flex items-center justify-between px-3 mb-2">
-      <span class="text-[13px] font-bold uppercase tracking-wide text-slate-500">Contents</span>
-      <div class="flex items-center gap-1">
-        <button id="treeExpandAll" class="text-[12px] font-semibold text-brand-700 hover:text-brand-800 px-1.5 py-1 rounded whitespace-nowrap" title="Expand or collapse all topics">Expand</button>
-        <button id="navCollapse" class="text-slate-400 hover:text-ink transition p-1 rounded" title="Hide navigation" aria-label="Hide navigation"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg></button>
+  <aside class="doc-rail hidden lg:block col-span-3"><div class="doc-rail-scroll sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto">
+    <div class="flex items-center justify-between gap-2 px-2 mb-3">
+      <span class="text-[12px] font-bold uppercase tracking-wide text-slate-500">Contents</span>
+      <div class="flex items-center gap-0.5 shrink-0">
+        <button type="button" id="treeExpandAll" class="tree-all" data-mode="expand" title="Expand or collapse all topics">Expand</button>
+        <button type="button" id="navCollapse" class="text-slate-400 hover:text-ink hover:bg-slate-100 transition p-1.5 rounded-md" title="Hide navigation" aria-label="Hide navigation"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg></button>
       </div>
     </div>
-    <ul class="space-y-0.5 text-[15px]">
-      <li class="tnode" aria-expanded="true"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-brand-700 font-semibold bg-brand-50 text-left"><span class="tchev text-brand-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Get started</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5">
-          <li><a href="reader.html" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-brand-700 font-semibold bg-brand-50/60">Get started with LastPass</a></li>
+    <ul class="text-[15px]">
+      <li class="tnode" aria-expanded="true"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>Get started</button>
+        <ul class="tchildren">
+          <li><a href="reader.html" class="is-current">Get started with LastPass</a></li>
         </ul>
       </li>
-      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>About LastPass</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">What is LastPass?</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">What is the master password?</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">How is LastPass safe?</a></li></ul>
+      <li class="tnode" aria-expanded="false"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>About LastPass</button>
+        <ul class="tchildren">
+          <li><a href="#" class="">What is LastPass?</a></li>
+<li><a href="#" class="">What is the master password?</a></li>
+<li><a href="#" class="">How is LastPass safe?</a></li>
+        </ul>
       </li>
-      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Installation</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Create an account</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">System requirements</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Download and install LastPass</a></li></ul>
+      <li class="tnode" aria-expanded="false"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>Installation</button>
+        <ul class="tchildren">
+          <li><a href="#" class="">Create an account</a></li>
+<li><a href="#" class="">System requirements</a></li>
+<li><a href="#" class="">Download and install LastPass</a></li>
+        </ul>
       </li>
-      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Account recovery</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Set up account recovery</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Recover your account</a></li></ul>
+      <li class="tnode" aria-expanded="false"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>Account recovery</button>
+        <ul class="tchildren">
+          <li><a href="#" class="">Set up account recovery</a></li>
+<li><a href="#" class="">Recover your account</a></li>
+        </ul>
       </li>
-      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Account settings</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Master password settings</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Email &amp; privacy settings</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Security settings</a></li></ul>
+      <li class="tnode" aria-expanded="false"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>Account settings</button>
+        <ul class="tchildren">
+          <li><a href="#" class="">Master password settings</a></li>
+<li><a href="#" class="">Email &amp; privacy settings</a></li>
+<li><a href="#" class="">Security settings</a></li>
+        </ul>
       </li>
-      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Browser extension</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Install the browser extension</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Use autofill</a></li></ul>
+      <li class="tnode" aria-expanded="false"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>Browser extension</button>
+        <ul class="tchildren">
+          <li><a href="#" class="">Install the browser extension</a></li>
+<li><a href="#" class="">Use autofill</a></li>
+        </ul>
       </li>
-      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Desktop apps</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">LastPass for Desktop</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Windows &amp; macOS</a></li></ul>
+      <li class="tnode" aria-expanded="false"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>Desktop apps</button>
+        <ul class="tchildren">
+          <li><a href="#" class="">LastPass for Desktop</a></li>
+<li><a href="#" class="">Windows &amp; macOS</a></li>
+        </ul>
       </li>
-      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Mobile apps</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">iOS</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Android</a></li></ul>
+      <li class="tnode" aria-expanded="false"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>Mobile apps</button>
+        <ul class="tchildren">
+          <li><a href="#" class="">iOS</a></li>
+<li><a href="#" class="">Android</a></li>
+        </ul>
       </li>
-      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Account management</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Manage your account</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Upgrade options</a></li></ul>
+      <li class="tnode" aria-expanded="false"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>Account management</button>
+        <ul class="tchildren">
+          <li><a href="#" class="">Manage your account</a></li>
+<li><a href="#" class="">Upgrade options</a></li>
+        </ul>
       </li>
-      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Billing</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Purchase &amp; renew</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Cancel</a></li></ul>
+      <li class="tnode" aria-expanded="false"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>Billing</button>
+        <ul class="tchildren">
+          <li><a href="#" class="">Purchase &amp; renew</a></li>
+<li><a href="#" class="">Cancel</a></li>
+        </ul>
       </li>
-      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Explore features</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Vault management</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Passkeys</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Sharing</a></li></ul>
+      <li class="tnode" aria-expanded="false"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>Explore features</button>
+        <ul class="tchildren">
+          <li><a href="#" class="">Vault management</a></li>
+<li><a href="#" class="">Passkeys</a></li>
+<li><a href="#" class="">Sharing</a></li>
+        </ul>
       </li>
-      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Admin tools</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Admin Console overview</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Policies &amp; SSO</a></li></ul>
+      <li class="tnode" aria-expanded="false"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>Admin tools</button>
+        <ul class="tchildren">
+          <li><a href="#" class="">Admin Console overview</a></li>
+<li><a href="#" class="">Policies &amp; SSO</a></li>
+        </ul>
       </li>
-      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>Guides and resources</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Training</a></li><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">FAQs</a></li></ul>
+      <li class="tnode" aria-expanded="false"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>Guides and resources</button>
+        <ul class="tchildren">
+          <li><a href="#" class="">Training</a></li>
+<li><a href="#" class="">FAQs</a></li>
+        </ul>
       </li>
-      <li class="tnode" aria-expanded="false"><button class="ttoggle w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 text-left"><span class="tchev text-slate-400 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>LastPass glossary</button>
-        <ul class="ml-4 mt-0.5 border-l border-slate-200 space-y-0.5"><li><a href="#" class="block pl-4 pr-3 py-1.5 rounded-md text-[14px] text-slate-600 hover:bg-slate-100">Glossary terms</a></li></ul>
+      <li class="tnode" aria-expanded="false"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>LastPass glossary</button>
+        <ul class="tchildren">
+          <li><a href="#" class="">Glossary terms</a></li>
+        </ul>
       </li>
     </ul>
   </div></aside>
@@ -353,7 +418,7 @@ tabs.forEach(function(t){t.addEventListener('click',function(){var lst=t.closest
 var tnodes=[].slice.call(document.querySelectorAll('.tnode'));
 document.querySelectorAll('.ttoggle').forEach(function(b){b.addEventListener('click',function(){var n=b.closest('.tnode');n.setAttribute('aria-expanded',n.getAttribute('aria-expanded')!=='true')})});
 var tea=document.getElementById('treeExpandAll');
-tea.addEventListener('click',function(){var anyClosed=tnodes.some(function(n){return n.getAttribute('aria-expanded')!=='true'});tnodes.forEach(function(n){n.setAttribute('aria-expanded',anyClosed?'true':'false')});tea.textContent=anyClosed?'Collapse':'Expand'});
+tea.addEventListener('click',function(){var anyClosed=tnodes.some(function(n){return n.getAttribute('aria-expanded')!=='true'});tnodes.forEach(function(n){n.setAttribute('aria-expanded',anyClosed?'true':'false')});tea.textContent=anyClosed?'Collapse':'Expand';tea.setAttribute('data-mode',anyClosed?'collapse':'expand')});
 // Collapse / open the whole navigation rail
 var mainGrid=document.getElementById('main'),nc=document.getElementById('navCollapse'),ns=document.getElementById('navShow');
 if(nc)nc.addEventListener('click',function(){mainGrid.classList.add('navhide')});

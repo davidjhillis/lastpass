@@ -12,10 +12,14 @@
  .btn{transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s,background-color .18s}.btn:hover{transform:translateY(-1px)}.btn:active{transform:translateY(0) scale(.985)}
  .hero{position:relative;isolation:isolate;background:#160c18}
  .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center right;transform:scale(1.06)}
- .hero-tint{position:absolute;inset:0;background:linear-gradient(100deg,#160c18 0%,rgba(22,12,24,.96) 26%,rgba(38,22,42,.82) 54%,rgba(58,36,64,.55) 100%)}
- .hero-arcs{position:absolute;inset:0;background:repeating-radial-gradient(circle at 90% -4%,rgba(255,255,255,.055) 0 1px,transparent 1px 52px);pointer-events:none}
- .hero-beam{position:absolute;top:-30%;left:40%;width:60%;height:120%;background:linear-gradient(180deg,rgba(255,255,255,.07),transparent 55%);transform:rotate(18deg);pointer-events:none;mix-blend-mode:screen}
- .hero-glow{position:absolute;left:2%;top:46%;width:640px;height:340px;background:radial-gradient(closest-side,rgba(215,19,64,.45),rgba(215,19,64,0) 72%);filter:blur(24px);pointer-events:none;opacity:.85}
+ .hero-tint{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,#160c18 0%,rgba(22,12,24,.93) 22%,rgba(38,22,42,.55) 50%,rgba(58,36,64,.18) 72%,rgba(58,36,64,.05) 100%)}
+ /* Live-style corner arcs: large radius from BL + TR, fade toward center */
+ .hero-arcs{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+ .hero-arc{position:absolute;width:min(72%,820px);aspect-ratio:1;background:repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,.2) 0 1px,transparent 1px 5.5px);-webkit-mask-image:radial-gradient(circle at 50% 50%,transparent 6%,#000 14%,#000 38%,transparent 56%);mask-image:radial-gradient(circle at 50% 50%,transparent 6%,#000 14%,#000 38%,transparent 56%)}
+ .hero-arc--tr{top:0;right:0;transform:translate(50%,-50%)}
+ .hero-arc--bl{bottom:0;left:0;transform:translate(-50%,50%)}
+ .hero-beam{position:absolute;top:-30%;left:40%;width:60%;height:120%;z-index:3;background:linear-gradient(180deg,rgba(255,255,255,.05),transparent 55%);transform:rotate(18deg);pointer-events:none;mix-blend-mode:screen}
+ .hero-glow{position:absolute;left:0;top:52%;width:420px;height:220px;z-index:3;background:radial-gradient(closest-side,rgba(215,19,64,.28),rgba(215,19,64,0) 72%);filter:blur(28px);pointer-events:none;opacity:.7}
  .searchwrap{transition:box-shadow .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1),border-color .2s}
  .searchwrap:focus-within{box-shadow:0 0 0 4px rgba(215,19,64,.25),0 30px 70px -26px rgba(0,0,0,.7);border-color:#d71340;transform:translateY(-1px)}
  .reveal{opacity:0;transform:translateY(12px);transition:opacity .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1)}.reveal.in{opacity:1;transform:none}
@@ -95,9 +99,9 @@
 <section class="hero overflow-hidden">
   <div class="hero-bg" style="background-image:url('img/hero-photo.jpg')"></div>
   <div class="hero-tint"></div>
-  <div class="hero-arcs"></div>
-  <div class="hero-beam"></div>
-  <div class="hero-glow"></div>
+  <div class="hero-arcs" aria-hidden="true"><span class="hero-arc hero-arc--tr"></span><span class="hero-arc hero-arc--bl"></span></div>
+  <div class="hero-beam" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-32">
     <div class="max-w-2xl">
       <p class="text-white/60 font-bold uppercase tracking-[.22em] text-[13px] mb-5">LastPass Knowledge Base</p>
