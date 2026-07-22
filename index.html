@@ -10,10 +10,12 @@
  #nav.is-scrolled{box-shadow:0 8px 24px -18px rgba(5,6,6,.4)}
  .navlink{position:relative}.navlink::after{content:'';position:absolute;left:0;bottom:14px;height:2px;width:0;background:#d71340;transition:width .28s cubic-bezier(.2,.7,.2,1);z-index:2}.navlink:hover::after,.navdd:hover>.navlink::after,.navdd.open>.navlink::after,.navdd:focus-within>.navlink::after{width:100%}
  .btn{transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s,background-color .18s}.btn:hover{transform:translateY(-1px)}.btn:active{transform:translateY(0) scale(.985)}
- .hero{position:relative;isolation:isolate;background:#3d2a4b}
+ .hero{position:relative;isolation:isolate;background:#3d2a4b;min-height:min(52vh,520px)}
  .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center center;background-repeat:no-repeat}
- .searchwrap{transition:box-shadow .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1),border-color .2s}
+ .searchwrap{display:flex;align-items:center;flex-wrap:nowrap;gap:.5rem;width:100%;max-width:42rem;margin-left:auto;margin-right:auto;background:#fff;border:1px solid #e5ecf4;border-radius:.75rem;padding:.375rem .375rem .375rem 1rem;box-shadow:0 20px 50px -28px rgba(0,0,0,.55);transition:box-shadow .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1),border-color .2s}
  .searchwrap:focus-within{box-shadow:0 0 0 4px rgba(215,19,64,.25),0 30px 70px -26px rgba(0,0,0,.7);border-color:#d71340;transform:translateY(-1px)}
+ .searchwrap input{flex:1 1 auto;min-width:0;height:2.75rem;border:0;background:transparent;outline:none;font-size:16px;color:#050606}
+ .searchwrap button{flex:0 0 auto;height:2.75rem}
  .reveal{opacity:0;transform:translateY(12px);transition:opacity .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1)}.reveal.in{opacity:1;transform:none}
  [data-stagger].in>*{animation:rise .35s cubic-bezier(.16,1,.3,1) both}
  [data-stagger].in>*:nth-child(2){animation-delay:.04s}[data-stagger].in>*:nth-child(3){animation-delay:.08s}[data-stagger].in>*:nth-child(4){animation-delay:.12s}[data-stagger].in>*:nth-child(5){animation-delay:.16s}[data-stagger].in>*:nth-child(6){animation-delay:.2s}
@@ -91,21 +93,21 @@
 <main id="main">
 
 <!-- Hero — live support banner image (arcs baked in) -->
-<section class="hero overflow-hidden">
+<section class="hero overflow-hidden flex flex-col justify-center">
   <div class="hero-bg" style="background-image:url('img/hero-pattern-live.jpg')" role="img" aria-label=""></div>
-  <div class="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-28 text-center">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-36 w-full text-center">
     <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold text-white tracking-tight leading-[1.08]">Hi! We are here to help you</h1>
-    <p class="text-lg md:text-xl text-white/90 mt-4 max-w-2xl mx-auto font-normal">Type your question below or <a href="#" class="text-white font-semibold underline underline-offset-2 hover:opacity-90">sign in</a> to reach a support agent</p>
-    <form action="search.html" method="get" class="searchwrap mt-8 mx-auto flex items-center bg-white rounded-xl border border-slate-200 max-w-2xl pl-4 pr-1.5 h-[58px] shadow-[0_20px_50px_-28px_rgba(0,0,0,.55)]" role="search">
-      <span class="text-slate-400 shrink-0"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
-      <input type="search" name="q" aria-label="Search the LastPass Knowledge Base" placeholder="Type your question here..." class="flex-1 px-3 h-full text-[16px] bg-transparent outline-none placeholder-slate-500 text-ink">
-      <button type="submit" class="btn shrink-0 h-11 px-6 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-bold text-[15px] inline-flex items-center" aria-label="Search">Search</button>
+    <p class="text-lg md:text-xl text-white/90 mt-5 max-w-2xl mx-auto font-normal">Type your question below or <a href="#" class="text-white font-semibold underline underline-offset-2 hover:opacity-90">sign in</a> to reach a support agent</p>
+    <form action="search.html" method="get" class="searchwrap mt-10" role="search">
+      <span class="text-slate-400 shrink-0" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+      <input type="search" name="q" aria-label="Search the LastPass Knowledge Base" placeholder="Type your question here..." class="placeholder-slate-500">
+      <button type="submit" class="btn px-6 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-bold text-[15px] inline-flex items-center justify-center" aria-label="Search">Search</button>
     </form>
   </div>
 </section>
 
 <!-- Quick links — keep our stronger floating pill bar (DCX exception) -->
-<div class="relative z-20 max-w-5xl mx-auto px-6 -mt-8">
+<div class="relative z-20 max-w-5xl mx-auto px-6 -mt-10">
   <div class="reveal in bg-white rounded-2xl border border-[#d71340]/25 shadow-[0_24px_60px_-28px_rgba(215,19,64,.3)] px-2.5 py-2.5 grid grid-cols-3 gap-1.5 sm:flex sm:flex-wrap sm:items-center sm:justify-center" data-stagger>
     <a href="https://support.lastpass.com/s/contact-us" target="_blank" rel="noopener" class="qlink inline-flex flex-col sm:flex-row items-center justify-center text-center gap-1 sm:gap-2 px-2 sm:px-4 py-2.5 sm:py-0 sm:h-10 rounded-xl text-[12px] sm:text-[15px] font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> Contact us</a>
     <a href="https://link.lastpass.com/downloads" class="qlink inline-flex flex-col sm:flex-row items-center justify-center text-center gap-1 sm:gap-2 px-2 sm:px-4 py-2.5 sm:py-0 sm:h-10 rounded-xl text-[12px] sm:text-[15px] font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg> Downloads</a>

@@ -10,12 +10,8 @@
  #nav.is-scrolled{box-shadow:0 8px 24px -18px rgba(5,6,6,.4)}
  .navlink{position:relative}.navlink::after{content:'';position:absolute;left:0;bottom:14px;height:2px;width:0;background:#d71340;transition:width .28s cubic-bezier(.2,.7,.2,1);z-index:2}.navlink:hover::after,.navdd:hover>.navlink::after,.navdd.open>.navlink::after,.navdd:focus-within>.navlink::after{width:100%}
  .btn{transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s,background-color .18s}.btn:hover{transform:translateY(-1px)}.btn:active{transform:translateY(0) scale(.985)}
- .band{position:relative;isolation:isolate;background:linear-gradient(120deg,#160c18 0%,#2b1a30 60%,#3a2440 100%)}
- .band-arcs{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
- .band-arc{position:absolute;width:min(72%,820px);aspect-ratio:1;background:repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,.2) 0 1px,transparent 1px 5.5px);-webkit-mask-image:radial-gradient(circle at 50% 50%,transparent 6%,#000 14%,#000 38%,transparent 56%);mask-image:radial-gradient(circle at 50% 50%,transparent 6%,#000 14%,#000 38%,transparent 56%)}
- .band-arc--tr{top:0;right:0;transform:translate(50%,-50%)}
- .band-arc--bl{bottom:0;left:0;transform:translate(-50%,50%)}
- .band-glow{position:absolute;right:6%;top:20%;width:420px;height:260px;z-index:2;background:radial-gradient(closest-side,rgba(215,19,64,.4),transparent 72%);filter:blur(24px);pointer-events:none;opacity:.85}
+ .band{position:relative;isolation:isolate;background:#3d2a4b;min-height:220px}
+ .band-bg{position:absolute;inset:0;background:url('img/hero-pattern-live.jpg') center/cover no-repeat;pointer-events:none}
  .reveal{opacity:0;transform:translateY(12px);transition:opacity .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1)}.reveal.in{opacity:1;transform:none}
  .prose h2{font-size:1.5rem;font-weight:600;color:#050606;margin:2.2rem 0 .75rem;scroll-margin-top:6rem;letter-spacing:-.01em}
  .prose h3{font-size:1.15rem;font-weight:600;color:#050606;margin:1.5rem 0 .5rem;scroll-margin-top:6rem}
@@ -144,11 +140,10 @@
   <span class="text-ink font-medium">Get started with LastPass</span>
 </div></div>
 
-<!-- Aubergine title band -->
-<section class="band overflow-hidden">
-  <div class="band-arcs" aria-hidden="true"><span class="band-arc band-arc--tr"></span><span class="band-arc band-arc--bl"></span></div>
-  <div class="band-glow"></div>
-  <div class="relative z-10 max-w-7xl mx-auto px-6 py-12">
+<!-- Title band — same live support banner image as home -->
+<section class="band overflow-hidden flex flex-col justify-center">
+  <div class="band-bg" aria-hidden="true"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-14 w-full">
     <div class="max-w-3xl reveal in">
       <p class="text-white/60 font-bold uppercase tracking-[.18em] text-[13px] mb-3">Get started</p>
       <h1 class="text-4xl md:text-6xl font-medium text-white tracking-tight leading-tight">Get started with LastPass</h1>
