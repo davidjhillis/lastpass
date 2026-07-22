@@ -17,6 +17,14 @@
  [data-stagger].in>*{animation:rise .35s cubic-bezier(.16,1,.3,1) both}[data-stagger].in>*:nth-child(2){animation-delay:.05s}[data-stagger].in>*:nth-child(3){animation-delay:.1s}
  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
  @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.001ms!important;scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}}
+
+ .navdd{position:relative}
+ .navdd-btn{display:inline-flex;align-items:center;gap:.25rem;height:68px}
+ .navdd-panel{display:none;position:absolute;left:0;top:100%;padding-top:.35rem;z-index:70}
+ .navdd:hover .navdd-panel,.navdd:focus-within .navdd-panel,.navdd.open .navdd-panel{display:block}
+ .navdd-panel ul{min-width:17rem;background:#fff;border-radius:.75rem;box-shadow:0 22px 48px -24px rgba(5,6,6,.45);border:1px solid #e5ecf4;padding:.5rem 0}
+ .navdd-panel a{display:block;padding:.55rem 1rem;font-size:15px;font-weight:500;color:#3c4a55}
+ .navdd-panel a:hover{background:#f8fafc;color:#050606}
 </style></head>
 <body class="bg-white text-ink">
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-3 focus:left-3 focus:bg-white focus:px-4 focus:py-2 focus:rounded-md focus:ring-2 focus:ring-brand-600 focus:font-semibold">Skip to main content</a>
@@ -46,11 +54,23 @@
       <img src="img/logo-lastpass.png" alt="LastPass" class="h-[26px] w-auto">
       <span class="hidden md:flex items-center gap-2.5"><span class="h-5 w-px bg-slate-200" aria-hidden="true"></span><span class="text-[15px] font-normal text-slate-600 leading-none">Support</span></span>
     </a>
-    <div class="hidden lg:flex items-center gap-8 text-base">
-      <a href="index.html#browse" class="navlink font-bold text-slate-700 hover:text-ink transition-colors">Learn</a>
-      <a href="contact.html" class="navlink font-bold text-brand-600">Connect</a>
-      <a href="index.html#popular" class="navlink font-bold text-slate-700 hover:text-ink transition-colors">Support</a>
-      <a href="#" class="navlink font-bold text-slate-700 hover:text-ink transition-colors">Discover</a>
+    <div class="hidden lg:flex items-center gap-6 text-base">
+      <div class="navdd relative">
+        <button type="button" class="navlink font-bold transition-colors navdd-btn text-slate-700 hover:text-ink" aria-expanded="false" aria-haspopup="true">Learn <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="navdd-panel" role="menu"><ul><li><a href="https://www.lastpass.com/university" class="">LastPass University</a></li><li><a href="https://usertraining.lastpass.com/" class="">User training</a></li><li><a href="https://admintraining.lastpass.com/" class="">Business admin training</a></li><li><a href="https://community.lastpass.com/resource-center" class="">Resource center</a></li></ul></div>
+      </div>
+      <div class="navdd relative">
+        <button type="button" class="navlink font-bold transition-colors navdd-btn text-brand-600" aria-expanded="false" aria-haspopup="true">Connect <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="navdd-panel" role="menu"><ul><li><a href="https://community.lastpass.com/discussions" class="">Discussions</a></li><li><a href="https://community.lastpass.com/events/category" class="">Events</a></li></ul></div>
+      </div>
+      <div class="navdd relative">
+        <button type="button" class="navlink font-bold transition-colors navdd-btn text-slate-700 hover:text-ink" aria-expanded="false" aria-haspopup="true">Support <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="navdd-panel" role="menu"><ul><li><a href="https://community.lastpass.com/videos" class="">Videos</a></li><li><a href="https://lastpass.com/misc_download2.php" class="">Download LastPass</a></li><li><a href="https://lastpass.com/upgrade.php" class="">Release notes</a></li></ul></div>
+      </div>
+      <div class="navdd relative">
+        <button type="button" class="navlink font-bold transition-colors navdd-btn text-slate-700 hover:text-ink" aria-expanded="false" aria-haspopup="true">Discover <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="navdd-panel" role="menu"><ul><li><a href="https://community.lastpass.com/categories/lastpass-central" class="">LastPass Central</a></li><li><a href="https://community.lastpass.com/categories/new-to-lastpass" class="">New to LastPass</a></li><li><a href="https://community.lastpass.com/categories/advanced-features" class="">Advanced features</a></li><li><a href="https://community.lastpass.com/categories/business-features-and-tips" class="">Business features and tips</a></li><li><a href="https://community.lastpass.com/categories/families-and-individuals" class="">Families and individuals</a></li></ul></div>
+      </div>
     </div>
     <div class="ml-auto flex items-center gap-3">
       <a href="search.html" aria-label="Search" class="w-10 h-10 grid place-items-center rounded-full text-slate-600 hover:bg-slate-100 transition"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></a>
@@ -174,4 +194,25 @@ document.querySelectorAll('.reveal:not(.in)').forEach(function(el){io.observe(el
     menu.querySelectorAll('li').forEach(function(li){li.setAttribute('aria-selected', li.contains(a)?'true':'false');});close();});});
 })();
 </script>
+
+<script>
+(function(){
+  var dds=[].slice.call(document.querySelectorAll('.navdd'));
+  if(!dds.length) return;
+  function closeAll(except){dds.forEach(function(d){if(d!==except){d.classList.remove('open');var b=d.querySelector('.navdd-btn');if(b)b.setAttribute('aria-expanded','false');}});}
+  dds.forEach(function(d){
+    var btn=d.querySelector('.navdd-btn'); if(!btn) return;
+    btn.addEventListener('click',function(e){
+      e.preventDefault(); e.stopPropagation();
+      var open=!d.classList.contains('open');
+      closeAll(d);
+      d.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open?'true':'false');
+    });
+  });
+  document.addEventListener('click',function(){closeAll();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
+})();
+</script>
+
 </body></html>
