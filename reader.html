@@ -62,9 +62,12 @@
  .tchildren a{display:block;padding:.42rem .65rem;margin:.05rem 0;border-radius:.4rem;font-size:14px;color:#3c4a55;line-height:1.35}
  .tchildren a:hover{background:#f8fafc;color:#050606}
  .tchildren a.is-current{color:#c50b3a;font-weight:600;background:#fdf1f4}
- .tree-all{font-size:12px;font-weight:600;color:#64748b;padding:.28rem .5rem;border-radius:.4rem}
- .tree-all:hover{color:#c50b3a;background:#f8fafc}
- .tree-all[data-mode="collapse"]{color:#c50b3a}
+ .contents-hd{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:0 .5rem;margin-bottom:.65rem}
+ .contents-label{font-size:13px;font-weight:700;color:#050606}
+ .tree-bulk{display:flex;align-items:center;gap:.55rem;padding:0 .5rem .85rem .85rem;font-size:13px;line-height:1.2}
+ .tree-bulk button{font-size:13px;font-weight:500;color:#050606;padding:0}
+ .tree-bulk button:hover{color:#c50b3a}
+ .tree-bulk .sep{color:#94a3b8;user-select:none}
  #main.navhide .doc-rail{display:none}
  #main.navhide .article-main{grid-column:span 9/span 9}
  #navShow{display:none}#main.navhide #navShow{display:inline-flex}
@@ -158,12 +161,14 @@
 
   <!-- Left doc tree (DITA maps) — expand/collapse lives here -->
   <aside class="doc-rail hidden lg:block col-span-3"><div class="doc-rail-scroll sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto">
-    <div class="flex items-center justify-between gap-2 px-2 mb-3">
-      <span class="text-[12px] font-bold uppercase tracking-wide text-slate-500">Contents</span>
-      <div class="flex items-center gap-0.5 shrink-0">
-        <button type="button" id="treeExpandAll" class="tree-all" data-mode="expand" title="Expand or collapse all topics">Expand</button>
-        <button type="button" id="navCollapse" class="text-slate-400 hover:text-ink hover:bg-slate-100 transition p-1.5 rounded-md" title="Hide navigation" aria-label="Hide navigation"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg></button>
-      </div>
+    <div class="contents-hd">
+      <span class="contents-label">Contents</span>
+      <button type="button" id="navCollapse" class="text-slate-400 hover:text-ink hover:bg-slate-100 transition p-1.5 rounded-md" title="Hide navigation" aria-label="Hide navigation"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg></button>
+    </div>
+    <div class="tree-bulk" role="group" aria-label="Expand or collapse all topics">
+      <button type="button" id="treeCollapseAll">Collapse All</button>
+      <span class="sep" aria-hidden="true">|</span>
+      <button type="button" id="treeExpandAll">Expand All</button>
     </div>
     <ul class="text-[15px]">
       <li class="tnode" aria-expanded="true"><button type="button" class="ttoggle"><span class="tchev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>Get started</button>
@@ -443,8 +448,10 @@ tabs.forEach(function(t){t.addEventListener('click',function(){var lst=t.closest
 // DITA-map tree expand/collapse (on the rail)
 var tnodes=[].slice.call(document.querySelectorAll('.tnode'));
 document.querySelectorAll('.ttoggle').forEach(function(b){b.addEventListener('click',function(){var n=b.closest('.tnode');n.setAttribute('aria-expanded',n.getAttribute('aria-expanded')!=='true')})});
-var tea=document.getElementById('treeExpandAll');
-tea.addEventListener('click',function(){var anyClosed=tnodes.some(function(n){return n.getAttribute('aria-expanded')!=='true'});tnodes.forEach(function(n){n.setAttribute('aria-expanded',anyClosed?'true':'false')});tea.textContent=anyClosed?'Collapse':'Expand';tea.setAttribute('data-mode',anyClosed?'collapse':'expand')});
+function setAllExpanded(open){tnodes.forEach(function(n){n.setAttribute('aria-expanded',open?'true':'false')})}
+var tea=document.getElementById('treeExpandAll'),tca=document.getElementById('treeCollapseAll');
+if(tea)tea.addEventListener('click',function(){setAllExpanded(true)});
+if(tca)tca.addEventListener('click',function(){setAllExpanded(false)});
 // Collapse / open the whole navigation rail
 var mainGrid=document.getElementById('main'),nc=document.getElementById('navCollapse'),ns=document.getElementById('navShow');
 if(nc)nc.addEventListener('click',function(){mainGrid.classList.add('navhide')});
