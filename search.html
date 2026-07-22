@@ -9,42 +9,13 @@
  #nav.is-scrolled{box-shadow:0 8px 24px -18px rgba(5,6,6,.4)}
  .navlink{position:relative}.navlink::after{content:'';position:absolute;left:0;bottom:-7px;height:2px;width:0;background:#d71340;transition:width .28s cubic-bezier(.2,.7,.2,1)}.navlink:hover::after{width:100%}
  .btn{transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s,background-color .18s}.btn:hover{transform:translateY(-1px)}
- .searchwrap{transition:box-shadow .25s,border-color .2s}.searchwrap:focus-within{box-shadow:0 0 0 4px rgba(215,19,64,.2);border-color:#d71340}
- mark{background:#fdf1f4;color:#c50b3a;border-radius:2px;padding:0 2px;font-weight:600}
- .facet{border:1px solid #e5ecf4;border-radius:1rem;background:#fff;overflow:hidden}
- .facet-hd{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.15rem 1.25rem;text-align:left;font-weight:600;font-size:15px;color:#050606;border-bottom:1px solid #f0f2f5}
- .facet-body{padding:.85rem .8rem 1.15rem}
- .facet-opt{display:flex;align-items:center;gap:.75rem;padding:.8rem .8rem;border-radius:.55rem;cursor:pointer;font-size:15px;color:#3c4a55;line-height:1.35}
- .facet-opt:hover{background:#f8fafc}
- .facet-opt input{width:1.05rem;height:1.05rem;accent-color:#d71340;flex-shrink:0}
- .facet .show-more{display:block;margin-top:.65rem;padding:.4rem .8rem .2rem;font-size:13px;font-weight:600;color:#c50b3a}
- .facet .show-more:hover{color:#a00930}
- .chip{display:inline-flex;align-items:center;gap:.4rem;height:2.15rem;padding:0 .95rem;border-radius:9999px;background:#fdf1f4;border:1px solid #f4bdca;font-size:13px;font-weight:600;color:#c50b3a}
- .chip button{display:grid;place-items:center;width:1.15rem;height:1.15rem;border-radius:9999px;color:#c50b3a}
- .chip button:hover{background:#f4bdca}
- .result{padding:1.55rem 0;border-bottom:1px solid #e5ecf4}
- .result:first-child{padding-top:.35rem}
- .result:last-child{border-bottom:0}
- .result-title{font-size:1.2rem;font-weight:600;color:#050606;line-height:1.35;letter-spacing:-.01em}
- .result-title:hover{color:#d71340}
- .result-uri{font-size:13px;color:#6b7482;margin-top:.4rem}
- .result-excerpt{font-size:15px;color:#3c4a55;line-height:1.65;margin-top:.55rem;max-width:46rem}
- .result-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem;margin-top:.7rem;font-size:12px;color:#6b7482}
- .result-meta .badge{font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:.2rem .55rem;border-radius:.35rem;background:#fdf1f4;color:#c50b3a}
- .result-meta .badge-video{background:#eef8f0;color:#1f7a3a}
- .result-meta .badge-note{background:#f3eef8;color:#6b3d8a}
- .genqa{border:1px solid #e7cfe0;border-radius:1.25rem;background:linear-gradient(120deg,#fbf5f7 0%,#f7eef8 100%);padding:2.1rem 2rem 1.75rem;box-shadow:0 18px 40px -32px rgba(120,15,60,.35)}
- .genqa-hd{display:flex;align-items:center;gap:.55rem;margin-bottom:1.15rem}
- .genqa-body{font-size:15px;color:#3c4a55;line-height:1.8}
- .genqa-cites{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem;margin-top:1.5rem}
- .genqa-cites a{display:inline-flex;align-items:center;font-size:13px;font-weight:600;color:#6b3d8a;background:#fff;border:1px solid #e7cfe0;border-radius:9999px;padding:.45rem .95rem}
- .genqa-cites a:hover{border-color:#d4b5cc;background:#fff}
- .genqa-fb{display:flex;align-items:center;gap:.85rem;margin-top:1.4rem;padding-top:1.15rem;border-top:1px solid rgba(231,207,224,.7);font-size:13px;color:#6b7482}
- .pager-btn{min-width:2.35rem;height:2.35rem;padding:0 .55rem;display:inline-grid;place-items:center;border-radius:.5rem;font-size:14px;font-weight:600;color:#3c4a55}
- .pager-btn:hover{background:#f0f2f5}
- .pager-btn[aria-current=page]{background:#d71340;color:#fff}
- .pager-btn[aria-current=page]:hover{background:#c50b3a}
- .reveal{opacity:0;transform:translateY(8px);transition:opacity .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1)}.reveal.in{opacity:1;transform:none}
+ .searchwrap{transition:box-shadow .25s,border-color .2s}.searchwrap:focus-within{box-shadow:0 0 0 4px rgba(215,19,64,.18);border-color:#d71340}
+ .result{transition:background-color .2s,box-shadow .25s,transform .25s cubic-bezier(.16,1,.3,1)}.result:hover{box-shadow:0 18px 40px -26px rgba(5,6,6,.4)}
+ mark{background:#fdf1f4;color:#c50b3a;border-radius:2px;padding:0 2px}
+ .aipanel{background:linear-gradient(120deg,#fbf5f7 0%,#f7eef8 100%)}
+ .reveal{opacity:0;transform:translateY(12px);transition:opacity .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1)}.reveal.in{opacity:1;transform:none}
+ [data-stagger].in>*{animation:rise .35s cubic-bezier(.16,1,.3,1) both}[data-stagger].in>*:nth-child(2){animation-delay:.04s}[data-stagger].in>*:nth-child(3){animation-delay:.08s}[data-stagger].in>*:nth-child(4){animation-delay:.12s}[data-stagger].in>*:nth-child(5){animation-delay:.16s}
+ @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
  @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.001ms!important}.reveal{opacity:1!important;transform:none!important}}
 
  .navdd{position:relative}
@@ -107,144 +78,105 @@
   </div>
 </nav>
 
-<!-- Coveo-shaped SERP, LastPass brand chrome -->
+<!-- Search band -->
 <div class="bg-slate-50 border-b border-slate-100">
-  <div class="max-w-7xl mx-auto px-6 py-7">
+  <div class="max-w-7xl mx-auto px-6 py-6">
     <form class="searchwrap flex items-center bg-white rounded-xl border border-slate-200 max-w-3xl pl-4 pr-1.5 h-[54px] shadow-sm" role="search">
-      <span class="text-slate-400 shrink-0" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+      <span class="text-slate-400 shrink-0"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
       <input type="search" aria-label="Search the LastPass Knowledge Base" value="master password" class="flex-1 px-3 h-full text-[16px] bg-transparent outline-none text-ink">
-      <button type="submit" class="btn shrink-0 h-11 px-6 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-bold text-[15px]">Search</button>
+      <button class="btn shrink-0 h-10 px-6 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-bold text-[15px] inline-flex items-center">Search</button>
     </form>
-    <div class="flex flex-wrap items-center gap-2.5 mt-5" aria-label="Active filters">
-      <span class="chip">Type: Article <button type="button" aria-label="Remove Type: Article"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></span>
-      <span class="chip">Updated: Any time <button type="button" aria-label="Remove Updated: Any time"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></span>
-      <a href="#" class="text-[13px] font-semibold text-brand-700 hover:text-brand-800 ml-1">Clear all</a>
-    </div>
   </div>
 </div>
 
-<div class="max-w-7xl mx-auto px-6 grid grid-cols-12 gap-x-10 gap-y-8 py-9" id="main">
-  <aside class="hidden lg:block col-span-3">
-    <div class="sticky top-28 space-y-6">
-    <div class="facet">
-      <button type="button" class="facet-hd">Type <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-      <div class="facet-body">
-        <label class="facet-opt"><input type="checkbox" checked><span class="flex-1">Article</span><span class="text-[13px] text-slate-400">31</span></label>
-        <label class="facet-opt"><input type="checkbox"><span class="flex-1">Video</span><span class="text-[13px] text-slate-400">6</span></label>
-        <label class="facet-opt"><input type="checkbox"><span class="flex-1">Release note</span><span class="text-[13px] text-slate-400">3</span></label>
-        <label class="facet-opt"><input type="checkbox"><span class="flex-1">Community</span><span class="text-[13px] text-slate-400">2</span></label>
-        <button type="button" class="show-more">Show more</button>
-      </div>
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-12 gap-8 py-8" id="main">
+  <!-- Facets -->
+  <aside class="hidden lg:block col-span-3"><div class="sticky top-28 rounded-2xl border border-slate-200 bg-white p-1 pb-2">
+    <div class="flex items-center justify-between px-4 pt-4 pb-1"><h2 class="font-semibold text-ink flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg> Filters</h2><a href="#" class="text-[13px] font-semibold text-brand-700 hover:text-brand-800">Clear all</a></div>
+    <div class="px-3 py-3 border-b border-slate-100"><h3 class="text-[12px] font-bold uppercase tracking-wide text-slate-500 px-1 mb-2">Type</h3>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" checked class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Article</span><span class="text-[13px] text-slate-400">31</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Video</span><span class="text-[13px] text-slate-400">6</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Release note</span><span class="text-[13px] text-slate-400">3</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Community</span><span class="text-[13px] text-slate-400">2</span></label>
     </div>
-    <div class="facet">
-      <button type="button" class="facet-hd">Topic <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-      <div class="facet-body">
-        <label class="facet-opt"><input type="checkbox"><span class="flex-1">Get started</span><span class="text-[13px] text-slate-400">12</span></label>
-        <label class="facet-opt"><input type="checkbox"><span class="flex-1">Passwords &amp; security</span><span class="text-[13px] text-slate-400">18</span></label>
-        <label class="facet-opt"><input type="checkbox"><span class="flex-1">Account &amp; billing</span><span class="text-[13px] text-slate-400">7</span></label>
-        <label class="facet-opt"><input type="checkbox"><span class="flex-1">Multifactor auth</span><span class="text-[13px] text-slate-400">5</span></label>
-        <button type="button" class="show-more">Show more</button>
-      </div>
+    <div class="px-3 py-3 border-b border-slate-100"><h3 class="text-[12px] font-bold uppercase tracking-wide text-slate-500 px-1 mb-2">Topic</h3>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Get started</span><span class="text-[13px] text-slate-400">12</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Passwords &amp; security</span><span class="text-[13px] text-slate-400">18</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Account &amp; billing</span><span class="text-[13px] text-slate-400">7</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Multifactor auth</span><span class="text-[13px] text-slate-400">5</span></label>
     </div>
-    <div class="facet">
-      <button type="button" class="facet-hd">Updated <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-      <div class="facet-body">
-        <label class="facet-opt"><input type="radio" name="updated"><span class="flex-1">Past month</span><span class="text-[13px] text-slate-400">9</span></label>
-        <label class="facet-opt"><input type="radio" name="updated" checked><span class="flex-1">Any time</span><span class="text-[13px] text-slate-400">42</span></label>
-      </div>
+    <div class="px-3 py-3"><h3 class="text-[12px] font-bold uppercase tracking-wide text-slate-500 px-1 mb-2">Updated</h3>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Past month</span><span class="text-[13px] text-slate-400">9</span></label>
+      <label class="flex items-center gap-2.5 px-1 py-1.5 rounded-md hover:bg-slate-50 cursor-pointer"><input type="checkbox" checked class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-400"><span class="text-[15px] text-slate-700 flex-1">Any time</span><span class="text-[13px] text-slate-400">42</span></label>
     </div>
-    <div class="facet">
-      <button type="button" class="facet-hd">Plan <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-      <div class="facet-body">
-        <label class="facet-opt"><input type="checkbox"><span class="flex-1">Free</span><span class="text-[13px] text-slate-400">8</span></label>
-        <label class="facet-opt"><input type="checkbox"><span class="flex-1">Premium</span><span class="text-[13px] text-slate-400">14</span></label>
-        <label class="facet-opt"><input type="checkbox"><span class="flex-1">Business</span><span class="text-[13px] text-slate-400">11</span></label>
-      </div>
-    </div>
-    </div>
-  </aside>
+  </div></aside>
 
+  <!-- Results -->
   <main class="col-span-12 lg:col-span-9 min-w-0">
-    <section class="genqa reveal in" aria-label="AI-generated answer">
-      <div class="genqa-hd">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="text-plum-600" aria-hidden="true"><path d="m12 3-1.9 5.8-5.8 1.9 5.8 1.9L12 18.4l1.9-5.8 5.8-1.9-5.8-1.9z"/></svg>
-        <h2 class="text-[15px] font-bold text-plum-700">Generated answer</h2>
-        <span class="text-[11px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full bg-white/70 text-plum-600 ring-1 ring-plum-200">Beta</span>
+    <!-- AI generated answer -->
+    <div class="aipanel rounded-2xl border border-[#e7cfe0] p-6 reveal in">
+      <div class="flex items-center gap-2 mb-3"><span class="text-plum-600"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3-1.9 5.8-5.8 1.9 5.8 1.9L12 18.4l1.9-5.8 5.8-1.9-5.8-1.9z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg></span><span class="text-[15px] font-bold text-plum-700">AI-generated answer</span><span class="text-[12px] font-semibold px-2 py-0.5 rounded-full bg-white/70 text-plum-600 ring-1 ring-plum-200">Beta</span></div>
+      <p class="text-[15px] text-slate-700 leading-relaxed">Your <mark>master password</mark> is the single password that unlocks your LastPass vault — it's the only one you need to remember. Choose a strong passphrase of at least 12 characters, and set up <strong>account recovery</strong> in advance, because LastPass cannot reset a forgotten master password for you.</p>
+      <div class="flex flex-wrap items-center gap-2 mt-4">
+        <span class="text-[13px] text-slate-500 mr-1">Sources</span>
+        <a href="reader.html" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-plum-700 bg-white ring-1 ring-plum-200 rounded-full px-2.5 py-1 hover:ring-plum-300">1 · Get started with LastPass</a>
+        <a href="reader.html" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-plum-700 bg-white ring-1 ring-plum-200 rounded-full px-2.5 py-1 hover:ring-plum-300">2 · Change your master password</a>
+        <a href="reader.html" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-plum-700 bg-white ring-1 ring-plum-200 rounded-full px-2.5 py-1 hover:ring-plum-300">3 · Account recovery</a>
       </div>
-      <p class="genqa-body">Your <mark>master password</mark> is the single password that unlocks your LastPass vault — it's the only one you need to remember. Choose a strong passphrase of at least 12 characters, and set up <strong>account recovery</strong> in advance, because LastPass cannot reset a forgotten master password for you.</p>
-      <div class="genqa-cites">
-        <span class="text-[13px] text-slate-500 mr-0.5">Citations</span>
-        <a href="reader.html">[1] Get started with LastPass</a>
-        <a href="reader.html">[2] Change your master password</a>
-        <a href="reader.html">[3] Account recovery</a>
+      <div class="flex items-center gap-2 mt-4 pt-3 border-t border-[#e7cfe0]/70 text-slate-400">
+        <span class="text-[13px] mr-1">Was this helpful?</span>
+        <button class="hover:text-grass-600" aria-label="Yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg></button>
+        <button class="hover:text-brand-600" aria-label="No"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"/></svg></button>
       </div>
-      <div class="genqa-fb">
-        <span>Was this helpful?</span>
-        <button type="button" class="font-semibold hover:text-grass-600">Yes</button>
-        <button type="button" class="font-semibold hover:text-brand-600">No</button>
-      </div>
-    </section>
-
-    <div class="flex flex-wrap items-center justify-between gap-3 mt-12 mb-4">
-      <p class="text-[15px] text-slate-500">Results <span class="font-semibold text-ink">1–10</span> of <span class="font-semibold text-ink">42</span> for <span class="font-semibold text-ink">&ldquo;master password&rdquo;</span></p>
-      <label class="flex items-center gap-2 text-[15px] text-slate-500">Sort by
-        <select class="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-[15px] font-medium text-ink outline-none focus:ring-2 focus:ring-brand-400">
-          <option>Relevance</option>
-          <option>Date</option>
-          <option>Most viewed</option>
-        </select>
-      </label>
     </div>
 
-    <ol class="reveal in" aria-label="Search results">
-      <li class="result">
-        <a href="reader.html" class="result-title">Get started with LastPass</a>
-        <p class="result-uri">Home › Get started › Installing &amp; setup</p>
-        <p class="result-excerpt">Create your account and choose a strong <mark>master password</mark> — the one password you need to remember. LastPass encrypts your vault locally so no one else can read it.</p>
-        <div class="result-meta"><span class="badge">Article</span><span>Get started</span><span aria-hidden="true">·</span><span>Jul 14, 2026</span></div>
-      </li>
-      <li class="result">
-        <a href="reader.html" class="result-title">Change your <mark>master password</mark></a>
-        <p class="result-uri">Home › Passwords &amp; security › Account</p>
-        <p class="result-excerpt">You can change your <mark>master password</mark> at any time from your vault. Learn how to update it safely and re-encrypt your data across devices.</p>
-        <div class="result-meta"><span class="badge">Article</span><span>Passwords &amp; security</span><span aria-hidden="true">·</span><span>Jun 30, 2026</span></div>
-      </li>
-      <li class="result">
-        <a href="reader.html" class="result-title">Recover a forgotten <mark>master password</mark></a>
-        <p class="result-uri">Home › Passwords &amp; security › Account recovery</p>
-        <p class="result-excerpt">If you forget your <mark>master password</mark>, account recovery is the only way back in. Set up recovery options before you need them.</p>
-        <div class="result-meta"><span class="badge">Article</span><span>Passwords &amp; security</span><span aria-hidden="true">·</span><span>Jun 18, 2026</span></div>
-      </li>
-      <li class="result">
-        <a href="reader.html" class="result-title">Video: Choosing a strong <mark>master password</mark></a>
-        <p class="result-uri">Home › Videos › Get started</p>
-        <p class="result-excerpt">A two-minute walkthrough on building a memorable passphrase and why length beats complexity.</p>
-        <div class="result-meta"><span class="badge badge-video">Video</span><span>Get started</span><span aria-hidden="true">·</span><span>May 22, 2026</span></div>
-      </li>
-      <li class="result">
-        <a href="reader.html" class="result-title"><mark>Master password</mark> strength meter improvements</a>
-        <p class="result-uri">Home › Release notes › Security</p>
-        <p class="result-excerpt">The sign-up flow now gives clearer, real-time guidance as you create your <mark>master password</mark>.</p>
-        <div class="result-meta"><span class="badge badge-note">Release note</span><span>Security</span><span aria-hidden="true">·</span><span>May 05, 2026</span></div>
-      </li>
-    </ol>
-
-    <div class="flex flex-wrap items-center justify-between gap-4 mt-8 pt-2">
-      <nav class="flex items-center gap-1" aria-label="Pagination">
-        <a href="#" class="pager-btn text-slate-400" aria-label="Previous page"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></a>
-        <a href="#" class="pager-btn" aria-current="page">1</a>
-        <a href="#" class="pager-btn">2</a>
-        <a href="#" class="pager-btn">3</a>
-        <span class="px-1.5 text-slate-400 text-[14px]">…</span>
-        <a href="#" class="pager-btn">9</a>
-        <a href="#" class="pager-btn text-slate-400" aria-label="Next page"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
-      </nav>
-      <label class="flex items-center gap-2 text-[15px] text-slate-500">Results per page
-        <select class="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-[15px] font-medium text-ink outline-none focus:ring-2 focus:ring-brand-400">
-          <option>10</option><option>25</option><option>50</option>
-        </select>
-      </label>
+    <div class="flex items-center justify-between mt-7 mb-4">
+      <p class="text-[15px] text-slate-500">About <span class="font-semibold text-ink">42 results</span> for <span class="font-semibold text-ink">&ldquo;master password&rdquo;</span></p>
+      <label class="flex items-center gap-2 text-[15px] text-slate-500">Sort by <select class="rounded-lg border border-slate-300 px-3 py-1.5 text-[15px] font-medium text-ink focus:ring-2 focus:ring-brand-400 outline-none"><option>Relevance</option><option>Newest</option><option>Most viewed</option></select></label>
     </div>
+
+    <ul class="space-y-4 reveal" data-stagger>
+      <li class="result rounded-2xl border border-slate-200 bg-white p-5">
+        <div class="flex items-center gap-2 mb-2"><span class="text-[12px] font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-brand-50 text-brand-700">Article</span><span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Get started</span><span class="ml-auto text-[13px] text-slate-400 flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg> Jul 14, 2026</span></div>
+        <a href="reader.html" class="text-lg font-semibold text-ink hover:text-brand-600">Get started with LastPass</a>
+        <p class="text-[13px] text-slate-400 mt-1">Home › Get started › Installing &amp; setup</p>
+        <p class="text-[15px] text-slate-600 mt-2 leading-relaxed">Create your account and choose a strong <mark>master password</mark> — the one password you need to remember. LastPass encrypts your vault locally so no one else can read it.</p>
+      </li>
+      <li class="result rounded-2xl border border-slate-200 bg-white p-5">
+        <div class="flex items-center gap-2 mb-2"><span class="text-[12px] font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-brand-50 text-brand-700">Article</span><span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Passwords &amp; security</span><span class="ml-auto text-[13px] text-slate-400 flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg> Jun 30, 2026</span></div>
+        <a href="reader.html" class="text-lg font-semibold text-ink hover:text-brand-600">Change your <mark>master password</mark></a>
+        <p class="text-[13px] text-slate-400 mt-1">Home › Passwords &amp; security › Account</p>
+        <p class="text-[15px] text-slate-600 mt-2 leading-relaxed">You can change your <mark>master password</mark> at any time from your vault. Learn how to update it safely and re-encrypt your data across devices.</p>
+      </li>
+      <li class="result rounded-2xl border border-slate-200 bg-white p-5">
+        <div class="flex items-center gap-2 mb-2"><span class="text-[12px] font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-brand-50 text-brand-700">Article</span><span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Passwords &amp; security</span><span class="ml-auto text-[13px] text-slate-400 flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg> Jun 18, 2026</span></div>
+        <a href="reader.html" class="text-lg font-semibold text-ink hover:text-brand-600">Recover a forgotten <mark>master password</mark></a>
+        <p class="text-[13px] text-slate-400 mt-1">Home › Passwords &amp; security › Account recovery</p>
+        <p class="text-[15px] text-slate-600 mt-2 leading-relaxed">If you forget your <mark>master password</mark>, account recovery is the only way back in. Set up recovery options before you need them.</p>
+      </li>
+      <li class="result rounded-2xl border border-slate-200 bg-white p-5">
+        <div class="flex items-center gap-2 mb-2"><span class="text-[12px] font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-amber-50 text-amber-700">Video</span><span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Get started</span><span class="ml-auto text-[13px] text-slate-400 flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg> May 22, 2026</span></div>
+        <a href="reader.html" class="text-lg font-semibold text-ink hover:text-brand-600">Video: Choosing a strong <mark>master password</mark></a>
+        <p class="text-[13px] text-slate-400 mt-1">Home › Videos › Get started</p>
+        <p class="text-[15px] text-slate-600 mt-2 leading-relaxed">A two-minute walkthrough on building a memorable passphrase and why length beats complexity.</p>
+      </li>
+      <li class="result rounded-2xl border border-slate-200 bg-white p-5">
+        <div class="flex items-center gap-2 mb-2"><span class="text-[12px] font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-grass-100 text-grass-700">Release note</span><span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Security</span><span class="ml-auto text-[13px] text-slate-400 flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg> May 05, 2026</span></div>
+        <a href="reader.html" class="text-lg font-semibold text-ink hover:text-brand-600"><mark>Master password</mark> strength meter improvements</a>
+        <p class="text-[13px] text-slate-400 mt-1">Home › Release notes › Security</p>
+        <p class="text-[15px] text-slate-600 mt-2 leading-relaxed">The sign-up flow now gives clearer, real-time guidance as you create your <mark>master password</mark>.</p>
+      </li>
+    </ul>
+
+    <nav class="flex items-center justify-center gap-1 mt-8" aria-label="Pagination">
+      <a href="#" class="w-9 h-9 grid place-items-center rounded-lg text-slate-400 hover:bg-slate-100" aria-label="Previous"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      <a href="#" aria-current="page" class="w-9 h-9 grid place-items-center rounded-lg bg-brand-600 text-white font-semibold">1</a>
+      <a href="#" class="w-9 h-9 grid place-items-center rounded-lg text-slate-700 hover:bg-slate-100 font-medium">2</a>
+      <a href="#" class="w-9 h-9 grid place-items-center rounded-lg text-slate-700 hover:bg-slate-100 font-medium">3</a>
+      <span class="px-1 text-slate-400">…</span>
+      <a href="#" class="w-9 h-9 grid place-items-center rounded-lg text-slate-700 hover:bg-slate-100 font-medium">9</a>
+      <a href="#" class="w-9 h-9 grid place-items-center rounded-lg text-slate-400 hover:bg-slate-100" aria-label="Next"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </nav>
   </main>
 </div>
 
