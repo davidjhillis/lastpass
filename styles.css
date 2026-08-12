@@ -2,8 +2,8 @@
 /* =============================================================================
    Brand-color feedback — E. Hines review (tokens + overrides)
    No Tailwind source/config in this repo: keep decisions here as CSS variables.
-   Verified against lastpass.com (Aug 2026): primary CTA border-radius = 8px;
-   .nav-submenu shadow/radius/hover match live mega-menu.
+   Re-verified lastpass.com (Aug 11 2026): .lp-button.getlpfree border-radius = 8px;
+   .nav-submenu / .nav-heading-link padding, radius, shadow, hover match live.
    ============================================================================= */
 :root{
   --lp-brand:#d71340;
@@ -16,7 +16,8 @@
   --lp-cloud:#fef9ec;   /* warm surface — soft section backgrounds */
   --lp-keyword:#5e4270;
   --lp-keyword-bg:#f3ecf8;
-  --lp-btn-radius:8px;  /* lastpass.com .lp-button — Get LastPass Free */
+  /* Re-verified Aug 11 2026 on lastpass.com .lp-button.getlpfree → 8px */
+  --lp-btn-radius:8px;
   --cta-link:var(--lp-brand);
   --cta-link-hover:var(--lp-brand-hover);
 }
@@ -40,25 +41,27 @@ button.btn.bg-brand-600:active{background-color:var(--lp-brand-active);transform
 .border-lp-slate\/15{border-color:rgba(40,47,67,.15)}
 .brand-band{background:linear-gradient(120deg,var(--lp-aubergine) 0%,var(--lp-aubergine-mid) 100%)}
 
-/* Mega-menu panels — match lastpass.com .nav-submenu */
+/* Mega-menu panels — match lastpass.com .nav-submenu / .nav-heading-link */
 .navdd-panel ul{
   min-width:17rem;
   background:#fff;
   border-radius:8px;
   box-shadow:0 0 2px 0 rgba(5,6,6,.17),0 8px 12px 0 rgba(5,6,6,.13);
   border:0;
-  padding:8px;
+  padding:12px 8px;
   overflow:hidden;
 }
 .navdd-panel a{
   display:block;
-  padding:8px 12px;
+  min-height:44px;
+  padding:8px 8px 12px;
   border-radius:4px;
   font-size:16px;
   font-weight:700;
   line-height:24px;
   letter-spacing:-.16px;
   color:var(--lp-ink);
+  box-sizing:border-box;
 }
 .navdd-panel a:hover{color:var(--lp-brand);background:transparent;text-decoration:none}
 .navdd-panel a:active{background:rgba(5,6,6,.1)}
@@ -71,6 +74,16 @@ button.btn.bg-brand-600:active{background-color:var(--lp-brand-active);transform
 .navdd-btn>svg,
 .cta-link>svg,
 .btn>svg{display:block;flex-shrink:0}
+
+/* Hero quick-link pills — optical center icons on label x-height */
+.qlink{
+  align-items:center;
+  line-height:1.2;
+}
+.qlink>svg{
+  position:relative;
+  top:0.5px; /* stroke icons sit optically high without this nudge */
+}
 
 /* Links vs keywords (not color alone) */
 .cta-link{
