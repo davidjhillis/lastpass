@@ -8,7 +8,7 @@
 <style>
  body{font-family:'Source Sans 3',Arial,sans-serif;-webkit-font-smoothing:antialiased}
  #nav.is-scrolled{box-shadow:0 8px 24px -18px rgba(5,6,6,.4)}
- .navlink{position:relative}.navlink::after{content:'';position:absolute;left:0;bottom:14px;height:2px;width:0;background:#d71340;transition:width .28s cubic-bezier(.2,.7,.2,1);z-index:2}.navlink:hover::after,.navdd:hover>.navlink::after,.navdd.open>.navlink::after,.navdd:focus-within>.navlink::after{width:100%}
+ .navlink{position:relative}.navlink::after{content:'';position:absolute;left:0;bottom:14px;height:2px;width:0;background:var(--lp-brand);transition:width .28s cubic-bezier(.2,.7,.2,1);z-index:2}.navlink:hover::after,.navdd:hover>.navlink::after,.navdd.open>.navlink::after,.navdd:focus-within>.navlink::after{width:100%}
  .btn{transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s,background-color .18s}.btn:hover{transform:translateY(-1px)}.btn:active{transform:translateY(0) scale(.985)}
  .band{position:relative;isolation:isolate;background:#3d2a4b}
  .band-bg{position:absolute;inset:0;background:url('img/hero-pattern-live.jpg') center/cover no-repeat;opacity:.28;pointer-events:none}
@@ -20,18 +20,17 @@
  .prose p{color:#3c4a55;line-height:1.75;margin:.85rem 0}
  .prose ul{margin:.75rem 0;padding-left:0;list-style:none}
  .prose ul li{position:relative;padding-left:1.5rem;color:#3c4a55;line-height:1.7;margin:.4rem 0}
- .prose ul li::before{content:'';position:absolute;left:.3rem;top:.62rem;width:6px;height:6px;border-radius:50%;background:#d71340}
+ .prose ul li::before{content:'';position:absolute;left:.3rem;top:.62rem;width:6px;height:6px;border-radius:50%;background:var(--lp-brand)}
  .prose ol{margin:.75rem 0;padding-left:0;list-style:none;counter-reset:step}
  .prose ol li{position:relative;padding-left:2.4rem;color:#3c4a55;line-height:1.7;margin:.7rem 0;counter-increment:step}
  .prose ol li::before{content:counter(step);position:absolute;left:0;top:-.05rem;width:1.6rem;height:1.6rem;border-radius:.5rem;background:#fdf1f4;color:#c50b3a;font-weight:700;font-size:.85rem;display:grid;place-items:center}
- :root{--cta-link:#d71340;--cta-link-hover:#8d0e36}
- .cta-link{color:var(--cta-link)!important}.cta-link:hover{color:var(--cta-link-hover)!important}
+ /* brand tokens + .cta-link defined in styles.css */
  .prose a{color:var(--cta-link);font-weight:600;text-decoration:underline;text-underline-offset:2px}
  .prose a.btn{color:#fff!important;text-decoration:none}
  .prose a.btn:hover{color:#fff}
  .prose strong{color:#050606;font-weight:600}
  .callout{border-left:4px solid;border-radius:.6rem;padding:1rem 1.25rem;margin:1.25rem 0;display:flex;gap:.75rem}
- .callout.info{background:#eef3fb;border-color:#3b70d4}.callout.tip{background:#eef6ef;border-color:#368149}.callout.warn{background:#fdf6e3;border-color:#c98a00}
+ .callout.info{background:#eef3fb;border-color:#3b70d4}.callout.tip{background:#eef6ef;border-color:#368149}.callout.warn{background:var(--lp-cloud);border-color:#c98a00}
  .callout p{margin:0}
  code.inline{background:#f0f2f5;color:#c50b3a;border-radius:4px;padding:.05rem .35rem;font-family:'JetBrains Mono',monospace;font-size:.86em}
  table.doc{width:100%;border-collapse:separate;border-spacing:0;margin:1.25rem 0;font-size:.92rem;border:1px solid #e5ecf4;border-radius:.7rem;overflow:hidden}
@@ -77,9 +76,7 @@
  .navdd-btn{display:inline-flex;align-items:center;gap:.25rem;height:68px}
  .navdd-panel{display:none;position:absolute;left:0;top:100%;padding-top:.45rem;z-index:60}
  .navdd:hover .navdd-panel,.navdd:focus-within .navdd-panel,.navdd.open .navdd-panel{display:block}
- .navdd-panel ul{min-width:17rem;background:#fff;border-radius:.75rem;box-shadow:0 28px 56px -16px rgba(5,6,6,.38),0 12px 24px -10px rgba(5,6,6,.2);border:1px solid #e5ecf4;padding:.5rem 0}
- .navdd-panel a{display:block;padding:.55rem 1rem;font-size:15px;font-weight:500;color:#3c4a55}
- .navdd-panel a:hover{background:#f8fafc;color:#050606}
+ /* panel aesthetics (radius/shadow/hover) live in styles.css brand tokens */
 
 </style></head>
 <body class="bg-white text-ink">
@@ -265,7 +262,7 @@
   <main class="article-main col-span-12 lg:col-span-6 min-w-0">
     <!-- Content toolbar -->
     <div class="flex flex-wrap items-center gap-2 pb-5 border-b border-slate-100">
-      <button id="navShow" class="btn items-center gap-1.5 h-9 px-3 rounded-lg ring-1 ring-slate-300 hover:bg-slate-50 text-[15px] font-semibold text-slate-700"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg> Contents</button>
+      <button id="navShow" class="btn inline-flex items-center gap-1.5 h-9 px-3 ring-1 ring-slate-300 hover:bg-slate-50 text-[15px] font-semibold text-slate-700"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg> Contents</button>
       <button class="btn inline-flex items-center gap-1.5 h-9 w-9 justify-center rounded-lg ring-1 ring-slate-300 hover:bg-slate-50 text-slate-700" aria-label="Download" title="Download"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></button>
       <button class="btn inline-flex items-center gap-1.5 h-9 w-9 justify-center rounded-lg ring-1 ring-slate-300 hover:bg-slate-50 text-slate-700" aria-label="Print" title="Print"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V2h12v7"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg></button>
       <button class="btn inline-flex items-center gap-1.5 h-9 w-9 justify-center rounded-lg ring-1 ring-slate-300 hover:bg-slate-50 text-slate-700" aria-label="Share" title="Share"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4"/><path d="m15.4 6.5-6.8 4"/></svg></button>
@@ -348,8 +345,8 @@
     </div>
 
     <!-- Was this helpful -->
-    <div class="mt-10 rounded-2xl ring-1 ring-slate-200 bg-slate-50 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-      <div><p class="font-semibold text-ink">Was this article helpful?</p><p class="text-[15px] text-slate-500 mt-0.5">Your feedback helps us improve the docs.</p></div>
+    <div class="mt-10 rounded-2xl bg-cloud p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4" style="border:1px solid rgba(40,47,67,.15)">
+      <div><p class="font-semibold text-lp-slate">Was this article helpful?</p><p class="text-[15px] text-slate-500 mt-0.5">Your feedback helps us improve the docs.</p></div>
       <div class="flex flex-wrap items-center gap-2 shrink-0">
         <button class="btn inline-flex items-center gap-2 h-10 px-4 rounded-full ring-1 ring-slate-300 bg-white hover:bg-slate-50 text-[15px] font-semibold whitespace-nowrap shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg> Yes</button>
         <button class="btn inline-flex items-center gap-2 h-10 px-4 rounded-full ring-1 ring-slate-300 bg-white hover:bg-slate-50 text-[15px] font-semibold whitespace-nowrap shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"/></svg> No</button>
@@ -377,9 +374,9 @@
     <div class="rounded-2xl ring-1 ring-slate-200 bg-white p-4">
       <p class="text-[13px] font-bold uppercase tracking-wide text-slate-500 mb-3">Related content</p>
       <ul class="space-y-3">
-        <li><a href="#" class="group flex items-start gap-2.5"><span class="text-brand-600 mt-0.5 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></span><span class="text-[15px] text-slate-700 group-hover:text-[color:var(--cta-link)] font-medium leading-snug">Import passwords into LastPass</span></a></li>
-        <li><a href="#" class="group flex items-start gap-2.5"><span class="text-brand-600 mt-0.5 shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="text-[15px] text-slate-700 group-hover:text-[color:var(--cta-link)] font-medium leading-snug">Set up multifactor authentication</span></a></li>
-        <li><a href="#" class="group flex items-start gap-2.5"><span class="text-brand-600 mt-0.5 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span><span class="text-[15px] text-slate-700 group-hover:text-[color:var(--cta-link)] font-medium leading-snug">Video: your first day with LastPass</span></a></li>
+        <li><a href="#" class="group icon-label"><span class="text-brand-600 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></span><span class="text-[15px] text-slate-700 group-hover:text-[color:var(--cta-link)] font-medium leading-snug">Import passwords into LastPass</span></a></li>
+        <li><a href="#" class="group icon-label"><span class="text-brand-600 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="text-[15px] text-slate-700 group-hover:text-[color:var(--cta-link)] font-medium leading-snug">Set up multifactor authentication</span></a></li>
+        <li><a href="#" class="group icon-label"><span class="text-brand-600 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span><span class="text-[15px] text-slate-700 group-hover:text-[color:var(--cta-link)] font-medium leading-snug">Video: your first day with LastPass</span></a></li>
       </ul>
     </div>
   </div></aside>
