@@ -16,6 +16,12 @@
   --lp-cloud:#fef9ec;   /* warm surface — soft section backgrounds */
   --lp-keyword:#5e4270;
   --lp-keyword-bg:#f3ecf8;
+  /* Type — sampled from support.lastpass.com article (Aug 2026) */
+  --lp-text-primary:#3e3e3c;   /* H1 / rail headings */
+  --lp-text-heading:#53585e;   /* H2–H4 ≈ rgba(40,47,54,.8) on white */
+  --lp-text-body:#3c4a55;      /* prose body */
+  --lp-text-secondary:#53585e; /* TOC / nav links */
+  --lp-text-muted:#545454;     /* meta, breadcrumbs — WCAG AA on white */
   /* Re-verified Aug 11 2026 on lastpass.com .lp-button.getlpfree → 8px */
   --lp-btn-radius:8px;
   --cta-link:var(--lp-brand);
@@ -33,13 +39,17 @@ a.btn.bg-brand-600:active,
 button.btn.bg-brand-600:active{background-color:var(--lp-brand-active);transform:translateY(0)}
 
 /* Palette corrections */
-.text-ink{color:var(--lp-ink)}
+.text-ink{color:var(--lp-text-primary)}
 .text-plum-700{color:var(--lp-aubergine)}
 .bg-plum-700{background-color:var(--lp-aubergine)}
 .text-lp-slate{color:var(--lp-slate)}
 .bg-cloud{background-color:var(--lp-cloud)}
 .border-lp-slate\/15{border-color:rgba(40,47,67,.15)}
 .brand-band{background:linear-gradient(120deg,var(--lp-aubergine) 0%,var(--lp-aubergine-mid) 100%)}
+/* Muted UI copy — prefer over slate-400/500 for WCAG */
+.text-muted{color:var(--lp-text-muted)}
+.text-secondary{color:var(--lp-text-secondary)}
+.text-body{color:var(--lp-text-body)}
 
 /* Mega-menu panels — match lastpass.com .nav-submenu / .nav-heading-link */
 .navdd-panel ul{
@@ -223,6 +233,112 @@ button:focus-visible,
 }
 
 
+/* Guide prev/next — aubergine-tinted tiles, large hit targets, clear direction */
+.guide-nav{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:28px;
+}
+.guide-nav-heading{
+  margin:0 0 2px;
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:0;
+  text-transform:none;
+  color:var(--lp-text-primary);
+}
+.guide-nav-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-height:64px;
+  padding:12px 14px;
+  border-radius:var(--lp-btn-radius);
+  background:var(--lp-keyword-bg);
+  color:inherit;
+  text-decoration:none;
+  box-sizing:border-box;
+  transition:background-color .15s ease, transform .15s ease;
+}
+.guide-nav-item:hover{
+  background:#ebe0f3;
+}
+.guide-nav-item:active{
+  background:#e2d3ed;
+  transform:translateY(1px);
+}
+.guide-nav-item:focus-visible{
+  outline:2px solid var(--lp-brand);
+  outline-offset:3px;
+}
+.guide-nav-arrow{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:36px;
+  height:36px;
+  flex-shrink:0;
+  border-radius:999px;
+  background:#fff;
+  color:var(--lp-aubergine);
+  box-shadow:0 0 0 1px rgba(61,42,75,.12);
+  transition:background-color .15s ease, color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.guide-nav-item:hover .guide-nav-arrow{
+  background:var(--lp-aubergine);
+  color:#fff;
+  box-shadow:none;
+}
+.guide-nav-prev:hover .guide-nav-arrow{transform:translateX(-2px)}
+.guide-nav-next:hover .guide-nav-arrow{transform:translateX(2px)}
+.guide-nav-copy{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
+  flex:1;
+}
+.guide-nav-next .guide-nav-copy{text-align:right}
+.guide-nav-label{
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--lp-aubergine-mid);
+}
+.guide-nav-title{
+  font-size:15px;
+  font-weight:600;
+  line-height:1.3;
+  color:var(--lp-text-primary);
+  letter-spacing:-.01em;
+}
+.guide-nav-item:hover .guide-nav-title{color:var(--lp-aubergine)}
+
+/* Next is the forward path — stronger surface */
+.guide-nav-next{
+  background:linear-gradient(135deg,var(--lp-aubergine) 0%,var(--lp-aubergine-mid) 100%);
+}
+.guide-nav-next .guide-nav-label{color:rgba(255,255,255,.88)}
+.guide-nav-next .guide-nav-title{color:#fff}
+.guide-nav-next .guide-nav-arrow{
+  background:rgba(255,255,255,.16);
+  color:#fff;
+  box-shadow:none;
+}
+.guide-nav-next:hover{
+  background:linear-gradient(135deg,#342240 0%,#533a63 100%);
+}
+.guide-nav-next:hover .guide-nav-title{color:#fff}
+.guide-nav-next:hover .guide-nav-arrow{
+  background:#fff;
+  color:var(--lp-aubergine);
+}
+.guide-nav-next:active{
+  background:linear-gradient(135deg,#2c1c38 0%,#4a3458 100%);
+}
+
 /* Utility bar — Service status indicator (match support portal check-in-circle) */
 .status-ok{
   display:inline-flex;
@@ -237,20 +353,20 @@ button:focus-visible,
 .status-ok svg{display:block}
 
 
-/* Utility bar — match support portal right-nav-text (16px / #111 Source Sans) */
+/* Utility bar — match support portal right-nav-text (16px Source Sans) */
 .util-bar{
   font-family:'Source Sans 3',Arial,sans-serif;
   font-size:16px;
   font-weight:400;
   line-height:20px;
-  color:#111;
+  color:var(--lp-text-primary);
 }
 .util-bar a,
 .util-bar .langbtn{
-  color:#111;
+  color:var(--lp-text-primary);
   font-size:16px;
   font-weight:400;
   line-height:20px;
 }
 .util-bar a:hover,
-.util-bar .langbtn:hover{color:#050606}
+.util-bar .langbtn:hover{color:var(--lp-brand)}

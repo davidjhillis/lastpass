@@ -3,7 +3,7 @@
 <title>Get started with LastPass — LastPass Support</title>
 <meta name="dcx-searchtitle" content="How do I get started with LastPass?">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
  body{font-family:'Source Sans 3',Arial,sans-serif;-webkit-font-smoothing:antialiased}
@@ -18,31 +18,57 @@
  .searchwrap:focus-within{box-shadow:0 0 0 4px rgba(215,19,64,.25),0 30px 70px -26px rgba(0,0,0,.7);border-color:#d71340;transform:translateY(-1px)}
  .searchwrap input{flex:1 1 auto;min-width:0;height:2.75rem;border:0;background:transparent;outline:none;font-size:16px;color:#050606}
  .searchwrap button{flex:0 0 auto;height:2.75rem}
- .toc a.toc-l2{padding-left:1.15rem}
- .toc a.toc-l3{padding-left:1.9rem;font-size:13px}
- .prose h4{font-size:1.02rem;font-weight:600;color:#050606;margin:1.15rem 0 .4rem;scroll-margin-top:6rem}
+ .page-toc{border-left:1px solid #e5ecf4;margin:0;padding:0;list-style:none}
+ .page-toc a{
+   display:block;padding:.4rem .75rem;margin-left:-1px;
+   border-left:2px solid transparent;
+   font-size:16px;font-weight:400;line-height:1.35;
+   color:var(--lp-text-secondary);text-decoration:none;
+   transition:color .15s,border-color .15s,font-weight .15s;
+ }
+ .page-toc a:hover{color:var(--lp-brand)}
+ .page-toc a.active{color:var(--lp-brand);border-left-color:var(--lp-brand);font-weight:600}
+ .page-toc > li > a{font-weight:400}
+ .page-toc ul{list-style:none;margin:0;padding:0}
+ .page-toc ul a{padding-left:1.35rem;font-size:15px}
+ .page-toc ul ul a{padding-left:2.1rem;font-size:14px}
+ .rail-heading{
+   margin:0 0 .5rem;padding-left:.75rem;
+   font-size:16px;font-weight:700;line-height:1.3;color:var(--lp-text-primary);
+ }
+ .article-title{
+   font-size:28px;font-weight:700;line-height:1.2;letter-spacing:-.02em;
+   color:var(--lp-text-primary);margin:0;
+ }
+ @media (min-width:768px){.article-title{font-size:32px}}
+ .article-meta{
+   display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.25rem;
+   margin-top:.75rem;font-size:17px;font-weight:400;color:var(--lp-text-muted);
+ }
  .reveal{opacity:0;transform:translateY(12px);transition:opacity .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1)}.reveal.in{opacity:1;transform:none}
- .prose h2{font-size:1.5rem;font-weight:600;color:#050606;margin:2.2rem 0 .75rem;scroll-margin-top:6rem;letter-spacing:-.01em}
- .prose h3{font-size:1.15rem;font-weight:600;color:#050606;margin:1.5rem 0 .5rem;scroll-margin-top:6rem}
- .prose p{color:#3c4a55;line-height:1.75;margin:.85rem 0}
+ /* Article type — match support.lastpass.com (Aug 2026) */
+ .prose h2{font-size:20px;font-weight:600;color:var(--lp-text-heading);margin:2.2rem 0 .75rem;scroll-margin-top:6rem;letter-spacing:-.01em}
+ .prose h3{font-size:18px;font-weight:500;color:var(--lp-text-heading);margin:1.5rem 0 .5rem;scroll-margin-top:6rem}
+ .prose h4{font-size:16px;font-weight:500;color:var(--lp-text-heading);margin:1.15rem 0 .4rem;scroll-margin-top:6rem}
+ .prose p{color:var(--lp-text-body);line-height:1.75;margin:.85rem 0}
  .prose ul{margin:.75rem 0;padding-left:0;list-style:none}
- .prose ul li{position:relative;padding-left:1.5rem;color:#3c4a55;line-height:1.7;margin:.4rem 0}
+ .prose ul li{position:relative;padding-left:1.5rem;color:var(--lp-text-body);line-height:1.7;margin:.4rem 0}
  .prose ul li::before{content:'';position:absolute;left:.3rem;top:.62rem;width:6px;height:6px;border-radius:50%;background:var(--lp-brand)}
  .prose ol{margin:.75rem 0;padding-left:0;list-style:none;counter-reset:step}
- .prose ol li{position:relative;padding-left:2.4rem;color:#3c4a55;line-height:1.7;margin:.7rem 0;counter-increment:step}
+ .prose ol li{position:relative;padding-left:2.4rem;color:var(--lp-text-body);line-height:1.7;margin:.7rem 0;counter-increment:step}
  .prose ol li::before{content:counter(step);position:absolute;left:0;top:-.05rem;width:1.6rem;height:1.6rem;border-radius:.5rem;background:#fdf1f4;color:#c50b3a;font-weight:700;font-size:.85rem;display:grid;place-items:center}
  /* brand tokens + .cta-link defined in styles.css */
  .prose a{color:var(--cta-link);font-weight:600;text-decoration:underline;text-underline-offset:2px}
  .prose a.btn{color:#fff!important;text-decoration:none}
  .prose a.btn:hover{color:#fff}
- .prose strong{color:#050606;font-weight:600}
+ .prose strong{color:var(--lp-text-primary);font-weight:600}
  .callout{border-left:4px solid;border-radius:.6rem;padding:1rem 1.25rem;margin:1.25rem 0;display:flex;gap:.75rem}
  .callout.info{background:#eef3fb;border-color:#3b70d4}.callout.tip{background:#eef6ef;border-color:#368149}.callout.warn{background:var(--lp-cloud);border-color:#c98a00}
  .callout p{margin:0}
  code.inline{background:#f0f2f5;color:#c50b3a;border-radius:4px;padding:.05rem .35rem;font-family:'JetBrains Mono',monospace;font-size:.86em}
  table.doc{width:100%;border-collapse:separate;border-spacing:0;margin:1.25rem 0;font-size:.92rem;border:1px solid #e5ecf4;border-radius:.7rem;overflow:hidden}
  table.doc th{background:#241522;color:#fff;text-align:left;padding:.7rem .9rem;font-weight:600}
- table.doc td{padding:.7rem .9rem;border-top:1px solid #eef1f5;color:#3c4a55;vertical-align:top}
+ table.doc td{padding:.7rem .9rem;border-top:1px solid #eef1f5;color:var(--lp-text-body);vertical-align:top}
  table.doc tr:nth-child(even) td{background:#faf9fb}
  .tab-btn[aria-selected="true"]{color:#c50b3a;border-color:#d71340}
  .tab-panel[hidden]{display:none}
@@ -58,22 +84,22 @@
  .doc-rail-scroll::-webkit-scrollbar-thumb{background:rgba(148,163,184,.55);border-radius:999px}
  .doc-rail-scroll::-webkit-scrollbar-thumb:hover{background:rgba(100,116,139,.75)}
  .tnode[aria-expanded="false"]>ul{display:none}
- .ttoggle{width:100%;display:flex;align-items:center;gap:.55rem;padding:.55rem .65rem;border-radius:.5rem;text-align:left;font-size:15px;font-weight:600;color:#3c4a55;line-height:1.3}
- .ttoggle:hover{background:#f8fafc;color:#050606}
- .tchev{display:grid;place-items:center;width:1.1rem;height:1.1rem;flex-shrink:0;color:#94a3b8;transition:transform .18s cubic-bezier(.2,.7,.2,1),color .15s}
- .ttoggle:hover .tchev{color:#64748b}
+ .ttoggle{width:100%;display:flex;align-items:center;gap:.55rem;padding:.55rem .65rem;border-radius:.5rem;text-align:left;font-size:15px;font-weight:600;color:var(--lp-text-body);line-height:1.3}
+ .ttoggle:hover{background:#f8fafc;color:var(--lp-text-primary)}
+ .tchev{display:grid;place-items:center;width:1.1rem;height:1.1rem;flex-shrink:0;color:#6b7482;transition:transform .18s cubic-bezier(.2,.7,.2,1),color .15s}
+ .ttoggle:hover .tchev{color:#4c535d}
  .tnode[aria-expanded="false"]>.ttoggle .tchev{transform:rotate(-90deg)}
- .tnode[aria-expanded="true"]>.ttoggle .tchev{color:#64748b}
+ .tnode[aria-expanded="true"]>.ttoggle .tchev{color:#4c535d}
  .tchildren{margin:.1rem 0 .3rem .85rem;padding-left:.5rem;border-left:1px solid #e5ecf4}
- .tchildren a{display:block;padding:.42rem .65rem;margin:.05rem 0;border-radius:.4rem;font-size:14px;color:#3c4a55;line-height:1.35}
- .tchildren a:hover{background:#f8fafc;color:#050606}
- .tchildren a.is-current{color:#c50b3a;font-weight:600;background:#fdf1f4}
+ .tchildren a{display:block;padding:.42rem .65rem;margin:.05rem 0;border-radius:.4rem;font-size:14px;font-weight:400;color:var(--lp-text-body);line-height:1.35}
+ .tchildren a:hover{background:#f8fafc;color:var(--lp-text-primary)}
+ .tchildren a.is-current{color:var(--lp-brand);font-weight:600;background:#fdf1f4}
  .contents-hd{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:0 .5rem;margin-bottom:.65rem}
- .contents-label{font-size:13px;font-weight:700;color:#050606}
+ .contents-label{font-size:16px;font-weight:600;color:var(--lp-text-primary)}
  .tree-bulk{display:flex;align-items:center;gap:.55rem;padding:0 .5rem .85rem .85rem;font-size:13px;line-height:1.2}
- .tree-bulk button{font-size:13px;font-weight:500;color:#050606;padding:0}
- .tree-bulk button:hover{color:#c50b3a}
- .tree-bulk .sep{color:#94a3b8;user-select:none}
+ .tree-bulk button{font-size:13px;font-weight:500;color:var(--lp-text-muted);padding:0}
+ .tree-bulk button:hover{color:var(--lp-brand)}
+ .tree-bulk .sep{color:#a7b0bd;user-select:none}
  #main.navhide .doc-rail{display:none}
  #main.navhide .article-main{grid-column:span 9/span 9}
  #navShow{display:none}#main.navhide #navShow{display:inline-flex}
@@ -156,9 +182,9 @@
 </section>
 
 <!-- Breadcrumb -->
-<div class="bg-white border-b border-slate-100"><div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-[15px] text-slate-500 overflow-x-auto whitespace-nowrap">
-  <a href="index.html" class="hover:text-brand-600">Home</a><span class="text-slate-300"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
-  <a href="#" class="hover:text-brand-600">Get started</a><span class="text-slate-300"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+<div class="bg-white border-b border-slate-100"><div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-[15px] text-muted overflow-x-auto whitespace-nowrap">
+  <a href="index.html" class="hover:text-brand-600">Home</a><span class="text-slate-300" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+  <a href="#" class="hover:text-brand-600">Get started</a><span class="text-slate-300" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
   <span class="text-ink font-medium">Get started with LastPass</span>
 </div></div>
 
@@ -278,15 +304,15 @@
     </div>
 
     <header class="mt-6 mb-2">
-      <h1 class="text-3xl md:text-4xl font-semibold text-ink tracking-tight leading-tight">Get started with LastPass</h1>
-      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 mt-3 text-[15px] text-slate-500">
+      <h1 class="article-title">Get started with LastPass</h1>
+      <div class="article-meta">
         <span class="inline-flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg> Last updated: Dec 08, 2025</span>
         <span class="inline-flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 3 min read</span>
       </div>
     </header>
 
     <div class="prose mt-5">
-      <p class="text-lg text-slate-600">To get started with LastPass, create an account, install the LastPass browser extension, log in, and add data to your vault — like login credentials and passkeys — then start using LastPass to autofill and manage your passwords.</p>
+      <p class="text-lg text-body">To get started with LastPass, create an account, install the LastPass browser extension, log in, and add data to your vault — like login credentials and passkeys — then start using LastPass to autofill and manage your passwords.</p>
 
       <!-- Embedded video -->
       <figure class="my-7">
@@ -300,21 +326,27 @@
 
       <h2 id="create">Step #1: Create an account</h2>
       <p>Create a LastPass account so you have a vault to store your passwords and other sensitive items.</p>
+      <h3 id="create-signup">Sign up</h3>
       <ol>
         <li>Go to <a href="#">lastpass.com</a> and select <strong>Get LastPass Free</strong> — or <a href="#">Create an account</a>.</li>
         <li>Enter your email address and select <strong>Sign up</strong>.</li>
         <li>Create your <strong>master password</strong> — the one password you’ll use to unlock your vault.</li>
         <li>Complete sign-up to create your vault.</li>
       </ol>
-      <div class="callout tip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg><div><p class="font-semibold text-ink">Tip</p><p class="text-[15px] mt-1">Choose a strong, memorable master password. LastPass cannot reset it for you if it’s forgotten — set up <a href="#">account recovery</a> after you finish these steps.</p></div></div>
+      <h3 id="create-master">Master password</h3>
+      <p>Your master password encrypts your vault. Choose one that’s strong and memorable — LastPass cannot reset it for you.</p>
+      <h4 id="create-recovery">Account recovery</h4>
+      <p>After you finish these steps, set up <a href="#">account recovery</a> so you have a backup path if you ever forget your master password.</p>
+      <div class="callout tip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg><div><p class="font-semibold text-ink">Tip</p><p class="text-[15px] mt-1 text-body">Choose a strong, memorable master password. LastPass cannot reset it for you if it’s forgotten — set up <a href="#">account recovery</a> after you finish these steps.</p></div></div>
 
       <h2 id="install">Step #2: Install the LastPass browser extension and log in</h2>
       <p>Install LastPass where you’ll use it most, then log in so LastPass can autofill on the sites you visit. Pick your platform below.</p>
+      <h3 id="install-browser">Browser extension</h3>
       <div class="mt-4">
         <div role="tablist" aria-label="Install platform" class="flex flex-wrap border-b border-slate-200">
-          <button type="button" role="tab" id="tab-ext" aria-controls="panel-ext" aria-selected="true" class="tab-btn -mb-px border-b-2 border-transparent pb-2.5 text-[15px] font-bold text-slate-500 hover:text-ink">Google Chrome</button>
-          <button type="button" role="tab" id="tab-desk" aria-controls="panel-desk" aria-selected="false" class="tab-btn -mb-px border-b-2 border-transparent pb-2.5 text-[15px] font-bold text-slate-500 hover:text-ink">Desktop app</button>
-          <button type="button" role="tab" id="tab-mob" aria-controls="panel-mob" aria-selected="false" class="tab-btn -mb-px border-b-2 border-transparent pb-2.5 text-[15px] font-bold text-slate-500 hover:text-ink">Mobile app</button>
+          <button type="button" role="tab" id="tab-ext" aria-controls="panel-ext" aria-selected="true" class="tab-btn -mb-px border-b-2 border-transparent pb-2.5 text-[15px] font-semibold text-secondary hover:text-ink">Google Chrome</button>
+          <button type="button" role="tab" id="tab-desk" aria-controls="panel-desk" aria-selected="false" class="tab-btn -mb-px border-b-2 border-transparent pb-2.5 text-[15px] font-semibold text-secondary hover:text-ink">Desktop app</button>
+          <button type="button" role="tab" id="tab-mob" aria-controls="panel-mob" aria-selected="false" class="tab-btn -mb-px border-b-2 border-transparent pb-2.5 text-[15px] font-semibold text-secondary hover:text-ink">Mobile app</button>
         </div>
         <div id="panel-ext" role="tabpanel" aria-labelledby="tab-ext" class="tab-panel pt-3">
           <ol>
@@ -342,12 +374,15 @@
 
       <h2 id="add">Step #3: Add passwords and passkeys</h2>
       <p>Add login credentials and passkeys to your vault so LastPass can fill them in for you.</p>
+      <h3 id="add-passwords">Passwords</h3>
       <ol>
         <li>When you sign in to a site, accept the LastPass prompt to <strong>save</strong> the password — or add it manually from your vault.</li>
-        <li>Where a site supports passkeys, create or save a passkey with LastPass when prompted.</li>
         <li>Organize items into folders as needed so they’re easy to find later.</li>
       </ol>
-      <div class="callout info"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><div><p class="font-semibold text-ink">Passkeys</p><p class="text-[15px] mt-1">Passkeys are a faster, more secure replacement for passwords on supported sites and apps. Learn more in <a href="#">About passkeys</a>.</p></div></div>
+      <h3 id="add-passkeys">Passkeys</h3>
+      <p>Where a site supports passkeys, create or save a passkey with LastPass when prompted.</p>
+      <h4 id="add-passkeys-about">About passkeys</h4>
+      <div class="callout info"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><div><p class="font-semibold text-ink">Passkeys</p><p class="text-[15px] mt-1 text-body">Passkeys are a faster, more secure replacement for passwords on supported sites and apps. Learn more in <a href="#">About passkeys</a>.</p></div></div>
 
       <h2 id="use">Step #4: Use LastPass</h2>
       <p>With the extension installed and items in your vault, LastPass can autofill logins, generate strong passwords, and help you manage credentials across devices.</p>
@@ -370,7 +405,7 @@
 
     <!-- Was this helpful -->
     <div class="mt-10 rounded-2xl bg-cloud p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4" style="border:1px solid rgba(40,47,67,.15)">
-      <div><p class="font-semibold text-lp-slate">Was this article helpful?</p><p class="text-[15px] text-slate-500 mt-0.5">Your feedback helps us improve the docs.</p></div>
+      <div><p class="font-semibold text-lp-slate">Was this article helpful?</p><p class="text-[15px] text-muted mt-0.5">Your feedback helps us improve the docs.</p></div>
       <div class="flex flex-wrap items-center gap-2 shrink-0">
         <button class="btn inline-flex items-center gap-2 h-10 px-4 rounded-full ring-1 ring-slate-300 bg-white hover:bg-slate-50 text-[15px] font-semibold whitespace-nowrap shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg> Yes</button>
         <button class="btn inline-flex items-center gap-2 h-10 px-4 rounded-full ring-1 ring-slate-300 bg-white hover:bg-slate-50 text-[15px] font-semibold whitespace-nowrap shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"/></svg> No</button>
@@ -382,30 +417,82 @@
 
   <!-- Right rail -->
   <aside class="hidden xl:block col-span-3"><div class="sticky top-28 space-y-6 max-h-[calc(100vh-8rem)] overflow-y-auto pr-1">
-    <div><p class="text-[13px] font-bold uppercase tracking-wide text-slate-500 mb-2 pl-3">On this page</p>
-      <ul class="toc border-l border-slate-200">
-        <li><a href="#create" class="block py-1.5 text-[14px] text-slate-500 hover:text-brand-600 pl-3 -ml-px">Step #1: Create an account</a></li>
-        <li><a href="#install" class="block py-1.5 text-[14px] text-slate-500 hover:text-brand-600 pl-3 -ml-px">Step #2: Install the LastPass browser extension and log in</a></li>
-        <li><a href="#add" class="block py-1.5 text-[14px] text-slate-500 hover:text-brand-600 pl-3 -ml-px">Step #3: Add passwords and passkeys</a></li>
-        <li><a href="#use" class="block py-1.5 text-[14px] text-slate-500 hover:text-brand-600 pl-3 -ml-px">Step #4: Use LastPass</a></li>
-        <li><a href="#use-security" class="toc-l2 block py-1.5 text-[14px] text-slate-500 hover:text-brand-600 pl-3 -ml-px">Security</a></li>
-        <li><a href="#use-mfa" class="toc-l3 block py-1.5 text-slate-500 hover:text-brand-600 pl-3 -ml-px">Multifactor authentication</a></li>
-        <li><a href="#use-vault" class="toc-l2 block py-1.5 text-[14px] text-slate-500 hover:text-brand-600 pl-3 -ml-px">Vault management</a></li>
-        <li><a href="#use-collab" class="toc-l2 block py-1.5 text-[14px] text-slate-500 hover:text-brand-600 pl-3 -ml-px">Convenience and collaboration</a></li>
+    <div>
+      <p class="rail-heading">On this page:</p>
+      <ul class="page-toc">
+        <li>
+          <a href="#create">Step #1: Create an account</a>
+          <ul>
+            <li><a href="#create-signup">Sign up</a></li>
+            <li>
+              <a href="#create-master">Master password</a>
+              <ul>
+                <li><a href="#create-recovery">Account recovery</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#install">Step #2: Install the LastPass browser extension and log in</a>
+          <ul>
+            <li><a href="#install-browser">Browser extension</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#add">Step #3: Add passwords and passkeys</a>
+          <ul>
+            <li><a href="#add-passwords">Passwords</a></li>
+            <li>
+              <a href="#add-passkeys">Passkeys</a>
+              <ul>
+                <li><a href="#add-passkeys-about">About passkeys</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#use">Step #4: Use LastPass</a>
+          <ul>
+            <li>
+              <a href="#use-security">Security</a>
+              <ul>
+                <li><a href="#use-mfa">Multifactor authentication</a></li>
+              </ul>
+            </li>
+            <li><a href="#use-vault">Vault management</a></li>
+            <li><a href="#use-collab">Convenience and collaboration</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
-    <div class="rounded-2xl ring-1 ring-slate-200 bg-white p-4">
-      <p class="text-[13px] font-bold uppercase tracking-wide text-slate-500 mb-3">Related content</p>
+    <div>
+      <p class="rail-heading" style="padding-left:0">Related content</p>
       <ul class="space-y-3">
-        <li><a href="#" class="group icon-label"><span class="text-brand-600 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></span><span class="text-[15px] text-slate-700 group-hover:text-[color:var(--cta-link)] font-medium leading-snug">Import passwords into LastPass</span></a></li>
-        <li><a href="#" class="group icon-label"><span class="text-brand-600 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="text-[15px] text-slate-700 group-hover:text-[color:var(--cta-link)] font-medium leading-snug">Set up multifactor authentication</span></a></li>
-        <li><a href="#" class="group icon-label"><span class="text-brand-600 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span><span class="text-[15px] text-slate-700 group-hover:text-[color:var(--cta-link)] font-medium leading-snug">Video: your first day with LastPass</span></a></li>
+        <li><a href="#" class="group icon-label"><span class="text-brand-600 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></span><span class="text-[15px] text-body group-hover:text-[color:var(--cta-link)] font-medium leading-snug">Import passwords into LastPass</span></a></li>
+        <li><a href="#" class="group icon-label"><span class="text-brand-600 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="text-[15px] text-body group-hover:text-[color:var(--cta-link)] font-medium leading-snug">Set up multifactor authentication</span></a></li>
+        <li><a href="#" class="group icon-label"><span class="text-brand-600 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span><span class="text-[15px] text-body group-hover:text-[color:var(--cta-link)] font-medium leading-snug">Video: your first day with LastPass</span></a></li>
       </ul>
-    </div>
-    <div class="space-y-3">
-      <p class="text-[13px] font-bold uppercase tracking-wide text-slate-500">In this guide</p>
-      <a href="#" class="group block rounded-xl ring-1 ring-slate-200 bg-white p-3.5 hover:ring-brand-300 hover:shadow-md transition"><span class="text-[12px] text-slate-400 flex items-center gap-1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg> Previous</span><span class="block font-semibold text-ink mt-1 text-[15px] leading-snug group-hover:text-brand-600">Welcome to LastPass</span></a>
-      <a href="#" class="group block rounded-xl ring-1 ring-slate-200 bg-white p-3.5 hover:ring-brand-300 hover:shadow-md transition"><span class="text-[12px] text-slate-400 flex items-center gap-1">Next <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span><span class="block font-semibold text-ink mt-1 text-[15px] leading-snug group-hover:text-brand-600">Create your account</span></a>
+      <nav class="guide-nav" aria-label="In this guide">
+        <p class="guide-nav-heading">In this guide</p>
+        <a href="#" class="guide-nav-item guide-nav-prev">
+          <span class="guide-nav-arrow" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          </span>
+          <span class="guide-nav-copy">
+            <span class="guide-nav-label">Previous</span>
+            <span class="guide-nav-title">Welcome to LastPass</span>
+          </span>
+        </a>
+        <a href="#" class="guide-nav-item guide-nav-next">
+          <span class="guide-nav-copy">
+            <span class="guide-nav-label">Next</span>
+            <span class="guide-nav-title">Create your account</span>
+          </span>
+          <span class="guide-nav-arrow" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </a>
+      </nav>
     </div>
   </div></aside>
 </div>
@@ -489,7 +576,7 @@ document.getElementById('openFb').addEventListener('click',function(){fb.classLi
 fb.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(){fb.classList.add('hidden')})});
 if(/[?&]openFeedback=true/.test(location.search))fb.classList.remove('hidden');
 // scroll-spy TOC
-var links=[].slice.call(document.querySelectorAll('.toc a'));
+var links=[].slice.call(document.querySelectorAll('.page-toc a'));
 var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))});
 function spy(){var i=0;for(var j=0;j<secs.length;j++){if(secs[j]&&secs[j].getBoundingClientRect().top<150)i=j}links.forEach(function(a){a.classList.remove('active')});if(links[i])links[i].classList.add('active')}
 addEventListener('scroll',spy,{passive:true});spy();
