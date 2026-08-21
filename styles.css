@@ -110,3 +110,76 @@ button:focus-visible,
   outline:2px solid var(--lp-brand);
   outline-offset:3px;
 }
+
+/* =============================================================================
+   Site footer — match live support.lastpass.com (Aug 2026)
+   Live uses ~196px col-md-2 columns left-packed (not equal thirds),
+   13px headings #A09B9E, 13px white links, 24px social icons.
+   Dedicated CSS avoids missing Tailwind breakpoint utilities (e.g. sm:grid-cols-3).
+   ============================================================================= */
+.site-footer{background:#000;color:#fff}
+.site-footer-inner{max-width:80rem;margin:0 auto;padding:30px 24px 24px}
+.site-footer-cols{
+  display:flex;
+  flex-wrap:wrap;
+  gap:24px 12px;
+  align-items:flex-start;
+}
+.site-footer-col{width:196px;max-width:100%;flex:0 0 auto;padding:0 3px;box-sizing:content-box}
+.site-footer-col h4{
+  margin:0 0 10px;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.3;
+  letter-spacing:normal;
+  text-transform:uppercase;
+  color:#a09b9e;
+}
+.site-footer-col ul{margin:0;padding:0;list-style:none}
+.site-footer-col li{margin:5px 0}
+.site-footer-col a{
+  font-size:13px;
+  font-weight:400;
+  line-height:22px;
+  color:#fff;
+  text-decoration:none;
+}
+.site-footer-col a:hover{text-decoration:underline}
+.site-footer-hiring{color:var(--lp-brand);font-weight:700}
+.site-footer-social{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 20px;
+  padding:20px 3px 0;
+  margin:0;
+  list-style:none;
+}
+.site-footer-social a{
+  display:flex;
+  color:#fff;
+  line-height:0;
+}
+.site-footer-social a:hover{opacity:.85}
+.site-footer-social svg{width:24px;height:24px;display:block;flex-shrink:0}
+.site-footer-legal{
+  margin-top:16px;
+  padding:16px 3px 0;
+  border-top:1px solid rgba(255,255,255,.12);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 20px;
+}
+.site-footer-legal a,
+.site-footer-legal span{
+  font-size:13px;
+  font-weight:400;
+  line-height:22px;
+  color:#fff;
+  text-decoration:none;
+}
+.site-footer-legal a:hover{text-decoration:underline}
+@media (max-width:639px){
+  .site-footer-col{width:calc(50% - 12px);box-sizing:border-box}
+}
