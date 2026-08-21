@@ -221,3 +221,17 @@ button:focus-visible,
   .site-footer-col{width:calc(50% - 16px)}
   .site-footer-inner{padding-top:48px}
 }
+
+
+/* Utility bar — Service status indicator (match support portal check-in-circle) */
+.status-ok{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:18px;
+  height:18px;
+  border-radius:999px;
+  background:#008000; /* live lightning-icon operational green */
+  flex-shrink:0;
+}
+.status-ok svg{display:block}
