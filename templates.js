@@ -66,6 +66,10 @@
     Object.keys(links).forEach(function(id){ var s = document.getElementById(id); if(s) io.observe(s); });
   }
 
+  // Hub switcher: start the scrolling row at the current hub
+  var hubRow = document.querySelector('.t-hubs .t-wrap'), hubCur = document.querySelector('.t-hubs [aria-current]');
+  if(hubRow && hubCur && hubRow.scrollWidth > hubRow.clientWidth){ hubRow.scrollLeft = hubCur.offsetLeft - hubRow.offsetLeft - 24; }
+
   // Build notes: shows what each block is and where its content comes from
   var t = document.querySelector('.t-notes-toggle');
   if(t){
