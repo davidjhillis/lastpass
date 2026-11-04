@@ -8,6 +8,11 @@ portal (DiscoverCX / Ingeniux concept). Static site — no build step required.
 - `reader.html` — Article / reader (DITA content rail, TOC, video, choice tabs, feedback)
 - `contact.html` — Contact
 - `search.html` — Coveo-style search results
+- `hub-business.html` — Mini hub (template request 1): a topic homepage, here LastPass Business admin
+- `topic-billing.html` — Topic overview (request 2): Billing, with map-fed link lists, a table and a video hero
+- `faq.html` — FAQ page (request 3): reusable FAQ items with an accessible accordion
+
+The three template pages share `templates.css` and `templates.js`. A **Show build notes** button on each marks every block and where its content comes from (authored, DITA map, release-note records, FAQ items).
 
 ## Assets
 - `styles.css` — compiled stylesheet (linked, not inlined)
