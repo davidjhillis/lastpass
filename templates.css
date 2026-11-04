@@ -336,7 +336,8 @@ body.show-notes [data-note]::before{content:attr(data-note);position:absolute;z-
 .mk-caps table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.55}
 .mk-caps thead th{background:var(--t-wash);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--lp-text-muted);text-align:left;padding:14px 24px}
 .mk-caps th[scope=row]{text-align:left;padding:22px 24px;vertical-align:top;width:30%}
-.mk-caps th[scope=row] span{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:700;color:var(--lp-text-primary)}
+.mk-caps th[scope=row] > span{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:700;color:var(--lp-text-primary)}
+.mk-caps th[scope=row] .t-cat-icon{display:grid;place-items:center;flex-shrink:0}
 .mk-caps td{padding:22px 24px;vertical-align:top;color:var(--lp-text-body);border-top:1px solid var(--t-line)}
 .mk-caps tbody th{border-top:1px solid var(--t-line)}
 .mk-caps td p{margin:0}
