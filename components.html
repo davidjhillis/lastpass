@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page-building essentials — LastPass Support</title>
-<meta name="description" content="The content units and components that build every LastPass support portal page template.">
+<meta name="description" content="One Flex page type built from five trays, three special page types, and the components inside them.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -96,7 +96,7 @@
 <nav class="t-crumbs" aria-label="Breadcrumb">
   <ol>
     <li><a href="index.html">Home</a></li>
-    <li><a href="templates.html">Page templates</a></li>
+    <li><a href="templates.html">Page types</a></li>
     <li><span aria-current="page">Page-building essentials</span></li>
   </ol>
 </nav>
@@ -108,29 +108,31 @@
   <div class="t-hero-in">
     <p class="t-eyebrow">LastPass support portal · design system</p>
     <h1>Page-building essentials</h1>
-    <p class="t-hero-sub">6 content units that editors stack in Page Builder, and 8 components that go inside them. Every page template is built from these.</p>
+    <p class="t-hero-sub">One Flex page type built from 5 trays, 3 special page types, and the 7 components that go inside them.</p>
   </div>
 </section>
 
-<nav class="ul-nav" aria-label="Units and components"><div class="t-wrap"><ul><li><a href="#hero">Hero</a></li><li><a href="#feature">Feature</a></li><li><a href="#cards">Cards</a></li><li><a href="#faq">FAQ</a></li><li><a href="#content">Content</a></li><li><a href="#records">Record list</a></li><li class="ul-nav-sep"><a href="#components">Components</a></li><li><a href="#automatic">Automatic</a></li></ul><button type="button" class="ul-grid" aria-pressed="false">Show grid</button></div></nav>
+<nav class="ul-nav" aria-label="Trays and page types"><div class="t-wrap"><ul><li><a href="#hero">Hero</a></li><li><a href="#feature">Feature</a></li><li><a href="#cards">Cards</a></li><li><a href="#faq">FAQ</a></li><li><a href="#content">Content</a></li><li class="ul-nav-sep"><a href="#special">Special page types</a></li><li><a href="#components">Components</a></li><li><a href="#automatic">Automatic</a></li></ul><button type="button" class="ul-grid" aria-pressed="false">Show grid</button></div></nav>
 
 <div class="t-wrap ul-body">
   <div class="ul-model">
-    <div><b>Content unit</b><span>A tray an editor adds, reorders or removes in Page Builder. Every unit has a <b>Background</b> option (white, wash, cloud, dark) and an optional heading; its other options pick the variant.</span></div>
-    <div><b>Component</b><span>A piece placed inside a unit’s layout, such as a button, card or table.</span></div>
+    <div><b>Flex tray</b><span>One of 5 trays an editor stacks on a Flex page in Page Builder, in any order.</span></div>
+    <div><b>Special page type</b><span>A fixed layout over records, for pages trays can’t build.</span></div>
+    <div><b>Component</b><span>A piece placed inside a tray, such as a button, card or table.</span></div>
     <div><b>Automatic</b><span>Navigation the site builds itself. Editors never place it.</span></div>
   </div>
+  <div class="ul-shared"><p>Every tray also has</p><ul><li><b>Background</b><span>White, wash, cloud or dark</span></li><li><b>Audience</b><span>Metadata tag: Everyone, Signed out, Free, Premium or Families, Business admin</span></li></ul></div>
 <section class="ul-unit" id="hero" aria-labelledby="h-hero">
   <div class="ul-head">
     <div>
-      <p class="ul-kind">Content unit</p>
+      <p class="ul-kind">Flex tray</p>
       <h2 id="h-hero">Hero</h2>
       <p class="ul-purpose">Opens every page: the title, an intro, and optionally search, buttons and a media slot.</p>
-      <p class="ul-merges"><b>Replaces</b> 4 hero variants, quick links, proof strip, start-here card, platform card</p>
+      <p class="ul-merges"><b>Replaces</b> 4 hero variants, quick links, proof strip, start-here card</p>
     </div>
-    <dl class="ul-opts"><div><dt>Layout</dt><dd>Centered, or split with a media slot</dd></div><div><dt>Weight</dt><dd>Standard or marketing (dark, larger type)</dd></div><div><dt>Search</dt><dd>Off, all of support, or scoped to a product</dd></div><div><dt>Media slot</dt><dd>Image, screenshot, Vimeo, start-here list or platform download</dd></div><div><dt>Extras</dt><dd>Badge, up to 2 buttons, quick links bar, proof points</dd></div>
+    <dl class="ul-opts"><div><dt>Layout</dt><dd>Centered, or split with a media slot</dd></div><div><dt>Weight</dt><dd>Standard or marketing (dark, larger type)</dd></div><div><dt>Search</dt><dd>Off, all of support, or scoped to a product</dd></div><div><dt>Media slot</dt><dd>Image, screenshot or start-here list</dd></div><div><dt>Extras</dt><dd>Badge, up to 2 buttons, quick links bar, proof points</dd></div>
       <div><dt>Components</dt><dd><ul class="tp-chips"><li><a href="#c-button">Button</a></li><li><a href="#c-media">Media</a></li><li><a href="#c-link-list">Link list</a></li></ul></dd></div>
-      <div><dt>Used on</dt><dd><a href="hub-business.html">Mini hub</a>, <a href="topic-saas-monitoring.html">Topic overview, product</a>, <a href="topic-billing.html">Topic overview, utility</a>, <a href="faq.html">FAQ page</a>, <a href="contact-us.html">Contact Us</a>, <a href="release-notes.html">Release notes</a>, <a href="downloads.html">Downloads</a>, <a href="known-issues.html">Known issue tracker</a>, <a href="lifecycle.html">Product lifecycle</a></dd></div>
+      <div><dt>Used on</dt><dd><a href="hub-business.html">Mini hub</a>, <a href="topic-saas-monitoring.html">Topic overview, product</a>, <a href="topic-billing.html">Topic overview, utility</a>, <a href="faq.html">FAQ page</a>, <a href="contact-us.html">Contact Us</a>, <a href="lifecycle.html">Product lifecycle</a></dd></div>
     </dl>
   </div>
   <figure class="ul-variant" id="ex-hero-0"><figcaption><b>Standard</b><span>from <a href="faq.html">FAQ page</a></span></figcaption><div class="cl-stage "><section class="t-hero t-hero--center" data-note="Hero unit · standard · no search; compact">
@@ -207,14 +209,14 @@
 <section class="ul-unit" id="feature" aria-labelledby="h-feature">
   <div class="ul-head">
     <div>
-      <p class="ul-kind">Content unit</p>
+      <p class="ul-kind">Flex tray</p>
       <h2 id="h-feature">Feature</h2>
       <p class="ul-purpose">Media on one side and a message on the other, or a full-width banner that asks for one action.</p>
       <p class="ul-merges"><b>Replaces</b> feature tray, spotlight, CTA band, help banner</p>
     </div>
-    <dl class="ul-opts"><div><dt>Media side</dt><dd>Left or right, or none for a banner</dd></div><div><dt>Media</dt><dd>Screenshot, photo or Vimeo, in a fixed frame</dd></div><div><dt>Frame</dt><dd>4:3 (default), 1:1 or 16:9, with a focus point for the crop</dd></div><div><dt>Content</dt><dd>Badge or kicker, heading, text, up to 4 ticks, up to 2 buttons or links</dd></div><div><dt>Targeting</dt><dd>Optional schedule and audience rule</dd></div>
+    <dl class="ul-opts"><div><dt>Media side</dt><dd>Left or right, or none for a banner</dd></div><div><dt>Media</dt><dd>Screenshot or photo, in a fixed frame</dd></div><div><dt>Frame</dt><dd>4:3 (default), 1:1 or 16:9, with a focus point for the crop</dd></div><div><dt>Content</dt><dd>Badge or kicker, heading, text, up to 4 ticks, up to 2 buttons or links</dd></div>
       <div><dt>Components</dt><dd><ul class="tp-chips"><li><a href="#c-media">Media</a></li><li><a href="#c-button">Button</a></li></ul></dd></div>
-      <div><dt>Used on</dt><dd><a href="hub-business.html">Mini hub</a>, <a href="topic-saas-monitoring.html">Topic overview, product</a>, <a href="topic-billing.html">Topic overview, utility</a>, <a href="faq.html">FAQ page</a>, <a href="downloads.html">Downloads</a></dd></div>
+      <div><dt>Used on</dt><dd><a href="hub-business.html">Mini hub</a>, <a href="topic-saas-monitoring.html">Topic overview, product</a>, <a href="topic-billing.html">Topic overview, utility</a>, <a href="faq.html">FAQ page</a></dd></div>
     </dl>
   </div>
   <div class="ul-try" data-try="#ex-feature-0" role="group" aria-label="Try the Feature options">
@@ -295,14 +297,14 @@
 <section class="ul-unit" id="cards" aria-labelledby="h-cards">
   <div class="ul-head">
     <div>
-      <p class="ul-kind">Content unit</p>
+      <p class="ul-kind">Flex tray</p>
       <h2 id="h-cards">Cards</h2>
       <p class="ul-purpose">A grid of cards. The card variant sets what each card shows; the source sets where they come from.</p>
-      <p class="ul-merges"><b>Replaces</b> category, article, file, benefit, step, download and contact-option cards</p>
+      <p class="ul-merges"><b>Replaces</b> category, article, file, benefit, step and contact-option cards</p>
     </div>
-    <dl class="ul-opts"><div><dt>Card variant</dt><dd>Category, article, icon, step, file, download, contact option</dd></div><div><dt>Columns</dt><dd>2, 3 or 4</dd></div><div><dt>Background</dt><dd>White, wash, dark</dd></div><div><dt>Source</dt><dd>Hand-picked, a DITA map branch, or records</dd></div>
-      <div><dt>Components</dt><dd><ul class="tp-chips"><li><a href="#c-card">Card</a></li><li><a href="#c-button">Button</a></li><li><a href="#c-link-list">Link list</a></li><li><a href="#c-record">Record</a></li></ul></dd></div>
-      <div><dt>Used on</dt><dd><a href="hub-business.html">Mini hub</a>, <a href="topic-saas-monitoring.html">Topic overview, product</a>, <a href="contact-us.html">Contact Us</a>, <a href="downloads.html">Downloads</a></dd></div>
+    <dl class="ul-opts"><div><dt>Card variant</dt><dd>Category, article, icon, step, file, contact option</dd></div><div><dt>Columns</dt><dd>2, 3 or 4</dd></div><div><dt>Source</dt><dd>Hand-picked, or a DITA map branch</dd></div>
+      <div><dt>Components</dt><dd><ul class="tp-chips"><li><a href="#c-card">Card</a></li><li><a href="#c-button">Button</a></li><li><a href="#c-link-list">Link list</a></li></ul></dd></div>
+      <div><dt>Used on</dt><dd><a href="hub-business.html">Mini hub</a>, <a href="topic-saas-monitoring.html">Topic overview, product</a>, <a href="contact-us.html">Contact Us</a></dd></div>
     </dl>
   </div>
   <figure class="ul-variant" id="ex-cards-0"><figcaption><b>Category, with links from the map</b><span>from <a href="hub-business.html">Mini hub</a></span></figcaption><div class="cl-stage "><div class="t-cats">
@@ -385,7 +387,7 @@
 <section class="ul-unit" id="faq" aria-labelledby="h-faq">
   <div class="ul-head">
     <div>
-      <p class="ul-kind">Content unit</p>
+      <p class="ul-kind">Flex tray</p>
       <h2 id="h-faq">FAQ</h2>
       <p class="ul-purpose">Questions that expand. Items come from the shared FAQ library, so one answer can appear on many pages.</p>
       <p class="ul-merges"><b>Replaces</b> FAQ group</p>
@@ -420,14 +422,14 @@
 <section class="ul-unit" id="content" aria-labelledby="h-content">
   <div class="ul-head">
     <div>
-      <p class="ul-kind">Content unit</p>
+      <p class="ul-kind">Flex tray</p>
       <h2 id="h-content">Content</h2>
-      <p class="ul-purpose">Rich text for the body of a page, with link lists, tables, notices and video placed inside it.</p>
-      <p class="ul-merges"><b>Replaces</b> link list, table, capability table, notice, video</p>
+      <p class="ul-purpose">Rich text for the body of a page, with link lists, tables, notices and short lists placed inside it.</p>
+      <p class="ul-merges"><b>Replaces</b> link list, tables, capability table, notice, recent-items list</p>
     </div>
     <dl class="ul-opts"><div><dt>Body</dt><dd>Rich text, H2 and H3 only</dd></div><div><dt>Inside</dt><dd>Link list, table, notice, media</dd></div><div><dt>Navigation</dt><dd>Adds an “On this page” list from its H2s</dd></div>
       <div><dt>Components</dt><dd><ul class="tp-chips"><li><a href="#c-link-list">Link list</a></li><li><a href="#c-table">Table</a></li><li><a href="#c-notice">Notice</a></li><li><a href="#c-media">Media</a></li></ul></dd></div>
-      <div><dt>Used on</dt><dd><a href="topic-saas-monitoring.html">Topic overview, product</a>, <a href="topic-billing.html">Topic overview, utility</a>, <a href="lifecycle.html">Product lifecycle</a></dd></div>
+      <div><dt>Used on</dt><dd><a href="hub-business.html">Mini hub</a>, <a href="topic-saas-monitoring.html">Topic overview, product</a>, <a href="topic-billing.html">Topic overview, utility</a>, <a href="lifecycle.html">Product lifecycle</a></dd></div>
     </dl>
   </div>
   <figure class="ul-variant" id="ex-content-0"><figcaption><b>Link list</b><span>from <a href="topic-billing.html">Topic overview, utility</a></span></figcaption><div class="cl-stage cl-stage--narrow"><ul class="t-links">
@@ -455,7 +457,11 @@
           </tbody>
         </table>
       </div></div></figure>
-  <figure class="ul-variant" id="ex-content-2"><figcaption><b>Table, rich rows</b><span>from <a href="topic-saas-monitoring.html">Topic overview, product</a></span></figcaption><div class="cl-stage "><div class="mk-caps" data-note="Content unit · table · rows authored; article links picked from the DITA map">
+  <figure class="ul-variant" id="ex-content-2"><figcaption><b>Two tables, side by side</b><span>from <a href="lifecycle.html">Product lifecycle</a></span></figcaption><div class="cl-stage "><div class="lc-pair" data-note="Content tray · two tables, hand-maintained at launch (generated here from release history); stacks on phones">
+      <div class="t-table"><table style="min-width:0"><caption>Status definitions</caption><thead><tr><th scope="col">Status</th><th scope="col">Meaning</th></tr></thead><tbody><tr><th scope="row"><span class="lc-status lc-active">Active</span></th><td>Fully supported and getting new features and fixes.</td></tr><tr><th scope="row"><span class="lc-status lc-mature">Active, mature</span></th><td>Supported and getting fixes, with few new features planned.</td></tr><tr><th scope="row"><span class="lc-status lc-eol">End of life</span></th><td>An end date is announced. Fixes only until that date.</td></tr><tr><th scope="row"><span class="lc-status lc-retired">Retired</span></th><td>No longer available or supported. A replacement is named.</td></tr></tbody></table></div>
+      <div class="t-table"><table><caption>Products</caption><thead><tr><th scope="col">Product</th><th scope="col">Family</th><th scope="col">Latest version</th><th scope="col">Last release</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">Browser extension for Chrome</th><td>Password manager</td><td class="num">4.156.0</td><td class="num"><a href="release-notes.html#extension-2026-09-29">Sep 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Edge</th><td>Password manager</td><td class="num">4.156.0</td><td class="num"><a href="release-notes.html#extension-2026-09-29">Sep 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Firefox</th><td>Password manager</td><td class="num">4.150.0</td><td class="num"><a href="release-notes.html#extension-2026-01-21">Jan 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Safari</th><td>Password manager</td><td class="num">4.156.0</td><td class="num"><a href="release-notes.html#extension-2026-09-29">Sep 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Opera</th><td>Password manager</td><td class="num">4.146.8</td><td class="num"><a href="release-notes.html#extension-2025-09-12">Sep 2025</a></td><td><span class="lc-status lc-mature">Active, mature</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Internet Explorer</th><td>Password manager</td><td class="num">4.123.0</td><td class="num"><a href="release-notes.html#extension-2023-10-12">Oct 2023</a></td><td><span class="lc-status lc-eol">End of life</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Web vault</th><td>Password manager</td><td class="num">4.156.0</td><td class="num"><a href="release-notes.html#vault-2026-10-07">Oct 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">LastPass for Desktop</th><td>Password manager</td><td class="num">2.2.0</td><td class="num"><a href="release-notes.html#desktop-2026-08-17">Aug 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Mac App</th><td>Password manager</td><td class="num">3.12</td><td class="num"><a href="release-notes.html#mac-app-2015-06-19">Jun 2015</a></td><td><span class="lc-status lc-eol">End of life</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Universal Windows Installer</th><td>Installers</td><td class="num">5.4.5</td><td class="num"><a href="release-notes.html#win-installer-2026-08-18">Aug 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Universal macOS Installer</th><td>Installers</td><td class="num">1.3.0</td><td class="num"><a href="release-notes.html#mac-installer-2026-03-16">Mar 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">LastPass VPN</th><td>VPN</td><td class="num">1.1.0</td><td class="num"><a href="release-notes.html#vpn-2026-10-29">Oct 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Admin Console</th><td>Business</td><td class="num">13.10.2026</td><td class="num"><a href="release-notes.html#admin-console-2026-10-13">Oct 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">AD Connector</th><td>Business</td><td class="num">1.7.1924</td><td class="num"><a href="release-notes.html#ad-connector-2026-07-16">Jul 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Universal Proxy</th><td>Business</td><td class="num">4.2.0</td><td class="num"><a href="release-notes.html#proxy-2022-02-01">Feb 2022</a></td><td><span class="lc-status lc-eol">End of life</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Workstation MFA</th><td>Business</td><td class="num">2.6.0</td><td class="num"><a href="release-notes.html#workstation-mfa-2025-12-03">Dec 2025</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr></tbody></table></div>
+    </div></div></figure>
+  <figure class="ul-variant" id="ex-content-3"><figcaption><b>Table, rich rows</b><span>from <a href="topic-saas-monitoring.html">Topic overview, product</a></span></figcaption><div class="cl-stage "><div class="mk-caps" data-note="Content unit · table · rows authored; article links picked from the DITA map">
       <table>
         <thead><tr><th scope="col">Capability</th><th scope="col">What it does and where to start</th></tr></thead>
         <tbody>
@@ -475,65 +481,112 @@
       </table>
     </div></div></figure>
 </section>
-<section class="ul-unit" id="records" aria-labelledby="h-records">
+<section class="ul-unit" id="special" aria-labelledby="h-special">
+  <div class="ul-head"><div><p class="ul-kind">Not built from trays</p><h2 id="h-special">Special page types</h2><p class="ul-purpose">Three pages that need records and behavior a stack of trays can’t give. Each has a fixed layout and still uses the Hero tray and the shared components.</p></div></div>
+  <div class="ul-special" id="sp-releases">
   <div class="ul-head">
     <div>
-      <p class="ul-kind">Content unit</p>
-      <h2 id="h-records">Record list</h2>
-      <p class="ul-purpose">Structured records from the product registry: release notes, known issues, downloads, lifecycle.</p>
-      <p class="ul-merges"><b>Replaces</b> record list, filter panel, release entry, issue card, resolved list, lifecycle tables</p>
+      <p class="ul-kind">Special page type</p>
+      <h3 class="ul-h3"><a href="release-notes.html">Release notes</a></h3>
+      <p class="ul-purpose">Every release as a record, newest first, with filters and a stable link per release.</p>
+      <p class="ul-merges"><b>Why not flex</b> Needs per-release URLs, a feed and filtering across 351 records, migrated from lastpass.com/upgrade.php.</p>
     </div>
-    <dl class="ul-opts"><div><dt>Record type</dt><dd>Release note, known issue, download, product</dd></div><div><dt>Display</dt><dd>List, cards or table</dd></div><div><dt>Filters</dt><dd>Search and facets, optional</dd></div><div><dt>Limit</dt><dd>Newest n, or all with “Show more”</dd></div>
-      <div><dt>Components</dt><dd><ul class="tp-chips"><li><a href="#c-record">Record</a></li><li><a href="#c-table">Table</a></li><li><a href="#c-button">Button</a></li></ul></dd></div>
-      <div><dt>Used on</dt><dd><a href="hub-business.html">Mini hub</a>, <a href="release-notes.html">Release notes</a>, <a href="known-issues.html">Known issue tracker</a>, <a href="lifecycle.html">Product lifecycle</a></dd></div>
-    </dl>
+    <dl class="ul-opts"><div><dt>Records</dt><dd>Release: product, version, date, platforms, typed items</dd></div><div><dt>Behavior</dt><dd>Search, product and change-type filters, Show more, links</dd></div><div><dt>Source</dt><dd>Migrated once, then authored in the CMS</dd></div></dl>
   </div>
-  <figure class="ul-variant" id="ex-records-0"><figcaption><b>List with filters</b><span>from <a href="release-notes.html">Release notes</a></span></figcaption><div class="cl-stage "><div class="rc-layout">
-  <aside class="rc-side" aria-label="Filter releases" data-note="Record list unit · filters · product facets come from the product registry; counts are live">
-    <div class="rc-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="8"/></svg><input type="search" id="ex-records-0-rn-q" aria-label="Search release notes" placeholder="Search release notes"></div>
-    <div><h2>Product</h2><div class="rc-filter" id="ex-records-0-rn-products"><label><input type="checkbox" name="p" value="extension"> Browser extension<span class="rc-count">231</span></label><label><input type="checkbox" name="p" value="vault"> Web vault<span class="rc-count">4</span></label><label><input type="checkbox" name="p" value="desktop"> LastPass for Desktop<span class="rc-count">11</span></label><label><input type="checkbox" name="p" value="mac-app"> Mac App<span class="rc-count">7</span></label><label><input type="checkbox" name="p" value="win-installer"> Universal Windows Installer<span class="rc-count">7</span></label><label><input type="checkbox" name="p" value="mac-installer"> Universal macOS Installer<span class="rc-count">3</span></label><label><input type="checkbox" name="p" value="vpn"> LastPass VPN<span class="rc-count">2</span></label><label><input type="checkbox" name="p" value="admin-console"> Admin Console<span class="rc-count">42</span></label><label><input type="checkbox" name="p" value="ad-connector"> AD Connector<span class="rc-count">20</span></label><label><input type="checkbox" name="p" value="proxy"> Universal Proxy<span class="rc-count">5</span></label><label><input type="checkbox" name="p" value="workstation-mfa"> Workstation MFA<span class="rc-count">10</span></label></div></div>
-    <div><h2>What changed</h2><div class="rc-filter" id="ex-records-0-rn-types"><label><input type="checkbox" name="t" value="New"> <span class="t-tag t-tag--new">New</span> </label><label><input type="checkbox" name="t" value="Improved"> <span class="t-tag t-tag--improved">Improved</span> </label><label><input type="checkbox" name="t" value="Changed"> <span class="t-tag t-tag--changed">Changed</span> </label><label><input type="checkbox" name="t" value="Fixed"> <span class="t-tag t-tag--fixed">Fixed</span> </label><label><input type="checkbox" name="t" value="Security"> <span class="t-tag t-tag--security">Security</span> </label></div></div>
+  <figure class="ul-variant" id="ex-sp-releases-0"><figcaption><b>Filters and release list</b><span>from <a href="release-notes.html">Release notes</a></span></figcaption><div class="cl-stage "><div class="rc-layout">
+  <aside class="rc-side" aria-label="Filter releases" data-note="Release notes page type · filters · product facets come from the product registry; counts are live">
+    <div class="rc-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="8"/></svg><input type="search" id="ex-sp-releases-0-rn-q" aria-label="Search release notes" placeholder="Search release notes"></div>
+    <div><h2>Product</h2><div class="rc-filter" id="ex-sp-releases-0-rn-products"><label><input type="checkbox" name="p" value="extension"> Browser extension<span class="rc-count">231</span></label><label><input type="checkbox" name="p" value="vault"> Web vault<span class="rc-count">4</span></label><label><input type="checkbox" name="p" value="desktop"> LastPass for Desktop<span class="rc-count">11</span></label><label><input type="checkbox" name="p" value="mac-app"> Mac App<span class="rc-count">7</span></label><label><input type="checkbox" name="p" value="win-installer"> Universal Windows Installer<span class="rc-count">7</span></label><label><input type="checkbox" name="p" value="mac-installer"> Universal macOS Installer<span class="rc-count">3</span></label><label><input type="checkbox" name="p" value="vpn"> LastPass VPN<span class="rc-count">2</span></label><label><input type="checkbox" name="p" value="admin-console"> Admin Console<span class="rc-count">42</span></label><label><input type="checkbox" name="p" value="ad-connector"> AD Connector<span class="rc-count">20</span></label><label><input type="checkbox" name="p" value="proxy"> Universal Proxy<span class="rc-count">5</span></label><label><input type="checkbox" name="p" value="workstation-mfa"> Workstation MFA<span class="rc-count">10</span></label></div></div>
+    <div><h2>What changed</h2><div class="rc-filter" id="ex-sp-releases-0-rn-types"><label><input type="checkbox" name="t" value="New"> <span class="t-tag t-tag--new">New</span> </label><label><input type="checkbox" name="t" value="Improved"> <span class="t-tag t-tag--improved">Improved</span> </label><label><input type="checkbox" name="t" value="Changed"> <span class="t-tag t-tag--changed">Changed</span> </label><label><input type="checkbox" name="t" value="Fixed"> <span class="t-tag t-tag--fixed">Fixed</span> </label><label><input type="checkbox" name="t" value="Security"> <span class="t-tag t-tag--security">Security</span> </label></div></div>
     <p><a class="rc-feed" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg> Subscribe to updates</a></p>
   </aside>
   <div>
-    <div class="rc-bar"><p id="ex-records-0-rn-count">Showing <b>12</b> of <b>351</b> releases</p><button class="t-btn t-btn--line" type="button" id="ex-records-0-rn-clear" hidden>Clear filters</button></div>
-    <ol class="rn-list" id="ex-records-0-rn-list" data-note="Record list unit · release note records; each has a stable link"><li class="rn" id="ex-records-0-vpn-2026-10-29" data-p="vpn" data-types="Fixed">
-  <div class="rn-meta"><time datetime="2026-10-29">October 29, 2026</time><a href="#ex-records-0-vpn-2026-10-29">Link to this release</a></div>
+    <div class="rc-bar"><p id="ex-sp-releases-0-rn-count">Showing <b>12</b> of <b>351</b> releases</p><button class="t-btn t-btn--line" type="button" id="ex-sp-releases-0-rn-clear" hidden>Clear filters</button></div>
+    <ol class="rn-list" id="ex-sp-releases-0-rn-list" data-note="Release notes page type · release records; each has a stable link"><li class="rn" id="ex-sp-releases-0-vpn-2026-10-29" data-p="vpn" data-types="Fixed">
+  <div class="rn-meta"><time datetime="2026-10-29">October 29, 2026</time><a href="#ex-sp-releases-0-vpn-2026-10-29">Link to this release</a></div>
   <div>
     <h3>LastPass VPN <span class="rn-v">Version 1.1.0</span></h3>
     
     <ul><li class="rn-plain"><span>Smarter auto reconnect. With Auto reconnect on, LastPass VPN now waits and reconnects when the internet returns, and notifies you when you disconnect and reconnect. It also reconnects after a network adapter change or a connection timeout. The timeout pop-up is gone.</span></li><li class="rn-plain"><span>More launch control. Auto reconnect, Launch on startup, and Reconnect on launch are now 3 separate switches, all on by default. Launch on startup opens the app in the background when Windows starts. Reconnect on launch restores your last connection if you were connected when the app closed.</span></li><li class="rn-plain"><span>ARM64 driver support. The network driver now installs on ARM64 devices, laying the groundwork for features like split tunneling.</span></li><li class="rn-plain"><span>Smoother tray menu. The tray menu now grows upward in step with the card animations.</span></li><li class="rn-plain"><span>Clearer protocol settings. A new note explains that changing protocols disconnects you briefly, then reconnects you automatically.</span></li><li class="rn-plain"><span>Easier to find. LastPass VPN for Windows now has its own card, with a Microsoft Store link, on the LastPass Downloads page.</span></li><li><span class="t-tag t-tag--fixed">Fixed</span><span>Fixed cut-off and crowded text in German, Spanish, French, Italian, and Portuguese.</span></li></ul>
   </div>
 </li>
-<li class="rn" id="ex-records-0-admin-console-2026-10-13" data-p="admin-console" data-types="New Note">
-  <div class="rn-meta"><time datetime="2026-10-13">October 13, 2026</time><a href="#ex-records-0-admin-console-2026-10-13">Link to this release</a></div>
+<li class="rn" id="ex-sp-releases-0-admin-console-2026-10-13" data-p="admin-console" data-types="New Note">
+  <div class="rn-meta"><time datetime="2026-10-13">October 13, 2026</time><a href="#ex-sp-releases-0-admin-console-2026-10-13">Link to this release</a></div>
   <div>
     <h3>Admin Console <span class="rn-v">Version 13.10.2026</span></h3>
     
     <ul><li><span class="t-tag t-tag--new">New</span><span>AI Monitoring &amp; Protect is now available in SaaS Protect. It provides visibility into AI applications being used across the organization and allow administrators to enforce usage rules directly through the browser. It also detects and warns users when they enter, paste, or upload sensitive data to AI tools.</span></li><li><span class="t-tag t-tag--new">New</span><span>Admins can allow or deny exception requests for categories of apps on the SaaS Protect page.</span></li><li><span class="t-tag t-tag--new">New</span><span>Admins can enable the automatic addition of newly discovered apps and sites to the app catalog as custom apps in SaaS Monitoring.</span></li><li><span class="t-tag t-tag--note">Note</span><span>Install the latest LastPass browser extension to use these features. It is available for Chrome, Edge, and Safari. Firefox and Opera support is coming soon.</span></li></ul>
   </div>
 </li></ol>
-    <div class="rc-more"><button class="t-btn t-btn--line" type="button" id="ex-records-0-rn-more">Show more releases</button></div>
+    <div class="rc-more"><button class="t-btn t-btn--line" type="button" id="ex-sp-releases-0-rn-more">Show more releases</button></div>
   </div>
 </div></div></figure>
-  <figure class="ul-variant" id="ex-records-1"><figcaption><b>Compact list</b><span>from <a href="known-issues.html">Known issue tracker</a></span></figcaption><div class="cl-stage "><ul class="ki-fixed" data-note="Record list unit · real “Fixed” items from release notes since May 5, 2026"><li><span>Fixed cut-off and crowded text in German, Spanish, French, Italian, and Portuguese.</span><span class="ki-where">Oct 29, 2026 · <a href="release-notes.html#vpn-2026-10-29">LastPass VPN 1.1.0</a></span></li>
+</div>
+  <div class="ul-special" id="sp-downloads">
+  <div class="ul-head">
+    <div>
+      <p class="ul-kind">Special page type</p>
+      <h3 class="ul-h3"><a href="downloads.html">Downloads</a></h3>
+      <p class="ul-purpose">The visitor’s platform first, then every download by operating system.</p>
+      <p class="ul-merges"><b>Why not flex</b> Needs platform detection and versions read from the release records, so downloads never show a stale version.</p>
+    </div>
+    <dl class="ul-opts"><div><dt>Records</dt><dd>Download: name, text, link, product, platform</dd></div><div><dt>Behavior</dt><dd>Platform detection, operating-system tabs</dd></div><div><dt>Versions</dt><dd>Read from the newest release record</dd></div></dl>
+  </div>
+  <figure class="ul-variant" id="ex-sp-downloads-0"><figcaption><b>Platform card</b><span>from <a href="downloads.html">Downloads</a></span></figcaption><div class="cl-stage cl-stage--narrow"><div class="dl-hero-card" id="ex-sp-downloads-0-dl-lead" data-note="Downloads page type · platform card · picks the visitor’s operating system; links to all platforms below">
+      <p class="dl-detect" id="ex-sp-downloads-0-dl-os">Recommended for Windows</p>
+      <h2 id="ex-sp-downloads-0-dl-name">Universal Windows Installer</h2>
+      <p id="ex-sp-downloads-0-dl-text">Installs the browser extensions for Microsoft Edge, Chrome, Firefox and Opera in one step.</p>
+      <p><a class="t-btn t-btn--brand" id="ex-sp-downloads-0-dl-href" href="https://download.cloud.lastpass.com/windows_installer/LastPassInstaller.exe">Download</a></p>
+      <p class="dl-switch">Not your system? <button type="button" data-goto="all">See all platforms</button></p>
+    </div></div></figure>
+  <figure class="ul-variant" id="ex-sp-downloads-1"><figcaption><b>Download cards</b><span>from <a href="downloads.html">Downloads</a></span></figcaption><div class="cl-stage "><div class="dl-grid" role="tabpanel" id="ex-sp-downloads-1-pane-windows" aria-labelledby="tab-windows"><article class="dl-card"><h3>LastPass for Desktop</h3><p>Access and manage your LastPass vault from your desktop without using a browser extension.</p><p class="dl-ver"><span>Version <b>2.2.0</b></span><span>August 17, 2026</span><a href="release-notes.html#desktop-2026-08-17">What’s new</a></p><a class="t-btn t-btn--brand" href="https://apps.microsoft.com/detail/9pbs27gphv34">Download<span class="sr-only"> LastPass for Desktop</span></a></article>
+<article class="dl-card" data-note="Downloads page type · download card. Version from release notes. lastpass.com/downloads shows 1.0.0 today; the registry keeps them in step"><h3>LastPass VPN</h3><p>A fast, private VPN for your devices. Works with your LastPass Password Manager account.</p><p class="dl-ver"><span>Version <b>1.1.0</b></span><span>October 29, 2026</span><a href="release-notes.html#vpn-2026-10-29">What’s new</a></p><a class="t-btn t-btn--brand" href="https://apps.microsoft.com/detail/xp9kn6k44bnkbq">Download<span class="sr-only"> LastPass VPN</span></a></article>
+<article class="dl-card"><h3>Universal Windows Installer</h3><p>Installs the browser extensions for Microsoft Edge, Chrome, Firefox and Opera in one step.</p><p class="dl-ver"><span>Version <b>5.4.5</b></span><span>August 18, 2026</span><a href="release-notes.html#win-installer-2026-08-18">What’s new</a></p><a class="t-btn t-btn--brand" href="https://download.cloud.lastpass.com/windows_installer/LastPassInstaller.exe">Download<span class="sr-only"> Universal Windows Installer</span></a></article></div></div></figure>
+</div>
+  <div class="ul-special" id="sp-issues">
+  <div class="ul-head">
+    <div>
+      <p class="ul-kind">Special page type</p>
+      <h3 class="ul-h3"><a href="known-issues.html">Known issues</a></h3>
+      <p class="ul-purpose">Confirmed issues with workarounds, and recent fixes linked to their releases.</p>
+      <p class="ul-merges"><b>Why not flex</b> Needs an issue workflow (status, workaround, fixed-in release) and an empty state when nothing is open.</p>
+    </div>
+    <dl class="ul-opts"><div><dt>Records</dt><dd>Issue: ID, title, status, product, versions, workaround, fixed in</dd></div><div><dt>Behavior</dt><dd>Active and resolved views</dd></div><div><dt>Workflow</dt><dd>Investigating, Workaround available, Fix scheduled, Resolved</dd></div></dl>
+  </div>
+  <figure class="ul-variant" id="ex-sp-issues-0"><figcaption><b>Issue record</b><span>from <a href="known-issues.html">Known issues</a></span></figcaption><div class="cl-stage "><article class="ki" data-note="Known issues page type · issue record · ID, status, products, affected versions, workaround, fixed-in release">
+      <header>
+        <span class="ki-sample">Layout example · not a real issue</span>
+        <span class="ki-id">KI-0000</span>
+        <span class="ki-status">Workaround available</span>
+        <h3>Example: the extension icon doesn’t appear after a browser update</h3>
+      </header>
+      <dl>
+        <div><dt>Product</dt><dd>Browser extension</dd></div>
+        <div><dt>Platforms</dt><dd>Chrome, Edge</dd></div>
+        <div><dt>Affected versions</dt><dd>Example version</dd></div>
+        <div><dt>Last updated</dt><dd>Date and time</dd></div>
+      </dl>
+      <div class="ki-body">
+        <p><b>What happens.</b> A short description of the symptom in the reader’s words.</p>
+        <p><b>Workaround.</b> The steps to get working again until the fix ships, linking to an article where there is one.</p>
+        <p><b>Fix.</b> When resolved, this links to the release that fixed it, and the issue moves to Recently resolved.</p>
+      </div>
+    </article></div></figure>
+  <figure class="ul-variant" id="ex-sp-issues-1"><figcaption><b>Recently resolved</b><span>from <a href="known-issues.html">Known issues</a></span></figcaption><div class="cl-stage "><ul class="ki-fixed" data-note="Known issues page type · real “Fixed” items from release notes since May 5, 2026"><li><span>Fixed cut-off and crowded text in German, Spanish, French, Italian, and Portuguese.</span><span class="ki-where">Oct 29, 2026 · <a href="release-notes.html#vpn-2026-10-29">LastPass VPN 1.1.0</a></span></li>
 <li><span>Fixed a bug that caused issues with saving site credentials to the appropriate vault when logged in to a LastPass account provided by a user’s organization with the “Save personal sites to personal vault” policy enabled for it.</span><span class="ki-where">Sep 29, 2026 · <a href="release-notes.html#extension-2026-09-29">Browser extension 4.156.0</a></span></li>
 <li><span>Fixed a bug that caused TOTP push notification trigger failure.</span><span class="ki-where">Sep 29, 2026 · <a href="release-notes.html#extension-2026-09-29">Browser extension 4.156.0</a></span></li>
 <li><span>Fixed bugs that caused issues with in-field icon and matching site dropdown behaviors.</span><span class="ki-where">Sep 29, 2026 · <a href="release-notes.html#extension-2026-09-29">Browser extension 4.156.0</a></span></li></ul></div></figure>
-  <figure class="ul-variant" id="ex-records-2"><figcaption><b>Table</b><span>from <a href="lifecycle.html">Product lifecycle</a></span></figcaption><div class="cl-stage "><div class="lc-pair" data-note="Record list unit · table · definitions beside products; stacks on phones">
-      <div class="t-table"><table style="min-width:0"><caption>Status definitions</caption><thead><tr><th scope="col">Status</th><th scope="col">Meaning</th></tr></thead><tbody><tr><th scope="row"><span class="lc-status lc-active">Active</span></th><td>Fully supported and getting new features and fixes.</td></tr><tr><th scope="row"><span class="lc-status lc-mature">Active, mature</span></th><td>Supported and getting fixes, with few new features planned.</td></tr><tr><th scope="row"><span class="lc-status lc-eol">End of life</span></th><td>An end date is announced. Fixes only until that date.</td></tr><tr><th scope="row"><span class="lc-status lc-retired">Retired</span></th><td>No longer available or supported. A replacement is named.</td></tr></tbody></table></div>
-      <div class="t-table"><table><caption>Products</caption><thead><tr><th scope="col">Product</th><th scope="col">Family</th><th scope="col">Latest version</th><th scope="col">Last release</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">Browser extension for Chrome</th><td>Password manager</td><td class="num">4.156.0</td><td class="num"><a href="release-notes.html#extension-2026-09-29">Sep 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Edge</th><td>Password manager</td><td class="num">4.156.0</td><td class="num"><a href="release-notes.html#extension-2026-09-29">Sep 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Firefox</th><td>Password manager</td><td class="num">4.150.0</td><td class="num"><a href="release-notes.html#extension-2026-01-21">Jan 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Safari</th><td>Password manager</td><td class="num">4.156.0</td><td class="num"><a href="release-notes.html#extension-2026-09-29">Sep 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Opera</th><td>Password manager</td><td class="num">4.146.8</td><td class="num"><a href="release-notes.html#extension-2025-09-12">Sep 2025</a></td><td><span class="lc-status lc-mature">Active, mature</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Internet Explorer</th><td>Password manager</td><td class="num">4.123.0</td><td class="num"><a href="release-notes.html#extension-2023-10-12">Oct 2023</a></td><td><span class="lc-status lc-eol">End of life</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Web vault</th><td>Password manager</td><td class="num">4.156.0</td><td class="num"><a href="release-notes.html#vault-2026-10-07">Oct 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">LastPass for Desktop</th><td>Password manager</td><td class="num">2.2.0</td><td class="num"><a href="release-notes.html#desktop-2026-08-17">Aug 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Mac App</th><td>Password manager</td><td class="num">3.12</td><td class="num"><a href="release-notes.html#mac-app-2015-06-19">Jun 2015</a></td><td><span class="lc-status lc-eol">End of life</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Universal Windows Installer</th><td>Installers</td><td class="num">5.4.5</td><td class="num"><a href="release-notes.html#win-installer-2026-08-18">Aug 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Universal macOS Installer</th><td>Installers</td><td class="num">1.3.0</td><td class="num"><a href="release-notes.html#mac-installer-2026-03-16">Mar 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">LastPass VPN</th><td>VPN</td><td class="num">1.1.0</td><td class="num"><a href="release-notes.html#vpn-2026-10-29">Oct 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Admin Console</th><td>Business</td><td class="num">13.10.2026</td><td class="num"><a href="release-notes.html#admin-console-2026-10-13">Oct 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">AD Connector</th><td>Business</td><td class="num">1.7.1924</td><td class="num"><a href="release-notes.html#ad-connector-2026-07-16">Jul 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Universal Proxy</th><td>Business</td><td class="num">4.2.0</td><td class="num"><a href="release-notes.html#proxy-2022-02-01">Feb 2022</a></td><td><span class="lc-status lc-eol">End of life</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Workstation MFA</th><td>Business</td><td class="num">2.6.0</td><td class="num"><a href="release-notes.html#workstation-mfa-2025-12-03">Dec 2025</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr></tbody></table></div>
-    </div></div></figure>
+</div>
 </section>
 <section class="ul-unit" id="components" aria-labelledby="h-components">
-  <div class="ul-head"><div><p class="ul-kind">Inside the units</p><h2 id="h-components">Components</h2><p class="ul-purpose">The pieces editors place in a unit’s layout.</p></div></div>
+  <div class="ul-head"><div><p class="ul-kind">Inside the trays</p><h2 id="h-components">Components</h2><p class="ul-purpose">The pieces editors place in a tray’s layout.</p></div></div>
   <div class="ul-comps"><article class="ul-comp" id="c-button">
-  <h3>Button</h3><p>Primary, secondary and arrow link. One primary per unit.</p>
-  <p class="ul-in">In <a href="#hero">Hero</a>, <a href="#feature">Feature</a>, <a href="#cards">Cards</a>, <a href="#records">Record list</a></p>
+  <h3>Button</h3><p>Primary, secondary and arrow link. One primary per tray.</p>
+  <p class="ul-in">In <a href="#hero">Hero</a>, <a href="#feature">Feature</a>, <a href="#cards">Cards</a></p>
   <div class="ul-spec"><p style="display:flex;flex-wrap:wrap;gap:10px;margin:0"><a class="t-btn t-btn--brand" href="#">Primary</a><a class="t-btn t-btn--line" href="#">Secondary</a></p></div>
 </article><article class="ul-comp" id="c-media">
-  <h3>Media</h3><p>Image, product screenshot or Vimeo video. Alt text or a title is required.</p>
-  <p class="ul-in">In <a href="#hero">Hero</a>, <a href="#feature">Feature</a>, <a href="#cards">Cards</a></p>
+  <h3>Media</h3><p>Image or product screenshot. Alt text is required.</p>
+  <p class="ul-in">In <a href="#hero">Hero</a>, <a href="#feature">Feature</a>, <a href="#content">Content</a></p>
   <div class="ul-spec"><img class="mk-shot" src="img/shot-saas-protect-categories.png" alt="SaaS Protect categories in the Admin Console" width="1935" height="926" loading="lazy"></div>
 </article><article class="ul-comp" id="c-card">
   <h3>Card</h3><p>Title, text and a link, with an optional icon, kicker or image.</p>
@@ -545,25 +598,21 @@
   <div class="ul-spec"><ul class="t-links" style="grid-template-columns:1fr"><li><a href="#">Update payment method</a></li><li><a href="#">Cancel LastPass Families</a></li></ul></div>
 </article><article class="ul-comp" id="c-table">
   <h3>Table</h3><p>Caption required; header row and column; scrolls inside its box on phones.</p>
-  <p class="ul-in">In <a href="#content">Content</a>, <a href="#records">Record list</a></p>
+  <p class="ul-in">In <a href="#content">Content</a></p>
   <div class="ul-spec"><div class="t-table"><table style="min-width:0"><caption>Example</caption><thead><tr><th scope="col">Task</th><th scope="col">Where</th></tr></thead><tbody><tr><th scope="row">Change seats</th><td><a href="#">Purchase licenses</a></td></tr></tbody></table></div></div>
 </article><article class="ul-comp" id="c-notice">
-  <h3>Notice</h3><p>Note, tip or notice. The same component as the notes imported from DITA, so articles and templates match.</p>
+  <h3>Notice</h3><p>Note, tip or notice. The same component as the notes imported from DITA, so articles and pages match.</p>
   <p class="ul-in">In <a href="#content">Content</a></p>
   <div class="ul-spec"><div class="t-notice" style="margin:0"><img src="img/tip_icon.svg" alt="" width="20" height="20"><div><strong class="t-notice-label">Tip:</strong><p>One short message, styled exactly like a DITA note in an article.</p></div></div></div>
 </article><article class="ul-comp" id="c-faq-item">
   <h3>FAQ item</h3><p>A question and answer, written once and reused on any page.</p>
   <p class="ul-in">In <a href="#faq">FAQ</a></p>
   <div class="ul-spec"><div class="t-faq"><div class="t-faq-item" id="spec-faq"><h3><button class="t-faq-q" type="button" aria-expanded="false" aria-controls="spec-faq-a">Is a password manager and VPN combination worth it?<span class="t-faq-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></h3><div class="t-faq-a" id="spec-faq-a" hidden><p>LastPass VPN uses the LastPass login you already have.</p></div></div></div></div>
-</article><article class="ul-comp" id="c-record">
-  <h3>Record</h3><p>One release note, known issue, download or product, keyed to the product registry.</p>
-  <p class="ul-in">In <a href="#cards">Cards</a>, <a href="#records">Record list</a></p>
-  <div class="ul-spec"><p style="margin:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center"><span class="t-tag t-tag--new">New</span><span class="t-tag t-tag--improved">Improved</span><span class="t-tag t-tag--fixed">Fixed</span><span class="lc-status lc-active">Active</span><span class="ki-status">Workaround available</span></p></div>
 </article></div>
 </section>
 <section class="ul-unit" id="automatic" aria-labelledby="h-automatic">
   <div class="ul-head"><div><p class="ul-kind">Not authored</p><h2 id="h-automatic">Automatic</h2><p class="ul-purpose">Built by the site from the page tree and settings.</p></div></div>
-  <ul class="ul-auto"><li><b>Header and footer</b><span>From Site Control, on every page</span></li><li><b>Breadcrumb</b><span>From the page’s place in the site tree</span></li><li><b>Hub switcher</b><span>Lists every hub page</span></li><li><b>On this page</b><span>Built from a Content unit’s H2s</span></li><li><b>Build notes</b><span>Review aid; not in production</span></li></ul>
+  <ul class="ul-auto"><li><b>Header and footer</b><span>From Site Control, on every page</span></li><li><b>Breadcrumb</b><span>From the page’s place in the site tree</span></li><li><b>Hub switcher</b><span>Lists every hub page</span></li><li><b>On this page</b><span>Built from a Content tray’s H2s</span></li><li><b>Build notes</b><span>Review aid; not in production</span></li></ul>
 </section>
 </div>
 </main>

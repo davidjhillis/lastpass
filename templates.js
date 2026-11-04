@@ -77,12 +77,12 @@
 
   // Review super nav: switch between the new page designs (not part of the site)
   var PAGES = [
-    ['templates.html', 'All templates'], ['components.html', 'Essentials'], null,
+    ['templates.html', 'Page types'], ['components.html', 'Essentials'], null,
     ['hub-business.html', 'Mini hub'], ['topic-saas-monitoring.html', 'Topic: product'], ['topic-billing.html', 'Topic: utility'],
     ['faq.html', 'FAQ'], ['contact-us.html', 'Contact Us'], ['lifecycle.html', 'Lifecycle'], null,
     ['release-notes.html', 'Release notes'], ['downloads.html', 'Downloads'], ['known-issues.html', 'Known issues']
   ];
-  if(document.querySelector('.t-notes-toggle') && !document.querySelector('.rv-nav')){
+  if(window.self === window.top && document.querySelector('.t-notes-toggle') && !document.querySelector('.rv-nav')){
     var here = location.pathname.split('/').pop() || 'index.html';
     var rv = document.createElement('nav'); rv.className = 'rv-nav'; rv.setAttribute('aria-label', 'Design review pages');
     rv.innerHTML = '<div class="rv-in"><span class="rv-label">Design review</span><ul>' + PAGES.map(function(p){
