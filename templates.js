@@ -70,6 +70,11 @@
   var hubRow = document.querySelector('.t-hubs .t-wrap'), hubCur = document.querySelector('.t-hubs [aria-current]');
   if(hubRow && hubCur && hubRow.scrollWidth > hubRow.clientWidth){ hubRow.scrollLeft = hubCur.offsetLeft - hubRow.offsetLeft - 24; }
 
+  // Template index: scale each live thumbnail to its card
+  var thumbs = document.querySelectorAll('.tp-thumb');
+  function fit(){ thumbs.forEach(function(t){ t.style.setProperty('--tp-scale', (t.clientWidth / 1440).toFixed(4)); }); }
+  if(thumbs.length){ fit(); addEventListener('resize', fit); }
+
   // Build notes: shows what each block is and where its content comes from
   var t = document.querySelector('.t-notes-toggle');
   if(t){

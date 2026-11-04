@@ -13,7 +13,12 @@ portal (DiscoverCX / Ingeniux concept). Static site — no build step required.
 - `topic-saas-monitoring.html` — Topic overview at marketing weight: SaaS and AI Monitoring, with a product hero, capability table, benefits band, setup steps and a closing call to action
 - `faq.html` — FAQ page (request 3): reusable FAQ items with an accessible accordion
 
-The three template pages share `templates.css` and `templates.js`. A **Show build notes** button on each marks every block and where its content comes from (authored, DITA map, release-note records, FAQ items).
+- `templates.html` — index of every new page type, with live thumbnails, the components each uses, and the planned templates
+- `components.html` — component library: every block with its author fields, the pages that use it, and a live example
+
+`templates.html` and `components.html` are generated: run `python3 tools/build-library.py` after changing a template page. Each example is cut from the page that uses it, so the library cannot drift from the pages.
+
+The template pages share `templates.css` and `templates.js`. A **Show build notes** button on each marks every block and where its content comes from (authored, DITA map, release-note records, FAQ items).
 
 ## Assets
 - `styles.css` — compiled stylesheet (linked, not inlined)
