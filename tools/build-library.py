@@ -228,7 +228,7 @@ components_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   </div>
 </section>
 
-<nav class="ul-nav" aria-label="Units and components"><div class="t-wrap"><ul>%s</ul></div></nav>
+<nav class="ul-nav" aria-label="Units and components"><div class="t-wrap"><ul>%s</ul><button type="button" class="ul-grid" aria-pressed="false">Show grid</button></div></nav>
 
 <div class="t-wrap ul-body">
   <div class="ul-model">

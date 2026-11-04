@@ -465,7 +465,8 @@ body.show-notes [data-note]::before{content:attr(data-note);position:absolute;z-
 .cl-used{margin:0;display:flex;flex-direction:column;gap:6px;font-size:15px}
 .cl-used span{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--lp-text-muted)}
 .cl-used a{color:var(--cta-link);font-weight:600}
-.cl-stage{position:relative;border:1px solid var(--t-line);border-radius:16px;background:#fff;padding:44px 24px 28px;overflow:hidden;background-image:linear-gradient(var(--t-wash) 1px,transparent 1px),linear-gradient(90deg,var(--t-wash) 1px,transparent 1px);background-size:24px 24px}
+.cl-stage{position:relative;border:1px solid var(--t-line);border-radius:16px;background:#fff;padding:44px 24px 28px;overflow:hidden}
+body.show-grid .cl-stage:not(.cl-stage--unit){background-image:linear-gradient(#e9edf3 1px,transparent 1px),linear-gradient(90deg,#e9edf3 1px,transparent 1px);background-size:24px 24px}
 .cl-stage > :not(.cl-stage-label){position:relative}
 .cl-stage-label{position:absolute;top:12px;left:16px;margin:0;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--lp-text-muted)}
 .cl-stage .t-hero,.cl-stage .mk-hero,.cl-stage .mk-dark,.cl-stage .mk-points{margin:0 -24px;border-radius:0}
@@ -746,3 +747,10 @@ body.show-notes [data-note]::before{content:attr(data-note);position:absolute;z-
 .u[data-bg="dark"] .mk-h2,.u[data-bg="dark"] .t-head h2{color:#fff}
 .u[data-bg="dark"] .mk-sub,.u[data-bg="dark"] .t-head p{color:var(--mk-text-dark)}
 .u[data-bg="dark"] .mk-head .mk-kicker{color:rgba(255,255,255,.72)}
+
+/* Library grid toggle (off by default) */
+.ul-nav .t-wrap{display:flex;align-items:center;gap:12px}
+.ul-nav ul{flex:1;min-width:0}
+.ul-grid{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--t-line);background:#fff;font:inherit;font-size:14px;font-weight:600;color:var(--lp-text-secondary);cursor:pointer}
+.ul-grid[aria-pressed="true"]{background:var(--lp-slate);border-color:var(--lp-slate);color:#fff}
+.ul-grid:focus-visible{outline:2px solid var(--lp-brand);outline-offset:2px}

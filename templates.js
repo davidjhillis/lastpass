@@ -98,6 +98,15 @@
     });
   });
 
+  // Library: alignment grid behind examples, off by default
+  var grid = document.querySelector('.ul-grid');
+  if(grid){
+    var g = false; try { g = localStorage.getItem('t-grid') === '1'; } catch(e){}
+    function setGrid(){ document.body.classList.toggle('show-grid', g); grid.setAttribute('aria-pressed', g ? 'true' : 'false'); grid.textContent = g ? 'Hide grid' : 'Show grid'; }
+    grid.addEventListener('click', function(){ g = !g; try { localStorage.setItem('t-grid', g ? '1' : '0'); } catch(e){} setGrid(); });
+    setGrid();
+  }
+
   // Build notes: shows what each block is and where its content comes from
   var t = document.querySelector('.t-notes-toggle');
   if(t){
