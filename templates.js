@@ -75,13 +75,22 @@
   function fit(){ thumbs.forEach(function(t){ t.style.setProperty('--tp-scale', (t.clientWidth / 1440).toFixed(4)); }); }
   if(thumbs.length){ fit(); addEventListener('resize', fit); }
 
-  // Design-system shortcut beside the build-notes button
-  var nt = document.querySelector('.t-notes-toggle');
-  if(nt && !document.querySelector('.t-ds-link')){
-    var here = location.pathname.split('/').pop();
-    var ds = document.createElement('nav'); ds.className = 't-ds-link'; ds.setAttribute('aria-label', 'Design system');
-    ds.innerHTML = '<a href="templates.html"' + (here === 'templates.html' ? ' aria-current="page"' : '') + '>All templates</a><a href="components.html"' + (here === 'components.html' ? ' aria-current="page"' : '') + '>Components</a>';
-    nt.parentNode.insertBefore(ds, nt);
+  // Review super nav: switch between the new page designs (not part of the site)
+  var PAGES = [
+    ['templates.html', 'All templates'], ['components.html', 'Essentials'], null,
+    ['hub-business.html', 'Mini hub'], ['topic-saas-monitoring.html', 'Topic: product'], ['topic-billing.html', 'Topic: utility'],
+    ['faq.html', 'FAQ'], ['contact-us.html', 'Contact Us'], ['lifecycle.html', 'Lifecycle'], null,
+    ['release-notes.html', 'Release notes'], ['downloads.html', 'Downloads'], ['known-issues.html', 'Known issues']
+  ];
+  if(document.querySelector('.t-notes-toggle') && !document.querySelector('.rv-nav')){
+    var here = location.pathname.split('/').pop() || 'index.html';
+    var rv = document.createElement('nav'); rv.className = 'rv-nav'; rv.setAttribute('aria-label', 'Design review pages');
+    rv.innerHTML = '<div class="rv-in"><span class="rv-label">Design review</span><ul>' + PAGES.map(function(p){
+      return p ? '<li><a href="' + p[0] + '"' + (p[0] === here ? ' aria-current="page"' : '') + '>' + p[1] + '</a></li>' : '<li class="rv-sep" aria-hidden="true"></li>';
+    }).join('') + '</ul></div>';
+    document.body.insertBefore(rv, document.body.firstChild);
+    var cur = rv.querySelector('[aria-current]'), list = rv.querySelector('ul');
+    if(cur && list.scrollWidth > list.clientWidth){ list.scrollLeft = cur.offsetLeft - list.offsetLeft - 24; }
   }
 
   // Library: try a unit's options on its first example

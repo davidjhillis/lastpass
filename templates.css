@@ -755,3 +755,16 @@ body.show-grid .cl-stage:not(.cl-stage--unit){background-image:linear-gradient(#
 .ul-grid{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--t-line);background:#fff;font:inherit;font-size:14px;font-weight:600;color:var(--lp-text-secondary);cursor:pointer}
 .ul-grid[aria-pressed="true"]{background:var(--lp-slate);border-color:var(--lp-slate);color:#fff}
 .ul-grid:focus-visible{outline:2px solid var(--lp-brand);outline-offset:2px}
+
+/* Review super nav — design-review aid above the site header, not part of the site */
+.rv-nav{background:#1b1f24;color:#fff;font-size:13px}
+.rv-in{max-width:80rem;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:14px}
+.rv-label{flex-shrink:0;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.rv-nav ul{list-style:none;margin:0;padding:6px 0;display:flex;align-items:center;gap:2px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.rv-nav ul::-webkit-scrollbar{display:none}
+.rv-nav a{display:inline-flex;align-items:center;height:28px;padding:0 10px;border-radius:6px;color:rgba(255,255,255,.82);text-decoration:none;font-weight:600}
+.rv-nav a:hover{background:rgba(255,255,255,.1);color:#fff}
+.rv-nav a[aria-current]{background:#fff;color:#1b1f24}
+.rv-nav a:focus-visible{outline:2px solid #fff;outline-offset:1px}
+.rv-sep{width:1px;height:16px;background:rgba(255,255,255,.2);margin:0 6px;flex-shrink:0}
+.t-ds-link{display:none}
