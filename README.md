@@ -13,8 +13,15 @@ portal (DiscoverCX / Ingeniux concept). Static site — no build step required.
 - `topic-saas-monitoring.html` — Topic overview at marketing weight: SaaS and AI Monitoring, with a product hero, capability table, benefits band, setup steps and a closing call to action
 - `faq.html` — FAQ page (request 3): reusable FAQ items with an accessible accordion
 
+- `contact-us.html` — Contact Us (request 4): options matched to the visitor's plan, with an audience preview switch
+- `release-notes.html` — Release notes (request 5): all 351 releases from lastpass.com/upgrade.php as filterable records
+- `downloads.html` — Downloads (request 6): the visitor's platform first, versions read from the release notes
+- `known-issues.html` — Known issue tracker (request 7): active issues and recent real fixes
+- `lifecycle.html` — Product lifecycle (request 8): definitions beside products, statuses proposed from release history
 - `templates.html` — index of every new page type, with live thumbnails, the components each uses, and the planned templates
 - `components.html` — component library: every block with its author fields, the pages that use it, and a live example
+
+The five record pages are generated from `data/releases.json` (parsed from lastpass.com/upgrade.php) and `data/products.json` (the product registry): run `python3 tools/build-records.py`, then `python3 tools/build-library.py`.
 
 `templates.html` and `components.html` are generated: run `python3 tools/build-library.py` after changing a template page. Each example is cut from the page that uses it, so the library cannot drift from the pages.
 

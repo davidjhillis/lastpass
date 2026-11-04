@@ -62,6 +62,11 @@ PAGES = {
     "saas": ("topic-saas-monitoring.html", "Product hub · SaaS and AI Monitoring"),
     "billing": ("topic-billing.html", "Topic overview · Billing"),
     "faq": ("faq.html", "FAQ page"),
+    "contact": ("contact-us.html", "Contact Us"),
+    "releases": ("release-notes.html", "Release notes"),
+    "downloads": ("downloads.html", "Downloads"),
+    "issues": ("known-issues.html", "Known issues"),
+    "lifecycle": ("lifecycle.html", "Product lifecycle"),
 }
 SRC = {k: read(v[0]) for k, v in PAGES.items()}
 
@@ -69,7 +74,7 @@ SRC = {k: read(v[0]) for k, v in PAGES.items()}
 C = [
     ("Navigation", "breadcrumb", "Breadcrumb", "AncestorNavigation",
      "Shows where the page sits. Generated from the site tree; the last item is the current page.",
-     [("Items", "Generated from ancestors; no authoring")], ["hub", "saas", "billing", "faq"],
+     [("Items", "Generated from ancestors; no authoring")], ["hub", "saas", "billing", "faq", "contact", "releases", "downloads", "issues", "lifecycle"],
      ("billing", '<nav class="t-crumbs"', None), ""),
     ("Navigation", "hub-switcher", "Hub switcher", "HubNavigation",
      "Moves between Mini hubs. Lists every hub page; the current one is highlighted and scrolled into view on phones.",
@@ -86,11 +91,11 @@ C = [
 
     ("Heroes", "hero-standard", "Hero, standard", "HeroBand",
      "A centered title band in the brand gradient. Use on utility pages such as the FAQ.",
-     [("Eyebrow", "Text"), ("Title", "Text, becomes the H1"), ("Intro", "Text")], ["faq"],
+     [("Eyebrow", "Text"), ("Title", "Text, becomes the H1"), ("Intro", "Text")], ["faq", "contact", "releases", "issues", "lifecycle"],
      ("faq", '<section class="t-hero', None), ""),
     ("Heroes", "hero-media", "Hero, media", "HeroBand (media)",
      "Copy and buttons on the left, an image or Vimeo video on the right.",
-     [("Eyebrow, title, intro", "Text"), ("Buttons", "Up to 2"), ("Media", "Image, or Vimeo URL with a required title")], ["billing"],
+     [("Eyebrow, title, intro", "Text"), ("Buttons", "Up to 2"), ("Media", "Image, or Vimeo URL with a required title")], ["billing", "downloads"],
      ("billing", '<section class="t-hero', None), ""),
     ("Heroes", "hero-hub", "Hero, hub", "HeroBand (hub)",
      "Marketing weight for a hub: a big promise, search scoped to the hub, and a numbered start-here card.",
@@ -131,7 +136,7 @@ C = [
      ("saas", '<div class="mk-caps"', ('<tr>\n            <th scope="row">', 3)), ""),
     ("Content", "notice", "Notice", "Notice",
      "An info, tip or warning callout inside content.",
-     [("Type", "Info, tip, warning"), ("Text", "Rich text")], ["billing"],
+     [("Type", "Info, tip, warning"), ("Text", "Rich text")], ["billing", "lifecycle"],
      ("billing", '<div class="t-notice', None), "cl-stage--narrow"),
     ("Content", "video", "Video", "Media",
      "A poster that swaps to the Vimeo player when clicked, so pages load fast.",
@@ -159,13 +164,45 @@ C = [
      [("Heading", "Text"), ("Items", "Picked FAQ items: question, answer, products")], ["faq", "hub", "saas"],
      ("hub", '<div class="t-faq"', None), "cl-stage--narrow"),
 
+    ("Records and reuse", "filter-panel", "Filter panel", "RecordFilters",
+     "Search plus facet checkboxes with live counts. Facets come from the product registry.",
+     [("Record type", "Which records to filter"), ("Facets", "Product, change type, status")], ["releases"],
+     ("releases", '<aside class="rc-side"', None), "cl-stage--narrow"),
+    ("Records and reuse", "release-entry", "Release entry", "ReleaseNote",
+     "One release: date, product, version, platform chips and typed items, with a stable link.",
+     [("Product, platforms", "From the product registry"), ("Version, date", "Text, date"), ("Items", "Type (New, Improved, Changed, Fixed, Security, Removed) + text")], ["releases"],
+     ("releases", '<ol class="rn-list"', ('<li class="rn"', 2)), ""),
+    ("Records and reuse", "platform-card", "Platform card", "DownloadLead",
+     "Recommends the download for the visitor’s operating system, with a way to see the rest.",
+     [("Lead download per OS", "Picked from the download records")], ["downloads"],
+     ("downloads", '<div class="dl-hero-card"', None), "cl-stage--narrow"),
+    ("Records and reuse", "download-cards", "Download cards", "DownloadList",
+     "Downloads per operating system in tabs. Version and date are read from the newest release note.",
+     [("Downloads", "Name, text, link, product and platform from the registry")], ["downloads"],
+     ("downloads", '<div class="dl-grid"', ('<article class="dl-card"', 3)), ""),
+    ("Records and reuse", "issue-card", "Known issue", "KnownIssue",
+     "A confirmed issue: ID, status, product, affected versions, workaround and the release that fixes it.",
+     [("ID, title, status", "Investigating, Workaround available, Fix scheduled, Resolved"), ("Product, platforms, versions", "From the registry"), ("Workaround", "Rich text"), ("Fixed in", "Link to a release note record")], ["issues"],
+     ("issues", '<article class="ki"', None), ""),
+    ("Records and reuse", "resolved-list", "Resolved list", "RecordList (fixes)",
+     "Recent fixes, each linked to the release that shipped it.",
+     [("Window", "e.g. last six months"), ("Source", "Fixed items in release notes")], ["issues"],
+     ("issues", '<ul class="ki-fixed"', ('<li>', 4)), ""),
+    ("Records and reuse", "lifecycle-tables", "Lifecycle tables", "LifecycleTable",
+     "Status definitions beside the product table (the original T3 layout). Stacks on phones.",
+     [("Definitions", "Status, meaning"), ("Products", "From the registry: version, last release, status")], ["lifecycle"],
+     ("lifecycle", '<div class="lc-pair"', None), ""),
+    ("Calls to action", "contact-options", "Contact options", "ContactOption",
+     "Ways to get help, each with an audience rule. The preview switch shows each audience; in production the sign-in decides.",
+     [("Channel", "Title, text, button"), ("Audience", "Signed out, Free, Premium or Families, Business admin")], ["contact"],
+     ("contact", '<div class="ct-grid"', None), ""),
     ("Calls to action", "spotlight", "Spotlight", "Spotlight",
      "One scheduled promotion with a visual. Can be shown only to a chosen audience.",
      [("Badge, title, text", "Text"), ("Buttons", "Up to 2"), ("Visual", "Screenshot or image"), ("Schedule", "Start and end dates"), ("Audience", "Rule, e.g. Business admins without Max")], ["hub"],
      ("hub", '<div class="mk-spot"', None), ""),
     ("Calls to action", "contact-band", "Contact band", "ContactButton",
      "Ends a help page with a way to get help.",
-     [("Title, text", "Text"), ("Buttons", "Up to 2"), ("Audience", "Signed-in users see their plan’s channels (phase 4)")], ["hub", "billing", "faq"],
+     [("Title, text", "Text"), ("Buttons", "Up to 2"), ("Audience", "Signed-in users see their plan’s channels (phase 4)")], ["hub", "billing", "faq", "downloads"],
      ("hub", '<div class="t-help"', None), ""),
     ("Calls to action", "cta-band", "CTA band", "CTABand",
      "Ends a product hub with a strong next step.",
@@ -268,6 +305,16 @@ TEMPLATES = [
      "Breaks a support topic into sections of hand-picked articles, with a table, a notice and a video."),
     ("faq", "FAQ page", "Request 3", "Help weight",
      "Questions grouped by product, collapsed until opened, each with a link that opens it directly."),
+    ("contact", "Contact Us", "Request 4", "Help weight",
+     "Ways to get help matched to the visitor’s plan, with a preview switch for each audience."),
+    ("releases", "Release notes", "Request 5", "Help weight",
+     "All 351 releases from lastpass.com/upgrade.php as records, filterable by product, change type and text."),
+    ("downloads", "Downloads", "Request 6", "Help weight",
+     "The visitor’s platform first, then every download by operating system, versions read from the release notes."),
+    ("issues", "Known issue tracker", "Request 7", "Help weight",
+     "Active issues with workarounds, and recent real fixes linked to the releases that shipped them."),
+    ("lifecycle", "Product lifecycle", "Request 8", "Help weight",
+     "Status definitions beside every product, with statuses proposed from release history for LastPass to confirm."),
 ]
 cards = []
 for k, name, req, weight, desc in TEMPLATES:
@@ -278,19 +325,13 @@ for k, name, req, weight, desc in TEMPLATES:
     <p class="tp-tags"><span class="tp-tag">%s</span><span class="tp-tag tp-tag--%s">%s</span></p>
     <h3><a href="%s">%s</a></h3>
     <p>%s</p>
-    <p class="tp-sub">Built from %d components</p>
+    <p class="tp-sub">Built from %d component%s</p>
     <ul class="tp-chips">%s</ul>
   </div>
-</article>''' % (PAGES[k][0], PAGES[k][0], req, "mk" if weight.startswith("Marketing") else "help", weight, PAGES[k][0], name, desc, len(used_by[k]), chips))
+</article>''' % (PAGES[k][0], PAGES[k][0], req, "mk" if weight.startswith("Marketing") else "help", weight, PAGES[k][0], name, desc, len(used_by[k]), "" if len(used_by[k]) == 1 else "s", chips))
 
-PLANNED = [
-    ("Contact Us", "Request 4", "Contact options for signed-out users, and plan-based channels once signed in. Waits for LastPass’s new Contact Support page."),
-    ("Release notes", "Request 5", "Every release as a record, filtered by product, with a feed. Migrated from lastpass.com/upgrade.php."),
-    ("Downloads", "Request 6", "The visitor’s platform first, then everything else, versions read from the product registry."),
-    ("Known issue tracker", "Request 7", "Active issues with status, workaround and the release that fixes them."),
-    ("Product lifecycle", "Request 8", "Status definitions beside a filterable table of products and their dates."),
-]
-planned = "".join('<li class="tp-plan"><span class="tp-tag">%s</span><h3>%s</h3><p>%s</p></li>' % (r, n, d) for n, r, d in PLANNED)
+PLANNED = []
+planned = ""
 
 BASE = [("index.html", "Home"), ("reader.html", "Article"), ("search.html", "Search results"), ("contact.html", "Contact")]
 base = "".join('<li><a href="%s">%s</a></li>' % (h, n) for h, n in BASE)
@@ -309,7 +350,7 @@ templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   <div class="t-hero-in">
     <p class="t-eyebrow">LastPass support portal · design system</p>
     <h1>Page templates</h1>
-    <p class="t-hero-sub">The new page types LastPass asked for, built on the approved design. Hubs carry marketing weight; help pages stay quiet.</p>
+    <p class="t-hero-sub">All eight page types LastPass asked for, built on the approved design. Hubs carry marketing weight; help pages stay quiet.</p>
     <div class="t-hero-actions" style="justify-content:center"><a class="t-btn t-btn--brand" href="components.html">Open the component library</a></div>
   </div>
 </section>
@@ -321,13 +362,7 @@ templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   </div>
 </section>
 
-<section class="t-section t-section--wash" aria-labelledby="h-planned">
-  <div class="t-wrap">
-    <div class="t-head"><div><h2 id="h-planned">Planned</h2><p>The remaining requests. They reuse these components plus the product registry.</p></div></div>
-    <ul class="tp-plans">%s</ul>
-  </div>
-</section>
-
+%s
 <section class="t-section" aria-labelledby="h-base">
   <div class="t-wrap">
     <div class="t-head"><div><h2 id="h-base">Approved baseline</h2><p>The pages LastPass already approved. Every template shares their header, footer and brand tokens.</p></div></div>
@@ -340,4 +375,4 @@ with open(os.path.join(ROOT, "components.html"), "w", encoding="utf-8") as f:
     f.write(chrome("Component library — LastPass Support", "The blocks that build the LastPass support portal page templates, with live examples and author fields.", components_main))
 with open(os.path.join(ROOT, "templates.html"), "w", encoding="utf-8") as f:
     f.write(chrome("Page templates — LastPass Support", "Index of the new LastPass support portal page templates and the components each one uses.", templates_main))
-print("components:", len(C), "| templates:", len(TEMPLATES), "built,", len(PLANNED), "planned")
+print("components:", len(C), "| templates:", len(TEMPLATES))

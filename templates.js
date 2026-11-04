@@ -75,6 +75,15 @@
   function fit(){ thumbs.forEach(function(t){ t.style.setProperty('--tp-scale', (t.clientWidth / 1440).toFixed(4)); }); }
   if(thumbs.length){ fit(); addEventListener('resize', fit); }
 
+  // Design-system shortcut beside the build-notes button
+  var nt = document.querySelector('.t-notes-toggle');
+  if(nt && !document.querySelector('.t-ds-link')){
+    var here = location.pathname.split('/').pop();
+    var ds = document.createElement('nav'); ds.className = 't-ds-link'; ds.setAttribute('aria-label', 'Design system');
+    ds.innerHTML = '<a href="templates.html"' + (here === 'templates.html' ? ' aria-current="page"' : '') + '>All templates</a><a href="components.html"' + (here === 'components.html' ? ' aria-current="page"' : '') + '>Components</a>';
+    nt.parentNode.insertBefore(ds, nt);
+  }
+
   // Build notes: shows what each block is and where its content comes from
   var t = document.querySelector('.t-notes-toggle');
   if(t){
