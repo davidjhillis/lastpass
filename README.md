@@ -10,6 +10,7 @@ portal (DiscoverCX / Ingeniux concept). Static site — no build step required.
 - `search.html` — Coveo-style search results
 - `hub-business.html` — Mini hub (template request 1): a topic homepage, here LastPass Business admin
 - `topic-billing.html` — Topic overview (request 2): Billing, with map-fed link lists, a table and a video hero
+- `topic-saas-monitoring.html` — Topic overview at marketing weight: SaaS and AI Monitoring, with a product hero, capability table, benefits band, setup steps and a closing call to action
 - `faq.html` — FAQ page (request 3): reusable FAQ items with an accessible accordion
 
 The three template pages share `templates.css` and `templates.js`. A **Show build notes** button on each marks every block and where its content comes from (authored, DITA map, release-note records, FAQ items).

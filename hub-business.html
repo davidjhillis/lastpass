@@ -115,21 +115,30 @@
   </div>
 </nav>
 
-<!-- Hero band — hub variant: centered, search scoped to the hub's product facet -->
-<section class="t-hero t-hero--center t-hero--compact" data-note="HeroBand, compact · search scoped by the page's product facet (Coveo filter)">
-  <div class="t-hero-bg" aria-hidden="true"></div>
-  <div class="t-hero-scrim" aria-hidden="true"></div>
-  <div class="t-hero-in">
-    <p class="t-eyebrow">LastPass Business</p>
-    <h1>Set up, deploy and manage LastPass for your organization</h1>
-    <p class="t-hero-sub">Admin guides for the Admin Console, users, policies and reporting.</p>
-    <form action="search.html" method="get" class="searchwrap mt-8" role="search" aria-label="Search LastPass Business help">
-      <span class="text-slate-400 shrink-0" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
-      <input type="search" name="q" id="hub-q" aria-label="Search LastPass Business help" placeholder="Search admin help, e.g. multifactor policy" class="placeholder-slate-500">
-      <input type="hidden" name="product" value="business">
-      <button type="submit" class="btn px-6 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-bold text-[15px] inline-flex items-center justify-center">Search</button>
-    </form>
-    <p class="t-scope"><span class="t-scope-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg> Searching LastPass Business</span><a href="search.html">Search all of support</a></p>
+<!-- Hero — hub at marketing weight: promise, scoped search, start-here card -->
+<section class="mk-hero" data-note="HeroBand, hub variant · promise, search scoped to the hub's product facet, start-here card">
+  <div class="mk-hero-in">
+    <div>
+      <span class="mk-badge"><b>Hub</b> LastPass Business</span>
+      <h1>Run LastPass for your whole <em>organization</em></h1>
+      <p class="mk-lede">Everything admins need to roll out LastPass, keep people secure, and see what’s happening across the company.</p>
+      <form action="search.html" method="get" class="searchwrap mt-8" role="search" aria-label="Search LastPass Business help" style="margin-left:0">
+        <span class="text-slate-400 shrink-0" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+        <input type="search" name="q" id="hub-q" aria-label="Search LastPass Business help" placeholder="Search admin help, e.g. multifactor policy" class="placeholder-slate-500">
+        <input type="hidden" name="product" value="business">
+        <button type="submit" class="btn px-6 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-bold text-[15px] inline-flex items-center justify-center">Search</button>
+      </form>
+      <p class="mk-fine">Searching LastPass Business articles · <a href="search.html">Search all of support</a></p>
+    </div>
+    <div class="mk-visual mk-start" data-note="Start-here card · links to the onboarding guide topics">
+      <div class="mk-visual-bar"><span style="margin:0">New to LastPass Business? Start here</span></div>
+      <ol class="mk-start-list">
+        <li><a href="reader.html"><span><b>Read the admin overview</b><small>What admins can do, and where</small></span></a></li>
+        <li><a href="reader.html"><span><b>Plan your onboarding</b><small>Onboarding for LastPass Business</small></span></a></li>
+        <li><a href="reader.html"><span><b>Turn on multifactor</b><small>Enable multifactor authentication (admins)</small></span></a></li>
+        <li><a href="reader.html"><span><b>Install LastPass for everyone</b><small>Install LastPass using the Admin Console</small></span></a></li>
+      </ol>
+    </div>
   </div>
 </section>
 
@@ -190,7 +199,7 @@
       </article>
       <article class="t-cat">
         <span class="t-cat-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg></span>
-        <h3><a href="reader.html">Connect and monitor apps</a></h3>
+        <h3><a href="topic-saas-monitoring.html">Connect and monitor apps</a></h3>
         <p>Connect apps with SSO and see what your teams use.</p>
         <ul>
           <li><a href="reader.html">About SaaS Monitoring</a></li>
@@ -268,6 +277,33 @@
   </div>
 </section>
 
+<!-- Spotlight — one scheduled, audience-targeted promotion -->
+<section class="t-section" aria-labelledby="h-spot" style="padding-bottom:0">
+  <div class="t-wrap">
+    <div class="mk-spot" data-note="Spotlight · scheduled by editors; shown to Business admins without Max (audience rule)">
+      <div class="mk-spot-copy">
+        <span class="mk-badge"><b>New</b> AI Monitoring &amp; Protect</span>
+        <h2 id="h-spot">See which AI tools your team uses, and set the rules</h2>
+        <p>Find the AI tools people reach through the LastPass extension, see how they log in, and warn before credentials or keys are shared. Included in Business Max.</p>
+        <div class="mk-actions">
+          <a class="t-btn t-btn--brand" href="topic-saas-monitoring.html">See how it works</a>
+          <a class="t-btn t-btn--ghost" href="#">Talk to sales</a>
+        </div>
+      </div>
+      <div class="mk-spot-media" aria-hidden="true">
+        <div class="mk-visual">
+          <div class="mk-visual-bar"><i></i><i></i><i></i><span>Discovered apps</span></div>
+          <ul class="mk-rows">
+            <li><span class="mk-app" style="background:#2f5aa8">A</span><span><b>AI writing assistant</b><small>AI tools</small></span><span class="mk-chip mk-chip--unv">Unvaulted</span><span class="mk-rule">Warn</span></li>
+            <li><span class="mk-app" style="background:#256a3c">F</span><span><b>File sharing app</b><small>Storage</small></span><span class="mk-chip mk-chip--sso">SSO</span><span class="mk-rule">Allow</span></li>
+            <li><span class="mk-app" style="background:#b3123a">G</span><span><b>Image generator</b><small>AI tools</small></span><span class="mk-chip mk-chip--pw">Password</span><span class="mk-rule mk-rule--block">Block</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Popular topics -->
 <section class="t-section" aria-labelledby="h-popular">
   <div class="t-wrap">
@@ -279,6 +315,24 @@
       <a class="t-card" href="reader.html"><p class="t-kicker">Article</p><h3>Purchase more LastPass Business licenses</h3><p>Add licenses to your subscription as your organization grows.</p><span class="cta-link">Learn more</span></a>
       <a class="t-card" href="reader.html"><p class="t-kicker">Article</p><h3>About SaaS Monitoring</h3><p>See the apps your employees use, including ones IT has not approved.</p><span class="cta-link">Learn more</span></a>
       <a class="t-card" href="reader.html"><p class="t-kicker">FAQ</p><h3>Transitioning to the new Admin Console</h3><p>What changes as accounts move from the previous Admin Console to the new one.</p><span class="cta-link">Learn more</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Feature tray -->
+<section class="t-section" aria-label="Families as a Benefit">
+  <div class="t-wrap">
+    <div class="mk-trays">
+      <article class="mk-tray mk-tray--flip" data-note="FeatureTray · image right">
+        <div class="mk-tray-media"><img src="img/photo-explore.jpg" alt="A family using LastPass at home" width="800" height="600" loading="lazy" decoding="async"></div>
+        <div class="mk-tray-copy">
+          <p class="mk-kicker">Families as a Benefit</p>
+          <h2>Give your employees LastPass at home too</h2>
+          <p>Offer LastPass Families as an employee benefit, so people protect their personal accounts the same way they protect work ones.</p>
+          <ul class="mk-ticks"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Claim, link and unlink accounts</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Separate FAQs for admins and for users</span></li></ul>
+          <p class="mk-tray-links"><a class="mk-arrow" href="reader.html">FAQs for admins <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a><a class="t-more" href="reader.html">FAQs for users</a></p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -314,7 +368,7 @@
       <div class="t-faq-item" id="hub-faq-2">
         <h3><button class="t-faq-q" type="button" aria-expanded="false" aria-controls="hub-faq-2-a">How do I find out if employees are pasting company data into AI chatbots?<span class="t-faq-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></h3>
         <div class="t-faq-a" id="hub-faq-2-a" hidden>
-          <p>LastPass AI Protect warns an employee in the browser when they are about to share credentials, API keys or personal information with an AI tool. Every warning is logged in Admin Console reporting. It logs only the warning, not the conversation or the data that triggered it.</p>
+          <p>LastPass AI Protect warns an employee in the browser when they are about to share credentials, API keys or personal information with an AI tool. Every warning is logged in Admin Console reporting. It doesn’t read or log the full content of the conversation, only the warning.</p>
         </div>
       </div>
       <div class="t-faq-item" id="hub-faq-3">
