@@ -84,6 +84,20 @@
     nt.parentNode.insertBefore(ds, nt);
   }
 
+  // Library: try a unit's options on its first example
+  document.querySelectorAll('[data-try]').forEach(function(bar){
+    var fig = document.querySelector(bar.getAttribute('data-try')); if(!fig) return;
+    bar.querySelectorAll('button[data-set]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var k = btn.getAttribute('data-set'), v = btn.getAttribute('data-val');
+        if(k === 'media'){ var t = fig.querySelector('.mk-tray'); if(t) t.setAttribute('data-media', v); }
+        if(k === 'bg'){ var u = fig.querySelector('.u'); if(u) u.setAttribute('data-bg', v); }
+        if(k === 'ratio'){ var m = fig.querySelector('.mk-tray-media'); if(m) m.style.setProperty('--ratio', v); }
+        bar.querySelectorAll('button[data-set="' + k + '"]').forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      });
+    });
+  });
+
   // Build notes: shows what each block is and where its content comes from
   var t = document.querySelector('.t-notes-toggle');
   if(t){

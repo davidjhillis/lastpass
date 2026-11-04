@@ -416,8 +416,7 @@ lc_main = crumbs(("Product lifecycle", "")) + '<main id="main">\n' + hero(
   <div class="t-wrap">
     <h2 id="h-lc" class="sr-only">Lifecycle status</h2>
     <div class="t-notice t-notice--info" style="margin:0 0 28px" data-note="Content unit · notice · remove once LastPass publishes real statuses">
-      %s
-      <p><b>Statuses are proposals.</b> LastPass hasn’t published lifecycle status before. Each status below is proposed from the product’s last release (within a year: Active; one to three years: Active, mature; older: End of life) for LastPass to confirm.</p>
+      <img src="img/notice_icon.svg" alt="" width="20" height="20"><div><strong class="t-notice-label">Notice:</strong><p>Statuses are proposals. LastPass hasn’t published lifecycle status before. Each status below is proposed from the product’s last release (within a year: Active; one to three years: Active, mature; older: End of life) for LastPass to confirm.</p></div>
     </div>
     <div class="lc-pair" data-note="Record list unit · table · definitions beside products; stacks on phones">
       <div class="t-table"><table style="min-width:0"><caption>Status definitions</caption><thead><tr><th scope="col">Status</th><th scope="col">Meaning</th></tr></thead><tbody>%s</tbody></table></div>
@@ -426,7 +425,7 @@ lc_main = crumbs(("Product lifecycle", "")) + '<main id="main">\n' + hero(
   </div>
 </section>
 </main>
-''' % (svg("alert", 20), defs_rows, lc_rows)
+''' % (defs_rows, lc_rows)
 write("lifecycle.html", page("Product lifecycle — LastPass Support", "The lifecycle status of each LastPass product, with definitions.", lc_main))
 
 # ---------------------------------------------------------------- contact us

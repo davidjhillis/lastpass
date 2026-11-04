@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="18px" viewBox="0 0 19 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Notice Icon</title>
+    <g id="Iteration-3---March-2021" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Article---Notes" transform="translate(-678.000000, -400.000000)">
+            <g id="Notice-Icon" transform="translate(678.000000, 400.000000)">
+                <rect id="Rectangle-Copy-8" x="0.5" y="0" width="18" height="18"></rect>
+                <path d="M7,4 C7.59016994,2.11145618 11.3628938,1.96126013 12,4 C12.6371062,6.03873987 10.75,12 9.5,12 C8.25,12 6.40983006,5.88854382 7,4 Z" id="Path" fill="#46A9F6"></path>
+                <circle id="Oval" fill="#46A9F6" cx="9.5" cy="14.5" r="1.5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

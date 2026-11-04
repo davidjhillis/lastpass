@@ -686,3 +686,63 @@ body.show-notes [data-note]::before{content:attr(data-note);position:absolute;z-
 .ul-auto b{font-size:16px;color:var(--lp-text-primary)}
 .ul-auto span{font-size:14px;color:var(--lp-text-muted)}
 .ul-comps{align-items:start}.ul-comp{grid-template-rows:none}
+
+/* =============================================================================
+   Unit options shared by every tray: background. Feature options: media side,
+   media ratio, focus point. Set as attributes so the CMS writes them directly:
+   <section class="u" data-bg="cloud"> … <article class="mk-tray" data-media="right" style="--ratio:4/3;--focus:15% 0">
+   ============================================================================= */
+.u{padding:88px 0}
+@media (max-width:720px){.u{padding:56px 0}}
+.u[data-bg="white"]{background:#fff}
+.u[data-bg="wash"]{background:var(--t-wash);border-top:1px solid var(--t-line);border-bottom:1px solid var(--t-line)}
+.u[data-bg="cloud"]{background:var(--lp-cloud);border-top:1px solid rgba(40,47,67,.1);border-bottom:1px solid rgba(40,47,67,.1)}
+.u[data-bg="dark"]{background:linear-gradient(180deg,var(--mk-night) 0%,var(--mk-night-2) 100%);color:#fff}
+.u + .u[data-bg="white"],.u[data-bg="white"] + .u[data-bg="white"]{padding-top:24px}
+.u .mk-head{margin-bottom:48px}
+
+/* Feature media: a fixed frame, so screenshots and photos read at the same height */
+.mk-tray{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.mk-tray[data-media="right"] .mk-tray-media{order:2}
+.mk-tray[data-media="right"]{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+@media (max-width:860px){.mk-tray,.mk-tray[data-media="right"]{grid-template-columns:minmax(0,1fr)}.mk-tray[data-media="right"] .mk-tray-media{order:0}}
+.mk-tray-media{aspect-ratio:var(--ratio,4/3)}
+.mk-tray-media > img,.mk-tray-media--shot > img.mk-shot{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:var(--focus,0 0);border-radius:20px;box-shadow:0 30px 60px -36px rgba(5,6,6,.5),0 0 0 1px rgba(5,6,6,.08)}
+.mk-tray-media::before{inset:24px -18px -18px 24px}
+.mk-tray[data-media="right"] .mk-tray-media::before{inset:24px 24px -18px -18px}
+@media (max-width:860px){.mk-tray-media::before,.mk-tray[data-media="right"] .mk-tray-media::before{inset:16px -6px -10px 16px}}
+
+/* Feature on a dark tray */
+.u[data-bg="dark"] .mk-tray-copy h2,.u[data-bg="dark"] .mk-tray-copy h3{color:#fff}
+.u[data-bg="dark"] .mk-tray-copy > p,.u[data-bg="dark"] .mk-ticks li{color:var(--mk-text-dark)}
+.u[data-bg="dark"] .mk-kicker{color:rgba(255,255,255,.72)}
+.u[data-bg="dark"] .mk-ticks svg{color:#fff}
+.u[data-bg="dark"] .mk-arrow,.u[data-bg="dark"] .mk-tray-links .t-more{color:#fff}
+.u[data-bg="dark"] .mk-tray-media::before{background:rgba(255,255,255,.06)}
+.u[data-bg="cloud"] .mk-tray-media::before{background:linear-gradient(135deg,#fff,var(--lp-keyword-bg))}
+.u[data-bg="dark"] .mk-badge{margin-bottom:4px}
+.mk-tray-copy .mk-badge{align-self:flex-start}
+.mk-tray-copy .mk-actions{margin-top:28px}
+
+/* Notice — identical to the DITA note on the built article pages (one component for both) */
+.t-notice,.t-notice--info{display:grid;grid-template-columns:20px minmax(0,1fr);gap:2px 10px;align-items:start;background:#edf0fc;border:0;border-left:4px solid #2e59ab;border-radius:8px;padding:8px 16px 16px;margin-top:20px;font-size:14px;line-height:1.6;color:#000}
+.t-notice > img{width:20px;height:20px;margin-top:3px}
+.t-notice .t-notice-label{display:block;font-weight:700;color:#000}
+.t-notice > div p{margin:0}
+.t-notice a{color:var(--cta-link);font-weight:600}
+
+/* Library: live options bar and full-bleed unit examples */
+.ul-try{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding:14px 18px;border-radius:14px;background:var(--lp-slate);color:#fff}
+.ul-try > span{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.ul-try > div{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.ul-try b{font-size:14px;margin-right:6px}
+.ul-try button{border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;font:inherit;font-size:14px;font-weight:600;padding:5px 12px;border-radius:999px;cursor:pointer}
+.ul-try button[aria-pressed="true"]{background:#fff;color:var(--lp-text-primary);border-color:#fff}
+.ul-try button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.ul-variant .cl-stage--unit{padding:0;background:none}
+.ul-variant .cl-stage--unit > .u{border-radius:16px;margin:0;padding:56px 32px}
+.ul-variant .cl-stage--unit .t-wrap{padding:0}
+.ul-variant .cl-stage--unit .mk-head{margin-bottom:32px}
+.u[data-bg="dark"] .mk-h2,.u[data-bg="dark"] .t-head h2{color:#fff}
+.u[data-bg="dark"] .mk-sub,.u[data-bg="dark"] .t-head p{color:var(--mk-text-dark)}
+.u[data-bg="dark"] .mk-head .mk-kicker{color:rgba(255,255,255,.72)}

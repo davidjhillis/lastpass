@@ -82,13 +82,15 @@ UNITS = [
       ("Split, with media", "billing", '<section class="t-hero', None, ""),
       ("Marketing, with a screenshot", "saas", '<section class="mk-hero"', None, ""),
       ("Marketing, with search and a start-here list", "hub", '<section class="mk-hero"', None, "")]),
-    ("feature", "Feature", "Media on one side and a message on the other, or a full-width band that asks for one action.",
-     [("Media side", "Left, right, or none (banner)"), ("Background", "White, cloud, dark"),
-      ("Content", "Kicker, heading, text, up to 4 ticks, up to 2 buttons or links"),
+    ("feature", "Feature", "Media on one side and a message on the other, or a full-width banner that asks for one action.",
+     [("Media side", "Left or right, or none for a banner"), ("Media", "Screenshot, photo or Vimeo, in a fixed frame"),
+      ("Frame", "4:3 (default), 1:1 or 16:9, with a focus point for the crop"),
+      ("Content", "Badge or kicker, heading, text, up to 4 ticks, up to 2 buttons or links"),
       ("Targeting", "Optional schedule and audience rule")],
      ["Media", "Button"], "feature tray, spotlight, CTA band, help banner",
-     [("Media left or right", "saas", '<div class="mk-trays">', ('<article class="mk-tray', 2), ""),
-      ("Dark, with screenshot", "hub", '<div class="mk-spot"', None, ""),
+     [("Media left, on white (try the options)", "saas", '<section class="u" data-bg="white" aria-labelledby="h-products"', None, "cl-stage--unit"),
+      ("Media right, on cloud", "saas", '<section class="u" data-bg="cloud"', None, "cl-stage--unit"),
+      ("Media right, on dark", "hub", '<section class="u" data-bg="dark"', None, "cl-stage--unit"),
       ("Banner, dark", "saas", '<div class="mk-cta"', None, ""),
       ("Banner, light", "hub", '<div class="t-help"', None, "")]),
     ("cards", "Cards", "A grid of cards. The card variant sets what each card shows; the source sets where they come from.",
@@ -130,8 +132,8 @@ COMPONENTS = [
      '<ul class="t-links" style="grid-template-columns:1fr"><li><a href="#">Update payment method</a></li><li><a href="#">Cancel LastPass Families</a></li></ul>'),
     ("Table", "Caption required; header row and column; scrolls inside its box on phones.", ["Content", "Record list"],
      '<div class="t-table"><table style="min-width:0"><caption>Example</caption><thead><tr><th scope="col">Task</th><th scope="col">Where</th></tr></thead><tbody><tr><th scope="row">Change seats</th><td><a href="#">Purchase licenses</a></td></tr></tbody></table></div>'),
-    ("Notice", "Info, tip or warning, inside content.", ["Content"],
-     '<div class="t-notice t-notice--info" style="margin:0"><p><b>Tip.</b> One short message with a link.</p></div>'),
+    ("Notice", "Note, tip or notice. The same component as the notes imported from DITA, so articles and templates match.", ["Content"],
+     '<div class="t-notice" style="margin:0"><img src="img/tip_icon.svg" alt="" width="20" height="20"><div><strong class="t-notice-label">Tip:</strong><p>One short message, styled exactly like a DITA note in an article.</p></div></div>'),
     ("FAQ item", "A question and answer, written once and reused on any page.", ["FAQ"],
      '<div class="t-faq"><div class="t-faq-item" id="spec-faq"><h3><button class="t-faq-q" type="button" aria-expanded="false" aria-controls="spec-faq-a">Is a password manager and VPN combination worth it?<span class="t-faq-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></h3><div class="t-faq-a" id="spec-faq-a" hidden><p>LastPass VPN uses the LastPass login you already have.</p></div></div></div>'),
     ("Record", "One release note, known issue, download or product, keyed to the product registry.", ["Record list", "Cards"],
@@ -169,11 +171,18 @@ units_html = []
 for slug, name, purpose, options, inside, merges, variants in UNITS:
     opts = "".join('<div><dt>%s</dt><dd>%s</dd></div>' % (H.escape(a), H.escape(b)) for a, b in options)
     vs = []
+    if slug == "feature":
+        vs.append('''<div class="ul-try" data-try="#ex-feature-0" role="group" aria-label="Try the Feature options">
+  <span>Try the options</span>
+  <div><b>Media</b><button type="button" data-set="media" data-val="left" aria-pressed="true">Left</button><button type="button" data-set="media" data-val="right" aria-pressed="false">Right</button></div>
+  <div><b>Background</b><button type="button" data-set="bg" data-val="white" aria-pressed="true">White</button><button type="button" data-set="bg" data-val="wash" aria-pressed="false">Wash</button><button type="button" data-set="bg" data-val="cloud" aria-pressed="false">Cloud</button><button type="button" data-set="bg" data-val="dark" aria-pressed="false">Dark</button></div>
+  <div><b>Frame</b><button type="button" data-set="ratio" data-val="4/3" aria-pressed="true">4:3</button><button type="button" data-set="ratio" data-val="1/1" aria-pressed="false">1:1</button><button type="button" data-set="ratio" data-val="16/9" aria-pressed="false">16:9</button></div>
+</div>''')
     for n, (label, page, start, trim, stage) in enumerate(variants):
         block = extract(SRC[page], start)
         if trim:
             block = keep_first(block, *trim)
-        vs.append('<figure class="ul-variant"><figcaption><b>%s</b><span>from <a href="%s">%s</a></span></figcaption><div class="cl-stage %s">%s</div></figure>' % (
+        vs.append('<figure class="ul-variant" id="ex-%s-%d"><figcaption>' % (slug, n) + '<b>%s</b><span>from <a href="%s">%s</a></span></figcaption><div class="cl-stage %s">%s</div></figure>' % (
             label, PAGES[page][0], PAGES[page][1], stage, scope_ids(block, "ex-%s-%d" % (slug, n))))
     units_html.append('''<section class="ul-unit" id="%s" aria-labelledby="h-%s">
   <div class="ul-head">
@@ -223,7 +232,7 @@ components_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
 
 <div class="t-wrap ul-body">
   <div class="ul-model">
-    <div><b>Content unit</b><span>A tray an editor adds, reorders or removes on a page in Page Builder. Its options pick the variant.</span></div>
+    <div><b>Content unit</b><span>A tray an editor adds, reorders or removes in Page Builder. Every unit has a <b>Background</b> option (white, wash, cloud, dark) and an optional heading; its other options pick the variant.</span></div>
     <div><b>Component</b><span>A piece placed inside a unit’s layout, such as a button, card or table.</span></div>
     <div><b>Automatic</b><span>Navigation the site builds itself. Editors never place it.</span></div>
   </div>
@@ -251,6 +260,15 @@ TEMPLATES = [
     ("issues", "Request 7", "Help weight", "Active issues with workarounds, and recent real fixes linked to the releases that shipped them."),
     ("lifecycle", "Request 8", "Help weight", "Status definitions beside every product, with statuses proposed from release history for LastPass to confirm."),
 ]
+KIND = {"hub": "flex", "saas": "flex", "billing": "flex", "faq": "flex", "contact": "flex", "lifecycle": "flex",
+        "releases": "record", "downloads": "record", "issues": "record"}
+GAPS = [
+    ("Record detail pages", "A page for one known issue (so support can link KI-0001) and one release-notes page per product with its own feed. Not designed yet."),
+    ("Group by, on Cards", "Downloads groups cards into operating-system tabs. Today that is custom; it should be a Cards option so any grid can be grouped."),
+    ("Audience rules", "Contact Us and the hub spotlight assume rules read from the SAML sign-in. The claims LastPass sends, and where editors set rules, are still open."),
+    ("Video in a Feature", "The media frame takes Vimeo, but no tray shows one yet. It needs a poster, a play state and captions in the 4:3 frame."),
+    ("Search for records", "Release notes, issues and downloads should be Coveo facets on the search page. The search template still shows articles only."),
+]
 cards = []
 for k, req, weight, desc in TEMPLATES:
     us = PAGE_UNITS[k]
@@ -260,11 +278,11 @@ for k, req, weight, desc in TEMPLATES:
     <p class="tp-tags"><span class="tp-tag">%s</span><span class="tp-tag tp-tag--%s">%s</span></p>
     <h3><a href="%s">%s</a></h3>
     <p>%s</p>
-    <p class="tp-sub">Built from %d content unit%s</p>
+    <p class="tp-sub">%s · %d content unit%s</p>
     <ul class="tp-chips">%s</ul>
   </div>
 </article>''' % (PAGES[k][0], PAGES[k][0], req, "mk" if weight.startswith("Marketing") else "help", weight, PAGES[k][0], PAGES[k][1], desc,
-                 len(us), "" if len(us) == 1 else "s", "".join('<li><a href="components.html#%s">%s</a></li>' % (u, UNAME[u]) for u in us)))
+                 "Flex page" if KIND[k] == "flex" else "Record page type", len(us), "" if len(us) == 1 else "s", "".join('<li><a href="components.html#%s">%s</a></li>' % (u, UNAME[u]) for u in us)))
 
 BASE = [("index.html", "Home"), ("reader.html", "Article"), ("search.html", "Search results"), ("contact.html", "Contact")]
 templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
@@ -281,15 +299,29 @@ templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   <div class="t-hero-in">
     <p class="t-eyebrow">LastPass support portal · design system</p>
     <h1>Page templates</h1>
-    <p class="t-hero-sub">All eight page types LastPass asked for, each built from the same %d content units. Hubs carry marketing weight; help pages stay quiet.</p>
+    <p class="t-hero-sub">All eight page types LastPass asked for: six flex pages built only from the same %d content units, and three record page types.</p>
     <div class="t-hero-actions" style="justify-content:center"><a class="t-btn t-btn--brand" href="components.html">See the page-building essentials</a></div>
   </div>
 </section>
 
-<section class="t-section" aria-labelledby="h-built">
+<section class="t-section" aria-labelledby="h-flex">
   <div class="t-wrap">
-    <div class="t-head"><div><h2 id="h-built">Templates</h2><p>Open a page to see it at full size. Use <b>Show build notes</b> on any page to see which unit builds each part and where its content comes from.</p></div></div>
+    <div class="t-head"><div><h2 id="h-flex">Flex pages</h2><p>One page type. Editors stack content units in Page Builder, in any order, with any background. These six are starting layouts, not separate templates.</p></div></div>
     <div class="tp-grid">%s</div>
+  </div>
+</section>
+
+<section class="t-section t-section--wash" aria-labelledby="h-record">
+  <div class="t-wrap">
+    <div class="t-head"><div><h2 id="h-record">Record page types</h2><p>Fixed layouts bound to one record type. They need their own page type for URLs, feeds and behavior that stacking units can’t give: filters and per-release links, platform detection and version lookups, issue status and subscriptions.</p></div></div>
+    <div class="tp-grid">%s</div>
+  </div>
+</section>
+
+<section class="t-section" aria-labelledby="h-gaps">
+  <div class="t-wrap">
+    <div class="t-head"><div><h2 id="h-gaps">Gaps</h2><p>What the templates still need before the build.</p></div></div>
+    <ul class="tp-plans">%s</ul>
   </div>
 </section>
 
@@ -299,7 +331,10 @@ templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
     <ul class="tp-base">%s</ul>
   </div>
 </section>
-</main>''' % (len(UNITS), "\n".join(cards), "".join('<li><a href="%s">%s</a></li>' % (h, n) for h, n in BASE))
+</main>''' % (len(UNITS), "\n".join(c for c, (k, *_r) in zip(cards, TEMPLATES) if KIND[k] == "flex"),
+           "\n".join(c for c, (k, *_r) in zip(cards, TEMPLATES) if KIND[k] == "record"),
+           "".join('<li class="tp-plan"><h3>%s</h3><p>%s</p></li>' % g for g in GAPS),
+           "".join('<li><a href="%s">%s</a></li>' % (h, n) for h, n in BASE))
 
 with open(os.path.join(ROOT, "components.html"), "w", encoding="utf-8") as f:
     f.write(chrome("Page-building essentials — LastPass Support", "The content units and components that build every LastPass support portal page template.", components_main))
