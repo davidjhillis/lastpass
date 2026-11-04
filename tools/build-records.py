@@ -178,10 +178,10 @@ DATA = [{"id": r["id"], "p": r["pid"], "d": r["date"].isoformat(), "v": r["v"], 
 rn_main = crumbs(("Release notes", "")) + '<main id="main">\n' + hero(
     "Release notes", "What’s new in LastPass",
     "Every release, newest first. Filter by product or by what changed.",
-    "HeroBand · standard") + '''
+    "Hero unit · standard") + '''
 <div class="t-wrap">
 <div class="rc-layout">
-  <aside class="rc-side" aria-label="Filter releases" data-note="FilterPanel · product facets come from the product registry; counts are live">
+  <aside class="rc-side" aria-label="Filter releases" data-note="Record list unit · filters · product facets come from the product registry; counts are live">
     <div class="rc-search">%s<input type="search" id="rn-q" aria-label="Search release notes" placeholder="Search release notes"></div>
     <div><h2>Product</h2><div class="rc-filter" id="rn-products">%s</div></div>
     <div><h2>What changed</h2><div class="rc-filter" id="rn-types">%s</div></div>
@@ -189,7 +189,7 @@ rn_main = crumbs(("Release notes", "")) + '<main id="main">\n' + hero(
   </aside>
   <div>
     <div class="rc-bar"><p id="rn-count">Showing <b>%d</b> of <b>%d</b> releases</p><button class="t-btn t-btn--line" type="button" id="rn-clear" hidden>Clear filters</button></div>
-    <ol class="rn-list" id="rn-list" data-note="RecordList · release note records; each has a stable link">%s</ol>
+    <ol class="rn-list" id="rn-list" data-note="Record list unit · release note records; each has a stable link">%s</ol>
     <div class="rc-more"><button class="t-btn t-btn--line" type="button" id="rn-more">Show more releases</button></div>
   </div>
 </div>
@@ -255,11 +255,11 @@ def dl_card(d):
     vt = lambda v: tuple(int(x) for x in re.findall(r"\d+", v))
     if r and d.get("site") and vt(d["site"]) > vt(r["v"]):
         ver = '<p class="dl-ver"><span>Version <b>%s</b></span><a href="release-notes.html#%s">Release notes</a></p>' % (H.escape(d["site"]), d["product"])
-        note = ' data-note="Release notes stop naming this browser after %s, so the store version is shown; the registry should record each platform"' % r["v"]
+        note = ' data-note="Card · download. Release notes stop naming this browser after %s, so the store version is shown; the registry should record each platform"' % r["v"]
     elif r:
         ver = '<p class="dl-ver"><span>Version <b>%s</b></span><span>%s</span><a href="release-notes.html#%s">What’s new</a></p>' % (H.escape(r["v"]), fmt(r["date"]), r["id"])
         if d.get("site") and d["site"] != r["v"]:
-            note = ' data-note="Version from release notes. lastpass.com/downloads shows %s today; the registry keeps them in step"' % d["site"]
+            note = ' data-note="Card · download. Version from release notes. lastpass.com/downloads shows %s today; the registry keeps them in step"' % d["site"]
     return '<article class="dl-card"%s><h3>%s</h3><p>%s</p>%s<a class="t-btn t-btn--brand" href="%s">Download<span class="sr-only"> %s</span></a></article>' % (
         note, H.escape(d["name"]), H.escape(d["text"]), ver, H.escape(d["href"]), H.escape(d["name"]))
 
@@ -270,7 +270,7 @@ LEADS = {k: REG["downloads"][k][LEAD[k]] for k, _ in OS}
 lead_json = {k: {"name": d["name"], "text": d["text"], "href": d["href"]} for k, d in LEADS.items()}
 w = LEADS["windows"]
 dl_main = crumbs(("Downloads", "")) + '''<main id="main">
-<section class="t-hero t-hero--media" data-note="HeroBand, media variant · the media slot holds the detected-platform card">
+<section class="t-hero t-hero--media" data-note="Hero unit · media · the media slot holds the detected-platform card">
   <div class="t-hero-bg" aria-hidden="true"></div>
   <div class="t-hero-scrim" aria-hidden="true"></div>
   <div class="t-hero-in">
@@ -279,7 +279,7 @@ dl_main = crumbs(("Downloads", "")) + '''<main id="main">
       <h1>Get LastPass on every device you use</h1>
       <p class="t-hero-sub">Apps, browser extensions and installers for Windows, macOS, Linux and mobile. Versions update from the release notes.</p>
     </div>
-    <div class="dl-hero-card" id="dl-lead" data-note="Platform card · picks the visitor’s operating system; links to all platforms below">
+    <div class="dl-hero-card" id="dl-lead" data-note="Hero unit · media slot: platform download · picks the visitor’s operating system; links to all platforms below">
       <p class="dl-detect" id="dl-os">Recommended for Windows</p>
       <h2 id="dl-name">%s</h2>
       <p id="dl-text">%s</p>
@@ -335,15 +335,15 @@ fixed_li = "".join('<li><span>%s</span><span class="ki-where">%s · <a href="rel
 ki_main = crumbs(("Known issues", "")) + '<main id="main">\n' + hero(
     "Known issues", "Known issues and fixes",
     "Problems we’ve confirmed, what to do in the meantime, and the release that fixes them.",
-    "HeroBand · standard") + '''
+    "Hero unit · standard") + '''
 <section class="t-section" aria-labelledby="h-active">
   <div class="t-wrap">
     <div class="t-head"><div><h2 id="h-active">Active issues</h2><p>Updated as soon as anything changes.</p></div><a class="rc-feed" href="#">%s Subscribe</a></div>
-    <div class="rc-empty" data-note="Empty state · real: LastPass has not published known issues">
+    <div class="rc-empty" data-note="Record list unit · empty state · real: LastPass has not published known issues">
       <b>No active known issues</b>If something isn’t working, check <a href="#">service status</a> or <a href="contact-us.html">contact support</a>.
     </div>
     <h3 style="margin:36px 0 12px;font-size:16px;color:var(--lp-text-muted);font-weight:700">How an active issue appears</h3>
-    <article class="ki" data-note="Known issue record · ID, status, products, affected versions, workaround, fixed-in release">
+    <article class="ki" data-note="Record list unit · issue · ID, status, products, affected versions, workaround, fixed-in release">
       <header>
         <span class="ki-sample">Layout example · not a real issue</span>
         <span class="ki-id">KI-0000</span>
@@ -367,7 +367,7 @@ ki_main = crumbs(("Known issues", "")) + '<main id="main">\n' + hero(
 <section class="t-section t-section--wash" aria-labelledby="h-resolved">
   <div class="t-wrap">
     <div class="t-head"><div><h2 id="h-resolved">Recently resolved</h2><p>Fixes from the last six months, each linked to the release that shipped it.</p></div><a class="t-more" href="release-notes.html">All release notes</a></div>
-    <ul class="ki-fixed" data-note="RecordList · real “Fixed” items from release notes since %s">%s</ul>
+    <ul class="ki-fixed" data-note="Record list unit · real “Fixed” items from release notes since %s">%s</ul>
   </div>
 </section>
 </main>
@@ -411,15 +411,15 @@ lc_rows = "".join('<tr><th scope="row">%s</th><td>%s</td><td class="num">%s</td>
 lc_main = crumbs(("Product lifecycle", "")) + '<main id="main">\n' + hero(
     "Product lifecycle", "Product lifecycle",
     "Where each LastPass product stands, from active to retired, so you can plan ahead.",
-    "HeroBand · standard") + '''
+    "Hero unit · standard") + '''
 <section class="t-section" aria-labelledby="h-lc">
   <div class="t-wrap">
     <h2 id="h-lc" class="sr-only">Lifecycle status</h2>
-    <div class="t-notice t-notice--info" style="margin:0 0 28px" data-note="Notice · remove once LastPass publishes real statuses">
+    <div class="t-notice t-notice--info" style="margin:0 0 28px" data-note="Content unit · notice · remove once LastPass publishes real statuses">
       %s
       <p><b>Statuses are proposals.</b> LastPass hasn’t published lifecycle status before. Each status below is proposed from the product’s last release (within a year: Active; one to three years: Active, mature; older: End of life) for LastPass to confirm.</p>
     </div>
-    <div class="lc-pair" data-note="Table pair (original T3) · definitions beside products; stacks on phones">
+    <div class="lc-pair" data-note="Record list unit · table · definitions beside products; stacks on phones">
       <div class="t-table"><table style="min-width:0"><caption>Status definitions</caption><thead><tr><th scope="col">Status</th><th scope="col">Meaning</th></tr></thead><tbody>%s</tbody></table></div>
       <div class="t-table"><table><caption>Products</caption><thead><tr><th scope="col">Product</th><th scope="col">Family</th><th scope="col">Latest version</th><th scope="col">Last release</th><th scope="col">Status</th></tr></thead><tbody>%s</tbody></table></div>
     </div>
@@ -449,18 +449,18 @@ for ic, h, p, cta, href, aud, primary in CARDS:
     cards.append('<article class="ct-card%s" data-aud="%s"%s><span class="t-cat-icon">%s</span><p class="ct-aud">%s</p><h3>%s</h3><p>%s</p><a class="t-btn %s" href="%s">%s</a></article>' % (
         " ct-card--primary" if primary else "", aud, "" if vis else " hidden", svg(ic, 20), label, h, p, "t-btn--brand" if primary else "t-btn--line", href, cta))
 switch = '''
-    <div style="margin-top:28px" data-note="Audience preview · design only; in production the audience comes from the SAML sign-in and its plan claims">
+    <div style="margin-top:28px" data-note="Design preview · design only; in production the audience comes from the SAML sign-in and its plan claims">
       <div class="ct-switch" role="group" aria-label="Preview the page as">%s</div>
       <p class="ct-who" id="ct-who" aria-live="polite">%s</p>
     </div>''' % ("".join('<button type="button" data-aud="%s" aria-pressed="%s">%s</button>' % (k, "true" if k == "out" else "false", n) for k, n in AUD), WHO["out"])
 ct_main = crumbs(("Contact us", "")) + '<main id="main">\n' + hero(
     "Contact us", "How can we help?",
     "The options you see depend on your plan. Sign in to see everything available to you.",
-    "HeroBand · with an audience preview", switch) + '''
+    "Hero unit · standard, with a design-preview switch", switch) + '''
 <section class="t-section" aria-labelledby="h-ways">
   <div class="t-wrap">
     <div class="t-head"><div><h2 id="h-ways">Ways to get help</h2><p>Which options appear for which plan is set in the CMS, not in code. The rules shown here are examples for LastPass to replace.</p></div></div>
-    <div class="ct-grid" data-note="Contact option cards · each has an audience rule (F3); signed-out visitors never see an empty page">%s</div>
+    <div class="ct-grid" data-note="Cards unit · contact option · each has an audience rule (F3); signed-out visitors never see an empty page">%s</div>
   </div>
 </section>
 </main>

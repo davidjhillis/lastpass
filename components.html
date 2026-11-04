@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Component library — LastPass Support</title>
-<meta name="description" content="The blocks that build the LastPass support portal page templates, with live examples and author fields.">
+<title>Page-building essentials — LastPass Support</title>
+<meta name="description" content="The content units and components that build every LastPass support portal page template.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -97,7 +97,7 @@
   <ol>
     <li><a href="index.html">Home</a></li>
     <li><a href="templates.html">Page templates</a></li>
-    <li><span aria-current="page">Component library</span></li>
+    <li><span aria-current="page">Page-building essentials</span></li>
   </ol>
 </nav>
 
@@ -107,119 +107,33 @@
   <div class="t-hero-scrim" aria-hidden="true"></div>
   <div class="t-hero-in">
     <p class="t-eyebrow">LastPass support portal · design system</p>
-    <h1>Component library</h1>
-    <p class="t-hero-sub">33 blocks that build the new page templates. Each example below is taken from the page that uses it.</p>
+    <h1>Page-building essentials</h1>
+    <p class="t-hero-sub">6 content units that editors stack in Page Builder, and 8 components that go inside them. Every page template is built from these.</p>
   </div>
 </section>
 
-<div class="t-wrap">
-<div class="t-ov cl-layout">
-  <nav class="t-ov-nav cl-nav" aria-label="Components"><p class="cl-nav-group">Navigation</p><ul><li><a href="#breadcrumb">Breadcrumb</a></li><li><a href="#hub-switcher">Hub switcher</a></li><li><a href="#quick-links">Quick links</a></li><li><a href="#in-page-nav">On this page</a></li></ul><p class="cl-nav-group">Heroes</p><ul><li><a href="#hero-standard">Hero, standard</a></li><li><a href="#hero-media">Hero, media</a></li><li><a href="#hero-hub">Hero, hub</a></li><li><a href="#hero-product">Hero, product</a></li><li><a href="#proof-strip">Proof strip</a></li></ul><p class="cl-nav-group">Content</p><ul><li><a href="#category-cards">Category cards</a></li><li><a href="#article-cards">Article cards</a></li><li><a href="#link-list">Link list</a></li><li><a href="#file-links">File links</a></li><li><a href="#table">Table</a></li><li><a href="#capability-table">Capability table</a></li><li><a href="#notice">Notice</a></li><li><a href="#video">Video</a></li><li><a href="#feature-tray">Feature tray</a></li><li><a href="#benefits">Benefits band</a></li><li><a href="#steps">Steps</a></li></ul><p class="cl-nav-group">Records and reuse</p><ul><li><a href="#record-list">Record list</a></li><li><a href="#faq">FAQ group</a></li><li><a href="#filter-panel">Filter panel</a></li><li><a href="#release-entry">Release entry</a></li><li><a href="#platform-card">Platform card</a></li><li><a href="#download-cards">Download cards</a></li><li><a href="#issue-card">Known issue</a></li><li><a href="#resolved-list">Resolved list</a></li><li><a href="#lifecycle-tables">Lifecycle tables</a></li></ul><p class="cl-nav-group">Calls to action</p><ul><li><a href="#contact-options">Contact options</a></li><li><a href="#spotlight">Spotlight</a></li><li><a href="#contact-band">Contact band</a></li><li><a href="#cta-band">CTA band</a></li></ul></nav>
-  <div class="cl-body"><h2 class="cl-group" id="group-navigation">Navigation</h2>
-<section class="cl-item" id="breadcrumb" aria-labelledby="h-breadcrumb">
-  <header class="cl-item-head">
-    <h3 id="h-breadcrumb">Breadcrumb</h3>
-    <code>AncestorNavigation</code>
-  </header>
-  <p class="cl-purpose">Shows where the page sits. Generated from the site tree; the last item is the current page.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Items</th><td>Generated from ancestors; no authoring</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="hub-business.html">Mini hub · LastPass Business</a> <a href="topic-saas-monitoring.html">Product hub · SaaS and AI Monitoring</a> <a href="topic-billing.html">Topic overview · Billing</a> <a href="faq.html">FAQ page</a> <a href="contact-us.html">Contact Us</a> <a href="release-notes.html">Release notes</a> <a href="downloads.html">Downloads</a> <a href="known-issues.html">Known issues</a> <a href="lifecycle.html">Product lifecycle</a></p>
+<nav class="ul-nav" aria-label="Units and components"><div class="t-wrap"><ul><li><a href="#hero">Hero</a></li><li><a href="#feature">Feature</a></li><li><a href="#cards">Cards</a></li><li><a href="#faq">FAQ</a></li><li><a href="#content">Content</a></li><li><a href="#records">Record list</a></li><li class="ul-nav-sep"><a href="#components">Components</a></li><li><a href="#automatic">Automatic</a></li></ul></div></nav>
+
+<div class="t-wrap ul-body">
+  <div class="ul-model">
+    <div><b>Content unit</b><span>A tray an editor adds, reorders or removes on a page in Page Builder. Its options pick the variant.</span></div>
+    <div><b>Component</b><span>A piece placed inside a unit’s layout, such as a button, card or table.</span></div>
+    <div><b>Automatic</b><span>Navigation the site builds itself. Editors never place it.</span></div>
   </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Topic overview · Billing</p>
-<nav class="t-crumbs" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="reader.html">Account management</a></li>
-    <li><span aria-current="page">Billing</span></li>
-  </ol>
-</nav>
+<section class="ul-unit" id="hero" aria-labelledby="h-hero">
+  <div class="ul-head">
+    <div>
+      <p class="ul-kind">Content unit</p>
+      <h2 id="h-hero">Hero</h2>
+      <p class="ul-purpose">Opens every page: the title, an intro, and optionally search, buttons and a media slot.</p>
+      <p class="ul-merges"><b>Replaces</b> 4 hero variants, quick links, proof strip, start-here card, platform card</p>
+    </div>
+    <dl class="ul-opts"><div><dt>Layout</dt><dd>Centered, or split with a media slot</dd></div><div><dt>Weight</dt><dd>Standard or marketing (dark, larger type)</dd></div><div><dt>Search</dt><dd>Off, all of support, or scoped to a product</dd></div><div><dt>Media slot</dt><dd>Image, screenshot, Vimeo, start-here list or platform download</dd></div><div><dt>Extras</dt><dd>Badge, up to 2 buttons, quick links bar, proof points</dd></div>
+      <div><dt>Components</dt><dd><ul class="tp-chips"><li><a href="#c-button">Button</a></li><li><a href="#c-media">Media</a></li><li><a href="#c-link-list">Link list</a></li></ul></dd></div>
+      <div><dt>Used on</dt><dd><a href="hub-business.html">Mini hub</a>, <a href="topic-saas-monitoring.html">Topic overview, product</a>, <a href="topic-billing.html">Topic overview, utility</a>, <a href="faq.html">FAQ page</a>, <a href="contact-us.html">Contact Us</a>, <a href="release-notes.html">Release notes</a>, <a href="downloads.html">Downloads</a>, <a href="known-issues.html">Known issue tracker</a>, <a href="lifecycle.html">Product lifecycle</a></dd></div>
+    </dl>
   </div>
-</section>
-<section class="cl-item" id="hub-switcher" aria-labelledby="h-hub-switcher">
-  <header class="cl-item-head">
-    <h3 id="h-hub-switcher">Hub switcher</h3>
-    <code>HubNavigation</code>
-  </header>
-  <p class="cl-purpose">Moves between Mini hubs. Lists every hub page; the current one is highlighted and scrolled into view on phones.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Hubs</th><td>Generated from every page of type Mini hub</td></tr><tr><th scope="row">Label</th><td>Text, default “Help hubs”</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="hub-business.html">Mini hub · LastPass Business</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Mini hub · LastPass Business</p>
-<nav class="t-hubs" aria-label="Help hubs" data-note="Hub switcher · lists every Mini hub page, generated from the site tree">
-  <div class="t-wrap">
-    <span class="t-hubs-label">Help hubs</span>
-    <ul>
-      <li><a href="index.html">All support</a></li>
-      <li><a href="#">Personal and Families</a></li>
-      <li><a href="hub-business.html" aria-current="page">LastPass Business</a></li>
-      <li><a href="#">SaaS and AI Monitoring</a></li>
-      <li><a href="#">LastPass VPN</a></li>
-    </ul>
-  </div>
-</nav>
-  </div>
-</section>
-<section class="cl-item" id="quick-links" aria-labelledby="h-quick-links">
-  <header class="cl-item-head">
-    <h3 id="h-quick-links">Quick links</h3>
-    <code>QuickLinks</code>
-  </header>
-  <p class="cl-purpose">A floating bar of up to six shortcuts that overlaps the hero. Becomes a 3-column grid on phones.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Links</th><td>Up to 6: label, icon, link</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="hub-business.html">Mini hub · LastPass Business</a></p>
-  </div>
-  <div class="cl-stage cl-stage--quick"><p class="cl-stage-label" aria-hidden="true">Live example · from Mini hub · LastPass Business</p>
-<nav class="t-quick" aria-label="Business shortcuts" data-note="QuickLinks · up to 6, authored per hub">
-  <ul>
-    <li><a href="reader.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>Admin Console</a></li>
-    <li><a href="reader.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Admin checklist</a></li>
-    <li><a href="reader.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Deploy guides</a></li>
-    <li><a href="release-notes.html#admin-console"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>Release notes</a></li>
-    <li><a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Service status</a></li>
-    <li><a href="contact-us.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Contact support</a></li>
-  </ul>
-</nav>
-  </div>
-</section>
-<section class="cl-item" id="in-page-nav" aria-labelledby="h-in-page-nav">
-  <header class="cl-item-head">
-    <h3 id="h-in-page-nav">On this page</h3>
-    <code>SectionNavigation</code>
-  </header>
-  <p class="cl-purpose">A sticky list of the page’s H2 sections that highlights the one in view. Becomes chips on narrow screens.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Items</th><td>Generated from the page’s section headings</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="topic-billing.html">Topic overview · Billing</a> <a href="faq.html">FAQ page</a></p>
-  </div>
-  <div class="cl-stage cl-stage--narrow"><p class="cl-stage-label" aria-hidden="true">Live example · from Topic overview · Billing</p>
-<nav class="t-ov-nav" aria-label="On this page" data-section-nav>
-    <p>On this page</p>
-    <ul>
-      <li><a href="#purchase" class="is-active" aria-current="true">Purchase</a></li>
-      <li><a href="#renew">Renew</a></li>
-      <li><a href="#cancel">Cancel and refunds</a></li>
-      <li><a href="#by-plan">Tasks by plan</a></li>
-      <li><a href="#questions">FAQs and troubleshooting</a></li>
-    </ul>
-  </nav>
-  </div>
-</section>
-<h2 class="cl-group" id="group-heroes">Heroes</h2>
-<section class="cl-item" id="hero-standard" aria-labelledby="h-hero-standard">
-  <header class="cl-item-head">
-    <h3 id="h-hero-standard">Hero, standard</h3>
-    <code>HeroBand</code>
-  </header>
-  <p class="cl-purpose">A centered title band in the brand gradient. Use on utility pages such as the FAQ.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Eyebrow</th><td>Text</td></tr><tr><th scope="row">Title</th><td>Text, becomes the H1</td></tr><tr><th scope="row">Intro</th><td>Text</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="faq.html">FAQ page</a> <a href="contact-us.html">Contact Us</a> <a href="release-notes.html">Release notes</a> <a href="known-issues.html">Known issues</a> <a href="lifecycle.html">Product lifecycle</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from FAQ page</p>
-<section class="t-hero t-hero--center" data-note="HeroBand · no search; compact">
+  <figure class="ul-variant"><figcaption><b>Standard</b><span>from <a href="faq.html">FAQ page</a></span></figcaption><div class="cl-stage "><section class="t-hero t-hero--center" data-note="Hero unit · standard · no search; compact">
   <div class="t-hero-bg" aria-hidden="true"></div>
   <div class="t-hero-scrim" aria-hidden="true"></div>
   <div class="t-hero-in" style="padding-bottom:56px">
@@ -227,21 +141,8 @@
     <h1>Frequently asked questions</h1>
     <p class="t-hero-sub">Short answers about LastPass products, grouped by product.</p>
   </div>
-</section>
-  </div>
-</section>
-<section class="cl-item" id="hero-media" aria-labelledby="h-hero-media">
-  <header class="cl-item-head">
-    <h3 id="h-hero-media">Hero, media</h3>
-    <code>HeroBand (media)</code>
-  </header>
-  <p class="cl-purpose">Copy and buttons on the left, an image or Vimeo video on the right.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Eyebrow, title, intro</th><td>Text</td></tr><tr><th scope="row">Buttons</th><td>Up to 2</td></tr><tr><th scope="row">Media</th><td>Image, or Vimeo URL with a required title</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="topic-billing.html">Topic overview · Billing</a> <a href="downloads.html">Downloads</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Topic overview · Billing</p>
-<section class="t-hero t-hero--media" data-note="HeroBand, media variant · image or Vimeo URL, no search">
+</section></div></figure>
+  <figure class="ul-variant"><figcaption><b>Split, with media</b><span>from <a href="topic-billing.html">Topic overview, utility</a></span></figcaption><div class="cl-stage "><section class="t-hero t-hero--media" data-note="Hero unit · media · image or Vimeo URL, no search">
   <div class="t-hero-bg" aria-hidden="true"></div>
   <div class="t-hero-scrim" aria-hidden="true"></div>
   <div class="t-hero-in">
@@ -254,65 +155,14 @@
         <a class="t-btn t-btn--ghost" href="#by-plan">Find your plan’s tasks</a>
       </div>
     </div>
-    <button class="t-video" type="button" data-vimeo="1035784521" data-title="Billing overview video" aria-label="Play video: billing overview" data-note="Media block · Vimeo URL, required title, poster image">
+    <button class="t-video" type="button" data-vimeo="1035784521" data-title="Billing overview video" aria-label="Play video: billing overview" data-note="Media component · Vimeo · Vimeo URL, required title, poster image">
       <img src="img/photo-admin.jpg" alt="" width="800" height="450" loading="eager" decoding="async">
       <span class="t-video-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>
       <span class="t-video-cap"><span>Billing overview</span><span>Vimeo</span></span>
     </button>
   </div>
-</section>
-  </div>
-</section>
-<section class="cl-item" id="hero-hub" aria-labelledby="h-hero-hub">
-  <header class="cl-item-head">
-    <h3 id="h-hero-hub">Hero, hub</h3>
-    <code>HeroBand (hub)</code>
-  </header>
-  <p class="cl-purpose">Marketing weight for a hub: a big promise, search scoped to the hub, and a numbered start-here card.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Badge, title, intro</th><td>Text</td></tr><tr><th scope="row">Search scope</th><td>Product facet sent to Coveo</td></tr><tr><th scope="row">Start here</th><td>Up to 4 links with a short description</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="hub-business.html">Mini hub · LastPass Business</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Mini hub · LastPass Business</p>
-<section class="mk-hero" data-note="HeroBand, hub variant · promise, search scoped to the hub's product facet, start-here card">
-  <div class="mk-hero-in">
-    <div>
-      <span class="mk-badge"><b>Hub</b> LastPass Business</span>
-      <h1>Run LastPass for your whole organization</h1>
-      <p class="mk-lede">Everything admins need to roll out LastPass, keep people secure, and see what’s happening across the company.</p>
-      <form action="search.html" method="get" class="searchwrap mt-8" role="search" aria-label="Search LastPass Business help" style="margin-left:0">
-        <span class="text-slate-400 shrink-0" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
-        <input type="search" name="q" id="ex-hero-hub-hub-q" aria-label="Search LastPass Business help" placeholder="Search admin help, e.g. multifactor policy" class="placeholder-slate-500">
-        <input type="hidden" name="product" value="business">
-        <button type="submit" class="btn px-6 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-bold text-[15px] inline-flex items-center justify-center">Search</button>
-      </form>
-      <p class="mk-fine">Searching LastPass Business articles · <a href="search.html">Search all of support</a></p>
-    </div>
-    <div class="mk-visual mk-start" data-note="Start-here card · links to the onboarding guide topics">
-      <div class="mk-visual-bar"><span style="margin:0">New to LastPass Business? Start here</span></div>
-      <ol class="mk-start-list">
-        <li><a href="reader.html"><span><b>Read the admin overview</b><small>What admins can do, and where</small></span></a></li>
-        <li><a href="reader.html"><span><b>Plan your onboarding</b><small>Onboarding for LastPass Business</small></span></a></li>
-        <li><a href="reader.html"><span><b>Turn on multifactor</b><small>Enable multifactor authentication (admins)</small></span></a></li>
-        <li><a href="reader.html"><span><b>Install LastPass for everyone</b><small>Install LastPass using the Admin Console</small></span></a></li>
-      </ol>
-    </div>
-  </div>
-</section>
-  </div>
-</section>
-<section class="cl-item" id="hero-product" aria-labelledby="h-hero-product">
-  <header class="cl-item-head">
-    <h3 id="h-hero-product">Hero, product</h3>
-    <code>HeroBand (product)</code>
-  </header>
-  <p class="cl-purpose">Marketing weight for a product hub: badge, headline, two calls to action and a product visual.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Badge</th><td>Plan + product</td></tr><tr><th scope="row">Title, intro</th><td>Text</td></tr><tr><th scope="row">Buttons</th><td>Primary and secondary</td></tr><tr><th scope="row">Fine print</th><td>Text with a link</td></tr><tr><th scope="row">Visual</th><td>Screenshot, image or Vimeo</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="topic-saas-monitoring.html">Product hub · SaaS and AI Monitoring</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Product hub · SaaS and AI Monitoring</p>
-<section class="mk-hero" data-note="HeroBand, product variant · headline, two CTAs, product visual (image, Vimeo or screenshot)">
+</section></div></figure>
+  <figure class="ul-variant"><figcaption><b>Marketing, with a screenshot</b><span>from <a href="topic-saas-monitoring.html">Topic overview, product</a></span></figcaption><div class="cl-stage "><section class="mk-hero" data-note="Hero unit · product · headline, two CTAs, product visual (image, Vimeo or screenshot)">
   <div class="mk-hero-in">
     <div>
       <span class="mk-badge"><b>Business Max</b> SaaS, Web and AI Monitoring &amp; Protect</span>
@@ -325,46 +175,118 @@
       <p class="mk-fine">Already on Business Max? <a href="reader.html">Enable SaaS Monitoring</a></p>
     </div>
 
-    <figure class="mk-shot-frame" data-note="Product screenshot · from the LastPass docs (saas_monitoring_overview.png)"><img class="mk-shot" src="img/shot-saas-monitoring-apps.png" alt="The SaaS Monitoring page in the Admin Console, showing discovered apps, login methods, alerts and usage rules" width="1935" height="927" loading="eager" decoding="async"></figure>
+    <figure class="mk-shot-frame" data-note="Hero unit · media slot: screenshot · from the LastPass docs (saas_monitoring_overview.png)"><img class="mk-shot" src="img/shot-saas-monitoring-apps.png" alt="The SaaS Monitoring page in the Admin Console, showing discovered apps, login methods, alerts and usage rules" width="1935" height="927" loading="eager" decoding="async"></figure>
   </div>
+</section></div></figure>
+  <figure class="ul-variant"><figcaption><b>Marketing, with search and a start-here list</b><span>from <a href="hub-business.html">Mini hub</a></span></figcaption><div class="cl-stage "><section class="mk-hero" data-note="Hero unit · hub · promise, search scoped to the hub's product facet, start-here card">
+  <div class="mk-hero-in">
+    <div>
+      <span class="mk-badge"><b>Hub</b> LastPass Business</span>
+      <h1>Run LastPass for your whole organization</h1>
+      <p class="mk-lede">Everything admins need to roll out LastPass, keep people secure, and see what’s happening across the company.</p>
+      <form action="search.html" method="get" class="searchwrap mt-8" role="search" aria-label="Search LastPass Business help" style="margin-left:0">
+        <span class="text-slate-400 shrink-0" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+        <input type="search" name="q" id="ex-hero-3-hub-q" aria-label="Search LastPass Business help" placeholder="Search admin help, e.g. multifactor policy" class="placeholder-slate-500">
+        <input type="hidden" name="product" value="business">
+        <button type="submit" class="btn px-6 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-bold text-[15px] inline-flex items-center justify-center">Search</button>
+      </form>
+      <p class="mk-fine">Searching LastPass Business articles · <a href="search.html">Search all of support</a></p>
+    </div>
+    <div class="mk-visual mk-start" data-note="Hero unit · media slot: start-here list · links to the onboarding guide topics">
+      <div class="mk-visual-bar"><span style="margin:0">New to LastPass Business? Start here</span></div>
+      <ol class="mk-start-list">
+        <li><a href="reader.html"><span><b>Read the admin overview</b><small>What admins can do, and where</small></span></a></li>
+        <li><a href="reader.html"><span><b>Plan your onboarding</b><small>Onboarding for LastPass Business</small></span></a></li>
+        <li><a href="reader.html"><span><b>Turn on multifactor</b><small>Enable multifactor authentication (admins)</small></span></a></li>
+        <li><a href="reader.html"><span><b>Install LastPass for everyone</b><small>Install LastPass using the Admin Console</small></span></a></li>
+      </ol>
+    </div>
+  </div>
+</section></div></figure>
 </section>
+<section class="ul-unit" id="feature" aria-labelledby="h-feature">
+  <div class="ul-head">
+    <div>
+      <p class="ul-kind">Content unit</p>
+      <h2 id="h-feature">Feature</h2>
+      <p class="ul-purpose">Media on one side and a message on the other, or a full-width band that asks for one action.</p>
+      <p class="ul-merges"><b>Replaces</b> feature tray, spotlight, CTA band, help banner</p>
+    </div>
+    <dl class="ul-opts"><div><dt>Media side</dt><dd>Left, right, or none (banner)</dd></div><div><dt>Background</dt><dd>White, cloud, dark</dd></div><div><dt>Content</dt><dd>Kicker, heading, text, up to 4 ticks, up to 2 buttons or links</dd></div><div><dt>Targeting</dt><dd>Optional schedule and audience rule</dd></div>
+      <div><dt>Components</dt><dd><ul class="tp-chips"><li><a href="#c-media">Media</a></li><li><a href="#c-button">Button</a></li></ul></dd></div>
+      <div><dt>Used on</dt><dd><a href="hub-business.html">Mini hub</a>, <a href="topic-saas-monitoring.html">Topic overview, product</a>, <a href="topic-billing.html">Topic overview, utility</a>, <a href="faq.html">FAQ page</a>, <a href="downloads.html">Downloads</a></dd></div>
+    </dl>
   </div>
+  <figure class="ul-variant"><figcaption><b>Media left or right</b><span>from <a href="topic-saas-monitoring.html">Topic overview, product</a></span></figcaption><div class="cl-stage "><div class="mk-trays">
+      <article class="mk-tray" data-note="Feature unit · media (image, Vimeo or screenshot) + copy + link; alternates sides">
+        <div class="mk-tray-media mk-tray-media--shot"><img class="mk-shot" src="img/shot-saas-monitoring-users.png" alt="The Discovered users tab of SaaS Monitoring, listing users with their apps, alerts and vaulted passwords" width="1935" height="833" loading="lazy" decoding="async"></div>
+        <div class="mk-tray-copy">
+          <p class="mk-kicker">SaaS Monitoring</p>
+          <h3>Find every app, approved or not</h3>
+          <p>See the apps your company’s users reach and who uses them, so nothing runs out of sight.</p>
+          <ul class="mk-ticks"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A Discovered apps tab you can filter</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A Discovered users tab for activity by person</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Monitored domains you choose</span></li></ul>
+          <p class="mk-tray-links"><a class="mk-arrow" href="reader.html">About SaaS Monitoring <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a><a class="t-more" href="reader.html">SaaS Monitoring FAQs</a></p>
+        </div>
+      </article>
+<article class="mk-tray mk-tray--flip">
+        <div class="mk-tray-media mk-tray-media--shot"><img class="mk-shot" src="img/shot-saas-protect-apps.png" alt="SaaS Protect in the Admin Console, showing blocked, warned and allowed apps with a usage rule for each" width="1935" height="926" loading="lazy" decoding="async"></div>
+        <div class="mk-tray-copy">
+          <p class="mk-kicker">SaaS Protect</p>
+          <h3>Turn what you find into rules</h3>
+          <p>Decide what happens when someone opens an app: allow it, warn them, or block it. Add your own apps when the catalog doesn’t have them.</p>
+          <ul class="mk-ticks"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A usage rule per app</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Custom apps for tools the catalog doesn’t know</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A clear experience for the people affected</span></li></ul>
+          <p class="mk-tray-links"><a class="mk-arrow" href="reader.html">Set a usage rule in SaaS Protect <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a><a class="t-more" href="reader.html">End user experience of SaaS Protect</a></p>
+        </div>
+      </article>
+    </div></div></figure>
+  <figure class="ul-variant"><figcaption><b>Dark, with screenshot</b><span>from <a href="hub-business.html">Mini hub</a></span></figcaption><div class="cl-stage "><div class="mk-spot" data-note="Feature unit · spotlight · scheduled by editors; shown to Business admins without Max (audience rule)">
+      <div class="mk-spot-copy">
+        <span class="mk-badge"><b>New</b> AI Monitoring &amp; Protect</span>
+        <h2 id="ex-feature-1-h-spot">See which AI tools your team uses, and set the rules</h2>
+        <p>Find the AI tools people reach through the LastPass extension, see how they log in, and warn before credentials or keys are shared. Included in Business Max.</p>
+        <div class="mk-actions">
+          <a class="t-btn t-btn--brand" href="topic-saas-monitoring.html">See how it works</a>
+          <a class="t-btn t-btn--ghost" href="#">Talk to sales</a>
+        </div>
+      </div>
+      <div class="mk-spot-media"><img class="mk-shot" src="img/shot-saas-protect-categories.png" alt="SaaS Protect categories in the Admin Console, with AI/ML Applications set to Warn" width="1935" height="926" loading="lazy" decoding="async"></div>
+    </div></div></figure>
+  <figure class="ul-variant"><figcaption><b>Banner, dark</b><span>from <a href="topic-saas-monitoring.html">Topic overview, product</a></span></figcaption><div class="cl-stage "><div class="mk-cta" data-note="Feature unit · call to action · audience-aware: Business Max admins see “Enable”, everyone else sees the trial">
+      <div>
+        <h2 id="ex-feature-2-h-cta">Bring shadow IT and AI into view</h2>
+        <p>SaaS, Web and AI Monitoring &amp; Protect are included in LastPass Business Max. Start with a free trial of LastPass Business, or talk to our team about Max.</p>
+      </div>
+      <div class="mk-actions">
+        <a class="t-btn t-btn--brand" href="#">Try LastPass Business free</a>
+        <a class="t-btn t-btn--ghost" href="#">Contact sales</a>
+      </div>
+    </div></div></figure>
+  <figure class="ul-variant"><figcaption><b>Banner, light</b><span>from <a href="hub-business.html">Mini hub</a></span></figcaption><div class="cl-stage "><div class="t-help" data-note="Feature unit · help banner · signed-in admins see their plan's channels (phase 4)">
+      <div>
+        <h2>Need help with your Business account?</h2>
+        <p>Admins can open a case with LastPass Business support.</p>
+      </div>
+      <div class="t-help-actions">
+        <a class="t-btn t-btn--line" href="#">Ask the community</a>
+        <a class="t-btn t-btn--brand" href="contact-us.html">Contact support</a>
+      </div>
+    </div></div></figure>
 </section>
-<section class="cl-item" id="proof-strip" aria-labelledby="h-proof-strip">
-  <header class="cl-item-head">
-    <h3 id="h-proof-strip">Proof strip</h3>
-    <code>ProofPoints</code>
-  </header>
-  <p class="cl-purpose">Four short claims directly under a product hero.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Points</th><td>Up to 4: bold label + one line</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="topic-saas-monitoring.html">Product hub · SaaS and AI Monitoring</a></p>
+<section class="ul-unit" id="cards" aria-labelledby="h-cards">
+  <div class="ul-head">
+    <div>
+      <p class="ul-kind">Content unit</p>
+      <h2 id="h-cards">Cards</h2>
+      <p class="ul-purpose">A grid of cards. The card variant sets what each card shows; the source sets where they come from.</p>
+      <p class="ul-merges"><b>Replaces</b> category, article, file, benefit, step, download and contact-option cards</p>
+    </div>
+    <dl class="ul-opts"><div><dt>Card variant</dt><dd>Category, article, icon, step, file, download, contact option</dd></div><div><dt>Columns</dt><dd>2, 3 or 4</dd></div><div><dt>Background</dt><dd>White, wash, dark</dd></div><div><dt>Source</dt><dd>Hand-picked, a DITA map branch, or records</dd></div>
+      <div><dt>Components</dt><dd><ul class="tp-chips"><li><a href="#c-card">Card</a></li><li><a href="#c-button">Button</a></li><li><a href="#c-link-list">Link list</a></li><li><a href="#c-record">Record</a></li></ul></dd></div>
+      <div><dt>Used on</dt><dd><a href="hub-business.html">Mini hub</a>, <a href="topic-saas-monitoring.html">Topic overview, product</a>, <a href="contact-us.html">Contact Us</a>, <a href="downloads.html">Downloads</a></dd></div>
+    </dl>
   </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Product hub · SaaS and AI Monitoring</p>
-<section class="mk-points" aria-label="At a glance" data-note="Proof strip · four short claims, authored">
-  <ul>
-    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>No agent to deploy</b>Runs in the LastPass extension</span></li>
-    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Unapproved tools included</b>Including ones IT never signed off</span></li>
-    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Allow, warn or block</b>A rule per tool, not a kill switch</span></li>
-    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Warnings, not transcripts</b>Logs the warning, not the conversation</span></li>
-  </ul>
-</section>
-  </div>
-</section>
-<h2 class="cl-group" id="group-content">Content</h2>
-<section class="cl-item" id="category-cards" aria-labelledby="h-category-cards">
-  <header class="cl-item-head">
-    <h3 id="h-category-cards">Category cards</h3>
-    <code>CategoryCards</code>
-  </header>
-  <p class="cl-purpose">Task-led cards, each with an icon, a summary and the first links of its guide.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Icon, title, summary</th><td>Per card</td></tr><tr><th scope="row">Links</th><td>Hand-picked, or the first entries of a DITA map branch</td></tr><tr><th scope="row">More link</th><td>Text + link</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="hub-business.html">Mini hub · LastPass Business</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Mini hub · LastPass Business</p>
-<div class="t-cats">
-      <article class="t-cat" data-note="CategoryCard · links fill from the DITA map branch “Get started with LastPass Business”">
+  <figure class="ul-variant"><figcaption><b>Category, with links from the map</b><span>from <a href="hub-business.html">Mini hub</a></span></figcaption><div class="cl-stage "><div class="t-cats">
+      <article class="t-cat" data-note="Cards unit · category · links fill from the DITA map branch “Get started with LastPass Business”">
         <span class="t-cat-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span>
         <h3><a href="reader.html">Get your organization started</a></h3>
         <p>Activate your account, add your first users and roll out the extension.</p>
@@ -397,219 +319,19 @@
         </ul>
         <a class="t-more" href="reader.html">View all 8 articles</a>
       </article>
-    </div>
-  </div>
-</section>
-<section class="cl-item" id="article-cards" aria-labelledby="h-article-cards">
-  <header class="cl-item-head">
-    <h3 id="h-article-cards">Article cards</h3>
-    <code>PopularTopics</code>
-  </header>
-  <p class="cl-purpose">Cards for individual articles: type, title, summary and a Learn more link.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Articles</th><td>Picked by the editor; later ranked by Coveo usage</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="hub-business.html">Mini hub · LastPass Business</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Mini hub · LastPass Business</p>
-<div class="t-cards" data-note="PopularTopics · picked by the editor; later ranked by Coveo usage analytics">
+    </div></div></figure>
+  <figure class="ul-variant"><figcaption><b>Article</b><span>from <a href="hub-business.html">Mini hub</a></span></figcaption><div class="cl-stage "><div class="t-cards" data-note="Cards unit · article · picked by the editor; later ranked by Coveo usage analytics">
       <a class="t-card" href="reader.html"><p class="t-kicker">Article</p><h3>Access the Admin Console</h3><p>Sign in to the Admin Console to manage users, policies and reporting for your account.</p><span class="cta-link">Learn more</span></a>
 <a class="t-card" href="reader.html"><p class="t-kicker">Article</p><h3>Enable a multifactor policy</h3><p>Require users to verify their identity with a second factor when they log in.</p><span class="cta-link">Learn more</span></a>
 <a class="t-card" href="reader.html"><p class="t-kicker">Article</p><h3>Use directory integrations for automated provisioning</h3><p>Sync users and groups from your directory so accounts are created and removed for you.</p><span class="cta-link">Learn more</span></a>
-    </div>
-  </div>
-</section>
-<section class="cl-item" id="link-list" aria-labelledby="h-link-list">
-  <header class="cl-item-head">
-    <h3 id="h-link-list">Link list</h3>
-    <code>LinkList</code>
-  </header>
-  <p class="cl-purpose">A two-column list of article links under a section heading.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Links</th><td>Hand-picked; optionally “add all from a map branch”</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="topic-billing.html">Topic overview · Billing</a></p>
-  </div>
-  <div class="cl-stage cl-stage--narrow"><p class="cl-stage-label" aria-hidden="true">Live example · from Topic overview · Billing</p>
-<div data-note="LinkList, hand-picked · editors choose topics; “add all from map branch” is optional">
-        <ul class="t-links">
-          <li><a href="reader.html">How much does a LastPass subscription cost?</a></li>
-          <li><a href="reader.html">LastPass Premium FAQs</a></li>
-          <li><a href="reader.html">Upgrade to LastPass Families FAQs</a></li>
-          <li><a href="reader.html">Upgrade to LastPass Plus FAQs</a></li>
-          <li><a href="reader.html">Start a new LastPass Teams or LastPass Business subscription</a></li>
-          <li><a href="reader.html">Purchase more LastPass Business licenses</a></li>
-          <li><a href="reader.html">Upgrade from LastPass Business to LastPass Business Max</a></li>
-          <li><a href="reader.html">Print billing receipts for a LastPass subscription</a></li>
-        </ul>
-      </div>
-  </div>
-</section>
-<section class="cl-item" id="file-links" aria-labelledby="h-file-links">
-  <header class="cl-item-head">
-    <h3 id="h-file-links">File links</h3>
-    <code>LinkList (files)</code>
-  </header>
-  <p class="cl-purpose">Links to downloadable guides and templates, with a file-type badge.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Files</th><td>Imported downloadables: title, type, label</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="hub-business.html">Mini hub · LastPass Business</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Mini hub · LastPass Business</p>
-<div class="t-files" data-note="LinkList, file style · links to imported downloadables (PDF, DOC)">
-      <a class="t-file" href="#"><span class="t-file-type t-file-type--pdf" aria-hidden="true">PDF</span><span><b>LastPass Admin Checklist</b><span class="t-file-meta">PDF · Planning</span></span></a>
-      <a class="t-file" href="#"><span class="t-file-type t-file-type--pdf" aria-hidden="true">PDF</span><span><b>Business Helpdesk Guide for Admins</b><span class="t-file-meta">PDF · Support teams</span></span></a>
-      <a class="t-file" href="#"><span class="t-file-type" aria-hidden="true">WEB</span><span><b>LastPass MFA Deployment Guide</b><span class="t-file-meta">Guide · Multifactor</span></span></a>
-      <a class="t-file" href="#"><span class="t-file-type t-file-type--doc" aria-hidden="true">DOC</span><span><b>Welcome to LastPass company email template</b><span class="t-file-meta">Word · Rollout</span></span></a>
-    </div>
-  </div>
-</section>
-<section class="cl-item" id="table" aria-labelledby="h-table">
-  <header class="cl-item-head">
-    <h3 id="h-table">Table</h3>
-    <code>Table</code>
-  </header>
-  <p class="cl-purpose">A data table with a required caption, header row and header column. Scrolls inside its box on phones.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Caption</th><td>Required</td></tr><tr><th scope="row">Header row / column</th><td>On or off</td></tr><tr><th scope="row">Layout</th><td>One table, or two side by side</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="topic-billing.html">Topic overview · Billing</a></p>
-  </div>
-  <div class="cl-stage cl-stage--narrow"><p class="cl-stage-label" aria-hidden="true">Live example · from Topic overview · Billing</p>
-<div class="t-table" data-note="Table block · caption required, header row and header column">
-        <table>
-          <caption>Common billing tasks for each type of plan</caption>
-          <thead>
-            <tr><th scope="col">Task</th><th scope="col">Premium and Families</th><th scope="col">Teams and Business</th></tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">Change how you pay</th><td><a href="reader.html">Update payment method</a></td><td><a href="reader.html">Update payment method</a></td></tr>
-            <tr><th scope="row">Change seats or licenses</th><td>Not applicable</td><td><a href="reader.html">Purchase more licenses</a> or <a href="reader.html">reduce licenses to renew</a></td></tr>
-            <tr><th scope="row">After the subscription expires</th><td><a href="reader.html">Families expiration options</a></td><td><a href="reader.html">Company subscription expiry</a></td></tr>
-            <tr><th scope="row">Stop renewing</th><td><a href="reader.html">Cancel Premium</a> or <a href="reader.html">cancel Families</a></td><td><a href="reader.html">Cancel your company’s subscription</a></td></tr>
-            <tr><th scope="row">Tax questions</th><td><a href="reader.html">Taxes on LastPass subscriptions</a></td><td><a href="reader.html">US sales tax exemption certificates</a></td></tr>
-          </tbody>
-        </table>
-      </div>
-  </div>
-</section>
-<section class="cl-item" id="capability-table" aria-labelledby="h-capability-table">
-  <header class="cl-item-head">
-    <h3 id="h-capability-table">Capability table</h3>
-    <code>CapabilityTable</code>
-  </header>
-  <p class="cl-purpose">Capability, what it does, and the articles that show how. Stacks into cards on phones.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Rows</th><td>Icon, capability, description, article links</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="topic-saas-monitoring.html">Product hub · SaaS and AI Monitoring</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Product hub · SaaS and AI Monitoring</p>
-<div class="mk-caps" data-note="Capability table · rows authored; article links picked from the DITA map">
-      <table>
-        <thead><tr><th scope="col">Capability</th><th scope="col">What it does and where to start</th></tr></thead>
-        <tbody>
-          <tr>
-            <th scope="row"><span><span class="t-cat-icon" aria-hidden="true" style="margin:0;width:36px;height:36px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>Discover apps</span></th>
-            <td><p>See the apps your users reach, and filter the list on the Discovered apps tab.</p><p class="mk-links"><a href="reader.html">SaaS Monitoring page overview</a><a href="reader.html">Filter apps on the Discovered apps tab</a></p></td>
-          </tr>
-<tr>
-            <th scope="row"><span><span class="t-cat-icon" aria-hidden="true" style="margin:0;width:36px;height:36px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>See who uses them</span></th>
-            <td><p>Review users and their app activity on the Discovered users tab.</p><p class="mk-links"><a href="reader.html">SaaS users page overview</a><a href="reader.html">Filter users on the Discovered users tab</a></p></td>
-          </tr>
-<tr>
-            <th scope="row"><span><span class="t-cat-icon" aria-hidden="true" style="margin:0;width:36px;height:36px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span>Set usage rules</span></th>
-            <td><p>Allow, warn about or block an app with SaaS Protect, and add custom apps it doesn’t know yet.</p><p class="mk-links"><a href="reader.html">Set a usage rule in SaaS Protect</a><a href="reader.html">Adding custom apps</a><a href="reader.html">End user experience</a></p></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-<section class="cl-item" id="notice" aria-labelledby="h-notice">
-  <header class="cl-item-head">
-    <h3 id="h-notice">Notice</h3>
-    <code>Notice</code>
-  </header>
-  <p class="cl-purpose">An info, tip or warning callout inside content.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Type</th><td>Info, tip, warning</td></tr><tr><th scope="row">Text</th><td>Rich text</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="topic-billing.html">Topic overview · Billing</a> <a href="lifecycle.html">Product lifecycle</a></p>
-  </div>
-  <div class="cl-stage cl-stage--narrow"><p class="cl-stage-label" aria-hidden="true">Live example · from Topic overview · Billing</p>
-<div class="t-notice t-notice--info" data-note="Notice block · info">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-        <p><b>Need a receipt or invoice?</b> See <a href="reader.html">Print billing receipts for a LastPass subscription</a>. To view invoices, you may first need to <a href="reader.html">verify your email address</a>.</p>
-      </div>
-  </div>
-</section>
-<section class="cl-item" id="video" aria-labelledby="h-video">
-  <header class="cl-item-head">
-    <h3 id="h-video">Video</h3>
-    <code>Media</code>
-  </header>
-  <p class="cl-purpose">A poster that swaps to the Vimeo player when clicked, so pages load fast.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Vimeo URL</th><td>Required</td></tr><tr><th scope="row">Title</th><td>Required, used by screen readers</td></tr><tr><th scope="row">Poster</th><td>Image</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="topic-billing.html">Topic overview · Billing</a></p>
-  </div>
-  <div class="cl-stage cl-stage--video"><p class="cl-stage-label" aria-hidden="true">Live example · from Topic overview · Billing</p>
-<button class="t-video" type="button" data-vimeo="1035784521" data-title="Billing overview video" aria-label="Play video: billing overview" data-note="Media block · Vimeo URL, required title, poster image">
-      <img src="img/photo-admin.jpg" alt="" width="800" height="450" loading="eager" decoding="async">
-      <span class="t-video-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>
-      <span class="t-video-cap"><span>Billing overview</span><span>Vimeo</span></span>
-    </button>
-  </div>
-</section>
-<section class="cl-item" id="feature-tray" aria-labelledby="h-feature-tray">
-  <header class="cl-item-head">
-    <h3 id="h-feature-tray">Feature tray</h3>
-    <code>FeatureTray</code>
-  </header>
-  <p class="cl-purpose">Media on one side, copy and a link on the other. Alternate sides down the page.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Media</th><td>Image, screenshot or Vimeo</td></tr><tr><th scope="row">Kicker, title, text</th><td>Text</td></tr><tr><th scope="row">Ticks</th><td>Up to 4</td></tr><tr><th scope="row">Links</th><td>Primary arrow link + optional second link</td></tr><tr><th scope="row">Side</th><td>Media left or right</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="topic-saas-monitoring.html">Product hub · SaaS and AI Monitoring</a> <a href="hub-business.html">Mini hub · LastPass Business</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Product hub · SaaS and AI Monitoring</p>
-<div class="mk-trays">
-      <article class="mk-tray" data-note="FeatureTray · media (image, Vimeo or screenshot) + copy + link; alternates sides">
-        <div class="mk-tray-media mk-tray-media--shot"><img class="mk-shot" src="img/shot-saas-monitoring-users.png" alt="The Discovered users tab of SaaS Monitoring, listing users with their apps, alerts and vaulted passwords" width="1935" height="833" loading="lazy" decoding="async"></div>
-        <div class="mk-tray-copy">
-          <p class="mk-kicker">SaaS Monitoring</p>
-          <h3>Find every app, approved or not</h3>
-          <p>See the apps your company’s users reach and who uses them, so nothing runs out of sight.</p>
-          <ul class="mk-ticks"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A Discovered apps tab you can filter</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A Discovered users tab for activity by person</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Monitored domains you choose</span></li></ul>
-          <p class="mk-tray-links"><a class="mk-arrow" href="reader.html">About SaaS Monitoring <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a><a class="t-more" href="reader.html">SaaS Monitoring FAQs</a></p>
-        </div>
-      </article>
-<article class="mk-tray mk-tray--flip">
-        <div class="mk-tray-media mk-tray-media--shot"><img class="mk-shot" src="img/shot-saas-protect-apps.png" alt="SaaS Protect in the Admin Console, showing blocked, warned and allowed apps with a usage rule for each" width="1935" height="926" loading="lazy" decoding="async"></div>
-        <div class="mk-tray-copy">
-          <p class="mk-kicker">SaaS Protect</p>
-          <h3>Turn what you find into rules</h3>
-          <p>Decide what happens when someone opens an app: allow it, warn them, or block it. Add your own apps when the catalog doesn’t have them.</p>
-          <ul class="mk-ticks"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A usage rule per app</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Custom apps for tools the catalog doesn’t know</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A clear experience for the people affected</span></li></ul>
-          <p class="mk-tray-links"><a class="mk-arrow" href="reader.html">Set a usage rule in SaaS Protect <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a><a class="t-more" href="reader.html">End user experience of SaaS Protect</a></p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-<section class="cl-item" id="benefits" aria-labelledby="h-benefits">
-  <header class="cl-item-head">
-    <h3 id="h-benefits">Benefits band</h3>
-    <code>BenefitCards</code>
-  </header>
-  <p class="cl-purpose">A dark band of four benefit cards with icons.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Kicker, heading</th><td>Text</td></tr><tr><th scope="row">Cards</th><td>Up to 4: icon, title, text</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="topic-saas-monitoring.html">Product hub · SaaS and AI Monitoring</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Product hub · SaaS and AI Monitoring</p>
-<section class="mk-sec mk-dark" aria-labelledby="ex-benefits-h-why">
+    </div></div></figure>
+  <figure class="ul-variant"><figcaption><b>Icon, on dark</b><span>from <a href="topic-saas-monitoring.html">Topic overview, product</a></span></figcaption><div class="cl-stage "><section class="mk-sec mk-dark" aria-labelledby="ex-cards-2-h-why">
   <div class="t-wrap">
     <div class="mk-head">
       <p class="mk-kicker">Why admins turn it on</p>
-      <h2 class="mk-h2" id="ex-benefits-h-why">Visibility first, then guidance that doesn’t slow anyone down</h2>
+      <h2 class="mk-h2" id="ex-cards-2-h-why">Visibility first, then guidance that doesn’t slow anyone down</h2>
     </div>
-    <div class="mk-benefits" data-note="Benefit cards · authored; claims match the product pages on lastpass.com">
+    <div class="mk-benefits" data-note="Cards unit · icon, dark · authored; claims match the product pages on lastpass.com">
       <article class="mk-benefit">
         <span class="mk-benefit-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></span>
         <h3>Close the visibility gap</h3>
@@ -632,343 +354,197 @@
       </article>
     </div>
   </div>
-</section>
-  </div>
-</section>
-<section class="cl-item" id="steps" aria-labelledby="h-steps">
-  <header class="cl-item-head">
-    <h3 id="h-steps">Steps</h3>
-    <code>Steps</code>
-  </header>
-  <p class="cl-purpose">Numbered setup steps, each linking to the full instructions.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Steps</th><td>Up to 4: title, text, link</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="topic-saas-monitoring.html">Product hub · SaaS and AI Monitoring</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Product hub · SaaS and AI Monitoring</p>
-<ol class="mk-steps" data-note="Steps block · each step links to a DITA topic">
+</section></div></figure>
+  <figure class="ul-variant"><figcaption><b>Steps</b><span>from <a href="topic-saas-monitoring.html">Topic overview, product</a></span></figcaption><div class="cl-stage "><ol class="mk-steps" data-note="Cards unit · steps · each step links to a DITA topic">
       <li class="mk-step"><h3>Turn on SaaS Monitoring</h3><p>Enable monitoring for your account in the Admin Console.</p><a href="reader.html">Enable SaaS Monitoring</a></li>
       <li class="mk-step"><h3>Choose what to monitor</h3><p>Set the domains that discovery should cover.</p><a href="reader.html">Configure monitored domains</a></li>
       <li class="mk-step"><h3>Review what’s in use</h3><p>Check the discovered apps and how people log in to them.</p><a href="reader.html">SaaS Monitoring page overview</a></li>
       <li class="mk-step"><h3>Set your rules</h3><p>Allow, warn about or block apps with SaaS Protect.</p><a href="reader.html">Set a usage rule</a></li>
-    </ol>
-  </div>
+    </ol></div></figure>
 </section>
-<h2 class="cl-group" id="group-records-and-reuse">Records and reuse</h2>
-<section class="cl-item" id="record-list" aria-labelledby="h-record-list">
-  <header class="cl-item-head">
-    <h3 id="h-record-list">Record list</h3>
-    <code>RecordList</code>
-  </header>
-  <p class="cl-purpose">Structured records, here release notes, filtered by product and shown newest first.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Record type</th><td>Release notes, known issues, lifecycle</td></tr><tr><th scope="row">Filters</th><td>Product, status</td></tr><tr><th scope="row">Limit</th><td>Number shown</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="hub-business.html">Mini hub · LastPass Business</a></p>
+<section class="ul-unit" id="faq" aria-labelledby="h-faq">
+  <div class="ul-head">
+    <div>
+      <p class="ul-kind">Content unit</p>
+      <h2 id="h-faq">FAQ</h2>
+      <p class="ul-purpose">Questions that expand. Items come from the shared FAQ library, so one answer can appear on many pages.</p>
+      <p class="ul-merges"><b>Replaces</b> FAQ group</p>
+    </div>
+    <dl class="ul-opts"><div><dt>Items</dt><dd>Picked from the FAQ library</dd></div><div><dt>Heading</dt><dd>Optional</dd></div><div><dt>Open</dt><dd>All closed, or first open</dd></div>
+      <div><dt>Components</dt><dd><ul class="tp-chips"><li><a href="#c-faq-item">FAQ item</a></li></ul></dd></div>
+      <div><dt>Used on</dt><dd><a href="hub-business.html">Mini hub</a>, <a href="topic-saas-monitoring.html">Topic overview, product</a>, <a href="faq.html">FAQ page</a></dd></div>
+    </dl>
   </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Mini hub · LastPass Business</p>
-<ol class="t-records" data-note="RecordList · release notes where product = Admin Console, newest 3">
-      <li class="t-record">
-        <p class="t-record-meta"><b>v13.10.2026</b>October 13, 2026</p>
-        <div>
-          <h3>Admin Console</h3>
-          <ul>
-            <li><span class="t-tag t-tag--improved">Improved</span><span>Company profile, Subscription: “Name” is now “Plan”, “Plan” is now “Type”, and “Auto-renewal” is now “Auto renew”.</span></li>
-          </ul>
-        </div>
-      </li>
-      <li class="t-record">
-        <p class="t-record-meta"><b>v12.10.2026</b>October 12, 2026</p>
-        <div>
-          <h3>Admin Console</h3>
-          <ul>
-            <li><span class="t-tag t-tag--new">New</span><span>A new admin activity event, “Activity report exported”, is logged when the user or admin activity report is exported as CSV.</span></li>
-          </ul>
-        </div>
-      </li>
-      <li class="t-record">
-        <p class="t-record-meta"><b>v01.10.2026</b>October 1, 2026</p>
-        <div>
-          <h3>Admin Console</h3>
-          <ul>
-            <li><span class="t-tag t-tag--improved">Improved</span><span>An “Add users” button on the Adoption dashboard’s license consumption section, for admins with the “Add &amp; edit users” permission.</span></li>
-            <li><span class="t-tag t-tag--changed">Changed</span><span>The admin activity report’s “User” column is now “Admin”, in the console and in the CSV export.</span></li>
-          </ul>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
-<section class="cl-item" id="faq" aria-labelledby="h-faq">
-  <header class="cl-item-head">
-    <h3 id="h-faq">FAQ group</h3>
-    <code>FAQGroup</code>
-  </header>
-  <p class="cl-purpose">Expandable questions. Each FAQ item is written once and reused on any page, and can feed lastpass.com.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Heading</th><td>Text</td></tr><tr><th scope="row">Items</th><td>Picked FAQ items: question, answer, products</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="faq.html">FAQ page</a> <a href="hub-business.html">Mini hub · LastPass Business</a> <a href="topic-saas-monitoring.html">Product hub · SaaS and AI Monitoring</a></p>
-  </div>
-  <div class="cl-stage cl-stage--narrow"><p class="cl-stage-label" aria-hidden="true">Live example · from Mini hub · LastPass Business</p>
-<div class="t-faq" data-note="FAQGroup · the same FAQ items as the FAQ page and lastpass.com/features/ai-monitoring-protect">
-      <div class="t-faq-item" id="ex-faq-hub-faq-1">
-        <h3><button class="t-faq-q" type="button" aria-expanded="true" aria-controls="ex-faq-hub-faq-1-a">How do I know which AI tools my employees are using?<span class="t-faq-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></h3>
-        <div class="t-faq-a" id="ex-faq-hub-faq-1-a">
+  <figure class="ul-variant"><figcaption><b>Group</b><span>from <a href="hub-business.html">Mini hub</a></span></figcaption><div class="cl-stage cl-stage--narrow"><div class="t-faq" data-note="FAQ unit · the same FAQ items as the FAQ page and lastpass.com/features/ai-monitoring-protect">
+      <div class="t-faq-item" id="ex-faq-0-hub-faq-1">
+        <h3><button class="t-faq-q" type="button" aria-expanded="true" aria-controls="ex-faq-0-hub-faq-1-a">How do I know which AI tools my employees are using?<span class="t-faq-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></h3>
+        <div class="t-faq-a" id="ex-faq-0-hub-faq-1-a">
           <p>LastPass AI Monitoring discovers the AI tools your team reaches through the LastPass browser extension, including tools IT didn’t approve. It also shows whether each one is accessed with SSO, a password or unvaulted credentials.</p>
           <p>Discovered apps, login methods, credential vault status and user-level activity appear in your Admin Console dashboard. There is no new agent to deploy.</p>
         </div>
       </div>
-      <div class="t-faq-item" id="ex-faq-hub-faq-2">
-        <h3><button class="t-faq-q" type="button" aria-expanded="false" aria-controls="ex-faq-hub-faq-2-a">How do I find out if employees are pasting company data into AI chatbots?<span class="t-faq-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></h3>
-        <div class="t-faq-a" id="ex-faq-hub-faq-2-a" hidden>
+      <div class="t-faq-item" id="ex-faq-0-hub-faq-2">
+        <h3><button class="t-faq-q" type="button" aria-expanded="false" aria-controls="ex-faq-0-hub-faq-2-a">How do I find out if employees are pasting company data into AI chatbots?<span class="t-faq-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></h3>
+        <div class="t-faq-a" id="ex-faq-0-hub-faq-2-a" hidden>
           <p>LastPass AI Protect warns an employee in the browser when they are about to share credentials, API keys or personal information with an AI tool. Every warning is logged in Admin Console reporting. It doesn’t read or log the full content of the conversation, only the warning.</p>
         </div>
       </div>
-      <div class="t-faq-item" id="ex-faq-hub-faq-3">
-        <h3><button class="t-faq-q" type="button" aria-expanded="false" aria-controls="ex-faq-hub-faq-3-a">Will blocking AI tools stop employee productivity?<span class="t-faq-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></h3>
-        <div class="t-faq-a" id="ex-faq-hub-faq-3-a" hidden>
+      <div class="t-faq-item" id="ex-faq-0-hub-faq-3">
+        <h3><button class="t-faq-q" type="button" aria-expanded="false" aria-controls="ex-faq-0-hub-faq-3-a">Will blocking AI tools stop employee productivity?<span class="t-faq-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></h3>
+        <div class="t-faq-a" id="ex-faq-0-hub-faq-3-a" hidden>
           <p>It can, so AI Protect lets admins set a rule per tool rather than an all-or-nothing switch: allow approved tools, warn before employees use ones still being evaluated, and block the ones that don’t fit your AI strategy.</p>
         </div>
       </div>
-    </div>
-  </div>
+    </div></div></figure>
 </section>
-<section class="cl-item" id="filter-panel" aria-labelledby="h-filter-panel">
-  <header class="cl-item-head">
-    <h3 id="h-filter-panel">Filter panel</h3>
-    <code>RecordFilters</code>
-  </header>
-  <p class="cl-purpose">Search plus facet checkboxes with live counts. Facets come from the product registry.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Record type</th><td>Which records to filter</td></tr><tr><th scope="row">Facets</th><td>Product, change type, status</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="release-notes.html">Release notes</a></p>
+<section class="ul-unit" id="content" aria-labelledby="h-content">
+  <div class="ul-head">
+    <div>
+      <p class="ul-kind">Content unit</p>
+      <h2 id="h-content">Content</h2>
+      <p class="ul-purpose">Rich text for the body of a page, with link lists, tables, notices and video placed inside it.</p>
+      <p class="ul-merges"><b>Replaces</b> link list, table, capability table, notice, video</p>
+    </div>
+    <dl class="ul-opts"><div><dt>Body</dt><dd>Rich text, H2 and H3 only</dd></div><div><dt>Inside</dt><dd>Link list, table, notice, media</dd></div><div><dt>Navigation</dt><dd>Adds an “On this page” list from its H2s</dd></div>
+      <div><dt>Components</dt><dd><ul class="tp-chips"><li><a href="#c-link-list">Link list</a></li><li><a href="#c-table">Table</a></li><li><a href="#c-notice">Notice</a></li><li><a href="#c-media">Media</a></li></ul></dd></div>
+      <div><dt>Used on</dt><dd><a href="topic-saas-monitoring.html">Topic overview, product</a>, <a href="topic-billing.html">Topic overview, utility</a>, <a href="lifecycle.html">Product lifecycle</a></dd></div>
+    </dl>
   </div>
-  <div class="cl-stage cl-stage--narrow"><p class="cl-stage-label" aria-hidden="true">Live example · from Release notes</p>
-<aside class="rc-side" aria-label="Filter releases" data-note="FilterPanel · product facets come from the product registry; counts are live">
-    <div class="rc-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="8"/></svg><input type="search" id="ex-filter-panel-rn-q" aria-label="Search release notes" placeholder="Search release notes"></div>
-    <div><h2>Product</h2><div class="rc-filter" id="ex-filter-panel-rn-products"><label><input type="checkbox" name="p" value="extension"> Browser extension<span class="rc-count">231</span></label><label><input type="checkbox" name="p" value="vault"> Web vault<span class="rc-count">4</span></label><label><input type="checkbox" name="p" value="desktop"> LastPass for Desktop<span class="rc-count">11</span></label><label><input type="checkbox" name="p" value="mac-app"> Mac App<span class="rc-count">7</span></label><label><input type="checkbox" name="p" value="win-installer"> Universal Windows Installer<span class="rc-count">7</span></label><label><input type="checkbox" name="p" value="mac-installer"> Universal macOS Installer<span class="rc-count">3</span></label><label><input type="checkbox" name="p" value="vpn"> LastPass VPN<span class="rc-count">2</span></label><label><input type="checkbox" name="p" value="admin-console"> Admin Console<span class="rc-count">42</span></label><label><input type="checkbox" name="p" value="ad-connector"> AD Connector<span class="rc-count">20</span></label><label><input type="checkbox" name="p" value="proxy"> Universal Proxy<span class="rc-count">5</span></label><label><input type="checkbox" name="p" value="workstation-mfa"> Workstation MFA<span class="rc-count">10</span></label></div></div>
-    <div><h2>What changed</h2><div class="rc-filter" id="ex-filter-panel-rn-types"><label><input type="checkbox" name="t" value="New"> <span class="t-tag t-tag--new">New</span> </label><label><input type="checkbox" name="t" value="Improved"> <span class="t-tag t-tag--improved">Improved</span> </label><label><input type="checkbox" name="t" value="Changed"> <span class="t-tag t-tag--changed">Changed</span> </label><label><input type="checkbox" name="t" value="Fixed"> <span class="t-tag t-tag--fixed">Fixed</span> </label><label><input type="checkbox" name="t" value="Security"> <span class="t-tag t-tag--security">Security</span> </label></div></div>
+  <figure class="ul-variant"><figcaption><b>Link list</b><span>from <a href="topic-billing.html">Topic overview, utility</a></span></figcaption><div class="cl-stage cl-stage--narrow"><ul class="t-links">
+          <li><a href="reader.html">How much does a LastPass subscription cost?</a></li>
+          <li><a href="reader.html">LastPass Premium FAQs</a></li>
+          <li><a href="reader.html">Upgrade to LastPass Families FAQs</a></li>
+          <li><a href="reader.html">Upgrade to LastPass Plus FAQs</a></li>
+          <li><a href="reader.html">Start a new LastPass Teams or LastPass Business subscription</a></li>
+          <li><a href="reader.html">Purchase more LastPass Business licenses</a></li>
+          <li><a href="reader.html">Upgrade from LastPass Business to LastPass Business Max</a></li>
+          <li><a href="reader.html">Print billing receipts for a LastPass subscription</a></li>
+        </ul></div></figure>
+  <figure class="ul-variant"><figcaption><b>Table</b><span>from <a href="topic-billing.html">Topic overview, utility</a></span></figcaption><div class="cl-stage cl-stage--narrow"><div class="t-table" data-note="Content unit · table · caption required, header row and header column">
+        <table>
+          <caption>Common billing tasks for each type of plan</caption>
+          <thead>
+            <tr><th scope="col">Task</th><th scope="col">Premium and Families</th><th scope="col">Teams and Business</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Change how you pay</th><td><a href="reader.html">Update payment method</a></td><td><a href="reader.html">Update payment method</a></td></tr>
+            <tr><th scope="row">Change seats or licenses</th><td>Not applicable</td><td><a href="reader.html">Purchase more licenses</a> or <a href="reader.html">reduce licenses to renew</a></td></tr>
+            <tr><th scope="row">After the subscription expires</th><td><a href="reader.html">Families expiration options</a></td><td><a href="reader.html">Company subscription expiry</a></td></tr>
+            <tr><th scope="row">Stop renewing</th><td><a href="reader.html">Cancel Premium</a> or <a href="reader.html">cancel Families</a></td><td><a href="reader.html">Cancel your company’s subscription</a></td></tr>
+            <tr><th scope="row">Tax questions</th><td><a href="reader.html">Taxes on LastPass subscriptions</a></td><td><a href="reader.html">US sales tax exemption certificates</a></td></tr>
+          </tbody>
+        </table>
+      </div></div></figure>
+  <figure class="ul-variant"><figcaption><b>Table, rich rows</b><span>from <a href="topic-saas-monitoring.html">Topic overview, product</a></span></figcaption><div class="cl-stage "><div class="mk-caps" data-note="Content unit · table · rows authored; article links picked from the DITA map">
+      <table>
+        <thead><tr><th scope="col">Capability</th><th scope="col">What it does and where to start</th></tr></thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span><span class="t-cat-icon" aria-hidden="true" style="margin:0;width:36px;height:36px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>Discover apps</span></th>
+            <td><p>See the apps your users reach, and filter the list on the Discovered apps tab.</p><p class="mk-links"><a href="reader.html">SaaS Monitoring page overview</a><a href="reader.html">Filter apps on the Discovered apps tab</a></p></td>
+          </tr>
+<tr>
+            <th scope="row"><span><span class="t-cat-icon" aria-hidden="true" style="margin:0;width:36px;height:36px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>See who uses them</span></th>
+            <td><p>Review users and their app activity on the Discovered users tab.</p><p class="mk-links"><a href="reader.html">SaaS users page overview</a><a href="reader.html">Filter users on the Discovered users tab</a></p></td>
+          </tr>
+<tr>
+            <th scope="row"><span><span class="t-cat-icon" aria-hidden="true" style="margin:0;width:36px;height:36px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span>Set usage rules</span></th>
+            <td><p>Allow, warn about or block an app with SaaS Protect, and add custom apps it doesn’t know yet.</p><p class="mk-links"><a href="reader.html">Set a usage rule in SaaS Protect</a><a href="reader.html">Adding custom apps</a><a href="reader.html">End user experience</a></p></td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div></figure>
+</section>
+<section class="ul-unit" id="records" aria-labelledby="h-records">
+  <div class="ul-head">
+    <div>
+      <p class="ul-kind">Content unit</p>
+      <h2 id="h-records">Record list</h2>
+      <p class="ul-purpose">Structured records from the product registry: release notes, known issues, downloads, lifecycle.</p>
+      <p class="ul-merges"><b>Replaces</b> record list, filter panel, release entry, issue card, resolved list, lifecycle tables</p>
+    </div>
+    <dl class="ul-opts"><div><dt>Record type</dt><dd>Release note, known issue, download, product</dd></div><div><dt>Display</dt><dd>List, cards or table</dd></div><div><dt>Filters</dt><dd>Search and facets, optional</dd></div><div><dt>Limit</dt><dd>Newest n, or all with “Show more”</dd></div>
+      <div><dt>Components</dt><dd><ul class="tp-chips"><li><a href="#c-record">Record</a></li><li><a href="#c-table">Table</a></li><li><a href="#c-button">Button</a></li></ul></dd></div>
+      <div><dt>Used on</dt><dd><a href="hub-business.html">Mini hub</a>, <a href="release-notes.html">Release notes</a>, <a href="known-issues.html">Known issue tracker</a>, <a href="lifecycle.html">Product lifecycle</a></dd></div>
+    </dl>
+  </div>
+  <figure class="ul-variant"><figcaption><b>List with filters</b><span>from <a href="release-notes.html">Release notes</a></span></figcaption><div class="cl-stage "><div class="rc-layout">
+  <aside class="rc-side" aria-label="Filter releases" data-note="Record list unit · filters · product facets come from the product registry; counts are live">
+    <div class="rc-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="8"/></svg><input type="search" id="ex-records-0-rn-q" aria-label="Search release notes" placeholder="Search release notes"></div>
+    <div><h2>Product</h2><div class="rc-filter" id="ex-records-0-rn-products"><label><input type="checkbox" name="p" value="extension"> Browser extension<span class="rc-count">231</span></label><label><input type="checkbox" name="p" value="vault"> Web vault<span class="rc-count">4</span></label><label><input type="checkbox" name="p" value="desktop"> LastPass for Desktop<span class="rc-count">11</span></label><label><input type="checkbox" name="p" value="mac-app"> Mac App<span class="rc-count">7</span></label><label><input type="checkbox" name="p" value="win-installer"> Universal Windows Installer<span class="rc-count">7</span></label><label><input type="checkbox" name="p" value="mac-installer"> Universal macOS Installer<span class="rc-count">3</span></label><label><input type="checkbox" name="p" value="vpn"> LastPass VPN<span class="rc-count">2</span></label><label><input type="checkbox" name="p" value="admin-console"> Admin Console<span class="rc-count">42</span></label><label><input type="checkbox" name="p" value="ad-connector"> AD Connector<span class="rc-count">20</span></label><label><input type="checkbox" name="p" value="proxy"> Universal Proxy<span class="rc-count">5</span></label><label><input type="checkbox" name="p" value="workstation-mfa"> Workstation MFA<span class="rc-count">10</span></label></div></div>
+    <div><h2>What changed</h2><div class="rc-filter" id="ex-records-0-rn-types"><label><input type="checkbox" name="t" value="New"> <span class="t-tag t-tag--new">New</span> </label><label><input type="checkbox" name="t" value="Improved"> <span class="t-tag t-tag--improved">Improved</span> </label><label><input type="checkbox" name="t" value="Changed"> <span class="t-tag t-tag--changed">Changed</span> </label><label><input type="checkbox" name="t" value="Fixed"> <span class="t-tag t-tag--fixed">Fixed</span> </label><label><input type="checkbox" name="t" value="Security"> <span class="t-tag t-tag--security">Security</span> </label></div></div>
     <p><a class="rc-feed" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg> Subscribe to updates</a></p>
   </aside>
-  </div>
-</section>
-<section class="cl-item" id="release-entry" aria-labelledby="h-release-entry">
-  <header class="cl-item-head">
-    <h3 id="h-release-entry">Release entry</h3>
-    <code>ReleaseNote</code>
-  </header>
-  <p class="cl-purpose">One release: date, product, version, platform chips and typed items, with a stable link.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Product, platforms</th><td>From the product registry</td></tr><tr><th scope="row">Version, date</th><td>Text, date</td></tr><tr><th scope="row">Items</th><td>Type (New, Improved, Changed, Fixed, Security, Removed) + text</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="release-notes.html">Release notes</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Release notes</p>
-<ol class="rn-list" id="ex-release-entry-rn-list" data-note="RecordList · release note records; each has a stable link"><li class="rn" id="ex-release-entry-vpn-2026-10-29" data-p="vpn" data-types="Fixed">
-  <div class="rn-meta"><time datetime="2026-10-29">October 29, 2026</time><a href="#ex-release-entry-vpn-2026-10-29">Link to this release</a></div>
+  <div>
+    <div class="rc-bar"><p id="ex-records-0-rn-count">Showing <b>12</b> of <b>351</b> releases</p><button class="t-btn t-btn--line" type="button" id="ex-records-0-rn-clear" hidden>Clear filters</button></div>
+    <ol class="rn-list" id="ex-records-0-rn-list" data-note="Record list unit · release note records; each has a stable link"><li class="rn" id="ex-records-0-vpn-2026-10-29" data-p="vpn" data-types="Fixed">
+  <div class="rn-meta"><time datetime="2026-10-29">October 29, 2026</time><a href="#ex-records-0-vpn-2026-10-29">Link to this release</a></div>
   <div>
     <h3>LastPass VPN <span class="rn-v">Version 1.1.0</span></h3>
     
     <ul><li class="rn-plain"><span>Smarter auto reconnect. With Auto reconnect on, LastPass VPN now waits and reconnects when the internet returns, and notifies you when you disconnect and reconnect. It also reconnects after a network adapter change or a connection timeout. The timeout pop-up is gone.</span></li><li class="rn-plain"><span>More launch control. Auto reconnect, Launch on startup, and Reconnect on launch are now 3 separate switches, all on by default. Launch on startup opens the app in the background when Windows starts. Reconnect on launch restores your last connection if you were connected when the app closed.</span></li><li class="rn-plain"><span>ARM64 driver support. The network driver now installs on ARM64 devices, laying the groundwork for features like split tunneling.</span></li><li class="rn-plain"><span>Smoother tray menu. The tray menu now grows upward in step with the card animations.</span></li><li class="rn-plain"><span>Clearer protocol settings. A new note explains that changing protocols disconnects you briefly, then reconnects you automatically.</span></li><li class="rn-plain"><span>Easier to find. LastPass VPN for Windows now has its own card, with a Microsoft Store link, on the LastPass Downloads page.</span></li><li><span class="t-tag t-tag--fixed">Fixed</span><span>Fixed cut-off and crowded text in German, Spanish, French, Italian, and Portuguese.</span></li></ul>
   </div>
 </li>
-<li class="rn" id="ex-release-entry-admin-console-2026-10-13" data-p="admin-console" data-types="New Note">
-  <div class="rn-meta"><time datetime="2026-10-13">October 13, 2026</time><a href="#ex-release-entry-admin-console-2026-10-13">Link to this release</a></div>
+<li class="rn" id="ex-records-0-admin-console-2026-10-13" data-p="admin-console" data-types="New Note">
+  <div class="rn-meta"><time datetime="2026-10-13">October 13, 2026</time><a href="#ex-records-0-admin-console-2026-10-13">Link to this release</a></div>
   <div>
     <h3>Admin Console <span class="rn-v">Version 13.10.2026</span></h3>
     
     <ul><li><span class="t-tag t-tag--new">New</span><span>AI Monitoring &amp; Protect is now available in SaaS Protect. It provides visibility into AI applications being used across the organization and allow administrators to enforce usage rules directly through the browser. It also detects and warns users when they enter, paste, or upload sensitive data to AI tools.</span></li><li><span class="t-tag t-tag--new">New</span><span>Admins can allow or deny exception requests for categories of apps on the SaaS Protect page.</span></li><li><span class="t-tag t-tag--new">New</span><span>Admins can enable the automatic addition of newly discovered apps and sites to the app catalog as custom apps in SaaS Monitoring.</span></li><li><span class="t-tag t-tag--note">Note</span><span>Install the latest LastPass browser extension to use these features. It is available for Chrome, Edge, and Safari. Firefox and Opera support is coming soon.</span></li></ul>
   </div>
 </li></ol>
+    <div class="rc-more"><button class="t-btn t-btn--line" type="button" id="ex-records-0-rn-more">Show more releases</button></div>
   </div>
-</section>
-<section class="cl-item" id="platform-card" aria-labelledby="h-platform-card">
-  <header class="cl-item-head">
-    <h3 id="h-platform-card">Platform card</h3>
-    <code>DownloadLead</code>
-  </header>
-  <p class="cl-purpose">Recommends the download for the visitor’s operating system, with a way to see the rest.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Lead download per OS</th><td>Picked from the download records</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="downloads.html">Downloads</a></p>
-  </div>
-  <div class="cl-stage cl-stage--narrow"><p class="cl-stage-label" aria-hidden="true">Live example · from Downloads</p>
-<div class="dl-hero-card" id="ex-platform-card-dl-lead" data-note="Platform card · picks the visitor’s operating system; links to all platforms below">
-      <p class="dl-detect" id="ex-platform-card-dl-os">Recommended for Windows</p>
-      <h2 id="ex-platform-card-dl-name">Universal Windows Installer</h2>
-      <p id="ex-platform-card-dl-text">Installs the browser extensions for Microsoft Edge, Chrome, Firefox and Opera in one step.</p>
-      <p><a class="t-btn t-btn--brand" id="ex-platform-card-dl-href" href="https://download.cloud.lastpass.com/windows_installer/LastPassInstaller.exe">Download</a></p>
-      <p class="dl-switch">Not your system? <button type="button" data-goto="all">See all platforms</button></p>
-    </div>
-  </div>
-</section>
-<section class="cl-item" id="download-cards" aria-labelledby="h-download-cards">
-  <header class="cl-item-head">
-    <h3 id="h-download-cards">Download cards</h3>
-    <code>DownloadList</code>
-  </header>
-  <p class="cl-purpose">Downloads per operating system in tabs. Version and date are read from the newest release note.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Downloads</th><td>Name, text, link, product and platform from the registry</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="downloads.html">Downloads</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Downloads</p>
-<div class="dl-grid" role="tabpanel" id="ex-download-cards-pane-windows" aria-labelledby="tab-windows"><article class="dl-card"><h3>LastPass for Desktop</h3><p>Access and manage your LastPass vault from your desktop without using a browser extension.</p><p class="dl-ver"><span>Version <b>2.2.0</b></span><span>August 17, 2026</span><a href="release-notes.html#desktop-2026-08-17">What’s new</a></p><a class="t-btn t-btn--brand" href="https://apps.microsoft.com/detail/9pbs27gphv34">Download<span class="sr-only"> LastPass for Desktop</span></a></article>
-<article class="dl-card" data-note="Version from release notes. lastpass.com/downloads shows 1.0.0 today; the registry keeps them in step"><h3>LastPass VPN</h3><p>A fast, private VPN for your devices. Works with your LastPass Password Manager account.</p><p class="dl-ver"><span>Version <b>1.1.0</b></span><span>October 29, 2026</span><a href="release-notes.html#vpn-2026-10-29">What’s new</a></p><a class="t-btn t-btn--brand" href="https://apps.microsoft.com/detail/xp9kn6k44bnkbq">Download<span class="sr-only"> LastPass VPN</span></a></article>
-<article class="dl-card"><h3>Universal Windows Installer</h3><p>Installs the browser extensions for Microsoft Edge, Chrome, Firefox and Opera in one step.</p><p class="dl-ver"><span>Version <b>5.4.5</b></span><span>August 18, 2026</span><a href="release-notes.html#win-installer-2026-08-18">What’s new</a></p><a class="t-btn t-btn--brand" href="https://download.cloud.lastpass.com/windows_installer/LastPassInstaller.exe">Download<span class="sr-only"> Universal Windows Installer</span></a></article></div>
-  </div>
-</section>
-<section class="cl-item" id="issue-card" aria-labelledby="h-issue-card">
-  <header class="cl-item-head">
-    <h3 id="h-issue-card">Known issue</h3>
-    <code>KnownIssue</code>
-  </header>
-  <p class="cl-purpose">A confirmed issue: ID, status, product, affected versions, workaround and the release that fixes it.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">ID, title, status</th><td>Investigating, Workaround available, Fix scheduled, Resolved</td></tr><tr><th scope="row">Product, platforms, versions</th><td>From the registry</td></tr><tr><th scope="row">Workaround</th><td>Rich text</td></tr><tr><th scope="row">Fixed in</th><td>Link to a release note record</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="known-issues.html">Known issues</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Known issues</p>
-<article class="ki" data-note="Known issue record · ID, status, products, affected versions, workaround, fixed-in release">
-      <header>
-        <span class="ki-sample">Layout example · not a real issue</span>
-        <span class="ki-id">KI-0000</span>
-        <span class="ki-status">Workaround available</span>
-        <h3>Example: the extension icon doesn’t appear after a browser update</h3>
-      </header>
-      <dl>
-        <div><dt>Product</dt><dd>Browser extension</dd></div>
-        <div><dt>Platforms</dt><dd>Chrome, Edge</dd></div>
-        <div><dt>Affected versions</dt><dd>Example version</dd></div>
-        <div><dt>Last updated</dt><dd>Date and time</dd></div>
-      </dl>
-      <div class="ki-body">
-        <p><b>What happens.</b> A short description of the symptom in the reader’s words.</p>
-        <p><b>Workaround.</b> The steps to get working again until the fix ships, linking to an article where there is one.</p>
-        <p><b>Fix.</b> When resolved, this links to the release that fixed it, and the issue moves to Recently resolved.</p>
-      </div>
-    </article>
-  </div>
-</section>
-<section class="cl-item" id="resolved-list" aria-labelledby="h-resolved-list">
-  <header class="cl-item-head">
-    <h3 id="h-resolved-list">Resolved list</h3>
-    <code>RecordList (fixes)</code>
-  </header>
-  <p class="cl-purpose">Recent fixes, each linked to the release that shipped it.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Window</th><td>e.g. last six months</td></tr><tr><th scope="row">Source</th><td>Fixed items in release notes</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="known-issues.html">Known issues</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Known issues</p>
-<ul class="ki-fixed" data-note="RecordList · real “Fixed” items from release notes since May 5, 2026"><li><span>Fixed cut-off and crowded text in German, Spanish, French, Italian, and Portuguese.</span><span class="ki-where">Oct 29, 2026 · <a href="release-notes.html#vpn-2026-10-29">LastPass VPN 1.1.0</a></span></li>
+</div></div></figure>
+  <figure class="ul-variant"><figcaption><b>Compact list</b><span>from <a href="known-issues.html">Known issue tracker</a></span></figcaption><div class="cl-stage "><ul class="ki-fixed" data-note="Record list unit · real “Fixed” items from release notes since May 5, 2026"><li><span>Fixed cut-off and crowded text in German, Spanish, French, Italian, and Portuguese.</span><span class="ki-where">Oct 29, 2026 · <a href="release-notes.html#vpn-2026-10-29">LastPass VPN 1.1.0</a></span></li>
 <li><span>Fixed a bug that caused issues with saving site credentials to the appropriate vault when logged in to a LastPass account provided by a user’s organization with the “Save personal sites to personal vault” policy enabled for it.</span><span class="ki-where">Sep 29, 2026 · <a href="release-notes.html#extension-2026-09-29">Browser extension 4.156.0</a></span></li>
 <li><span>Fixed a bug that caused TOTP push notification trigger failure.</span><span class="ki-where">Sep 29, 2026 · <a href="release-notes.html#extension-2026-09-29">Browser extension 4.156.0</a></span></li>
-<li><span>Fixed bugs that caused issues with in-field icon and matching site dropdown behaviors.</span><span class="ki-where">Sep 29, 2026 · <a href="release-notes.html#extension-2026-09-29">Browser extension 4.156.0</a></span></li></ul>
-  </div>
-</section>
-<section class="cl-item" id="lifecycle-tables" aria-labelledby="h-lifecycle-tables">
-  <header class="cl-item-head">
-    <h3 id="h-lifecycle-tables">Lifecycle tables</h3>
-    <code>LifecycleTable</code>
-  </header>
-  <p class="cl-purpose">Status definitions beside the product table (the original T3 layout). Stacks on phones.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Definitions</th><td>Status, meaning</td></tr><tr><th scope="row">Products</th><td>From the registry: version, last release, status</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="lifecycle.html">Product lifecycle</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Product lifecycle</p>
-<div class="lc-pair" data-note="Table pair (original T3) · definitions beside products; stacks on phones">
+<li><span>Fixed bugs that caused issues with in-field icon and matching site dropdown behaviors.</span><span class="ki-where">Sep 29, 2026 · <a href="release-notes.html#extension-2026-09-29">Browser extension 4.156.0</a></span></li></ul></div></figure>
+  <figure class="ul-variant"><figcaption><b>Table</b><span>from <a href="lifecycle.html">Product lifecycle</a></span></figcaption><div class="cl-stage "><div class="lc-pair" data-note="Record list unit · table · definitions beside products; stacks on phones">
       <div class="t-table"><table style="min-width:0"><caption>Status definitions</caption><thead><tr><th scope="col">Status</th><th scope="col">Meaning</th></tr></thead><tbody><tr><th scope="row"><span class="lc-status lc-active">Active</span></th><td>Fully supported and getting new features and fixes.</td></tr><tr><th scope="row"><span class="lc-status lc-mature">Active, mature</span></th><td>Supported and getting fixes, with few new features planned.</td></tr><tr><th scope="row"><span class="lc-status lc-eol">End of life</span></th><td>An end date is announced. Fixes only until that date.</td></tr><tr><th scope="row"><span class="lc-status lc-retired">Retired</span></th><td>No longer available or supported. A replacement is named.</td></tr></tbody></table></div>
       <div class="t-table"><table><caption>Products</caption><thead><tr><th scope="col">Product</th><th scope="col">Family</th><th scope="col">Latest version</th><th scope="col">Last release</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">Browser extension for Chrome</th><td>Password manager</td><td class="num">4.156.0</td><td class="num"><a href="release-notes.html#extension-2026-09-29">Sep 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Edge</th><td>Password manager</td><td class="num">4.156.0</td><td class="num"><a href="release-notes.html#extension-2026-09-29">Sep 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Firefox</th><td>Password manager</td><td class="num">4.150.0</td><td class="num"><a href="release-notes.html#extension-2026-01-21">Jan 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Safari</th><td>Password manager</td><td class="num">4.156.0</td><td class="num"><a href="release-notes.html#extension-2026-09-29">Sep 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Opera</th><td>Password manager</td><td class="num">4.146.8</td><td class="num"><a href="release-notes.html#extension-2025-09-12">Sep 2025</a></td><td><span class="lc-status lc-mature">Active, mature</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Browser extension for Internet Explorer</th><td>Password manager</td><td class="num">4.123.0</td><td class="num"><a href="release-notes.html#extension-2023-10-12">Oct 2023</a></td><td><span class="lc-status lc-eol">End of life</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Web vault</th><td>Password manager</td><td class="num">4.156.0</td><td class="num"><a href="release-notes.html#vault-2026-10-07">Oct 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">LastPass for Desktop</th><td>Password manager</td><td class="num">2.2.0</td><td class="num"><a href="release-notes.html#desktop-2026-08-17">Aug 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Mac App</th><td>Password manager</td><td class="num">3.12</td><td class="num"><a href="release-notes.html#mac-app-2015-06-19">Jun 2015</a></td><td><span class="lc-status lc-eol">End of life</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Universal Windows Installer</th><td>Installers</td><td class="num">5.4.5</td><td class="num"><a href="release-notes.html#win-installer-2026-08-18">Aug 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Universal macOS Installer</th><td>Installers</td><td class="num">1.3.0</td><td class="num"><a href="release-notes.html#mac-installer-2026-03-16">Mar 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">LastPass VPN</th><td>VPN</td><td class="num">1.1.0</td><td class="num"><a href="release-notes.html#vpn-2026-10-29">Oct 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Admin Console</th><td>Business</td><td class="num">13.10.2026</td><td class="num"><a href="release-notes.html#admin-console-2026-10-13">Oct 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">AD Connector</th><td>Business</td><td class="num">1.7.1924</td><td class="num"><a href="release-notes.html#ad-connector-2026-07-16">Jul 2026</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Universal Proxy</th><td>Business</td><td class="num">4.2.0</td><td class="num"><a href="release-notes.html#proxy-2022-02-01">Feb 2022</a></td><td><span class="lc-status lc-eol">End of life</span><span class="lc-proposed">Proposed</span></td></tr><tr><th scope="row">Workstation MFA</th><td>Business</td><td class="num">2.6.0</td><td class="num"><a href="release-notes.html#workstation-mfa-2025-12-03">Dec 2025</a></td><td><span class="lc-status lc-active">Active</span><span class="lc-proposed">Proposed</span></td></tr></tbody></table></div>
-    </div>
-  </div>
+    </div></div></figure>
 </section>
-<h2 class="cl-group" id="group-calls-to-action">Calls to action</h2>
-<section class="cl-item" id="contact-options" aria-labelledby="h-contact-options">
-  <header class="cl-item-head">
-    <h3 id="h-contact-options">Contact options</h3>
-    <code>ContactOption</code>
-  </header>
-  <p class="cl-purpose">Ways to get help, each with an audience rule. The preview switch shows each audience; in production the sign-in decides.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Channel</th><td>Title, text, button</td></tr><tr><th scope="row">Audience</th><td>Signed out, Free, Premium or Families, Business admin</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="contact-us.html">Contact Us</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Contact Us</p>
-<div class="ct-grid" data-note="Contact option cards · each has an audience rule (F3); signed-out visitors never see an empty page"><article class="ct-card" data-aud="all"><span class="t-cat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="8"/></svg></span><p class="ct-aud">Everyone</p><h3>Search the help center</h3><p>Most answers are a search away, in the same articles our support team uses.</p><a class="t-btn t-btn--line" href="search.html">Search help</a></article><article class="ct-card ct-card--primary" data-aud="out"><span class="t-cat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="m10 17 5-5-5-5"/><path d="M15 12H3"/></svg></span><p class="ct-aud">Signed out</p><h3>Sign in for your support options</h3><p>Signed in, you’ll see the ways to reach us that come with your plan.</p><a class="t-btn t-btn--brand" href="#">Log in</a></article><article class="ct-card ct-card--primary" data-aud="premium business" hidden><span class="t-cat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span><p class="ct-aud">Premium or Families, Business admin</p><h3>Open a support case</h3><p>Tell us what’s wrong and a support specialist will reply by email.</p><a class="t-btn t-btn--brand" href="#">Open a case</a></article><article class="ct-card" data-aud="free premium business" hidden><span class="t-cat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg></span><p class="ct-aud">Free, Premium or Families, Business admin</p><h3>Ask about billing</h3><p>Questions about a charge, a renewal or an invoice.</p><a class="t-btn t-btn--line" href="#">Open a billing case</a></article><article class="ct-card" data-aud="business" hidden><span class="t-cat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span><p class="ct-aud">Business admin</p><h3>Talk to your account team</h3><p>For licensing, renewals and rollout help for your company.</p><a class="t-btn t-btn--line" href="#">Contact sales</a></article><article class="ct-card" data-aud="all"><span class="t-cat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><p class="ct-aud">Everyone</p><h3>Ask the community</h3><p>Get answers from other LastPass users and our community team.</p><a class="t-btn t-btn--line" href="https://community.lastpass.com/">Visit the community</a></article><article class="ct-card" data-aud="all"><span class="t-cat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><p class="ct-aud">Everyone</p><h3>Check service status</h3><p>See whether LastPass services are running normally.</p><a class="t-btn t-btn--line" href="https://status.lastpass.com">Service status</a></article><article class="ct-card" data-aud="all"><span class="t-cat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span><p class="ct-aud">Everyone</p><h3>Known issues</h3><p>Confirmed problems with workarounds, and the releases that fixed them.</p><a class="t-btn t-btn--line" href="known-issues.html">See known issues</a></article></div>
-  </div>
+<section class="ul-unit" id="components" aria-labelledby="h-components">
+  <div class="ul-head"><div><p class="ul-kind">Inside the units</p><h2 id="h-components">Components</h2><p class="ul-purpose">The pieces editors place in a unit’s layout.</p></div></div>
+  <div class="ul-comps"><article class="ul-comp" id="c-button">
+  <h3>Button</h3><p>Primary, secondary and arrow link. One primary per unit.</p>
+  <p class="ul-in">In <a href="#hero">Hero</a>, <a href="#feature">Feature</a>, <a href="#cards">Cards</a>, <a href="#records">Record list</a></p>
+  <div class="ul-spec"><p style="display:flex;flex-wrap:wrap;gap:10px;margin:0"><a class="t-btn t-btn--brand" href="#">Primary</a><a class="t-btn t-btn--line" href="#">Secondary</a></p></div>
+</article><article class="ul-comp" id="c-media">
+  <h3>Media</h3><p>Image, product screenshot or Vimeo video. Alt text or a title is required.</p>
+  <p class="ul-in">In <a href="#hero">Hero</a>, <a href="#feature">Feature</a>, <a href="#cards">Cards</a></p>
+  <div class="ul-spec"><img class="mk-shot" src="img/shot-saas-protect-categories.png" alt="SaaS Protect categories in the Admin Console" width="1935" height="926" loading="lazy"></div>
+</article><article class="ul-comp" id="c-card">
+  <h3>Card</h3><p>Title, text and a link, with an optional icon, kicker or image.</p>
+  <p class="ul-in">In <a href="#cards">Cards</a></p>
+  <div class="ul-spec"><a class="t-card" href="#" style="max-width:20rem"><p class="t-kicker">Article</p><h3>Access the Admin Console</h3><p>Sign in to manage users, policies and reporting.</p><span class="cta-link">Learn more</span></a></div>
+</article><article class="ul-comp" id="c-link-list">
+  <h3>Link list</h3><p>Article links in one or two columns. Hand-picked, or filled from a map branch.</p>
+  <p class="ul-in">In <a href="#hero">Hero</a>, <a href="#cards">Cards</a>, <a href="#content">Content</a></p>
+  <div class="ul-spec"><ul class="t-links" style="grid-template-columns:1fr"><li><a href="#">Update payment method</a></li><li><a href="#">Cancel LastPass Families</a></li></ul></div>
+</article><article class="ul-comp" id="c-table">
+  <h3>Table</h3><p>Caption required; header row and column; scrolls inside its box on phones.</p>
+  <p class="ul-in">In <a href="#content">Content</a>, <a href="#records">Record list</a></p>
+  <div class="ul-spec"><div class="t-table"><table style="min-width:0"><caption>Example</caption><thead><tr><th scope="col">Task</th><th scope="col">Where</th></tr></thead><tbody><tr><th scope="row">Change seats</th><td><a href="#">Purchase licenses</a></td></tr></tbody></table></div></div>
+</article><article class="ul-comp" id="c-notice">
+  <h3>Notice</h3><p>Info, tip or warning, inside content.</p>
+  <p class="ul-in">In <a href="#content">Content</a></p>
+  <div class="ul-spec"><div class="t-notice t-notice--info" style="margin:0"><p><b>Tip.</b> One short message with a link.</p></div></div>
+</article><article class="ul-comp" id="c-faq-item">
+  <h3>FAQ item</h3><p>A question and answer, written once and reused on any page.</p>
+  <p class="ul-in">In <a href="#faq">FAQ</a></p>
+  <div class="ul-spec"><div class="t-faq"><div class="t-faq-item" id="spec-faq"><h3><button class="t-faq-q" type="button" aria-expanded="false" aria-controls="spec-faq-a">Is a password manager and VPN combination worth it?<span class="t-faq-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></h3><div class="t-faq-a" id="spec-faq-a" hidden><p>LastPass VPN uses the LastPass login you already have.</p></div></div></div></div>
+</article><article class="ul-comp" id="c-record">
+  <h3>Record</h3><p>One release note, known issue, download or product, keyed to the product registry.</p>
+  <p class="ul-in">In <a href="#cards">Cards</a>, <a href="#records">Record list</a></p>
+  <div class="ul-spec"><p style="margin:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center"><span class="t-tag t-tag--new">New</span><span class="t-tag t-tag--improved">Improved</span><span class="t-tag t-tag--fixed">Fixed</span><span class="lc-status lc-active">Active</span><span class="ki-status">Workaround available</span></p></div>
+</article></div>
 </section>
-<section class="cl-item" id="spotlight" aria-labelledby="h-spotlight">
-  <header class="cl-item-head">
-    <h3 id="h-spotlight">Spotlight</h3>
-    <code>Spotlight</code>
-  </header>
-  <p class="cl-purpose">One scheduled promotion with a visual. Can be shown only to a chosen audience.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Badge, title, text</th><td>Text</td></tr><tr><th scope="row">Buttons</th><td>Up to 2</td></tr><tr><th scope="row">Visual</th><td>Screenshot or image</td></tr><tr><th scope="row">Schedule</th><td>Start and end dates</td></tr><tr><th scope="row">Audience</th><td>Rule, e.g. Business admins without Max</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="hub-business.html">Mini hub · LastPass Business</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Mini hub · LastPass Business</p>
-<div class="mk-spot" data-note="Spotlight · scheduled by editors; shown to Business admins without Max (audience rule)">
-      <div class="mk-spot-copy">
-        <span class="mk-badge"><b>New</b> AI Monitoring &amp; Protect</span>
-        <h2 id="ex-spotlight-h-spot">See which AI tools your team uses, and set the rules</h2>
-        <p>Find the AI tools people reach through the LastPass extension, see how they log in, and warn before credentials or keys are shared. Included in Business Max.</p>
-        <div class="mk-actions">
-          <a class="t-btn t-btn--brand" href="topic-saas-monitoring.html">See how it works</a>
-          <a class="t-btn t-btn--ghost" href="#">Talk to sales</a>
-        </div>
-      </div>
-      <div class="mk-spot-media"><img class="mk-shot" src="img/shot-saas-protect-categories.png" alt="SaaS Protect categories in the Admin Console, with AI/ML Applications set to Warn" width="1935" height="926" loading="lazy" decoding="async"></div>
-    </div>
-  </div>
+<section class="ul-unit" id="automatic" aria-labelledby="h-automatic">
+  <div class="ul-head"><div><p class="ul-kind">Not authored</p><h2 id="h-automatic">Automatic</h2><p class="ul-purpose">Built by the site from the page tree and settings.</p></div></div>
+  <ul class="ul-auto"><li><b>Header and footer</b><span>From Site Control, on every page</span></li><li><b>Breadcrumb</b><span>From the page’s place in the site tree</span></li><li><b>Hub switcher</b><span>Lists every hub page</span></li><li><b>On this page</b><span>Built from a Content unit’s H2s</span></li><li><b>Build notes</b><span>Review aid; not in production</span></li></ul>
 </section>
-<section class="cl-item" id="contact-band" aria-labelledby="h-contact-band">
-  <header class="cl-item-head">
-    <h3 id="h-contact-band">Contact band</h3>
-    <code>ContactButton</code>
-  </header>
-  <p class="cl-purpose">Ends a help page with a way to get help.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Title, text</th><td>Text</td></tr><tr><th scope="row">Buttons</th><td>Up to 2</td></tr><tr><th scope="row">Audience</th><td>Signed-in users see their plan’s channels (phase 4)</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="hub-business.html">Mini hub · LastPass Business</a> <a href="topic-billing.html">Topic overview · Billing</a> <a href="faq.html">FAQ page</a> <a href="downloads.html">Downloads</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Mini hub · LastPass Business</p>
-<div class="t-help" data-note="ContactButton · signed-in admins see their plan's channels (phase 4)">
-      <div>
-        <h2>Need help with your Business account?</h2>
-        <p>Admins can open a case with LastPass Business support.</p>
-      </div>
-      <div class="t-help-actions">
-        <a class="t-btn t-btn--line" href="#">Ask the community</a>
-        <a class="t-btn t-btn--brand" href="contact-us.html">Contact support</a>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="cl-item" id="cta-band" aria-labelledby="h-cta-band">
-  <header class="cl-item-head">
-    <h3 id="h-cta-band">CTA band</h3>
-    <code>CTABand</code>
-  </header>
-  <p class="cl-purpose">Ends a product hub with a strong next step.</p>
-  <div class="cl-meta">
-    <div class="t-table cl-fields"><table><caption>Author fields</caption><tbody><tr><th scope="row">Title, text</th><td>Text</td></tr><tr><th scope="row">Buttons</th><td>Primary and secondary</td></tr><tr><th scope="row">Audience</th><td>e.g. Max admins see “Enable”, others see the trial</td></tr></tbody></table></div>
-    <p class="cl-used"><span>Used on</span><a href="topic-saas-monitoring.html">Product hub · SaaS and AI Monitoring</a></p>
-  </div>
-  <div class="cl-stage "><p class="cl-stage-label" aria-hidden="true">Live example · from Product hub · SaaS and AI Monitoring</p>
-<div class="mk-cta" data-note="CTA band · audience-aware: Business Max admins see “Enable”, everyone else sees the trial">
-      <div>
-        <h2 id="ex-cta-band-h-cta">Bring shadow IT and AI into view</h2>
-        <p>SaaS, Web and AI Monitoring &amp; Protect are included in LastPass Business Max. Start with a free trial of LastPass Business, or talk to our team about Max.</p>
-      </div>
-      <div class="mk-actions">
-        <a class="t-btn t-btn--brand" href="#">Try LastPass Business free</a>
-        <a class="t-btn t-btn--ghost" href="#">Contact sales</a>
-      </div>
-    </div>
-  </div>
-</section></div>
-</div>
 </div>
 </main>
 
