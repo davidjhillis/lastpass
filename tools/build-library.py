@@ -276,7 +276,7 @@ TRY = '''<div class="ul-try" data-try="#ex-feature-0" role="group" aria-label="T
 
 # ---------------------------------------------------------------- components.html
 nav = ("".join('<li><a href="#%s">%s</a></li>' % (t[0], t[1]) for t in TRAYS)
-       + '<li class="ul-nav-sep"><a href="#special">Special page types</a></li><li><a href="#components">Components</a></li><li><a href="#simple">Kept simple</a></li>')
+       + '<li class="ul-nav-sep"><a href="#special">Special page types</a></li><li><a href="#components">Components</a></li><li><a href="#simple">Kept simple</a></li><li><a href="#motion">Surfaces and motion</a></li>')
 
 trays_html = []
 for slug, name, purpose, options, inside, merges, variants in TRAYS:
@@ -374,6 +374,14 @@ components_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
 <section class="ul-unit" id="simple" aria-labelledby="h-simple">
   <div class="ul-head"><div><p class="ul-kind">Scope</p><h2 id="h-simple">Kept simple</h2><p class="ul-purpose">All in scope. Each is the simplest version that does the job.</p></div></div>
   <ul class="tp-plans tp-plans--3">%s</ul>
+</section>
+<section class="ul-unit" id="motion" aria-labelledby="h-motion">
+  <div class="ul-head"><div><p class="ul-kind">Design rules</p><h2 id="h-motion">Surfaces and motion</h2><p class="ul-purpose">Matched to lastpass.com.</p></div></div>
+  <ul class="tp-plans tp-plans--3">
+    <li class="tp-plan"><h3>Content sits flat</h3><p>Screenshots, pictures and cards rest with a 1px grey border and 8px corners. No resting shadows.</p></li>
+    <li class="tp-plan"><h3>Only floating things cast shadows</h3><p>Menus, dialogs and the quick-links bar that overlaps the hero.</p></li>
+    <li class="tp-plan"><h3>Hover is quiet</h3><p>Buttons and links change color. Cards grow 0.5%% and gain a soft shadow over 0.2s. Nothing slides or zooms.</p></li>
+  </ul>
 </section>
 </div>
 </main>''' % (len(TRAYS), len(SPECIAL), len(COMPONENTS), nav, len(TRAYS), shared_html, H.escape(SCHEMA["page_types"]["flex"]["about"]),

@@ -945,7 +945,7 @@ body.show-grid .cl-stage:not(.cl-stage--unit){background-image:linear-gradient(#
   --lp-mist:#d0deed;
   --lp-orchid:#9971b6;
   --cta-link:#050606;
-  --cta-link-hover:#9971b6;
+  --cta-link-hover:#d71340;
   --t-line:rgba(161,161,161,.4);       /* the build's --ui-border-color */
   --t-line-strong:rgba(161,161,161,.6);
   --t-wash:#f5f5f5;
@@ -975,8 +975,8 @@ div:has(> .util-bar){background:rgba(115,115,115,.1);border-bottom:1px solid var
 .searchwrap button{border-radius:8px;font-size:14px;height:40px}
 /* Links: black, regular, underlined; orchid on hover */
 .cta-link,.t-more,.mk-arrow,.ul-opts dd a,.t-table td a{color:#050606;font-weight:400;text-decoration:underline;text-underline-offset:2px}
-.cta-link:hover,.t-more:hover,.mk-arrow:hover,.t-table td a:hover{color:#9971b6}
-.t-card:hover h3,.t-cat h3 a:hover,.t-links a:hover,.t-file:hover b{color:#9971b6}
+.cta-link:hover,.t-more:hover,.mk-arrow:hover,.t-table td a:hover{color:#d71340}
+.t-card:hover h3,.t-cat h3 a:hover,.t-links a:hover,.t-file:hover b{color:#d71340}
 /* Quick links: neutral border */
 .t-quick ul{border-color:var(--t-line)}
 .t-quick a{color:#050606}
@@ -1012,3 +1012,36 @@ div:has(> .util-bar){background:rgba(115,115,115,.1);border-bottom:1px solid var
   .mk-tray{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px}
   .mk-tray[data-media="right"]{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
 }
+
+/* ---------------------------------------------------------------
+   Surfaces and motion, matched to lastpass.com (Nov 2026)
+   Rule: content sits flat. Only things that float (menus, dialogs,
+   the quick-links bar) cast a resting shadow. Hover changes color;
+   cards add the .com card lift (scale 1.005 + soft shadow, 0.2s).
+   --------------------------------------------------------------- */
+:root{
+  --lp-card-shadow:0 0 1px rgba(5,6,6,.17),0 4px 8px rgba(5,6,6,.13);
+  --lp-card-shadow-hover:0 0 1px rgba(5,6,6,.17),0 4px 16px rgba(5,6,6,.13);
+  --lp-ease:.2s ease;
+}
+/* Screenshots and visuals: flat, hairline border, 8px corners */
+.mk-tray-media::before{display:none!important}
+.mk-tray-media img,.mk-tray-media>img,.mk-shot,.mk-visual,.mk-tray-media .mk-visual,.t-video,.mk-caps{box-shadow:none!important;border:1px solid var(--t-line);border-radius:8px!important}
+.mk-hero .mk-visual,.mk-hero .mk-shot,.t-hero .t-video,.u[data-bg="dark"] .mk-tray-media img,.u[data-bg="dark"] .mk-shot{border-color:rgba(255,255,255,.16)}
+/* Feature cards that sit on a page: the .com card surface */
+.dl-hero-card,.ct-card--primary{box-shadow:var(--lp-card-shadow)!important}
+/* Cards: border at rest, .com lift on hover */
+.t-card,.t-cat,.tp-card,.t-file{transition:transform var(--lp-ease),box-shadow var(--lp-ease),border-color var(--lp-ease)}
+.t-card:hover,.t-cat:hover,.tp-card:hover,.t-file:hover{transform:scale(1.005)!important;box-shadow:var(--lp-card-shadow-hover)!important;border-color:transparent!important}
+/* Buttons: color only, no lift */
+.t-btn,.t-btn:hover{transform:none!important}
+.t-btn--brand:hover{background:#c50b3a!important}
+.t-btn--line:hover{background:transparent!important;color:#c50b3a!important;border-color:#c50b3a!important}
+/* Links: black underline, LastPass red on hover, arrows stay put */
+.cta-link:hover,.t-more:hover,.mk-arrow:hover,.t-table td a:hover,.t-card:hover h3,.t-cat h3 a:hover,.t-links a:hover,.t-file:hover b{color:#d71340!important}
+.mk-arrow:hover svg{transform:none!important}
+.t-links a:hover::after{transform:rotate(45deg)!important}
+/* Video posters: no zoom */
+.t-video:hover img{transform:none!important}
+.t-video:hover .t-video-play{transform:none!important}
+@media (prefers-reduced-motion:reduce){.t-card:hover,.t-cat:hover,.tp-card:hover,.t-file:hover{transform:none!important}}
