@@ -1196,3 +1196,17 @@ html.has-rv .rv-nav{position:sticky;top:0;z-index:52}
 html.has-rv #nav{top:40px!important}
 html.has-rv .t-ov-nav,html.has-rv .rc-side{top:136px}
 html.has-rv .ul-nav{top:112px}
+
+/* Essentials: a section's Examples / CMS schema tabs and its "Try the options" bar stay in
+   view while you scroll that section, and let go at the next one (they stick inside it). */
+:root{--ul-stick:129px}                        /* header 72 + section nav 57 */
+html.has-rv{--ul-stick:169px}                  /* + design review bar 40 */
+.ul-unit .sc-tabs > .sc-tablist{position:sticky;top:var(--ul-stick);z-index:14;background:#fff}
+.ul-unit .sc-panel > .ul-try{position:sticky;top:calc(var(--ul-stick) + 46px);z-index:13}
+@media (max-width:640px){
+  .ul-unit .sc-panel > .ul-try{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:18px;padding:10px 14px;border-radius:10px}
+  .ul-unit .sc-panel > .ul-try::-webkit-scrollbar{display:none}
+  .ul-unit .sc-panel > .ul-try > span{display:none}
+  .ul-unit .sc-panel > .ul-try > div{flex-wrap:nowrap;flex:0 0 auto}
+  .ul-unit .sc-panel > .ul-try button{white-space:nowrap}
+}
