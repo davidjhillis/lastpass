@@ -433,7 +433,7 @@ templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
 
 <section class="t-section" aria-labelledby="h-flex">
   <div class="t-wrap">
-    <div class="t-head"><div><h2 id="h-flex">Flex page</h2><p>One page type. Editors stack trays in Page Builder; these six pages are example layouts, each shown as its stack of trays from top to bottom. Every tray also takes a background and an audience tag.</p></div></div>
+    <div class="t-head"><div><h2 id="h-flex">Flex page</h2><p>One page type for any page built from trays. Editors stack trays in Page Builder; these six pages are example layouts, each shown as its stack of trays from top to bottom. Every tray also takes a background and an audience tag.</p></div></div>
     <div class="tp-grid">%s</div>
   </div>
 </section>

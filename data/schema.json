@@ -78,7 +78,7 @@
  "page_types": {
   "flex": {
    "name": "Flex page",
-   "about": "One page type for hubs, topic overviews, FAQ, contact and lifecycle pages. Fill in the page basics, then stack trays in Page Builder. The first tray is always a Hero.",
+   "about": "One page type for any page built from trays: hubs, topic overviews, FAQ, contact, landing pages. Fill in the page basics, then stack trays in Page Builder. The first tray is always a Hero.",
    "groups": [
     {
      "label": "Page basics",
@@ -101,7 +101,7 @@
      ]
     },
     {
-     "label": "Placement",
+     "label": "Search scope",
      "fields": [
       {
        "name": "Product",
@@ -109,18 +109,6 @@
        "type": "categories",
        "required": false,
        "help": "Tags the page with a product. A Hero search set to This product only searches that product."
-      },
-      {
-       "name": "IsHub",
-       "label": "Show in the hub switcher",
-       "type": "enum",
-       "required": false,
-       "help": "Yes for Mini hubs, so they appear in the row of hubs under the breadcrumb.",
-       "values": [
-        "No",
-        "Yes"
-       ],
-       "default": "No"
       }
      ]
     },
