@@ -276,7 +276,7 @@ TRY = '''<div class="ul-try" data-try="#ex-feature-0" role="group" aria-label="T
 
 # ---------------------------------------------------------------- components.html
 nav = ("".join('<li><a href="#%s">%s</a></li>' % (t[0], t[1]) for t in TRAYS)
-       + '<li class="ul-nav-sep"><a href="#special">Special page types</a></li><li><a href="#components">Components</a></li>')
+       + '<li class="ul-nav-sep"><a href="#special">Special page types</a></li><li><a href="#components">Components</a></li><li><a href="#simple">Kept simple</a></li>')
 
 trays_html = []
 for slug, name, purpose, options, inside, merges, variants in TRAYS:
@@ -372,44 +372,37 @@ components_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   <div class="ul-head"><div><p class="ul-kind">Inside the trays</p><h2 id="h-components">Components</h2><p class="ul-purpose">The new pieces editors place inside trays. Buttons, images and link lists reuse what the built site already has.</p></div></div>
   <div class="ul-comps">%s</div>
 </section>
+<section class="ul-unit" id="simple" aria-labelledby="h-simple">
+  <div class="ul-head"><div><p class="ul-kind">Scope</p><h2 id="h-simple">Kept simple</h2><p class="ul-purpose">All in scope. Each is the simplest version that does the job.</p></div></div>
+  <ul class="tp-plans tp-plans--3">%s</ul>
+</section>
 </div>
 </main>''' % (len(TRAYS), len(SPECIAL), len(COMPONENTS), nav, len(TRAYS), shared_html, H.escape(SCHEMA["page_types"]["flex"]["about"]),
              schema_view("Flex", "Flex page type", "Page schema", SCHEMA["page_types"]["flex"]["groups"]), "\n".join(trays_html),
-             "\n  ".join(special_html), comp_html)
+             "\n  ".join(special_html), comp_html, "".join('<li class="tp-plan"><h3>%s</h3><p>%s</p></li>' % tuple(g) for g in SCHEMA["simplifications"]))
 
 # ---------------------------------------------------------------- templates.html
 def thumb(k):
     return '<a class="tp-thumb" href="%s" tabindex="-1" aria-hidden="true"><iframe src="%s" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>' % (PAGES[k][0], PAGES[k][0])
 
 
-flex_cards = []
-for k, recipe in RECIPES.items():
-    steps = "".join('<li data-bg="%s"><a href="components.html#%s">%s</a><span>%s</span></li>' % (bg, t, TNAME[t], H.escape(v)) for t, v, bg in recipe)
-    flex_cards.append('''<article class="tp-card">
-  %s
-  <div class="tp-copy">
-    <p class="tp-tags"><span class="tp-tag">%s</span><span class="tp-tag tp-tag--flex">Flex</span></p>
-    <h3><a href="%s">%s</a></h3>
-    <p>%s</p>
-    <p class="tp-sub">Built from %d trays, top to bottom</p>
-    <ol class="tp-recipe">%s</ol>
-  </div>
-</article>''' % (thumb(k), REQ[k], PAGES[k][0], PAGES[k][1], FLEX_DESC[k], len(recipe), steps))
+SPECIAL_DESC = {
+    "releases": "Every release, newest first, with filters.",
+    "downloads": "The visitor’s platform first, then every download.",
+    "issues": "Open issues with workarounds, and recent fixes.",
+}
 
-special_cards = []
-for slug, name, purpose, why, options, variants in SPECIAL:
-    special_cards.append('''<article class="tp-card">
-  %s
-  <div class="tp-copy">
-    <p class="tp-tags"><span class="tp-tag">%s</span><span class="tp-tag tp-tag--special">Special page type</span></p>
-    <h3><a href="%s">%s</a></h3>
-    <p>%s</p>
-    <p class="tp-why"><b>Why not flex</b> %s</p>
-    <p><a class="t-more" href="components.html#sp-%s">See its parts</a></p>
-  </div>
-</article>''' % (thumb(slug), REQ[slug], PAGES[slug][0], name, purpose, why, slug))
 
-BASE = [("index.html", "Home"), ("reader.html", "Article"), ("search.html", "Search results"), ("contact.html", "Contact")]
+def card(k, line):
+    return '''<article class="tp-card tp-card--slim">
+  %s
+  <div class="tp-copy"><h3><a href="%s">%s</a></h3><p>%s</p></div>
+</article>''' % (thumb(k), PAGES[k][0], PAGES[k][1], line)
+
+
+flex_cards = [card(k, FLEX_DESC[k]) for k in RECIPES]
+special_cards = [card(s[0], SPECIAL_DESC[s[0]]) for s in SPECIAL]
+
 templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   <ol>
     <li><a href="index.html">Home</a></li>
@@ -422,43 +415,26 @@ templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   <div class="t-hero-bg" aria-hidden="true"></div>
   <div class="t-hero-scrim" aria-hidden="true"></div>
   <div class="t-hero-in">
-    <p class="t-eyebrow">LastPass support portal · design system</p>
-    <h1>Four page types cover all eight requests</h1>
-    <p class="t-hero-sub">The Flex page type, built from %d trays, plus %d special page types for the pages trays can’t build.</p>
-    <div class="t-hero-actions" style="justify-content:center"><a class="t-btn t-btn--brand" href="components.html">See the trays and components</a></div>
+    <p class="t-eyebrow">LastPass support portal</p>
+    <h1>Page types</h1>
+    <p class="t-hero-sub">One Flex page type for most pages, and three special page types.</p>
   </div>
 </section>
 
 <section class="t-section" aria-labelledby="h-flex">
   <div class="t-wrap">
-    <div class="t-head"><div><h2 id="h-flex">Flex page type</h2><p>The Flex page type: any page built from trays. Editors stack trays in Page Builder; these six pages are example layouts, each shown as its stack of trays from top to bottom. Every tray also takes a background and an audience tag.</p></div></div>
-    <div class="tp-grid">%s</div>
+    <div class="t-head"><div><h2 id="h-flex">Flex</h2><p>Any page built by stacking trays. Six examples:</p></div><a class="t-more" href="components.html">The trays</a></div>
+    <div class="tp-grid tp-grid--3">%s</div>
   </div>
 </section>
 
 <section class="t-section t-section--wash" aria-labelledby="h-special">
   <div class="t-wrap">
-    <div class="t-head"><div><h2 id="h-special">Special page types</h2><p>Fixed layouts over records. They exist because these pages need URLs, data and behavior that a stack of trays can’t give.</p></div></div>
+    <div class="t-head"><div><h2 id="h-special">Special page types</h2><p>Fixed layouts that list records.</p></div><a class="t-more" href="components.html#special">How they work</a></div>
     <div class="tp-grid tp-grid--3">%s</div>
   </div>
 </section>
-
-<section class="t-section" aria-labelledby="h-simple">
-  <div class="t-wrap">
-    <div class="t-head"><div><h2 id="h-simple">Kept simple</h2><p>All in scope. Each is the simplest version that does the job, chosen over a heavier build.</p></div></div>
-    <ul class="tp-plans tp-plans--3">%s</ul>
-  </div>
-</section>
-
-<section class="t-section t-section--wash" aria-labelledby="h-base">
-  <div class="t-wrap">
-    <div class="t-head"><div><h2 id="h-base">Approved baseline</h2><p>The pages LastPass already approved. Every page type shares their header, footer and brand tokens.</p></div></div>
-    <ul class="tp-base">%s</ul>
-  </div>
-</section>
-</main>''' % (len(TRAYS), len(SPECIAL), "\n".join(flex_cards), "\n".join(special_cards),
-             "".join('<li class="tp-plan"><h3>%s</h3><p>%s</p></li>' % tuple(g) for g in SCHEMA["simplifications"]),
-             "".join('<li><a href="%s">%s</a></li>' % (h, n) for h, n in BASE))
+</main>''' % ("\n".join(flex_cards), "\n".join(special_cards))
 
 with open(os.path.join(ROOT, "components.html"), "w", encoding="utf-8") as f:
     f.write(chrome("Page-building essentials — LastPass Support", "One Flex page type built from five trays, three special page types, and the components inside them.", components_main))

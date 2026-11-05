@@ -1,6 +1,8 @@
 /* Template behaviors: FAQ accordion, expand all, copy question link, Vimeo
    poster swap, in-page nav highlight, build-notes toggle. No dependencies. */
 (function(){
+  // In a thumbnail frame: no review controls
+  if(window.self !== window.top) document.documentElement.classList.add('in-frame');
   // FAQ accordion — button in heading, aria-expanded drives the answer
   function setItem(btn, open){
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -218,6 +220,8 @@
 
   // Build notes: shows what each block is and where its content comes from
   var t = document.querySelector('.t-notes-toggle');
+  // The page-types index has nothing to annotate
+  if(t && document.querySelector('.tp-grid') && !document.querySelector('.ul-body')){ t.hidden = true; t = null; }
   if(t){
     var on = false; try { on = localStorage.getItem('t-notes') === '1'; } catch(e){}
     t.setAttribute('role', 'switch'); t.removeAttribute('aria-pressed');
