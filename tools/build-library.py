@@ -104,8 +104,9 @@ def schema_groups(groups):
                 H.escape(f["label"]), '<span class="sf-req">Required</span>' if f["required"] else "", TYPES.get(f["type"], f["type"]),
                 '<p class="sf-help">%s</p>' % H.escape(f["help"]) if f.get("help") else "", vals, element_name(f), SCHEMA["cms_types"][f["type"]]))
         n = len(g["fields"])
-        out.append('<section class="sg"><h4 class="sg-h">%s <span>%d field%s</span></h4>%s<ul class="sg-fields">%s</ul></section>' % (
-            H.escape(g["label"]), n, "" if n == 1 else "s", '<p class="sg-help">%s</p>' % H.escape(g["help"]) if g.get("help") else "", "".join(items)))
+        head = '<h4 class="sg-h">%s <span>%d field%s</span></h4>' % (H.escape(g["label"]), n, "" if n == 1 else "s") if g["label"] else ""
+        out.append('<section class="sg%s">%s%s<ul class="sg-fields">%s</ul></section>' % (
+            "" if g["label"] else " sg--flat", head, '<p class="sg-help">%s</p>' % H.escape(g["help"]) if g.get("help") else "", "".join(items)))
     return '<div class="sg-wrap">%s</div>' % "".join(out)
 
 
@@ -113,13 +114,16 @@ def schema_tree(name, friendly, kind, groups):
     """The schema as Schema Designer lists it: schema, then each group block and its elements, in order."""
     rows = []
     for g in groups:
-        rows.append('<li class="st-group"><span class="st-ico" aria-hidden="true">▾</span><code>xpowergroupstart_%s</code><span class="st-lab">%s</span><span class="st-type">Group</span></li>' % (
+        flat = not g["label"]
+        if not flat:
+            rows.append('<li class="st-group"><span class="st-ico" aria-hidden="true">▾</span><code>xpowergroupstart_%s</code><span class="st-lab">%s</span><span class="st-type">Group</span></li>' % (
             re.sub(r"[^A-Za-z0-9]", "", g["label"]), H.escape(g["label"])))
         for f in g["fields"]:
-            rows.append('<li class="st-el"><span class="st-ico" aria-hidden="true">%s</span><code>%s</code><span class="st-lab">%s%s</span><span class="st-type">%s</span></li>' % (
+            rows.append('<li class="st-el%s">' % (" st-el--flat" if flat else "") + '<span class="st-ico" aria-hidden="true">%s</span><code>%s</code><span class="st-lab">%s%s</span><span class="st-type">%s</span></li>' % (
                 "◇" if f["type"] in ("categories", "trays") else "·", element_name(f), H.escape(f["label"]),
                 ' <b class="st-req" title="Required">*</b>' if f["required"] else "", SCHEMA["cms_types"][f["type"]]))
-        rows.append('<li class="st-end"><code>xpowergroupend_</code></li>')
+        if not flat:
+            rows.append('<li class="st-end"><code>xpowergroupend_</code></li>')
     return ('<figure class="st"><figcaption><span class="st-kind">%s</span><b>%s</b><span>Friendly name “%s” · DSS</span></figcaption>'
             '<ol>%s</ol><p class="st-note">◇ not a schema element: tags are taxonomy on the item; trays are the Page Builder area. * required.</p></figure>') % (
         kind, name, H.escape(friendly), "".join(rows))
@@ -130,7 +134,9 @@ def schema_view(name, friendly, kind, groups, lede=""):
 
 
 def tray_groups(slug):
-    return SCHEMA["trays"][slug]["groups"] + [g for g in SCHEMA["shared_tray_groups"] if slug not in g.get("skip", [])]
+    shared = [dict(g, fields=[f for f in g["fields"] if not (slug in g.get("heading_skip", []) and f["name"].startswith("Section"))])
+              for g in SCHEMA["shared_tray_groups"]]
+    return SCHEMA["trays"][slug]["groups"] + shared
 
 
 def tabs(slug, panels):

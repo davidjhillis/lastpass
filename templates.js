@@ -158,7 +158,7 @@
     function groups(S, gs){
       return '<div class="sg-wrap">' + gs.map(function(g){
         var n = g.fields.length;
-        return '<section class="sg"><h4 class="sg-h">' + esc(g.label) + ' <span>' + n + ' field' + (n === 1 ? '' : 's') + '</span></h4>' +
+        return '<section class="sg' + (g.label ? '' : ' sg--flat') + '">' + (g.label ? '<h4 class="sg-h">' + esc(g.label) + ' <span>' + n + ' field' + (n === 1 ? '' : 's') + '</span></h4>' : '') +
           (g.help ? '<p class="sg-help">' + esc(g.help) + '</p>' : '') + '<ul class="sg-fields">' + g.fields.map(function(f){
             var vals = f.values ? '<p class="sf-vals">' + f.values.map(function(v){ return v === f['default'] ? '<b>' + esc(v) + '</b> <span>default</span>' : esc(v); }).join(' · ') + '</p>'
               : (f['default'] ? '<p class="sf-vals"><span>Default</span> <b>' + esc(f['default']) + '</b></p>' : '');
@@ -171,12 +171,13 @@
     function tree(S, name, friendly, kind, gs){
       var rows = '';
       gs.forEach(function(g){
-        rows += '<li class="st-group"><span class="st-ico" aria-hidden="true">▾</span><code>xpowergroupstart_' + esc(g.label.replace(/[^A-Za-z0-9]/g, '')) + '</code><span class="st-lab">' + esc(g.label) + '</span><span class="st-type">Group</span></li>';
+        var flat = !g.label;
+        if(!flat) rows += '<li class="st-group"><span class="st-ico" aria-hidden="true">▾</span><code>xpowergroupstart_' + esc(g.label.replace(/[^A-Za-z0-9]/g, '')) + '</code><span class="st-lab">' + esc(g.label) + '</span><span class="st-type">Group</span></li>';
         g.fields.forEach(function(f){
-          rows += '<li class="st-el"><span class="st-ico" aria-hidden="true">' + (f.type === 'categories' || f.type === 'trays' ? '◇' : '·') + '</span><code>' + esc(elName(f)) + '</code><span class="st-lab">' + esc(f.label) +
+          rows += '<li class="st-el' + (flat ? ' st-el--flat' : '') + '"><span class="st-ico" aria-hidden="true">' + (f.type === 'categories' || f.type === 'trays' ? '◇' : '·') + '</span><code>' + esc(elName(f)) + '</code><span class="st-lab">' + esc(f.label) +
             (f.required ? ' <b class="st-req" title="Required">*</b>' : '') + '</span><span class="st-type">' + esc(S.cms_types[f.type]) + '</span></li>';
         });
-        rows += '<li class="st-end"><code>xpowergroupend_</code></li>';
+        if(!flat) rows += '<li class="st-end"><code>xpowergroupend_</code></li>';
       });
       return '<figure class="st"><figcaption><span class="st-kind">' + kind + '</span><b>' + esc(name) + '</b><span>Friendly name “' + esc(friendly) + '” · DSS</span></figcaption><ol>' + rows +
         '</ol><p class="st-note">◇ not a schema element: tags are taxonomy on the item; trays are the Page Builder area. * required.</p></figure>';
@@ -188,7 +189,7 @@
       if(P.trays){
         P.trays.forEach(function(t, i){
           var tr = S.trays[t[0]];
-          panels.push([(i + 1) + '. ' + tr.name, view(S, S.schema_names[t[0]], tr.friendlyName, 'Component schema', tr.groups.concat(S.shared_tray_groups.filter(function(g){ return !(g.skip || []).includes(t[0]); })),
+          panels.push([(i + 1) + '. ' + tr.name, view(S, S.schema_names[t[0]], tr.friendlyName, 'Component schema', tr.groups.concat(S.shared_tray_groups.map(function(g){ return {label: g.label, help: g.help, fields: g.fields.filter(function(f){ return !((g.heading_skip || []).indexOf(t[0]) >= 0 && /^Section/.test(f.name)); })}; })),
             '<p class="sc-lede">Tray ' + (i + 1) + ' of ' + P.trays.length + ': <b>' + esc(tr.name) + '</b>, ' + esc(t[1]) + ', on a ' + esc(t[2]) + ' background.</p>')]);
         });
       }

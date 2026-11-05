@@ -17,31 +17,8 @@
  },
  "shared_tray_groups": [
   {
-   "label": "Section heading",
-   "help": "Optional. A heading and one line above the tray's content.",
-   "skip": [
-    "hero"
-   ],
-   "fields": [
-    {
-     "name": "SectionHeading",
-     "label": "Section heading",
-     "type": "text",
-     "required": false,
-     "help": "Shown as the tray's H2. Leave empty when the tray has its own heading."
-    },
-    {
-     "name": "SectionIntro",
-     "label": "Line under the heading",
-     "type": "text-multiline",
-     "required": false,
-     "help": "One sentence."
-    }
-   ]
-  },
-  {
-   "label": "Look and audience",
-   "help": "Every tray has these.",
+   "label": "Tray settings",
+   "help": "Every tray has these. Collapsed by default.",
    "fields": [
     {
      "name": "Background",
@@ -71,7 +48,24 @@
       "Business admin"
      ],
      "default": "Everyone"
+    },
+    {
+     "name": "SectionHeading",
+     "label": "Section heading",
+     "type": "text",
+     "required": false,
+     "help": "Shown as the tray's H2. Leave empty when the tray has its own heading."
+    },
+    {
+     "name": "SectionIntro",
+     "label": "Line under the heading",
+     "type": "text-multiline",
+     "required": false,
+     "help": "One sentence."
     }
+   ],
+   "heading_skip": [
+    "hero"
    ]
   }
  ],
@@ -81,7 +75,7 @@
    "about": "The Flex page type: any page built from trays (hubs, topic overviews, FAQ, contact, landing pages). Fill in the page basics, then stack trays in Page Builder. The first tray is always a Hero.",
    "groups": [
     {
-     "label": "Page basics",
+     "label": "",
      "fields": [
       {
        "name": "Title",
@@ -97,36 +91,21 @@
        "required": true,
        "help": "What search engines and Coveo show under the link. Up to 160 characters.",
        "max": 160
-      }
-     ]
-    },
-    {
-     "label": "Search scope",
-     "fields": [
+      },
       {
        "name": "Product",
        "label": "Product",
        "type": "categories",
        "required": false,
        "help": "Tags the page with a product. A Hero search set to This product only searches that product."
-      }
-     ]
-    },
-    {
-     "label": "Browser and sharing",
-     "fields": [
+      },
       {
        "name": "BrowserTitle",
        "label": "Browser tab title",
        "type": "text",
        "required": false,
        "help": "Leave empty to use the page name followed by “— LastPass Support”."
-      }
-     ]
-    },
-    {
-     "label": "Page content",
-     "fields": [
+      },
       {
        "name": "Trays",
        "label": "Trays",
@@ -143,7 +122,7 @@
    "about": "A fixed layout that lists release records, newest first, with filters and a link to each release. Editors write releases as records; the page lists them.",
    "groups": [
     {
-     "label": "Page basics",
+     "label": "",
      "fields": [
       {
        "name": "Title",
@@ -166,12 +145,7 @@
        "type": "trays",
        "required": true,
        "help": "One Hero tray, standard layout."
-      }
-     ]
-    },
-    {
-     "label": "Release list",
-     "fields": [
+      },
       {
        "name": "Products",
        "label": "Products to list",
@@ -267,12 +241,7 @@
          "Removed",
          "Note"
         ]
-       }
-      ]
-     },
-     {
-      "label": "Connections",
-      "fields": [
+       },
        {
         "name": "FixesIssues",
         "label": "Known issues this fixes",
@@ -435,7 +404,7 @@
    "about": "A fixed layout: issues being worked on, with what to do now, then recent fixes linked to the releases that shipped them.",
    "groups": [
     {
-     "label": "Page basics",
+     "label": "",
      "fields": [
       {
        "name": "Title",
@@ -451,12 +420,7 @@
        "required": true,
        "help": "Up to 160 characters.",
        "max": 160
-      }
-     ]
-    },
-    {
-     "label": "Lists",
-     "fields": [
+      },
       {
        "name": "EmptyText",
        "label": "Message when nothing is open",
@@ -537,7 +501,7 @@
       ]
      },
      {
-      "label": "Help for readers",
+      "label": "Help and resolution",
       "fields": [
        {
         "name": "Symptoms",
@@ -552,12 +516,7 @@
         "type": "rich",
         "required": false,
         "help": "Required once the status is Workaround available. Link to an article where there is one."
-       }
-      ]
-     },
-     {
-      "label": "Resolution",
-      "fields": [
+       },
        {
         "name": "FixedIn",
         "label": "Fixed in release",
@@ -606,11 +565,19 @@
        "type": "text-multiline",
        "required": false,
        "help": "Up to two sentences."
+      },
+      {
+       "name": "Buttons",
+       "label": "Buttons",
+       "type": "component[]",
+       "required": false,
+       "help": "Up to 2. Each: text, link, and Primary or Secondary.",
+       "max": 2
       }
      ]
     },
     {
-     "label": "Layout and style",
+     "label": "Layout and media",
      "fields": [
       {
        "name": "Layout",
@@ -635,44 +602,7 @@
         "Marketing"
        ],
        "default": "Standard"
-      }
-     ]
-    },
-    {
-     "label": "Search box",
-     "fields": [
-      {
-       "name": "Search",
-       "label": "Show a search box",
-       "type": "enum",
-       "required": false,
-       "help": "This product only uses the page's Product tag.",
-       "values": [
-        "Off",
-        "All of support",
-        "This product only"
-       ],
-       "default": "Off"
-      }
-     ]
-    },
-    {
-     "label": "Buttons",
-     "fields": [
-      {
-       "name": "Buttons",
-       "label": "Buttons",
-       "type": "component[]",
-       "required": false,
-       "help": "Up to 2. Each: text, link, and Primary or Secondary.",
-       "max": 2
-      }
-     ]
-    },
-    {
-     "label": "Beside the headline",
-     "help": "Split layout only.",
-     "fields": [
+      },
       {
        "name": "MediaType",
        "label": "What sits beside the headline",
@@ -709,11 +639,25 @@
        "help": "Up to 4. Each: step name, short description, link.",
        "max": 4
       }
-     ]
+     ],
+     "help": "Split layout puts the media or start-here list beside the headline."
     },
     {
-     "label": "Under the hero",
+     "label": "Optional extras",
      "fields": [
+      {
+       "name": "Search",
+       "label": "Show a search box",
+       "type": "enum",
+       "required": false,
+       "help": "This product only uses the page's Product tag.",
+       "values": [
+        "Off",
+        "All of support",
+        "This product only"
+       ],
+       "default": "Off"
+      },
       {
        "name": "QuickLinks",
        "label": "Quick links bar",
@@ -739,7 +683,7 @@
    "friendlyName": "Tray - Feature",
    "groups": [
     {
-     "label": "Message",
+     "label": "Message and links",
      "fields": [
       {
        "name": "Kicker",
@@ -769,12 +713,7 @@
        "required": false,
        "help": "Up to 4 short points with check marks.",
        "max": 4
-      }
-     ]
-    },
-    {
-     "label": "Links",
-     "fields": [
+      },
       {
        "name": "PrimaryLink",
        "label": "Main link",
@@ -845,7 +784,6 @@
     },
     {
      "label": "Schedule",
-     "help": "Optional. For promotions and announcements.",
      "fields": [
       {
        "name": "ShowFrom",
@@ -861,7 +799,8 @@
        "required": false,
        "help": "Leave empty to keep showing."
       }
-     ]
+     ],
+     "help": "Optional, for promotions and announcements. Collapsed by default."
     }
    ]
   },
@@ -870,7 +809,7 @@
    "friendlyName": "Tray - Cards",
    "groups": [
     {
-     "label": "Card style",
+     "label": "",
      "fields": [
       {
        "name": "CardVariant",
@@ -899,12 +838,7 @@
         "4"
        ],
        "default": "3"
-      }
-     ]
-    },
-    {
-     "label": "Where the cards come from",
-     "fields": [
+      },
       {
        "name": "Source",
        "label": "Choose cards",
@@ -949,7 +883,7 @@
    "friendlyName": "Tray - FAQ",
    "groups": [
     {
-     "label": "Questions",
+     "label": "",
      "fields": [
       {
        "name": "Items",
@@ -986,7 +920,7 @@
    "friendlyName": "Tray - Content",
    "groups": [
     {
-     "label": "Content",
+     "label": "",
      "fields": [
       {
        "name": "Body",
@@ -1015,7 +949,7 @@
  "components": {
   "Card": [
    {
-    "label": "Card",
+    "label": "",
     "fields": [
      {
       "name": "Title",
@@ -1078,7 +1012,7 @@
   ],
   "Table": [
    {
-    "label": "Table",
+    "label": "",
     "fields": [
      {
       "name": "Caption",
@@ -1123,7 +1057,7 @@
   ],
   "Notice": [
    {
-    "label": "Notice",
+    "label": "",
     "fields": [
      {
       "name": "Type",
@@ -1150,7 +1084,7 @@
   ],
   "FAQ item": [
    {
-    "label": "Question",
+    "label": "",
     "fields": [
      {
       "name": "Question",
@@ -1414,5 +1348,6 @@
   "cards": "Cards",
   "faq": "Faq",
   "content": "Content"
- }
+ },
+ "grouping_rule": "Schemas of 6 fields or fewer are one list with no groups. Longer schemas use groups of 3 or more fields; the exception is a small collapsible group for rarely used options (Schedule, Tray settings)."
 }

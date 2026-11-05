@@ -909,3 +909,5 @@ body.show-grid .cl-stage:not(.cl-stage--unit){background-image:linear-gradient(#
 .t-dock-btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:999px;border:0;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 .t-dock-btn:focus-visible{outline:3px solid var(--lp-brand);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.t-switch,.t-switch::after{transition:none}}
+.st-el--flat{padding-left:14px!important}
+.sg--flat .sg-fields{border-top:0}
