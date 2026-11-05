@@ -32,7 +32,8 @@
       "Cloud",
       "Dark"
      ],
-     "default": "White"
+     "default": "White",
+     "why": "Choose one: four tested backgrounds; free colors would drift off brand."
     },
     {
      "name": "Audience",
@@ -47,21 +48,24 @@
       "Premium or Families",
       "Business admin"
      ],
-     "default": "Everyone"
+     "default": "Everyone",
+     "why": "Taxonomy tags, matched to the signed-in plan. Metadata only, no rules engine."
     },
     {
      "name": "SectionHeading",
      "label": "Section heading",
      "type": "text",
      "required": false,
-     "help": "Shown as the tray's H2. Leave empty when the tray has its own heading."
+     "help": "Shown as the tray's H2. Leave empty when the tray has its own heading.",
+     "why": "Plain text: the template makes it the tray's H2."
     },
     {
      "name": "SectionIntro",
      "label": "Line under the heading",
      "type": "text-multiline",
      "required": false,
-     "help": "One sentence."
+     "help": "One sentence.",
+     "why": "A plain sentence under the section heading."
     }
    ],
    "heading_skip": [
@@ -82,7 +86,8 @@
        "label": "Page name",
        "type": "text",
        "required": true,
-       "help": "Shown in navigation and the breadcrumb, e.g. Billing."
+       "help": "Shown in navigation and the breadcrumb, e.g. Billing.",
+       "why": "Plain text: used in navigation, breadcrumbs and the H1, where formatting can't appear."
       },
       {
        "name": "Description",
@@ -90,28 +95,32 @@
        "type": "text-multiline",
        "required": true,
        "help": "What search engines and Coveo show under the link. Up to 160 characters.",
-       "max": 160
+       "max": 160,
+       "why": "Plain, with a character limit: search snippets drop formatting and cut long text."
       },
       {
        "name": "Product",
        "label": "Product",
        "type": "categories",
        "required": false,
-       "help": "Tags the page with a product. A Hero search set to This product only searches that product."
+       "help": "Tags the page with a product. A Hero search set to This product only searches that product.",
+       "why": "Taxonomy, so one tag drives scoped search, facets and record lists."
       },
       {
        "name": "BrowserTitle",
        "label": "Browser tab title",
        "type": "text",
        "required": false,
-       "help": "Leave empty to use the page name followed by “— LastPass Support”."
+       "help": "Leave empty to use the page name followed by “— LastPass Support”.",
+       "why": "Plain text: browser tabs can't show formatting."
       },
       {
        "name": "Trays",
        "label": "Trays",
        "type": "trays",
        "required": true,
-       "help": "Add Hero, Feature, Cards, FAQ and Content trays in Page Builder, in any order after the Hero."
+       "help": "Add Hero, Feature, Cards, FAQ and Content trays in Page Builder, in any order after the Hero.",
+       "why": "Page Builder area: editors add, reorder and remove trays here."
       }
      ]
     }
@@ -129,7 +138,8 @@
        "label": "Page name",
        "type": "text",
        "required": true,
-       "help": "e.g. Release notes."
+       "help": "e.g. Release notes.",
+       "why": "Plain text: used in navigation, breadcrumbs and the H1, where formatting can't appear."
       },
       {
        "name": "Description",
@@ -137,21 +147,24 @@
        "type": "text-multiline",
        "required": true,
        "help": "Up to 160 characters.",
-       "max": 160
+       "max": 160,
+       "why": "Plain, with a character limit: search snippets drop formatting and cut long text."
       },
       {
        "name": "Hero",
        "label": "Hero",
        "type": "trays",
        "required": true,
-       "help": "One Hero tray, standard layout."
+       "help": "One Hero tray, standard layout.",
+       "why": "Page Builder area holding just the Hero tray, so it matches every other page."
       },
       {
        "name": "Products",
        "label": "Products to list",
        "type": "categories",
        "required": false,
-       "help": "Leave empty to list every product."
+       "help": "Leave empty to list every product.",
+       "why": "Taxonomy, matching the Product tag on each record."
       },
       {
        "name": "PageSize",
@@ -159,7 +172,8 @@
        "type": "integer",
        "required": false,
        "help": "Show more adds 20 at a time.",
-       "default": "12"
+       "default": "12",
+       "why": "A number the list uses directly."
       },
       {
        "name": "Feed",
@@ -171,7 +185,8 @@
         "No",
         "Yes"
        ],
-       "default": "Yes"
+       "default": "Yes",
+       "why": "Yes or No as a two-value choice: the CMS has no checkbox type, and this behaves the same."
       }
      ]
     }
@@ -187,21 +202,24 @@
         "label": "Product",
         "type": "categories",
         "required": true,
-        "help": "From the product list, e.g. Admin Console."
+        "help": "From the product list, e.g. Admin Console.",
+        "why": "Taxonomy, so the record appears in the right product's lists and filters."
        },
        {
         "name": "Version",
         "label": "Version",
         "type": "text",
         "required": true,
-        "help": "As shipped, e.g. 4.156.0 or 13.10.2026."
+        "help": "As shipped, e.g. 4.156.0 or 13.10.2026.",
+        "why": "Text, not a number: versions mix numbers and dates (4.156.0, 13.10.2026)."
        },
        {
         "name": "ReleaseDate",
         "label": "Release date",
         "type": "date",
         "required": true,
-        "help": "The day it shipped."
+        "help": "The day it shipped.",
+        "why": "A real date, so releases sort newest first and fixes fall in the right window."
        },
        {
         "name": "Platforms",
@@ -219,7 +237,8 @@
          "macOS",
          "iOS",
          "Android"
-        ]
+        ],
+        "why": "Taxonomy, so filters and record lists share one vocabulary of browsers and systems."
        }
       ]
      },
@@ -240,21 +259,24 @@
          "Security",
          "Removed",
          "Note"
-        ]
+        ],
+        "why": "A list: each row is a shared item or a typed change, in the editor's order."
        },
        {
         "name": "FixesIssues",
         "label": "Known issues this fixes",
         "type": "component[]",
         "required": false,
-        "help": "Picking an issue moves it to Recently resolved and links it here."
+        "help": "Picking an issue moves it to Recently resolved and links it here.",
+        "why": "Points to Known issue records, so resolving an issue updates both pages."
        },
        {
         "name": "RelatedArticles",
         "label": "Related articles",
         "type": "link[]",
         "required": false,
-        "help": "Help articles about these changes."
+        "help": "Help articles about these changes.",
+        "why": "Several CMS links to articles, so they survive page moves."
        }
       ]
      }
@@ -273,7 +295,8 @@
        "label": "Page name",
        "type": "text",
        "required": true,
-       "help": "e.g. Downloads."
+       "help": "e.g. Downloads.",
+       "why": "Plain text: used in navigation, breadcrumbs and the H1, where formatting can't appear."
       },
       {
        "name": "Description",
@@ -281,14 +304,16 @@
        "type": "text-multiline",
        "required": true,
        "help": "Up to 160 characters.",
-       "max": 160
+       "max": 160,
+       "why": "Plain, with a character limit: search snippets drop formatting and cut long text."
       },
       {
        "name": "Intro",
        "label": "Line under the headline",
        "type": "text-multiline",
        "required": true,
-       "help": "One sentence."
+       "help": "One sentence.",
+       "why": "A sentence or two of plain text under the headline."
       }
      ]
     },
@@ -301,28 +326,32 @@
        "label": "For Windows",
        "type": "component",
        "required": true,
-       "help": "A download record."
+       "help": "A download record.",
+       "why": "Points to a Download record, so the card updates with the record."
       },
       {
        "name": "LeadMac",
        "label": "For macOS",
        "type": "component",
        "required": true,
-       "help": "A download record."
+       "help": "A download record.",
+       "why": "Points to a Download record, so the card updates with the record."
       },
       {
        "name": "LeadLinux",
        "label": "For Linux",
        "type": "component",
        "required": true,
-       "help": "A download record."
+       "help": "A download record.",
+       "why": "Points to a Download record, so the card updates with the record."
       },
       {
        "name": "LeadMobile",
        "label": "For phones and tablets",
        "type": "component",
        "required": true,
-       "help": "A download record."
+       "help": "A download record.",
+       "why": "Points to a Download record, so the card updates with the record."
       }
      ]
     }
@@ -338,21 +367,24 @@
         "label": "Name",
         "type": "text",
         "required": true,
-        "help": "e.g. LastPass for Chrome."
+        "help": "e.g. LastPass for Chrome.",
+        "why": "Plain text: shown as the card title."
        },
        {
         "name": "Summary",
         "label": "One-line description",
         "type": "text-multiline",
         "required": true,
-        "help": "Who it's for."
+        "help": "Who it's for.",
+        "why": "A plain sentence under the name."
        },
        {
         "name": "Url",
         "label": "Download or store link",
         "type": "link",
         "required": true,
-        "help": "The file, or the store page."
+        "help": "The file, or the store page.",
+        "why": "A link, so store and file URLs are managed and checked like any other."
        },
        {
         "name": "OperatingSystem",
@@ -365,7 +397,8 @@
          "macOS",
          "Linux",
          "Mobile"
-        ]
+        ],
+        "why": "Choose one: decides which tab lists the download."
        }
       ]
      },
@@ -378,21 +411,24 @@
         "label": "Product",
         "type": "categories",
         "required": false,
-        "help": "Reads the version and date from this product's newest release."
+        "help": "Reads the version and date from this product's newest release.",
+        "why": "Taxonomy, so the record appears in the right product's lists and filters."
        },
        {
         "name": "Platform",
         "label": "Browser",
         "type": "categories",
         "required": false,
-        "help": "For browser extensions, so the right release is used."
+        "help": "For browser extensions, so the right release is used.",
+        "why": "Taxonomy, so the right browser's release supplies the version."
        },
        {
         "name": "StoreVersion",
         "label": "Store version",
         "type": "text",
         "required": false,
-        "help": "Only when the store has a newer version than the release notes."
+        "help": "Only when the store has a newer version than the release notes.",
+        "why": "Plain text, only used when the store is ahead of the release notes."
        }
       ]
      }
@@ -411,7 +447,8 @@
        "label": "Page name",
        "type": "text",
        "required": true,
-       "help": "e.g. Known issues."
+       "help": "e.g. Known issues.",
+       "why": "Plain text: used in navigation, breadcrumbs and the H1, where formatting can't appear."
       },
       {
        "name": "Description",
@@ -419,14 +456,16 @@
        "type": "text-multiline",
        "required": true,
        "help": "Up to 160 characters.",
-       "max": 160
+       "max": 160,
+       "why": "Plain, with a character limit: search snippets drop formatting and cut long text."
       },
       {
        "name": "EmptyText",
        "label": "Message when nothing is open",
        "type": "rich",
        "required": true,
-       "help": "Shown in place of the active list, with links to service status and support."
+       "help": "Shown in place of the active list, with links to service status and support.",
+       "why": "XHTML, because the message links to service status and support."
       },
       {
        "name": "ResolvedWindow",
@@ -434,7 +473,8 @@
        "type": "integer",
        "required": false,
        "help": "Months.",
-       "default": "6"
+       "default": "6",
+       "why": "A number of months the list uses directly."
       }
      ]
     }
@@ -450,14 +490,16 @@
         "label": "ID",
         "type": "text",
         "required": false,
-        "help": "Set by the CMS, e.g. KI-0001. Never changes, so support can link to it."
+        "help": "Set by the CMS, e.g. KI-0001. Never changes, so support can link to it.",
+        "why": "Plain text, set once by the CMS, so support can quote it."
        },
        {
         "name": "Title",
         "label": "Issue, in the reader's words",
         "type": "text",
         "required": true,
-        "help": "e.g. The extension icon doesn't appear after a browser update."
+        "help": "e.g. The extension icon doesn't appear after a browser update.",
+        "why": "Plain text: used in navigation, breadcrumbs and the H1, where formatting can't appear."
        },
        {
         "name": "Status",
@@ -470,7 +512,8 @@
          "Workaround available",
          "Fix scheduled",
          "Resolved"
-        ]
+        ],
+        "why": "Choose one: the status moves the issue between the active and resolved lists."
        }
       ]
      },
@@ -482,21 +525,24 @@
         "label": "Product",
         "type": "categories",
         "required": true,
-        "help": "From the product list."
+        "help": "From the product list.",
+        "why": "Taxonomy, so the record appears in the right product's lists and filters."
        },
        {
         "name": "Platforms",
         "label": "Browsers and systems",
         "type": "categories",
         "required": false,
-        "help": "Leave empty when it affects all."
+        "help": "Leave empty when it affects all.",
+        "why": "Taxonomy, so filters and record lists share one vocabulary of browsers and systems."
        },
        {
         "name": "AffectedVersions",
         "label": "Affected versions",
         "type": "text",
         "required": false,
-        "help": "e.g. 4.155.0 and later."
+        "help": "e.g. 4.155.0 and later.",
+        "why": "Plain text: versions are listed as ranges and words (4.155.0 and later)."
        }
       ]
      },
@@ -508,28 +554,32 @@
         "label": "What happens",
         "type": "rich",
         "required": true,
-        "help": "The symptom, as the reader sees it."
+        "help": "The symptom, as the reader sees it.",
+        "why": "XHTML for links and short steps."
        },
        {
         "name": "Workaround",
         "label": "What to do now",
         "type": "rich",
         "required": false,
-        "help": "Required once the status is Workaround available. Link to an article where there is one."
+        "help": "Required once the status is Workaround available. Link to an article where there is one.",
+        "why": "XHTML, because workarounds are steps with links."
        },
        {
         "name": "FixedIn",
         "label": "Fixed in release",
         "type": "component",
         "required": false,
-        "help": "Required when the status is Resolved. Pick the release record."
+        "help": "Required when the status is Resolved. Pick the release record.",
+        "why": "Points to the Release record that fixed it, so both pages link up."
        },
        {
         "name": "LastUpdated",
         "label": "Last updated",
         "type": "date",
         "required": false,
-        "help": "Set by the CMS on every publish."
+        "help": "Set by the CMS on every publish.",
+        "why": "A date the CMS sets on publish, so readers see how fresh it is."
        }
       ]
      }
@@ -550,21 +600,24 @@
        "label": "Small line above the headline",
        "type": "text",
        "required": false,
-       "help": "e.g. LastPass Business. Becomes a badge in the Marketing style."
+       "help": "e.g. LastPass Business. Becomes a badge in the Marketing style.",
+       "why": "Short plain line; the template turns it into a badge on dark styles."
       },
       {
        "name": "Title",
        "label": "Page headline",
        "type": "text",
        "required": true,
-       "help": "The page's H1. Say what the reader can do here."
+       "help": "The page's H1. Say what the reader can do here.",
+       "why": "Plain text: used in navigation, breadcrumbs and the H1, where formatting can't appear."
       },
       {
        "name": "Intro",
        "label": "Line under the headline",
        "type": "text-multiline",
        "required": false,
-       "help": "Up to two sentences."
+       "help": "Up to two sentences.",
+       "why": "A sentence or two of plain text under the headline."
       },
       {
        "name": "Buttons",
@@ -572,7 +625,8 @@
        "type": "component[]",
        "required": false,
        "help": "Up to 2. Each: text, link, and Primary or Secondary.",
-       "max": 2
+       "max": 2,
+       "why": "A list, because each button has its own text, link and style."
       }
      ]
     },
@@ -589,7 +643,8 @@
         "Centered",
         "Split"
        ],
-       "default": "Centered"
+       "default": "Centered",
+       "why": "Choose one: Centered and Split are the two tested layouts."
       },
       {
        "name": "Weight",
@@ -601,7 +656,8 @@
         "Standard",
         "Marketing"
        ],
-       "default": "Standard"
+       "default": "Standard",
+       "why": "Choose one: Standard or Marketing switch type size and background together."
       },
       {
        "name": "MediaType",
@@ -615,21 +671,24 @@
         "Screenshot",
         "Start-here list"
        ],
-       "default": "Nothing"
+       "default": "Nothing",
+       "why": "Choose one: decides what fills the space beside the headline."
       },
       {
        "name": "Media",
        "label": "Image or screenshot",
        "type": "image",
        "required": false,
-       "help": "Required when you choose Image or Screenshot."
+       "help": "Required when you choose Image or Screenshot.",
+       "why": "An image asset from the library, so screenshots are replaced in one place."
       },
       {
        "name": "MediaAlt",
        "label": "Describe the image",
        "type": "text",
        "required": false,
-       "help": "Alt text for screen readers. Required with an image."
+       "help": "Alt text for screen readers. Required with an image.",
+       "why": "A separate plain field, so alt text can be required and never styled."
       },
       {
        "name": "StartHere",
@@ -637,7 +696,8 @@
        "type": "component[]",
        "required": false,
        "help": "Up to 4. Each: step name, short description, link.",
-       "max": 4
+       "max": 4,
+       "why": "A list of rows: each step has a name, a description and a link."
       }
      ],
      "help": "Split layout puts the media or start-here list beside the headline."
@@ -656,7 +716,8 @@
         "All of support",
         "This product only"
        ],
-       "default": "Off"
+       "default": "Off",
+       "why": "Choose one: Off, all of support or this product map to three search setups."
       },
       {
        "name": "QuickLinks",
@@ -664,7 +725,8 @@
        "type": "component[]",
        "required": false,
        "help": "Up to 6 shortcuts. Each: text, icon, link.",
-       "max": 6
+       "max": 6,
+       "why": "A list of rows: each shortcut has text, an icon and a link."
       },
       {
        "name": "ProofPoints",
@@ -672,7 +734,8 @@
        "type": "component[]",
        "required": false,
        "help": "Up to 4 short claims. Each: bold label, one line.",
-       "max": 4
+       "max": 4,
+       "why": "A list of rows: each point has a bold label and a line."
       }
      ]
     }
@@ -690,21 +753,24 @@
        "label": "Small line above the heading",
        "type": "text",
        "required": false,
-       "help": "e.g. SaaS Monitoring. Becomes a badge on dark backgrounds."
+       "help": "e.g. SaaS Monitoring. Becomes a badge on dark backgrounds.",
+       "why": "Short plain line above the heading."
       },
       {
        "name": "Heading",
        "label": "Heading",
        "type": "text",
        "required": true,
-       "help": "One promise, e.g. Find every app, approved or not."
+       "help": "One promise, e.g. Find every app, approved or not.",
+       "why": "Plain text: the template sets its size and weight."
       },
       {
        "name": "Body",
        "label": "Message",
        "type": "rich",
        "required": true,
-       "help": "One or two sentences."
+       "help": "One or two sentences.",
+       "why": "XHTML, because the message needs links and the odd bold word."
       },
       {
        "name": "Ticks",
@@ -712,21 +778,24 @@
        "type": "component[]",
        "required": false,
        "help": "Up to 4 short points with check marks.",
-       "max": 4
+       "max": 4,
+       "why": "A list, so each point is its own short line with a check mark."
       },
       {
        "name": "PrimaryLink",
        "label": "Main link",
        "type": "link",
        "required": false,
-       "help": "An arrow link, or a button when there's no picture."
+       "help": "An arrow link, or a button when there's no picture.",
+       "why": "A CMS link, so it survives page moves; the template draws it as an arrow or a button."
       },
       {
        "name": "SecondaryLink",
        "label": "Second link",
        "type": "link",
        "required": false,
-       "help": "Optional."
+       "help": "Optional.",
+       "why": "A CMS link, so it survives page moves."
       }
      ]
     },
@@ -744,21 +813,24 @@
         "Right",
         "No picture (banner)"
        ],
-       "default": "Left"
+       "default": "Left",
+       "why": "Choose one: left, right or none switch between tested layouts."
       },
       {
        "name": "Media",
        "label": "Image or screenshot",
        "type": "image",
        "required": false,
-       "help": "Required unless there's no picture. Real product screenshots work best."
+       "help": "Required unless there's no picture. Real product screenshots work best.",
+       "why": "An image asset from the library, so screenshots are replaced in one place."
       },
       {
        "name": "MediaAlt",
        "label": "Describe the image",
        "type": "text",
        "required": false,
-       "help": "Alt text for screen readers. Required with an image."
+       "help": "Alt text for screen readers. Required with an image.",
+       "why": "A separate plain field, so alt text can be required and never styled."
       },
       {
        "name": "Frame",
@@ -771,14 +843,16 @@
         "Square 1:1",
         "Wide 16:9"
        ],
-       "default": "Landscape 4:3"
+       "default": "Landscape 4:3",
+       "why": "Choose one: three tested shapes keep screenshots cropped consistently."
       },
       {
        "name": "FocusPoint",
        "label": "Keep this part of the picture in view",
        "type": "text",
        "required": false,
-       "help": "Where the crop centers, e.g. 30% 0 keeps the left of a wide screenshot. Leave empty for the top left."
+       "help": "Where the crop centers, e.g. 30% 0 keeps the left of a wide screenshot. Leave empty for the top left.",
+       "why": "Plain text for a position like 30% 0. Simple now; a visual picker can replace it later."
       }
      ]
     },
@@ -790,14 +864,16 @@
        "label": "Show from",
        "type": "date",
        "required": false,
-       "help": "Leave empty to show now."
+       "help": "Leave empty to show now.",
+       "why": "A date the site compares to today to start showing the tray."
       },
       {
        "name": "ShowUntil",
        "label": "Show until",
        "type": "date",
        "required": false,
-       "help": "Leave empty to keep showing."
+       "help": "Leave empty to keep showing.",
+       "why": "A date the site compares to today to stop showing the tray."
       }
      ],
      "help": "Optional, for promotions and announcements. Collapsed by default."
@@ -824,7 +900,8 @@
         "Step",
         "File",
         "Contact option"
-       ]
+       ],
+       "why": "Choose one: each style is a tested card layout."
       },
       {
        "name": "Columns",
@@ -837,7 +914,8 @@
         "3",
         "4"
        ],
-       "default": "3"
+       "default": "3",
+       "why": "Choose one, not a number, so only layouts that work (2, 3 or 4) can be picked."
       },
       {
        "name": "Source",
@@ -849,14 +927,16 @@
         "Hand-picked",
         "From a guide"
        ],
-       "default": "Hand-picked"
+       "default": "Hand-picked",
+       "why": "Choose one: hand-picked cards, or cards filled from a guide."
       },
       {
        "name": "MapBranch",
        "label": "Guide section",
        "type": "link",
        "required": false,
-       "help": "Required when cards come from a guide."
+       "help": "Required when cards come from a guide.",
+       "why": "A link to a DITA map section, so cards follow the guide on every import."
       },
       {
        "name": "LinksPerCard",
@@ -864,7 +944,8 @@
        "type": "integer",
        "required": false,
        "help": "Category cards only.",
-       "default": "3"
+       "default": "3",
+       "why": "A small number the template uses to cut each card's list."
       },
       {
        "name": "Cards",
@@ -872,7 +953,8 @@
        "type": "component[]",
        "required": false,
        "help": "Hand-picked only. Up to 12, in order.",
-       "max": 12
+       "max": 12,
+       "why": "A list of Card items in the editor's order."
       }
      ]
     }
@@ -890,7 +972,8 @@
        "label": "Questions",
        "type": "component[]",
        "required": true,
-       "help": "Pick from the FAQ library, in order. Edit an answer there and it updates everywhere."
+       "help": "Pick from the FAQ library, in order. Edit an answer there and it updates everywhere.",
+       "why": "A list: each row is a shared item or a typed change, in the editor's order."
       },
       {
        "name": "FirstOpen",
@@ -902,14 +985,16 @@
         "No",
         "Yes"
        ],
-       "default": "No"
+       "default": "No",
+       "why": "Yes or No as a two-value choice: the CMS has no checkbox type, and this behaves the same."
       },
       {
        "name": "SeeAll",
        "label": "Link to all questions",
        "type": "link",
        "required": false,
-       "help": "e.g. the FAQ page."
+       "help": "e.g. the FAQ page.",
+       "why": "A CMS link, so it survives page moves."
       }
      ]
     }
@@ -927,7 +1012,8 @@
        "label": "Page content",
        "type": "rich",
        "required": true,
-       "help": "Use H2 for sections and H3 below them. Insert link lists, tables, notes and images from the toolbar."
+       "help": "Use H2 for sections and H3 below them. Insert link lists, tables, notes and images from the toolbar.",
+       "why": "XHTML, because the message needs links and the odd bold word."
       },
       {
        "name": "PageNav",
@@ -939,7 +1025,8 @@
         "No",
         "Yes"
        ],
-       "default": "No"
+       "default": "No",
+       "why": "Yes or No as a two-value choice: the CMS has no checkbox type, and this behaves the same."
       }
      ]
     }
@@ -956,42 +1043,48 @@
       "label": "Card title",
       "type": "text",
       "required": true,
-      "help": "e.g. Access the Admin Console."
+      "help": "e.g. Access the Admin Console.",
+      "why": "Plain text: card titles are styled by the template."
      },
      {
       "name": "Text",
       "label": "Short description",
       "type": "text-multiline",
       "required": false,
-      "help": "One sentence."
+      "help": "One sentence.",
+      "why": "A plain sentence: cards stay short."
      },
      {
       "name": "Link",
       "label": "Link",
       "type": "link",
       "required": true,
-      "help": "Where the card goes."
+      "help": "Where the card goes.",
+      "why": "A CMS link, so it survives page moves."
      },
      {
       "name": "Kicker",
       "label": "Small line above the title",
       "type": "text",
       "required": false,
-      "help": "e.g. Article."
+      "help": "e.g. Article.",
+      "why": "Short plain line above the heading."
      },
      {
       "name": "Icon",
       "label": "Icon",
       "type": "enum",
       "required": false,
-      "help": "From the icon set."
+      "help": "From the icon set.",
+      "why": "Choose one from the icon set, so icons stay consistent."
      },
      {
       "name": "Image",
       "label": "Image",
       "type": "image",
       "required": false,
-      "help": "Optional."
+      "help": "Optional.",
+      "why": "An image asset from the library."
      },
      {
       "name": "Audience",
@@ -1005,7 +1098,8 @@
        "Free",
        "Premium or Families",
        "Business admin"
-      ]
+      ],
+      "why": "Taxonomy tags on contact options, matched to the signed-in plan."
      }
     ]
    }
@@ -1019,7 +1113,8 @@
       "label": "What the table shows",
       "type": "text",
       "required": true,
-      "help": "Read out before the table by screen readers."
+      "help": "Read out before the table by screen readers.",
+      "why": "Plain text: read out before the table or under the image."
      },
      {
       "name": "HeaderRow",
@@ -1031,7 +1126,8 @@
        "Yes",
        "No"
       ],
-      "default": "Yes"
+      "default": "Yes",
+      "why": "Yes or No as a two-value choice: the CMS has no checkbox type, and this behaves the same."
      },
      {
       "name": "HeaderColumn",
@@ -1043,14 +1139,16 @@
        "No",
        "Yes"
       ],
-      "default": "No"
+      "default": "No",
+      "why": "Yes or No as a two-value choice: the CMS has no checkbox type, and this behaves the same."
      },
      {
       "name": "Rows",
       "label": "Table",
       "type": "rich",
       "required": true,
-      "help": "Edit as a table."
+      "help": "Edit as a table.",
+      "why": "XHTML, edited with the CMS table tool."
      }
     ]
    }
@@ -1070,14 +1168,16 @@
        "Tip",
        "Notice"
       ],
-      "default": "Note"
+      "default": "Note",
+      "why": "Choose one: Note, Tip or Notice set the icon, matching imported DITA notes."
      },
      {
       "name": "Text",
       "label": "Message",
       "type": "rich",
       "required": true,
-      "help": "One short message."
+      "help": "One short message.",
+      "why": "Plain text: short supporting copy."
      }
     ]
    }
@@ -1091,28 +1191,32 @@
       "label": "Question",
       "type": "text",
       "required": true,
-      "help": "In the reader's words."
+      "help": "In the reader's words.",
+      "why": "Plain text: questions are short and never formatted."
      },
      {
       "name": "Answer",
       "label": "Answer",
       "type": "rich",
       "required": true,
-      "help": "Short, with a link to the full article."
+      "help": "Short, with a link to the full article.",
+      "why": "XHTML, because answers link to full articles."
      },
      {
       "name": "Products",
       "label": "Products",
       "type": "categories",
       "required": false,
-      "help": "Helps find it in the library."
+      "help": "Helps find it in the library.",
+      "why": "Taxonomy, matching the Product tag on each record."
      },
      {
       "name": "LastReviewed",
       "label": "Last reviewed",
       "type": "date",
       "required": false,
-      "help": "When someone last checked it's still true."
+      "help": "When someone last checked it's still true.",
+      "why": "A date, so stale answers can be found and checked."
      }
     ]
    }

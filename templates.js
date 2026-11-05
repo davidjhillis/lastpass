@@ -164,7 +164,7 @@
               : (f['default'] ? '<p class="sf-vals"><span>Default</span> <b>' + esc(f['default']) + '</b></p>' : '');
             return '<li class="sf"><div class="sf-top"><b class="sf-label">' + esc(f.label) + '</b>' + (f.required ? '<span class="sf-req">Required</span>' : '') +
               '<span class="sf-type">' + esc(S.types[f.type] || f.type) + '</span></div>' + (f.help ? '<p class="sf-help">' + esc(f.help) + '</p>' : '') + vals +
-              '<dl class="sf-meta"><div><dt>Element</dt><dd><code>' + esc(elName(f)) + '</code></dd></div><div><dt>CMS type</dt><dd>' + esc(S.cms_types[f.type]) + '</dd></div></dl></li>';
+              '<dl class="sf-meta"><div><dt>Element</dt><dd><code>' + esc(elName(f)) + '</code></dd></div><div><dt>CMS type</dt><dd>' + esc(S.cms_types[f.type]) + '</dd></div><div class="sf-why"><dt>Why this type</dt><dd>' + esc(f.why || '') + '</dd></div></dl></li>';
           }).join('') + '</ul></section>';
       }).join('') + '</div>';
     }
@@ -172,14 +172,14 @@
       var rows = '';
       gs.forEach(function(g){
         var flat = !g.label;
-        if(!flat) rows += '<li class="st-group"><span class="st-ico" aria-hidden="true">▾</span><code>xpowergroupstart_' + esc(g.label.replace(/[^A-Za-z0-9]/g, '')) + '</code><span class="st-lab">' + esc(g.label) + '</span><span class="st-type">Group</span></li>';
+        if(!flat) rows += '<li class="st-group"><span class="st-ico" aria-hidden="true">▾</span><code>xpowergroupstart_' + esc(g.label.replace(/[^A-Za-z0-9]/g, '')) + '</code><span class="st-lab">' + esc(g.label) + '</span><span class="st-type">Group</span><span class="st-why"></span></li>';
         g.fields.forEach(function(f){
           rows += '<li class="st-el' + (flat ? ' st-el--flat' : '') + '"><span class="st-ico" aria-hidden="true">' + (f.type === 'categories' || f.type === 'trays' ? '◇' : '·') + '</span><code>' + esc(elName(f)) + '</code><span class="st-lab">' + esc(f.label) +
-            (f.required ? ' <b class="st-req" title="Required">*</b>' : '') + '</span><span class="st-type">' + esc(S.cms_types[f.type]) + '</span></li>';
+            (f.required ? ' <b class="st-req" title="Required">*</b>' : '') + '</span><span class="st-type">' + esc(S.cms_types[f.type]) + '</span><span class="st-why">' + esc(f.why || '') + '</span></li>';
         });
         if(!flat) rows += '<li class="st-end"><code>xpowergroupend_</code></li>';
       });
-      return '<figure class="st"><figcaption><span class="st-kind">' + kind + '</span><b>' + esc(name) + '</b><span>Friendly name “' + esc(friendly) + '” · DSS</span></figcaption><ol>' + rows +
+      return '<figure class="st"><figcaption><span class="st-kind">' + kind + '</span><b>' + esc(name) + '</b><span>Friendly name “' + esc(friendly) + '” · DSS</span></figcaption><ol><li class="st-cols" aria-hidden="true"><span></span><span>Element</span><span>Label</span><span>CMS type</span><span>Why this type</span></li>' + rows +
         '</ol><p class="st-note">◇ not a schema element: tags are taxonomy on the item; trays are the Page Builder area. * required.</p></figure>';
     }
     function view(S, name, friendly, kind, gs, lede){ return (lede || '') + tree(S, name, friendly, kind, gs) + '<h4 class="sc-h">Field details</h4>' + groups(S, gs); }

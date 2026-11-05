@@ -911,3 +911,13 @@ body.show-grid .cl-stage:not(.cl-stage--unit){background-image:linear-gradient(#
 @media (prefers-reduced-motion:reduce){.t-switch,.t-switch::after{transition:none}}
 .st-el--flat{padding-left:14px!important}
 .sg--flat .sg-fields{border-top:0}
+
+/* "Why this type" column */
+.st li{grid-template-columns:18px minmax(13rem,auto) minmax(9rem,12rem) minmax(8rem,auto) minmax(16rem,1fr)}
+.st-why{white-space:normal;font-size:12.5px;line-height:1.45;color:var(--lp-text-body)}
+.st-cols{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--lp-text-muted);border-bottom:1px solid #dde3ea;padding-bottom:6px!important}
+.st-cols:hover{background:none}
+.st-lab{white-space:normal}
+.sf-why{flex-basis:100%;align-items:baseline}
+.sf-why dd{font-size:13px;line-height:1.5;color:var(--lp-text-body)}
+@media (max-width:900px){.st-why,.st-cols span:last-child{display:none}.st li{grid-template-columns:18px auto auto auto}}
