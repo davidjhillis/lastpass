@@ -180,7 +180,7 @@
        "label": "Offer a feed",
        "type": "enum",
        "required": false,
-       "help": "Lets readers subscribe. Per-product feeds come later.",
+       "help": "Lets readers subscribe to all releases. Product filters work from the link.",
        "values": [
         "No",
         "Yes"
@@ -664,7 +664,7 @@
        "label": "What sits beside the headline",
        "type": "enum",
        "required": false,
-       "help": "A start-here list suits hubs; a screenshot suits product pages.",
+       "help": "A start-here list suits hubs; an image or screenshot (optionally with a Vimeo link) suits topic and product pages.",
        "values": [
         "Nothing",
         "Image",
@@ -689,6 +689,14 @@
        "required": false,
        "help": "Alt text for screen readers. Required with an image.",
        "why": "A separate plain field, so alt text can be required and never styled."
+      },
+      {
+       "name": "VideoUrl",
+       "label": "Vimeo link",
+       "type": "text",
+       "required": false,
+       "help": "Optional. Paste a Vimeo link and the image becomes the video's poster; it plays when clicked.",
+       "why": "Plain text for a URL: one optional field turns any image into a video, with no separate video feature."
       },
       {
        "name": "StartHere",
@@ -833,6 +841,14 @@
        "why": "A separate plain field, so alt text can be required and never styled."
       },
       {
+       "name": "VideoUrl",
+       "label": "Vimeo link",
+       "type": "text",
+       "required": false,
+       "help": "Optional. Paste a Vimeo link and the image becomes the video's poster; it plays when clicked.",
+       "why": "Plain text for a URL: one optional field turns any image into a video, with no separate video feature."
+      },
+      {
        "name": "Frame",
        "label": "Picture shape",
        "type": "enum",
@@ -852,7 +868,7 @@
        "type": "text",
        "required": false,
        "help": "Where the crop centers, e.g. 30% 0 keeps the left of a wide screenshot. Leave empty for the top left.",
-       "why": "Plain text for a position like 30% 0. Simple now; a visual picker can replace it later."
+       "why": "Plain text for a position like 30% 0: one short value instead of a custom picker."
       }
      ]
     },
@@ -1453,5 +1469,31 @@
   "faq": "Faq",
   "content": "Content"
  },
- "grouping_rule": "Schemas of 6 fields or fewer are one list with no groups. Longer schemas use groups of 3 or more fields; the exception is a small collapsible group for rarely used options (Schedule, Tray settings)."
+ "grouping_rule": "Schemas of 6 fields or fewer are one list with no groups. Longer schemas use groups of 3 or more fields; the exception is a small collapsible group for rarely used options (Schedule, Tray settings).",
+ "simplifications": [
+  [
+   "Audience",
+   "A tag on a tray, matched to one plan value from sign-in. No rules engine; LastPass only needs to send the plan."
+  ],
+  [
+   "Record links, not detail pages",
+   "Every release and issue has its own link on its list page, and a link can open the list filtered to one product."
+  ],
+  [
+   "Flex pages link to records",
+   "Trays never read records. A Flex page links to the record pages, already filtered; a hub's short list is written by hand."
+  ],
+  [
+   "Search as pages",
+   "Release notes and Known issues are pages, so Coveo indexes them like any other. No custom facets."
+  ],
+  [
+   "Video on any image",
+   "The image field on Hero and Feature takes an optional Vimeo link and becomes its poster. No separate video feature."
+  ],
+  [
+   "Product tag, not a registry",
+   "One Product tag list the records share. Downloads read their version from the newest release with the same tag."
+  ]
+ ]
 }

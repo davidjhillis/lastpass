@@ -155,7 +155,7 @@ SHARED = [("Background", "White, wash, cloud or dark"),
 TRAYS = [
     ("hero", "Hero", "Opens every page: the title, an intro, and optionally search, buttons and a media slot.",
      [("Layout", "Centered, or split with a media slot"), ("Weight", "Standard or marketing (dark, larger type)"),
-      ("Search", "Off, all of support, or scoped to a product"), ("Media slot", "Image, screenshot or start-here list"),
+      ("Search", "Off, all of support, or scoped to a product"), ("Media slot", "Image or screenshot (optionally with a Vimeo link), or a start-here list"),
       ("Extras", "Badge, up to 2 buttons, quick links bar, proof points")],
      [], "4 hero variants, quick links, proof strip, start-here card",
      [("Standard", "faq", '<section class="t-hero', None, ""),
@@ -163,7 +163,7 @@ TRAYS = [
       ("Marketing, with a screenshot", "saas", '<section class="mk-hero"', None, ""),
       ("Marketing, with search and a start-here list", "hub", '<section class="mk-hero"', None, "")]),
     ("feature", "Feature", "Media on one side and a message on the other, or a full-width banner that asks for one action.",
-     [("Media side", "Left or right, or none for a banner"), ("Media", "Screenshot or photo, in a fixed frame"),
+     [("Media side", "Left or right, or none for a banner"), ("Media", "Screenshot or photo in a fixed frame, optionally with a Vimeo link"),
       ("Frame", "4:3 (default), 1:1 or 16:9, with a focus point for the crop"),
       ("Content", "Badge or kicker, heading, text, up to 4 ticks, up to 2 buttons or links")],
      [], "feature tray, spotlight, CTA band, help banner",
@@ -241,14 +241,6 @@ FLEX_DESC = {
 REQ = {"hub": "Request 1", "saas": "Request 2", "billing": "Request 2", "faq": "Request 3", "contact": "Request 4",
        "lifecycle": "Request 8", "releases": "Request 5", "downloads": "Request 6", "issues": "Request 7"}
 
-DEFERRED = [
-    ("Claims to audience tags", "Trays carry an Audience tag now. Mapping LastPass’s SAML claims to Free, Premium or Families and Business admin waits on LastPass."),
-    ("Record detail pages", "A page per known issue and a release-notes page per product with its own feed."),
-    ("Live lists in flex trays", "The hub’s recent releases are hand-picked. A tray that reads release records live comes later."),
-    ("Search facets for records", "Search stays articles-only at launch; release notes, issues and downloads become facets later."),
-    ("Video in Feature", "Media is an image or screenshot first; Vimeo in the 4:3 frame comes later."),
-    ("Product registry", "Start as one shared product list for the three special page types, not a full data model."),
-]
 
 
 def chrome(title, desc, main):
@@ -451,10 +443,10 @@ templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   </div>
 </section>
 
-<section class="t-section" aria-labelledby="h-deferred">
+<section class="t-section" aria-labelledby="h-simple">
   <div class="t-wrap">
-    <div class="t-head"><div><h2 id="h-deferred">Deferred to reduce scope</h2><p>Designed for, but not in the first build.</p></div></div>
-    <ul class="tp-plans">%s</ul>
+    <div class="t-head"><div><h2 id="h-simple">Kept simple</h2><p>All in scope. Each is the simplest version that does the job, chosen over a heavier build.</p></div></div>
+    <ul class="tp-plans tp-plans--3">%s</ul>
   </div>
 </section>
 
@@ -465,7 +457,7 @@ templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   </div>
 </section>
 </main>''' % (len(TRAYS), len(SPECIAL), "\n".join(flex_cards), "\n".join(special_cards),
-             "".join('<li class="tp-plan"><h3>%s</h3><p>%s</p></li>' % g for g in DEFERRED),
+             "".join('<li class="tp-plan"><h3>%s</h3><p>%s</p></li>' % tuple(g) for g in SCHEMA["simplifications"]),
              "".join('<li><a href="%s">%s</a></li>' % (h, n) for h, n in BASE))
 
 with open(os.path.join(ROOT, "components.html"), "w", encoding="utf-8") as f:

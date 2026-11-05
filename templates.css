@@ -921,3 +921,4 @@ body.show-grid .cl-stage:not(.cl-stage--unit){background-image:linear-gradient(#
 .sf-why{flex-basis:100%;align-items:baseline}
 .sf-why dd{font-size:13px;line-height:1.5;color:var(--lp-text-body)}
 @media (max-width:900px){.st-why,.st-cols span:last-child{display:none}.st li{grid-template-columns:18px auto auto auto}}
+.tp-plans--3{grid-template-columns:repeat(3,minmax(0,1fr))}@media (max-width:900px){.tp-plans--3{grid-template-columns:minmax(0,1fr)}}
