@@ -853,14 +853,15 @@
        "label": "Picture shape",
        "type": "enum",
        "required": false,
-       "help": "The picture is cropped to this shape.",
+       "help": "Original shows the whole picture. Pick a shape only for photos; it crops to that shape.",
        "values": [
+        "Original",
         "Landscape 4:3",
         "Square 1:1",
         "Wide 16:9"
        ],
-       "default": "Landscape 4:3",
-       "why": "Choose one: three tested shapes keep screenshots cropped consistently."
+       "default": "Original",
+       "why": "Choose one: screenshots keep their shape so nothing is cut off; three tested shapes crop photos consistently."
       },
       {
        "name": "FocusPoint",

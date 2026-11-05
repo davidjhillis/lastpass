@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edmonds Center for the Arts — On-brand redesign</title>
+  <link rel="icon" href="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/05/cropped-20favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Raleway:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --plum: #6633CC;
+      --plum-deep: #4a2499;
+      --red: #DC3232;
+      --sky: #2EA3F2;
+      --ink: #362D32;
+      --paper: #F7F5F8;
+      --white: #FFFFFF;
+      --line: rgba(54, 45, 50, 0.12);
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Open Sans", sans-serif; color: var(--ink); background: var(--paper); line-height: 1.5; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { color: inherit; }
+    button { font-family: inherit; }
+
+    .proto {
+      position: sticky; top: 0; z-index: 60;
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 20px; background: var(--ink); color: #fff; font-size: 12px;
+    }
+    .proto span { opacity: .55; margin-right: 6px; }
+    .proto button {
+      border: 1px solid rgba(255,255,255,.22); background: transparent; color: #fff;
+      padding: 5px 10px; border-radius: 999px; cursor: pointer; font-size: 12px;
+    }
+    .proto button.on { background: #fff; color: var(--ink); }
+    .page { display: none; }
+    .page.on { display: block; }
+
+    header.site {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 32px; background: #fff; border-bottom: 1px solid var(--line);
+    }
+    .logo { height: 42px; width: auto; }
+    nav.main { display: flex; align-items: center; gap: 22px; font-size: 14px; font-weight: 600; }
+    nav.main a { text-decoration: none; color: var(--ink); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 0; cursor: pointer; text-decoration: none; font-weight: 700;
+      font-size: 14px; border-radius: var(--radius); letter-spacing: .02em;
+    }
+    .btn-red { background: var(--red); color: #fff; padding: 10px 16px; }
+    .btn-plum { background: var(--plum); color: #fff; padding: 12px 18px; }
+    .btn-white { background: #fff; color: var(--plum); padding: 12px 18px; }
+    .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.55); padding: 12px 18px; border-radius: var(--radius); }
+
+    .hero { position: relative; min-height: 78vh; display: grid; align-items: end; color: #fff; overflow: hidden; }
+    .hero img { position: absolute; inset: 0; }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(54,45,50,.15), rgba(54,45,50,.78));
+    }
+    .hero-copy { position: relative; z-index: 1; padding: 48px 32px 52px; max-width: 760px; }
+    .kicker {
+      font-family: Raleway, sans-serif; font-size: 12px; letter-spacing: .18em;
+      text-transform: uppercase; font-weight: 700; color: #C8E9F3; margin-bottom: 10px;
+    }
+    h1, h2, h3 { font-family: Raleway, sans-serif; letter-spacing: -.02em; }
+    .hero h1 { font-size: clamp(40px, 5.4vw, 68px); line-height: 1; margin-bottom: 14px; font-weight: 800; }
+    .hero p { max-width: 540px; margin-bottom: 24px; font-size: 17px; color: rgba(255,255,255,.9); }
+    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .wrap { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
+    section { padding: 64px 0; }
+    .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 24px; }
+    .sec-head h2 { font-size: 34px; }
+    .sec-head p { max-width: 440px; color: #5c5358; }
+
+    .feature-grid { display: grid; grid-template-columns: 1.35fr 1fr 1fr; gap: 14px; }
+    .show-card {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+      overflow: hidden; text-align: left; cursor: pointer; display: flex; flex-direction: column;
+    }
+    .show-card .media { height: 210px; background: var(--ink); }
+    .show-card.lead .media { height: 320px; }
+    .show-card .body { padding: 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .pill { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--plum); }
+    .pill.guest { color: var(--sky); }
+    .show-card h3 { font-size: 22px; line-height: 1.2; }
+    .meta { font-size: 13px; color: #5c5358; }
+
+    .subscribe { background: var(--plum); color: #fff; }
+    .subscribe .wrap { display: grid; grid-template-columns: 1.25fr 1fr; gap: 40px; align-items: center; }
+    .subscribe h2 { font-size: 36px; margin: 8px 0 12px; }
+    .packs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .pack { border: 1px solid rgba(255,255,255,.22); border-radius: var(--radius); padding: 14px; }
+    .pack strong { display: block; font-family: Raleway, sans-serif; font-size: 20px; }
+
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+    .filters button {
+      border: 1px solid var(--line); background: #fff; padding: 8px 12px;
+      border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 600;
+    }
+    .filters button.on { background: var(--plum); color: #fff; border-color: var(--plum); }
+
+    .cal { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .cal article { border-top: 2px solid var(--plum); padding-top: 12px; cursor: pointer; }
+    .cal article.guest { border-top-color: var(--sky); }
+    .cal .date { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--plum); }
+    .cal article.guest .date { color: var(--sky); }
+    .cal h3 { font-size: 17px; margin: 6px 0; }
+
+    .visit { display: grid; grid-template-columns: 1.3fr .85fr .85fr; gap: 14px; }
+    .visit article { background: #fff; border-radius: var(--radius); padding: 22px; min-height: 170px; border: 1px solid var(--line); }
+    .visit h3 { font-size: 24px; margin-bottom: 8px; }
+    .sponsors { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: center; }
+    .sponsors img { width: auto; height: 36px; object-fit: contain; filter: grayscale(1); opacity: .8; }
+
+    footer.site {
+      background: var(--ink); color: rgba(255,255,255,.78);
+      padding: 36px 32px; display: flex; justify-content: space-between; gap: 20px; font-size: 13px;
+    }
+    footer.site img { height: 36px; width: auto; margin-bottom: 10px; }
+
+    .event-hero { position: relative; height: 52vh; min-height: 340px; background: var(--ink); }
+    .event-hero img { position: absolute; inset: 0; object-fit: contain; background: #1c1719; }
+    .event-layout { display: grid; grid-template-columns: 1.5fr .75fr; gap: 40px; padding: 36px 0 72px; align-items: start; }
+    .event-copy h1 { font-size: clamp(32px, 4.4vw, 52px); line-height: 1.05; margin: 8px 0 12px; }
+    .lede { font-size: 18px; color: #5c5358; margin-bottom: 20px; }
+    .event-copy p { margin-bottom: 14px; max-width: 64ch; }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .facts dt { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--plum); }
+    .faq details { border-top: 1px solid var(--line); padding: 12px 0; }
+    .faq summary { cursor: pointer; font-weight: 700; }
+    .rail { position: sticky; top: 70px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+    .rail .when { font-family: Raleway, sans-serif; font-size: 26px; line-height: 1.15; margin: 8px 0; }
+    .rail .note { margin-top: 12px; font-size: 13px; color: #5c5358; padding-top: 12px; border-top: 1px solid var(--line); }
+    .btn-wide { width: 100%; }
+    .mobile-bar { display: none; position: sticky; bottom: 0; background: var(--ink); color: #fff; padding: 12px 16px; justify-content: space-between; align-items: center; }
+
+    .checkout { min-height: 68vh; display: grid; grid-template-columns: 1fr 1fr; }
+    .checkout .stage { background: var(--ink); color: #fff; padding: 44px; }
+    .checkout .pay { padding: 44px; background: #fff; }
+    .seats { display: grid; gap: 8px; margin-top: 22px; }
+    .row-seats { display: flex; gap: 6px; justify-content: center; }
+    .seat { width: 22px; height: 22px; border-radius: 3px 3px 6px 6px; background: rgba(255,255,255,.16); border: 0; cursor: pointer; }
+    .seat.on { background: var(--sky); }
+    .seat[disabled] { background: rgba(255,255,255,.06); cursor: default; }
+
+    @media (max-width: 900px) {
+      header.site, .hero-copy, footer.site { padding-left: 18px; padding-right: 18px; }
+      .wrap { width: min(100% - 36px, 1180px); }
+      .feature-grid, .cal, .visit, .subscribe .wrap, .event-layout, .checkout { grid-template-columns: 1fr; }
+      nav.main a:not(.btn) { display: none; }
+      .rail { display: none; }
+      .mobile-bar { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <div class="proto">
+    <span>Prototype · ECA brand extract Aug 22, 2026</span>
+    <button class="on" data-go="home" type="button">Homepage</button>
+    <button data-go="event" type="button">Matthew Morrison</button>
+    <button data-go="gala" type="button">Gala</button>
+    <button data-go="checkout" type="button">Seat select</button>
+  </div>
+
+  <header class="site">
+    <a href="#home" data-go="home">
+      <img class="logo" alt="Edmonds Center for the Arts" src="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/05/edmonds-center-for-the-arts-V2-black.svg" />
+    </a>
+    <nav class="main">
+      <a href="#on">Events &amp; Tickets</a>
+      <a href="#subscribe">Subscriptions</a>
+      <a href="#visit">Plan Your Visit</a>
+      <a href="#visit">Give &amp; Support</a>
+      <a class="btn btn-red" href="#event" data-go="event">Tickets</a>
+    </nav>
+  </header>
+
+  <main id="home" class="page on">
+    <section class="hero">
+      <img src="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/05/20-banner.jpg" alt="Celebrating 20 Years at the Heart of the Arts" />
+      <div class="hero-copy">
+        <div class="kicker">Celebrating 20 Years at the Heart of the Arts</div>
+        <h1>26/27 Season On Sale Now!</h1>
+        <p>As we step into our 20th Anniversary Season, we’re not just looking back, we’re celebrating the moments that have brought our community together while building momentum for what comes next.</p>
+        <div class="hero-actions">
+          <a class="btn btn-white" href="#event" data-go="event">Buy Tickets — Matthew Morrison</a>
+          <a class="btn btn-ghost" href="#on">What’s Happening at ECA</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <div class="kicker" style="color: var(--plum);">What’s Happening at ECA</div>
+            <h2>This is the season to be in the room.</h2>
+          </div>
+          <p>ECA Presents nights first. Guest Presented tributes and partners live in the calendar. If you subscribe, these are the shows that count.</p>
+        </div>
+        <div class="feature-grid">
+          <button class="show-card lead" data-go="event" type="button">
+            <div class="media"><img src="https://system.spektrix.com/edmondscenterforthearts/files/38554fff-0dce-4d4d-8f4b-c5d94cac8c19.jpg" alt="Matthew Morrison Presents Show Up" /></div>
+            <div class="body">
+              <span class="pill">ECA Presents</span>
+              <h3>Matthew Morrison Presents Show Up</h3>
+              <div class="meta">Fri, Sep 11, 2026 · 7:30 PM</div>
+              <div class="meta">Vocal jazz / Broadway / Pop · counts toward BYO</div>
+            </div>
+          </button>
+          <button class="show-card" data-go="event" type="button">
+            <div class="media"><img src="https://system.spektrix.com/edmondscenterforthearts/files/e857ae7a-4c4d-4479-9573-2e0d7a206204.jpg" alt="Jane Lynch & Kate Flannery: The Trouble With Angels" /></div>
+            <div class="body">
+              <span class="pill">ECA Presents</span>
+              <h3>Jane Lynch &amp; Kate Flannery: The Trouble With Angels</h3>
+              <div class="meta">Thu, Aug 27, 2026 · 7:30 PM</div>
+              <div class="meta">It’s like the Rat Pack…but with a couple of broads.</div>
+            </div>
+          </button>
+          <button class="show-card" data-go="gala" type="button">
+            <div class="media"><img src="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/07/1080-Gala-No-Border-No-Date.jpg" alt="Edmonds Center for the Arts’ 20th Anniversary Gala" /></div>
+            <div class="body">
+              <span class="pill">ECA Presents</span>
+              <h3>20th Anniversary Gala</h3>
+              <div class="meta">Sat, Oct 24, 2026 · 5:00 PM</div>
+              <div class="meta">Dinner, auction, and concert</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="subscribe" id="subscribe">
+      <div class="wrap">
+        <div>
+          <div class="kicker">Subscribe &amp; Save</div>
+          <h2>Best seats. Best value. Exclusive perks all season long.</h2>
+          <p>Add 8, 5, or 3 eligible ECA Presents shows to your cart, and the Build Your Own discount is applied automatically at checkout. No code needed. Full Season: contact the Box Office.</p>
+        </div>
+        <div class="packs">
+          <div class="pack"><strong>Full Season</strong>20% off · same seats every show</div>
+          <div class="pack"><strong>BYO 8</strong>Save 15% · swap up to 2 shows</div>
+          <div class="pack"><strong>BYO 5</strong>Save 10% · lock in your price</div>
+          <div class="pack"><strong>BYO 3</strong>New this year · save 5%</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="on">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Upcoming Events</h2>
+          <p>Browse the way a night out starts: ECA Presents, Guest Presented, Cascade Symphony, matinees.</p>
+        </div>
+        <div class="filters">
+          <button class="on" type="button">This month</button>
+          <button type="button">ECA Presents</button>
+          <button type="button">Guest Presented</button>
+          <button type="button">Cascade Symphony</button>
+          <button type="button">Matinees</button>
+        </div>
+        <div class="cal">
+          <article class="guest"><div class="date">Aug 22 · 7:00 PM</div><h3>Daily Ka Kaam Hai Standup Solo by Aakash Gupta</h3><div class="meta">Guest Presented</div></article>
+          <article data-go="event"><div class="date">Aug 27 · 7:30 PM</div><h3>Jane Lynch &amp; Kate Flannery: The Trouble With Angels</h3><div class="meta">ECA Presents</div></article>
+          <article data-go="event"><div class="date">Sep 11 · 7:30 PM</div><h3>Matthew Morrison Presents Show Up</h3><div class="meta">ECA Presents</div></article>
+          <article class="guest"><div class="date">Sep 16 · 7:30 PM</div><h3>Queen: It’s A Kinda Magic</h3><div class="meta">Guest Presented</div></article>
+          <article><div class="date">Sep 17 · 7:30 PM</div><h3>Jon Lovitz</h3><div class="meta">ECA Presents</div></article>
+          <article><div class="date">Sep 30 · 7:30 PM</div><h3>Roger McGuinn</h3><div class="meta">ECA Presents</div></article>
+          <article class="guest"><div class="date">Oct 1 · 7:30 PM</div><h3>Kyle MacLachlan</h3><div class="meta">Guest Presented · Seattle Arts &amp; Lectures</div></article>
+          <article><div class="date">Oct 3 · 2:00 PM</div><h3>Swiftified: A Taylor Swift Tribute</h3><div class="meta">ECA Presents · Family matinee</div></article>
+          <article><div class="date">Oct 10 · 7:30 PM</div><h3>Paula Cole</h3><div class="meta">ECA Presents · THIS FIRE: 30</div></article>
+          <article class="guest"><div class="date">Oct 11 · 7:00 PM</div><h3>ABRA Cadabra – The Music &amp; Magic of ABBA</h3><div class="meta">Guest Presented</div></article>
+          <article><div class="date">Oct 17 · 7:30 PM</div><h3>Booker T. Jones</h3><div class="meta">ECA Presents</div></article>
+          <article data-go="gala"><div class="date">Oct 24 · 5:00 PM</div><h3>20th Anniversary Gala</h3><div class="meta">Dinner, auction, and concert</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit" style="padding-top: 0;">
+      <div class="wrap visit">
+        <article>
+          <div class="kicker" style="color: var(--plum);">Plan Your Visit</div>
+          <h3>A 700-seat jewel-box in downtown Edmonds.</h3>
+          <p>410 Fourth Avenue North, Edmonds, WA 98020. Tickets &amp; information (425) 275-9595. Box office: Mon, Tue, Thu, Fri | 12–5 PM. Just 20 minutes north of Seattle.</p>
+        </article>
+        <article>
+          <h3>Give &amp; Support</h3>
+          <p>The Collective is $500 per household this anniversary year. Donate never blocks a ticket.</p>
+        </article>
+        <article>
+          <h3>Access</h3>
+          <p>McIalwain-ECA Access Program, accessible seating, and companion tickets. Ask the box office.</p>
+        </article>
+      </div>
+      <div class="wrap" style="margin-top: 36px;">
+        <p class="kicker" style="color: var(--plum); text-align: center; margin-bottom: 16px;">Thank You to our Season Sponsors</p>
+        <div class="sponsors">
+          <img src="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/07/ArtsFund.jpg" alt="ArtsFund" />
+          <img src="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/07/BannerBank.jpg" alt="Banner Bank" />
+          <img src="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/07/Barclay.jpg" alt="Barclay" />
+          <img src="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/07/BestWestern.jpg" alt="Best Western" />
+          <img src="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/07/DME.jpg" alt="DME" />
+          <img src="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/07/Emeritus.jpg" alt="Emeritus" />
+          <img src="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/07/Neighbors.jpg" alt="Neighbors" />
+          <img src="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/07/ZCI.jpg" alt="ZCI" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <main id="event" class="page">
+    <div class="event-hero">
+      <img src="https://system.spektrix.com/edmondscenterforthearts/files/38554fff-0dce-4d4d-8f4b-c5d94cac8c19.jpg" alt="Matthew Morrison Presents Show Up" />
+    </div>
+    <div class="wrap event-layout">
+      <div class="event-copy">
+        <div class="kicker" style="color: var(--plum);">ECA Presents · counts toward Build-Your-Own</div>
+        <h1>Matthew Morrison Presents Show Up</h1>
+        <p class="lede">A gleeful, genre-crossing journey of music, movement, and meaning with a charming and familiar star of stage and screen.</p>
+        <p>This event has been rescheduled from March 29, 2026.</p>
+        <p>Matthew Morrison, known for his standout role as Will Schuester on “Glee,” is a dynamic performer whose charisma and versatility have captivated audiences for years. With a background in musical theater, Morrison effortlessly blends his impressive vocal talents with a strong acting presence, bringing depth and charm to his performances. In his brand-new show, Matthew Morrison Presents Show Up, step into a world where music and dance become more than just entertainment—they become a journey into the heart of what makes us human.</p>
+        <dl class="facts">
+          <div><dt>When</dt><dd>Friday, September 11, 2026 · 7:30 PM</dd></div>
+          <div><dt>Genre</dt><dd>Vocal jazz / Broadway / Pop</dd></div>
+          <div><dt>Where</dt><dd>Edmonds Center for the Arts · 410 Fourth Avenue North</dd></div>
+          <div><dt>Presented by</dt><dd>ECA Presents</dd></div>
+        </dl>
+        <p style="font-size:13px;color:#5c5358;">Sponsored by Elise Hegrat, Victoria &amp; Jim O’Gorman, Alice Timm, Deidre Blankenship, and Dina Carey</p>
+        <div class="faq">
+          <details open>
+            <summary>Does this count toward a subscription?</summary>
+            <p>Yes. ECA Presents nights apply to Full Season and Build-Your-Own 8 / 5 / 3. The discount is applied automatically in your cart.</p>
+          </details>
+          <details>
+            <summary>Box office?</summary>
+            <p>(425) 275-9595 · Mon, Tue, Thu, Fri | 12–5 PM · boxoffice@ec4arts.org</p>
+          </details>
+        </div>
+      </div>
+      <aside class="rail">
+        <div class="kicker" style="color: var(--plum);">Tickets</div>
+        <div class="when">Fri, Sep 11<br />7:30 PM</div>
+        <p class="meta" style="margin-bottom:14px;">Spektrix checkout · fees shown before pay</p>
+        <button class="btn btn-plum btn-wide" data-go="checkout" type="button">Choose seats</button>
+        <p class="note">This show counts toward Build-Your-Own 8, 5, or 3. Guest checkout. Same account for tickets and gifts.</p>
+      </aside>
+    </div>
+    <div class="mobile-bar">
+      <div><strong>Sep 11 · 7:30 PM</strong><div style="opacity:.75;font-size:13px;">Matthew Morrison</div></div>
+      <button class="btn btn-red" data-go="checkout" type="button">Buy tickets</button>
+    </div>
+  </main>
+
+  <main id="gala" class="page">
+    <div class="event-hero">
+      <img src="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/08/webbannergala4.jpg" alt="Dinner, Auction, and Concert" style="object-fit:cover" />
+    </div>
+    <div class="wrap event-layout">
+      <div class="event-copy">
+        <div class="kicker" style="color: var(--plum);">ECA Presents · Signature Event</div>
+        <h1>Edmonds Center for the Arts’ 20th Anniversary Gala</h1>
+        <p class="lede">Honor Yesterday, celebrate Today, and invest in Tomorrow.</p>
+        <p>Please join us on October 24th at 5:00 PM. Enjoy a delicious 3-course meal in our vintage gymnasium-turned-ballroom, with a live auction &amp; paddle raise. Then, make your way to the theater for a fun &amp; nostalgic concert by Yesterday &amp; Today: The Interactive Beatles Experience.</p>
+        <dl class="facts">
+          <div><dt>When</dt><dd>Saturday, October 24, 2026 · 5:00 PM</dd></div>
+          <div><dt>What</dt><dd>Dinner, auction, and concert</dd></div>
+          <div><dt>Where</dt><dd>ECA campus · gymnasium ballroom, then the theater</dd></div>
+          <div><dt>Concert</dt><dd>Yesterday &amp; Today also plays 8:00 PM that night</dd></div>
+        </dl>
+      </div>
+      <aside class="rail">
+        <div class="kicker" style="color: var(--plum);">Tickets &amp; Info</div>
+        <div class="when">Sat, Oct 24<br />5:00 PM</div>
+        <p class="meta" style="margin-bottom:14px;">Gala seating is limited.</p>
+        <button class="btn btn-plum btn-wide" data-go="checkout" type="button">Get tickets &amp; info</button>
+        <p class="note">The Beatles Experience also performs at 8:00 PM as a separate ECA Presents concert.</p>
+      </aside>
+    </div>
+  </main>
+
+  <main id="checkout" class="page">
+    <div class="checkout">
+      <div class="stage">
+        <div class="kicker">Matthew Morrison Presents Show Up · Sep 11</div>
+        <h2 style="font-size:38px;margin:8px 0;">Pick a seat in the room.</h2>
+        <p style="opacity:.8;max-width:38ch;">Same show name. Same ECA header. Spektrix inventory, ECA chrome — not an unbranded listing.</p>
+        <div class="seats" id="seats"></div>
+      </div>
+      <div class="pay">
+        <div class="kicker" style="color: var(--plum);">Your night</div>
+        <h3 style="font-size:30px;margin:8px 0 14px;">2 seats · Orchestra C12–C13</h3>
+        <p>Tickets · fees shown · <strong>BYO 3 applied −5%</strong></p>
+        <p style="margin:16px 0 24px;color:#5c5358;">Guest checkout. Add a gift after you have the seats — never before. Box office powered by Spektrix.</p>
+        <button class="btn btn-plum" type="button">Continue to pay</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div>
+      <img alt="" src="https://www.edmondscenterforthearts.org/wp-content/uploads/2026/05/edmonds-center-for-the-arts-V1-white.svg" />
+      410 Fourth Avenue North · Edmonds, WA 98020<br />
+      501(c)(3) · EIN 74-3089412
+    </div>
+    <div>Tickets (425) 275-9595 · Admin (425) 275-4485<br />Prototype using live ECA copy and Spektrix artwork · not live inventory</div>
+  </footer>
+
+  <script>
+    const go = (id) => {
+      document.querySelectorAll(".page").forEach((el) => el.classList.toggle("on", el.id === id));
+      document.querySelectorAll(".proto button").forEach((el) => el.classList.toggle("on", el.dataset.go === id));
+      window.scrollTo(0, 0);
+    };
+    document.querySelectorAll("[data-go]").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        go(el.dataset.go);
+      });
+    });
+    const grid = document.getElementById("seats");
+    for (let r = 0; r < 8; r++) {
+      const row = document.createElement("div");
+      row.className = "row-seats";
+      for (let s = 0; s < 16; s++) {
+        const b = document.createElement("button");
+        b.className = "seat";
+        b.type = "button";
+        if (r === 2 && (s === 7 || s === 8)) b.classList.add("on");
+        if (r === 0 && s % 5 === 0) b.disabled = true;
+        b.addEventListener("click", () => b.classList.toggle("on"));
+        row.appendChild(b);
+      }
+      grid.appendChild(row);
+    }
+  </script>
+</body>
+</html>

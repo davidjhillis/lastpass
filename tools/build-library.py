@@ -163,8 +163,8 @@ TRAYS = [
       ("Marketing, with a screenshot", "saas", '<section class="mk-hero"', None, ""),
       ("Marketing, with search and a start-here list", "hub", '<section class="mk-hero"', None, "")]),
     ("feature", "Feature", "Media on one side and a message on the other, or a full-width banner that asks for one action.",
-     [("Media side", "Left or right, or none for a banner"), ("Media", "Screenshot or photo in a fixed frame, optionally with a Vimeo link"),
-      ("Frame", "4:3 (default), 1:1 or 16:9, with a focus point for the crop"),
+     [("Media side", "Left or right, or none for a banner"), ("Media", "Screenshot or photo, optionally with a Vimeo link"),
+      ("Frame", "Original shape (default, never cropped), or 4:3, 1:1 or 16:9 with a focus point for photos"),
       ("Content", "Badge or kicker, heading, text, up to 4 ticks, up to 2 buttons or links")],
      [], "feature tray, spotlight, CTA band, help banner",
      [("Media left, on white (try the options)", "saas", '<section class="u" data-bg="white" aria-labelledby="h-products"', None, "cl-stage--unit"),
@@ -271,7 +271,7 @@ TRY = '''<div class="ul-try" data-try="#ex-feature-0" role="group" aria-label="T
   <span>Try the options</span>
   <div><b>Media</b><button type="button" data-set="media" data-val="left" aria-pressed="true">Left</button><button type="button" data-set="media" data-val="right" aria-pressed="false">Right</button></div>
   <div><b>Background</b><button type="button" data-set="bg" data-val="white" aria-pressed="true">White</button><button type="button" data-set="bg" data-val="wash" aria-pressed="false">Wash</button><button type="button" data-set="bg" data-val="mist" aria-pressed="false">Mist</button><button type="button" data-set="bg" data-val="dark" aria-pressed="false">Dark</button></div>
-  <div><b>Frame</b><button type="button" data-set="ratio" data-val="4/3" aria-pressed="true">4:3</button><button type="button" data-set="ratio" data-val="1/1" aria-pressed="false">1:1</button><button type="button" data-set="ratio" data-val="16/9" aria-pressed="false">16:9</button></div>
+  <div><b>Frame</b><button type="button" data-set="ratio" data-val="auto" aria-pressed="true">Original</button><button type="button" data-set="ratio" data-val="4/3" aria-pressed="false">4:3</button><button type="button" data-set="ratio" data-val="1/1" aria-pressed="false">1:1</button><button type="button" data-set="ratio" data-val="16/9" aria-pressed="false">16:9</button></div>
 </div>'''
 
 # ---------------------------------------------------------------- components.html
