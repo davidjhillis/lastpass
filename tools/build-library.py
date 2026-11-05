@@ -74,6 +74,43 @@ PAGES = {
     "issues": ("known-issues.html", "Known issues"),
 }
 SRC = {k: read(v[0]) for k, v in PAGES.items()}
+import json
+SCHEMA = json.loads(read("data/schema.json"))
+TYPES = SCHEMA["types"]
+
+
+def schema_groups(groups):
+    """Editor-facing schema: fields in the groups the edit form shows, with plain types and options."""
+    out = []
+    for g in groups:
+        items = []
+        for f in g["fields"]:
+            vals = ""
+            if f.get("values"):
+                vals = '<p class="sf-vals">%s</p>' % " · ".join(
+                    ('<b>%s</b> <span>default</span>' % H.escape(v)) if v == f.get("default") else H.escape(v) for v in f["values"])
+            elif f.get("default"):
+                vals = '<p class="sf-vals"><span>Default</span> <b>%s</b></p>' % H.escape(f["default"])
+            items.append('<li class="sf"><div class="sf-top"><b class="sf-label">%s</b>%s<span class="sf-type">%s</span></div>%s%s<code class="sf-el">%s</code></li>' % (
+                H.escape(f["label"]), '<span class="sf-req">Required</span>' if f["required"] else "", TYPES.get(f["type"], f["type"]),
+                '<p class="sf-help">%s</p>' % H.escape(f["help"]) if f.get("help") else "", vals, f["name"]))
+        n = len(g["fields"])
+        out.append('<section class="sg"><h4 class="sg-h">%s <span>%d field%s</span></h4>%s<ul class="sg-fields">%s</ul></section>' % (
+            H.escape(g["label"]), n, "" if n == 1 else "s", '<p class="sg-help">%s</p>' % H.escape(g["help"]) if g.get("help") else "", "".join(items)))
+    return '<div class="sg-wrap">%s</div>' % "".join(out)
+
+
+def tray_groups(slug):
+    return SCHEMA["trays"][slug]["groups"] + [g for g in SCHEMA["shared_tray_groups"] if slug not in g.get("skip", [])]
+
+
+def tabs(slug, panels):
+    """panels: [(label, html)]. Accessible tablist; the first panel is open."""
+    btns = "".join('<button type="button" role="tab" id="tab-%s-%d" aria-controls="panel-%s-%d" aria-selected="%s"%s>%s</button>' % (
+        slug, i, slug, i, "true" if i == 0 else "false", "" if i == 0 else ' tabindex="-1"', lab) for i, (lab, _) in enumerate(panels))
+    pans = "".join('<div role="tabpanel" id="panel-%s-%d" aria-labelledby="tab-%s-%d" class="sc-panel"%s>%s</div>' % (
+        slug, i, slug, i, "" if i == 0 else " hidden", html) for i, (_, html) in enumerate(panels))
+    return '<div class="sc-tabs" data-tabs><div class="sc-tablist" role="tablist" aria-label="View">%s</div>%s</div>' % (btns, pans)
 
 SHARED = [("Background", "White, wash, cloud or dark"),
           ("Audience", "Metadata tag: Everyone, Signed out, Free, Premium or Families, Business admin")]
@@ -85,7 +122,7 @@ TRAYS = [
      [("Layout", "Centered, or split with a media slot"), ("Weight", "Standard or marketing (dark, larger type)"),
       ("Search", "Off, all of support, or scoped to a product"), ("Media slot", "Image, screenshot or start-here list"),
       ("Extras", "Badge, up to 2 buttons, quick links bar, proof points")],
-     ["Button", "Media", "Link list"], "4 hero variants, quick links, proof strip, start-here card",
+     [], "4 hero variants, quick links, proof strip, start-here card",
      [("Standard", "faq", '<section class="t-hero', None, ""),
       ("Split, with media", "billing", '<section class="t-hero', None, ""),
       ("Marketing, with a screenshot", "saas", '<section class="mk-hero"', None, ""),
@@ -94,7 +131,7 @@ TRAYS = [
      [("Media side", "Left or right, or none for a banner"), ("Media", "Screenshot or photo, in a fixed frame"),
       ("Frame", "4:3 (default), 1:1 or 16:9, with a focus point for the crop"),
       ("Content", "Badge or kicker, heading, text, up to 4 ticks, up to 2 buttons or links")],
-     ["Media", "Button"], "feature tray, spotlight, CTA band, help banner",
+     [], "feature tray, spotlight, CTA band, help banner",
      [("Media left, on white (try the options)", "saas", '<section class="u" data-bg="white" aria-labelledby="h-products"', None, "cl-stage--unit"),
       ("Media right, on cloud", "saas", '<section class="u" data-bg="cloud"', None, "cl-stage--unit"),
       ("Media right, on dark", "hub", '<section class="u" data-bg="dark"', None, "cl-stage--unit"),
@@ -103,7 +140,7 @@ TRAYS = [
     ("cards", "Cards", "A grid of cards. The card variant sets what each card shows; the source sets where they come from.",
      [("Card variant", "Category, article, icon, step, file, contact option"), ("Columns", "2, 3 or 4"),
       ("Source", "Hand-picked, or a DITA map branch")],
-     ["Card", "Button", "Link list"], "category, article, file, benefit, step and contact-option cards",
+     ["Card"], "category, article, file, benefit, step and contact-option cards",
      [("Category, with links from the map", "hub", '<div class="t-cats">', ('<article class="t-cat"', 3), ""),
       ("Article", "hub", '<div class="t-cards"', ('<a class="t-card"', 3), ""),
       ("Icon, on dark", "saas", '<section class="mk-sec mk-dark"', None, ""),
@@ -114,7 +151,7 @@ TRAYS = [
      [("Group", "hub", '<div class="t-faq"', None, "cl-stage--narrow")]),
     ("content", "Content", "Rich text for the body of a page, with link lists, tables, notices and short lists placed inside it.",
      [("Body", "Rich text, H2 and H3 only"), ("Inside", "Link list, table, notice, media"), ("Navigation", "Adds an “On this page” list from its H2s")],
-     ["Link list", "Table", "Notice", "Media"], "link list, tables, capability table, notice, recent-items list",
+     ["Table", "Notice"], "link list, tables, capability table, notice, recent-items list",
      [("Link list", "billing", '<ul class="t-links">', None, "cl-stage--narrow"),
       ("Table", "billing", '<div class="t-table"', None, "cl-stage--narrow"),
       ("Two tables, side by side", "lifecycle", '<div class="lc-pair"', None, ""),
@@ -145,14 +182,8 @@ SPECIAL = [
 
 # ---------------------------------------------------------------- components (specimens are tiny, hand-made)
 COMPONENTS = [
-    ("Button", "Primary, secondary and arrow link. One primary per tray.", ["Hero", "Feature", "Cards"],
-     '<p style="display:flex;flex-wrap:wrap;gap:10px;margin:0"><a class="t-btn t-btn--brand" href="#">Primary</a><a class="t-btn t-btn--line" href="#">Secondary</a></p>'),
-    ("Media", "Image or product screenshot. Alt text is required.", ["Hero", "Feature", "Content"],
-     '<img class="mk-shot" src="img/shot-saas-protect-categories.png" alt="SaaS Protect categories in the Admin Console" width="1935" height="926" loading="lazy">'),
     ("Card", "Title, text and a link, with an optional icon, kicker or image.", ["Cards"],
      '<a class="t-card" href="#" style="max-width:20rem"><p class="t-kicker">Article</p><h3>Access the Admin Console</h3><p>Sign in to manage users, policies and reporting.</p><span class="cta-link">Learn more</span></a>'),
-    ("Link list", "Article links in one or two columns. Hand-picked, or filled from a map branch.", ["Content", "Hero", "Cards"],
-     '<ul class="t-links" style="grid-template-columns:1fr"><li><a href="#">Update payment method</a></li><li><a href="#">Cancel LastPass Families</a></li></ul>'),
     ("Table", "Caption required; header row and column; scrolls inside its box on phones.", ["Content"],
      '<div class="t-table"><table style="min-width:0"><caption>Example</caption><thead><tr><th scope="col">Task</th><th scope="col">Where</th></tr></thead><tbody><tr><th scope="row">Change seats</th><td><a href="#">Purchase licenses</a></td></tr></tbody></table></div>'),
     ("Notice", "Note, tip or notice. The same component as the notes imported from DITA, so articles and pages match.", ["Content"],
@@ -161,22 +192,9 @@ COMPONENTS = [
      '<div class="t-faq"><div class="t-faq-item" id="spec-faq"><h3><button class="t-faq-q" type="button" aria-expanded="false" aria-controls="spec-faq-a">Is a password manager and VPN combination worth it?<span class="t-faq-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></h3><div class="t-faq-a" id="spec-faq-a" hidden><p>LastPass VPN uses the LastPass login you already have.</p></div></div></div>'),
 ]
 
-AUTOMATIC = [("Header and footer", "From Site Control, on every page"), ("Breadcrumb", "From the page’s place in the site tree"),
-             ("Hub switcher", "Lists every hub page"), ("On this page", "Built from a Content tray’s H2s"), ("Build notes", "Review aid; not in production")]
-
 # ---------------------------------------------------------------- flex recipes: trays in page order
-RECIPES = {
-    "hub": [("hero", "marketing, search, start-here list", "dark"), ("cards", "category, from the map", "white"),
-            ("content", "recent releases list", "wash"), ("feature", "media right, spotlight", "dark"), ("cards", "article", "white"),
-            ("feature", "media right", "cloud"), ("cards", "file", "white"), ("faq", "3 items", "white"), ("feature", "banner", "white")],
-    "saas": [("hero", "marketing, screenshot, proof points", "dark"), ("content", "table, rich rows", "white"),
-             ("feature", "media left", "white"), ("feature", "media right", "cloud"), ("feature", "media left", "white"),
-             ("cards", "icon", "dark"), ("cards", "steps", "white"), ("faq", "3 items", "white"), ("feature", "banner, dark", "white")],
-    "billing": [("hero", "split, with media", "dark"), ("content", "link lists, notice, table, On this page", "white"), ("feature", "banner", "white")],
-    "faq": [("hero", "standard", "dark"), ("faq", "2 groups, On this page", "white"), ("feature", "banner", "white")],
-    "contact": [("hero", "standard", "dark"), ("cards", "contact option, tagged by audience", "white")],
-    "lifecycle": [("hero", "standard", "dark"), ("content", "notice, two tables", "white")],
-}
+RECIPES = {k: [tuple(t) for t in v["trays"]] for k, v in
+           ((kk, SCHEMA["pages"][PAGES[kk][0]]) for kk in ["hub", "saas", "billing", "faq", "contact", "lifecycle"])}
 FLEX_DESC = {
     "hub": "A homepage for one audience or product area, at marketing weight.",
     "saas": "A product page that sells and teaches: features, benefits, setup steps.",
@@ -231,12 +249,16 @@ TRY = '''<div class="ul-try" data-try="#ex-feature-0" role="group" aria-label="T
 
 # ---------------------------------------------------------------- components.html
 nav = ("".join('<li><a href="#%s">%s</a></li>' % (t[0], t[1]) for t in TRAYS)
-       + '<li class="ul-nav-sep"><a href="#special">Special page types</a></li><li><a href="#components">Components</a></li><li><a href="#automatic">Automatic</a></li>')
+       + '<li class="ul-nav-sep"><a href="#special">Special page types</a></li><li><a href="#components">Components</a></li>')
 
 trays_html = []
 for slug, name, purpose, options, inside, merges, variants in TRAYS:
     used = [k for k, r in RECIPES.items() if any(t == slug for t, _, _ in r)]
     figs = ([TRY] if slug == "feature" else []) + variant_figs(slug, variants)
+    tr = SCHEMA["trays"][slug]
+    figs = [tabs(slug, [("Examples", "\n".join(figs)),
+                        ("CMS schema", '<p class="sc-lede">Schema <code>%s</code>, friendly name “%s”. Editors see these fields when they add the tray in Page Builder.</p>' % (tr["name"].replace(" ", ""), tr["friendlyName"])
+                         + schema_groups(tray_groups(slug)))])]
     trays_html.append('''<section class="ul-unit" id="%s" aria-labelledby="h-%s">
   <div class="ul-head">
     <div>
@@ -244,6 +266,7 @@ for slug, name, purpose, options, inside, merges, variants in TRAYS:
       <h2 id="h-%s">%s</h2>
       <p class="ul-purpose">%s</p>
       <p class="ul-merges"><b>Replaces</b> %s</p>
+      <p class="ul-scope"><b>Scope</b> %s</p>
     </div>
     <dl class="ul-opts">%s
       <div><dt>Components</dt><dd><ul class="tp-chips">%s</ul></dd></div>
@@ -251,7 +274,7 @@ for slug, name, purpose, options, inside, merges, variants in TRAYS:
     </dl>
   </div>
   %s
-</section>''' % (slug, slug, slug, name, purpose, merges, dl(options),
+</section>''' % (slug, slug, slug, name, purpose, merges, SCHEMA["scope"][slug], dl(options),
                  "".join('<li><a href="#c-%s">%s</a></li>' % (slugify(c), c) for c in inside),
                  ", ".join('<a href="%s">%s</a>' % (PAGES[k][0], PAGES[k][1]) for k in used), "\n  ".join(figs)))
 
@@ -268,14 +291,18 @@ for slug, name, purpose, why, options, variants in SPECIAL:
     <dl class="ul-opts">%s</dl>
   </div>
   %s
-</div>''' % (slug, PAGES[slug][0], name, purpose, why, dl(options), "\n  ".join(variant_figs("sp-" + slug, variants))))
+</div>''' % (slug, PAGES[slug][0], name, purpose, why, dl(options), tabs("sp-" + slug, [
+        ("Examples", "\n  ".join(variant_figs("sp-" + slug, variants))),
+        ("Page schema", '<p class="sc-lede">%s</p>' % H.escape(SCHEMA["page_types"][slug]["about"]) + schema_groups(SCHEMA["page_types"][slug]["groups"])),
+        ("%s record schema" % SCHEMA["page_types"][slug]["record"]["name"], '<p class="sc-lede">Each record is its own item in the CMS; this page lists them.</p>' + schema_groups(SCHEMA["page_types"][slug]["record"]["groups"]))])))
 
 comp_html = "".join('''<article class="ul-comp" id="c-%s">
   <h3>%s</h3><p>%s</p>
-  <p class="ul-in">In %s</p>
+  <p class="ul-in"><b>%s</b> · In %s</p>
   <div class="ul-spec">%s</div>
-</article>''' % (slugify(n), n, d, ", ".join('<a href="#%s">%s</a>' % (t[0], t[1]) for t in TRAYS if t[1] in used), spec) for n, d, used, spec in COMPONENTS)
-auto_html = "".join('<li><b>%s</b><span>%s</span></li>' % (a, b) for a, b in AUTOMATIC)
+  <details class="sc-fields"><summary>Fields</summary>%s</details>
+</article>''' % (slugify(n), n, d, SCHEMA["scope"][n], ", ".join('<a href="#%s">%s</a>' % (t[0], t[1]) for t in TRAYS if t[1] in used), spec,
+                  schema_groups(SCHEMA["components"][n])) for n, d, used, spec in COMPONENTS)
 shared_html = "".join('<li><b>%s</b><span>%s</span></li>' % (a, b) for a, b in SHARED)
 
 components_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
@@ -293,7 +320,7 @@ components_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   <div class="t-hero-in">
     <p class="t-eyebrow">LastPass support portal · design system</p>
     <h1>Page-building essentials</h1>
-    <p class="t-hero-sub">One Flex page type built from %d trays, %d special page types, and the %d components that go inside them.</p>
+    <p class="t-hero-sub">The net-new work: one Flex page type built from %d trays, %d special page types, and %d new components. Header, footer, articles and search are already built and not covered here.</p>
   </div>
 </section>
 
@@ -303,26 +330,23 @@ components_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   <div class="ul-model">
     <div><b>Flex tray</b><span>One of %d trays an editor stacks on a Flex page in Page Builder, in any order.</span></div>
     <div><b>Special page type</b><span>A fixed layout over records, for pages trays can’t build.</span></div>
-    <div><b>Component</b><span>A piece placed inside a tray, such as a button, card or table.</span></div>
-    <div><b>Automatic</b><span>Navigation the site builds itself. Editors never place it.</span></div>
+    <div><b>New component</b><span>A new piece placed inside a tray: card, table, notice or FAQ item.</span></div>
   </div>
   <div class="ul-shared"><p>Every tray also has</p><ul>%s</ul></div>
+  <details class="sc-fields sc-fields--page"><summary>Flex page type schema</summary><p class="sc-lede">%s</p>%s</details>
 %s
 <section class="ul-unit" id="special" aria-labelledby="h-special">
   <div class="ul-head"><div><p class="ul-kind">Not built from trays</p><h2 id="h-special">Special page types</h2><p class="ul-purpose">Three pages that need records and behavior a stack of trays can’t give. Each has a fixed layout and still uses the Hero tray and the shared components.</p></div></div>
   %s
 </section>
 <section class="ul-unit" id="components" aria-labelledby="h-components">
-  <div class="ul-head"><div><p class="ul-kind">Inside the trays</p><h2 id="h-components">Components</h2><p class="ul-purpose">The pieces editors place in a tray’s layout.</p></div></div>
+  <div class="ul-head"><div><p class="ul-kind">Inside the trays</p><h2 id="h-components">Components</h2><p class="ul-purpose">The new pieces editors place inside trays. Buttons, images and link lists reuse what the built site already has.</p></div></div>
   <div class="ul-comps">%s</div>
 </section>
-<section class="ul-unit" id="automatic" aria-labelledby="h-automatic">
-  <div class="ul-head"><div><p class="ul-kind">Not authored</p><h2 id="h-automatic">Automatic</h2><p class="ul-purpose">Built by the site from the page tree and settings.</p></div></div>
-  <ul class="ul-auto">%s</ul>
-</section>
 </div>
-</main>''' % (len(TRAYS), len(SPECIAL), len(COMPONENTS), nav, len(TRAYS), shared_html, "\n".join(trays_html),
-             "\n  ".join(special_html), comp_html, auto_html)
+</main>''' % (len(TRAYS), len(SPECIAL), len(COMPONENTS), nav, len(TRAYS), shared_html, H.escape(SCHEMA["page_types"]["flex"]["about"]),
+             schema_groups(SCHEMA["page_types"]["flex"]["groups"]), "\n".join(trays_html),
+             "\n  ".join(special_html), comp_html)
 
 # ---------------------------------------------------------------- templates.html
 def thumb(k):

@@ -116,6 +116,83 @@
     setGrid();
   }
 
+  // Tabs (library schema tabs and the schema panel): click, arrows, Home/End
+  function wireTabs(root){
+    var tabs = [].slice.call(root.querySelectorAll('[role=tab]'));
+    function pick(t, focus){
+      tabs.forEach(function(x){ var on = x === t; x.setAttribute('aria-selected', on ? 'true' : 'false'); x.tabIndex = on ? 0 : -1;
+        var p = document.getElementById(x.getAttribute('aria-controls')); if(p) p.hidden = !on; });
+      if(focus) t.focus();
+    }
+    tabs.forEach(function(t, i){
+      t.addEventListener('click', function(){ pick(t); });
+      t.addEventListener('keydown', function(e){
+        var j = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : null;
+        if(j === null) return; e.preventDefault(); pick(tabs[(j + tabs.length) % tabs.length], true);
+      });
+    });
+  }
+  document.querySelectorAll('[data-tabs]').forEach(wireTabs);
+
+  // CMS schema panel: how this page is edited, from data/schema.json
+  var notesBtn = document.querySelector('.t-notes-toggle');
+  var page = location.pathname.split('/').pop() || 'index.html';
+  // Pages only: the library and index show schemas inline
+  if(notesBtn && window.self === window.top && !document.querySelector('.ul-body, .tp-grid')){
+    var dock = document.createElement('div'); dock.className = 't-dock';
+    notesBtn.parentNode.insertBefore(dock, notesBtn);
+    var scBtn = document.createElement('button'); scBtn.type = 'button'; scBtn.className = 't-notes-toggle t-schema-btn';
+    scBtn.setAttribute('aria-haspopup', 'dialog');
+    scBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg><span>CMS schema</span>';
+    dock.appendChild(scBtn); dock.appendChild(notesBtn);
+    var dlg = null;
+    function esc(x){ return String(x).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    function groups(S, gs){
+      return '<div class="sg-wrap">' + gs.map(function(g){
+        var n = g.fields.length;
+        return '<section class="sg"><h4 class="sg-h">' + esc(g.label) + ' <span>' + n + ' field' + (n === 1 ? '' : 's') + '</span></h4>' +
+          (g.help ? '<p class="sg-help">' + esc(g.help) + '</p>' : '') + '<ul class="sg-fields">' + g.fields.map(function(f){
+            var vals = f.values ? '<p class="sf-vals">' + f.values.map(function(v){ return v === f['default'] ? '<b>' + esc(v) + '</b> <span>default</span>' : esc(v); }).join(' · ') + '</p>'
+              : (f['default'] ? '<p class="sf-vals"><span>Default</span> <b>' + esc(f['default']) + '</b></p>' : '');
+            return '<li class="sf"><div class="sf-top"><b class="sf-label">' + esc(f.label) + '</b>' + (f.required ? '<span class="sf-req">Required</span>' : '') +
+              '<span class="sf-type">' + esc(S.types[f.type] || f.type) + '</span></div>' + (f.help ? '<p class="sf-help">' + esc(f.help) + '</p>' : '') + vals +
+              '<code class="sf-el">' + esc(f.name) + '</code></li>';
+          }).join('') + '</ul></section>';
+      }).join('') + '</div>';
+    }
+    function build(S){
+      var P = S.pages[page]; if(!P) return null;
+      var T = S.page_types[P.type], panels = [['Page', '<p class="sc-lede">' + esc(T.about) + '</p>' + groups(S, T.groups)]];
+      if(P.trays){
+        P.trays.forEach(function(t, i){
+          var tr = S.trays[t[0]];
+          panels.push([(i + 1) + '. ' + tr.name, '<p class="sc-lede">Tray ' + (i + 1) + ' of ' + P.trays.length + ': <b>' + esc(tr.name) + '</b>, ' + esc(t[1]) + ', on a ' + esc(t[2]) + ' background.</p>' +
+            groups(S, tr.groups.concat(S.shared_tray_groups.filter(function(g){ return !(g.skip || []).includes(t[0]); })))]);
+        });
+      }
+      if(T.record) panels.push([T.record.name + ' record', '<p class="sc-lede">Each record is its own item in the CMS; this page lists them.</p>' + groups(S, T.record.groups)]);
+      var d = document.createElement('dialog'); d.className = 'sc-dialog'; d.setAttribute('aria-labelledby', 'sc-title');
+      d.innerHTML = '<div class="sc-head"><div><p class="sc-kind">' + esc(T.name) + '</p><h2 id="sc-title">How this page is edited: ' + esc(P.label) + '</h2>' +
+        (P.trays ? '<p class="sc-sub">' + P.trays.length + ' trays, top to bottom. Pick a tab to see the fields an editor fills in.</p>' : '<p class="sc-sub">A fixed layout: the page fields, then the records it lists.</p>') +
+        '</div><button type="button" class="sc-close" aria-label="Close">&times;</button></div>' +
+        '<div class="sc-tabs" data-tabs><div class="sc-tablist" role="tablist" aria-label="Schema">' +
+        panels.map(function(p, i){ return '<button type="button" role="tab" id="sct-' + i + '" aria-controls="scp-' + i + '" aria-selected="' + (i ? 'false' : 'true') + '"' + (i ? ' tabindex="-1"' : '') + '>' + esc(p[0]) + '</button>'; }).join('') +
+        '</div>' + panels.map(function(p, i){ return '<div role="tabpanel" id="scp-' + i + '" aria-labelledby="sct-' + i + '" class="sc-panel"' + (i ? ' hidden' : '') + '>' + p[1] + '</div>'; }).join('') + '</div>' +
+        '<p class="sc-foot">Field types follow the lastpass_cms manifests, so <code>tools/schema-gen.mjs</code> can generate these as Schema Designer XDR.</p>';
+      document.body.appendChild(d); wireTabs(d);
+      d.querySelector('.sc-close').addEventListener('click', function(){ d.close(); });
+      d.addEventListener('click', function(e){ if(e.target === d) d.close(); });
+      d.addEventListener('close', function(){ scBtn.focus(); });
+      return d;
+    }
+    scBtn.addEventListener('click', function(){
+      if(dlg){ dlg.showModal(); return; }
+      fetch('data/schema.json', {cache: 'no-cache'}).then(function(r){ return r.json(); }).then(function(S){
+        dlg = build(S); if(dlg){ dlg.showModal(); var t = dlg.querySelector('[role=tab]'); if(t) t.focus(); }
+      });
+    });
+  }
+
   // Build notes: shows what each block is and where its content comes from
   var t = document.querySelector('.t-notes-toggle');
   if(t){

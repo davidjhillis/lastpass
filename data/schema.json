@@ -1,0 +1,1400 @@
+{
+ "note": "CMS schema for the LastPass support portal page types, organized the way an editor fills them in. Field types use the lastpass_cms manifest vocabulary (tools/schema-gen.mjs turns manifests into Schema Designer XDR) and groups follow docs/spec/field-groups.json (collapsible blocks in the edit form). Each field: name (stable element name), label (what the editor sees), type, required, help, and optional values/default/max. categories are CMS taxonomy tags on the page or tray; trays is the page's Page Builder area. Covers only the net-new work: the Flex page, three special page types, five trays and four components. The header, footer, article, search and other built pages are out of scope. Drives the schema tabs in components.html and the CMS schema panel on every page.",
+ "types": {
+  "text": "Short text",
+  "text-multiline": "Text, a few lines",
+  "rich": "Formatted text",
+  "integer": "Number",
+  "enum": "Choose one",
+  "date": "Date",
+  "image": "Image",
+  "link": "Link",
+  "link[]": "Links",
+  "component": "Pick one item",
+  "component[]": "List of items",
+  "categories": "Tags",
+  "trays": "Trays"
+ },
+ "shared_tray_groups": [
+  {
+   "label": "Section heading",
+   "help": "Optional. A heading and one line above the tray's content.",
+   "skip": [
+    "hero"
+   ],
+   "fields": [
+    {
+     "name": "SectionHeading",
+     "label": "Section heading",
+     "type": "text",
+     "required": false,
+     "help": "Shown as the tray's H2. Leave empty when the tray has its own heading."
+    },
+    {
+     "name": "SectionIntro",
+     "label": "Line under the heading",
+     "type": "text-multiline",
+     "required": false,
+     "help": "One sentence."
+    }
+   ]
+  },
+  {
+   "label": "Look and audience",
+   "help": "Every tray has these.",
+   "fields": [
+    {
+     "name": "Background",
+     "label": "Background color",
+     "type": "enum",
+     "required": false,
+     "help": "Alternate backgrounds so neighboring trays read as separate sections.",
+     "values": [
+      "White",
+      "Wash",
+      "Cloud",
+      "Dark"
+     ],
+     "default": "White"
+    },
+    {
+     "name": "Audience",
+     "label": "Who sees this tray",
+     "type": "categories",
+     "required": false,
+     "help": "Tags. The tray shows when one matches the visitor's plan; Everyone shows it to all.",
+     "values": [
+      "Everyone",
+      "Signed out",
+      "Free",
+      "Premium or Families",
+      "Business admin"
+     ],
+     "default": "Everyone"
+    }
+   ]
+  }
+ ],
+ "page_types": {
+  "flex": {
+   "name": "Flex page",
+   "about": "One page type for hubs, topic overviews, FAQ, contact and lifecycle pages. Fill in the page basics, then stack trays in Page Builder. The first tray is always a Hero.",
+   "groups": [
+    {
+     "label": "Page basics",
+     "fields": [
+      {
+       "name": "Title",
+       "label": "Page name",
+       "type": "text",
+       "required": true,
+       "help": "Shown in navigation and the breadcrumb, e.g. Billing."
+      },
+      {
+       "name": "Description",
+       "label": "Search description",
+       "type": "text-multiline",
+       "required": true,
+       "help": "What search engines and Coveo show under the link. Up to 160 characters.",
+       "max": 160
+      }
+     ]
+    },
+    {
+     "label": "Placement",
+     "fields": [
+      {
+       "name": "Product",
+       "label": "Product",
+       "type": "categories",
+       "required": false,
+       "help": "Tags the page with a product. A Hero search set to This product only searches that product."
+      },
+      {
+       "name": "IsHub",
+       "label": "Show in the hub switcher",
+       "type": "enum",
+       "required": false,
+       "help": "Yes for Mini hubs, so they appear in the row of hubs under the breadcrumb.",
+       "values": [
+        "No",
+        "Yes"
+       ],
+       "default": "No"
+      }
+     ]
+    },
+    {
+     "label": "Browser and sharing",
+     "fields": [
+      {
+       "name": "BrowserTitle",
+       "label": "Browser tab title",
+       "type": "text",
+       "required": false,
+       "help": "Leave empty to use the page name followed by “— LastPass Support”."
+      }
+     ]
+    },
+    {
+     "label": "Page content",
+     "fields": [
+      {
+       "name": "Trays",
+       "label": "Trays",
+       "type": "trays",
+       "required": true,
+       "help": "Add Hero, Feature, Cards, FAQ and Content trays in Page Builder, in any order after the Hero."
+      }
+     ]
+    }
+   ]
+  },
+  "releases": {
+   "name": "Release notes page type",
+   "about": "A fixed layout that lists release records, newest first, with filters and a link to each release. Editors write releases as records; the page lists them.",
+   "groups": [
+    {
+     "label": "Page basics",
+     "fields": [
+      {
+       "name": "Title",
+       "label": "Page name",
+       "type": "text",
+       "required": true,
+       "help": "e.g. Release notes."
+      },
+      {
+       "name": "Description",
+       "label": "Search description",
+       "type": "text-multiline",
+       "required": true,
+       "help": "Up to 160 characters.",
+       "max": 160
+      },
+      {
+       "name": "Hero",
+       "label": "Hero",
+       "type": "trays",
+       "required": true,
+       "help": "One Hero tray, standard layout."
+      }
+     ]
+    },
+    {
+     "label": "Release list",
+     "fields": [
+      {
+       "name": "Products",
+       "label": "Products to list",
+       "type": "categories",
+       "required": false,
+       "help": "Leave empty to list every product."
+      },
+      {
+       "name": "PageSize",
+       "label": "Releases shown at first",
+       "type": "integer",
+       "required": false,
+       "help": "Show more adds 20 at a time.",
+       "default": "12"
+      },
+      {
+       "name": "Feed",
+       "label": "Offer a feed",
+       "type": "enum",
+       "required": false,
+       "help": "Lets readers subscribe. Per-product feeds come later.",
+       "values": [
+        "No",
+        "Yes"
+       ],
+       "default": "Yes"
+      }
+     ]
+    }
+   ],
+   "record": {
+    "name": "Release",
+    "groups": [
+     {
+      "label": "Release",
+      "fields": [
+       {
+        "name": "Product",
+        "label": "Product",
+        "type": "categories",
+        "required": true,
+        "help": "From the product list, e.g. Admin Console."
+       },
+       {
+        "name": "Version",
+        "label": "Version",
+        "type": "text",
+        "required": true,
+        "help": "As shipped, e.g. 4.156.0 or 13.10.2026."
+       },
+       {
+        "name": "ReleaseDate",
+        "label": "Release date",
+        "type": "date",
+        "required": true,
+        "help": "The day it shipped."
+       },
+       {
+        "name": "Platforms",
+        "label": "Browsers and systems",
+        "type": "categories",
+        "required": false,
+        "help": "Leave empty when it applies everywhere.",
+        "values": [
+         "Chrome",
+         "Edge",
+         "Firefox",
+         "Safari",
+         "Opera",
+         "Windows",
+         "macOS",
+         "iOS",
+         "Android"
+        ]
+       }
+      ]
+     },
+     {
+      "label": "What changed",
+      "fields": [
+       {
+        "name": "Items",
+        "label": "Changes",
+        "type": "component[]",
+        "required": true,
+        "help": "One row per change. Each row: what kind of change, and a sentence about it.",
+        "values": [
+         "New",
+         "Improved",
+         "Changed",
+         "Fixed",
+         "Security",
+         "Removed",
+         "Note"
+        ]
+       }
+      ]
+     },
+     {
+      "label": "Connections",
+      "fields": [
+       {
+        "name": "FixesIssues",
+        "label": "Known issues this fixes",
+        "type": "component[]",
+        "required": false,
+        "help": "Picking an issue moves it to Recently resolved and links it here."
+       },
+       {
+        "name": "RelatedArticles",
+        "label": "Related articles",
+        "type": "link[]",
+        "required": false,
+        "help": "Help articles about these changes."
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "downloads": {
+   "name": "Downloads page type",
+   "about": "A fixed layout: the download for the visitor's system first, then every download by operating system. Versions come from the newest release record.",
+   "groups": [
+    {
+     "label": "Page basics",
+     "fields": [
+      {
+       "name": "Title",
+       "label": "Page name",
+       "type": "text",
+       "required": true,
+       "help": "e.g. Downloads."
+      },
+      {
+       "name": "Description",
+       "label": "Search description",
+       "type": "text-multiline",
+       "required": true,
+       "help": "Up to 160 characters.",
+       "max": 160
+      },
+      {
+       "name": "Intro",
+       "label": "Line under the headline",
+       "type": "text-multiline",
+       "required": true,
+       "help": "One sentence."
+      }
+     ]
+    },
+    {
+     "label": "Recommended download for each system",
+     "help": "Shown in the card beside the headline, picked from the visitor's operating system.",
+     "fields": [
+      {
+       "name": "LeadWindows",
+       "label": "For Windows",
+       "type": "component",
+       "required": true,
+       "help": "A download record."
+      },
+      {
+       "name": "LeadMac",
+       "label": "For macOS",
+       "type": "component",
+       "required": true,
+       "help": "A download record."
+      },
+      {
+       "name": "LeadLinux",
+       "label": "For Linux",
+       "type": "component",
+       "required": true,
+       "help": "A download record."
+      },
+      {
+       "name": "LeadMobile",
+       "label": "For phones and tablets",
+       "type": "component",
+       "required": true,
+       "help": "A download record."
+      }
+     ]
+    }
+   ],
+   "record": {
+    "name": "Download",
+    "groups": [
+     {
+      "label": "Download",
+      "fields": [
+       {
+        "name": "Name",
+        "label": "Name",
+        "type": "text",
+        "required": true,
+        "help": "e.g. LastPass for Chrome."
+       },
+       {
+        "name": "Summary",
+        "label": "One-line description",
+        "type": "text-multiline",
+        "required": true,
+        "help": "Who it's for."
+       },
+       {
+        "name": "Url",
+        "label": "Download or store link",
+        "type": "link",
+        "required": true,
+        "help": "The file, or the store page."
+       },
+       {
+        "name": "OperatingSystem",
+        "label": "Shown under",
+        "type": "enum",
+        "required": true,
+        "help": "Which tab lists it.",
+        "values": [
+         "Windows",
+         "macOS",
+         "Linux",
+         "Mobile"
+        ]
+       }
+      ]
+     },
+     {
+      "label": "Version",
+      "help": "Fill these in and the version and date stay current on their own.",
+      "fields": [
+       {
+        "name": "Product",
+        "label": "Product",
+        "type": "categories",
+        "required": false,
+        "help": "Reads the version and date from this product's newest release."
+       },
+       {
+        "name": "Platform",
+        "label": "Browser",
+        "type": "categories",
+        "required": false,
+        "help": "For browser extensions, so the right release is used."
+       },
+       {
+        "name": "StoreVersion",
+        "label": "Store version",
+        "type": "text",
+        "required": false,
+        "help": "Only when the store has a newer version than the release notes."
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "issues": {
+   "name": "Known issues page type",
+   "about": "A fixed layout: issues being worked on, with what to do now, then recent fixes linked to the releases that shipped them.",
+   "groups": [
+    {
+     "label": "Page basics",
+     "fields": [
+      {
+       "name": "Title",
+       "label": "Page name",
+       "type": "text",
+       "required": true,
+       "help": "e.g. Known issues."
+      },
+      {
+       "name": "Description",
+       "label": "Search description",
+       "type": "text-multiline",
+       "required": true,
+       "help": "Up to 160 characters.",
+       "max": 160
+      }
+     ]
+    },
+    {
+     "label": "Lists",
+     "fields": [
+      {
+       "name": "EmptyText",
+       "label": "Message when nothing is open",
+       "type": "rich",
+       "required": true,
+       "help": "Shown in place of the active list, with links to service status and support."
+      },
+      {
+       "name": "ResolvedWindow",
+       "label": "Show fixes from the last",
+       "type": "integer",
+       "required": false,
+       "help": "Months.",
+       "default": "6"
+      }
+     ]
+    }
+   ],
+   "record": {
+    "name": "Known issue",
+    "groups": [
+     {
+      "label": "Issue",
+      "fields": [
+       {
+        "name": "IssueId",
+        "label": "ID",
+        "type": "text",
+        "required": false,
+        "help": "Set by the CMS, e.g. KI-0001. Never changes, so support can link to it."
+       },
+       {
+        "name": "Title",
+        "label": "Issue, in the reader's words",
+        "type": "text",
+        "required": true,
+        "help": "e.g. The extension icon doesn't appear after a browser update."
+       },
+       {
+        "name": "Status",
+        "label": "Status",
+        "type": "enum",
+        "required": true,
+        "help": "Moves the issue between the active and resolved lists.",
+        "values": [
+         "Investigating",
+         "Workaround available",
+         "Fix scheduled",
+         "Resolved"
+        ]
+       }
+      ]
+     },
+     {
+      "label": "Who it affects",
+      "fields": [
+       {
+        "name": "Product",
+        "label": "Product",
+        "type": "categories",
+        "required": true,
+        "help": "From the product list."
+       },
+       {
+        "name": "Platforms",
+        "label": "Browsers and systems",
+        "type": "categories",
+        "required": false,
+        "help": "Leave empty when it affects all."
+       },
+       {
+        "name": "AffectedVersions",
+        "label": "Affected versions",
+        "type": "text",
+        "required": false,
+        "help": "e.g. 4.155.0 and later."
+       }
+      ]
+     },
+     {
+      "label": "Help for readers",
+      "fields": [
+       {
+        "name": "Symptoms",
+        "label": "What happens",
+        "type": "rich",
+        "required": true,
+        "help": "The symptom, as the reader sees it."
+       },
+       {
+        "name": "Workaround",
+        "label": "What to do now",
+        "type": "rich",
+        "required": false,
+        "help": "Required once the status is Workaround available. Link to an article where there is one."
+       }
+      ]
+     },
+     {
+      "label": "Resolution",
+      "fields": [
+       {
+        "name": "FixedIn",
+        "label": "Fixed in release",
+        "type": "component",
+        "required": false,
+        "help": "Required when the status is Resolved. Pick the release record."
+       },
+       {
+        "name": "LastUpdated",
+        "label": "Last updated",
+        "type": "date",
+        "required": false,
+        "help": "Set by the CMS on every publish."
+       }
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "trays": {
+  "hero": {
+   "name": "Hero",
+   "friendlyName": "Tray - Hero",
+   "groups": [
+    {
+     "label": "Headline",
+     "fields": [
+      {
+       "name": "Eyebrow",
+       "label": "Small line above the headline",
+       "type": "text",
+       "required": false,
+       "help": "e.g. LastPass Business. Becomes a badge in the Marketing style."
+      },
+      {
+       "name": "Title",
+       "label": "Page headline",
+       "type": "text",
+       "required": true,
+       "help": "The page's H1. Say what the reader can do here."
+      },
+      {
+       "name": "Intro",
+       "label": "Line under the headline",
+       "type": "text-multiline",
+       "required": false,
+       "help": "Up to two sentences."
+      }
+     ]
+    },
+    {
+     "label": "Layout and style",
+     "fields": [
+      {
+       "name": "Layout",
+       "label": "Layout",
+       "type": "enum",
+       "required": false,
+       "help": "Split puts a picture, screenshot or start-here list beside the headline.",
+       "values": [
+        "Centered",
+        "Split"
+       ],
+       "default": "Centered"
+      },
+      {
+       "name": "Weight",
+       "label": "Style",
+       "type": "enum",
+       "required": false,
+       "help": "Marketing is darker with larger type. Use it on hubs and product pages.",
+       "values": [
+        "Standard",
+        "Marketing"
+       ],
+       "default": "Standard"
+      }
+     ]
+    },
+    {
+     "label": "Search box",
+     "fields": [
+      {
+       "name": "Search",
+       "label": "Show a search box",
+       "type": "enum",
+       "required": false,
+       "help": "This product only uses the page's Product tag.",
+       "values": [
+        "Off",
+        "All of support",
+        "This product only"
+       ],
+       "default": "Off"
+      }
+     ]
+    },
+    {
+     "label": "Buttons",
+     "fields": [
+      {
+       "name": "Buttons",
+       "label": "Buttons",
+       "type": "component[]",
+       "required": false,
+       "help": "Up to 2. Each: text, link, and Primary or Secondary.",
+       "max": 2
+      }
+     ]
+    },
+    {
+     "label": "Beside the headline",
+     "help": "Split layout only.",
+     "fields": [
+      {
+       "name": "MediaType",
+       "label": "What sits beside the headline",
+       "type": "enum",
+       "required": false,
+       "help": "A start-here list suits hubs; a screenshot suits product pages.",
+       "values": [
+        "Nothing",
+        "Image",
+        "Screenshot",
+        "Start-here list"
+       ],
+       "default": "Nothing"
+      },
+      {
+       "name": "Media",
+       "label": "Image or screenshot",
+       "type": "image",
+       "required": false,
+       "help": "Required when you choose Image or Screenshot."
+      },
+      {
+       "name": "MediaAlt",
+       "label": "Describe the image",
+       "type": "text",
+       "required": false,
+       "help": "Alt text for screen readers. Required with an image."
+      },
+      {
+       "name": "StartHere",
+       "label": "Start-here steps",
+       "type": "component[]",
+       "required": false,
+       "help": "Up to 4. Each: step name, short description, link.",
+       "max": 4
+      }
+     ]
+    },
+    {
+     "label": "Under the hero",
+     "fields": [
+      {
+       "name": "QuickLinks",
+       "label": "Quick links bar",
+       "type": "component[]",
+       "required": false,
+       "help": "Up to 6 shortcuts. Each: text, icon, link.",
+       "max": 6
+      },
+      {
+       "name": "ProofPoints",
+       "label": "Proof points",
+       "type": "component[]",
+       "required": false,
+       "help": "Up to 4 short claims. Each: bold label, one line.",
+       "max": 4
+      }
+     ]
+    }
+   ]
+  },
+  "feature": {
+   "name": "Feature",
+   "friendlyName": "Tray - Feature",
+   "groups": [
+    {
+     "label": "Message",
+     "fields": [
+      {
+       "name": "Kicker",
+       "label": "Small line above the heading",
+       "type": "text",
+       "required": false,
+       "help": "e.g. SaaS Monitoring. Becomes a badge on dark backgrounds."
+      },
+      {
+       "name": "Heading",
+       "label": "Heading",
+       "type": "text",
+       "required": true,
+       "help": "One promise, e.g. Find every app, approved or not."
+      },
+      {
+       "name": "Body",
+       "label": "Message",
+       "type": "rich",
+       "required": true,
+       "help": "One or two sentences."
+      },
+      {
+       "name": "Ticks",
+       "label": "Bullet points",
+       "type": "component[]",
+       "required": false,
+       "help": "Up to 4 short points with check marks.",
+       "max": 4
+      }
+     ]
+    },
+    {
+     "label": "Links",
+     "fields": [
+      {
+       "name": "PrimaryLink",
+       "label": "Main link",
+       "type": "link",
+       "required": false,
+       "help": "An arrow link, or a button when there's no picture."
+      },
+      {
+       "name": "SecondaryLink",
+       "label": "Second link",
+       "type": "link",
+       "required": false,
+       "help": "Optional."
+      }
+     ]
+    },
+    {
+     "label": "Picture",
+     "fields": [
+      {
+       "name": "MediaSide",
+       "label": "Picture position",
+       "type": "enum",
+       "required": false,
+       "help": "No picture makes a full-width banner. Alternate sides down the page.",
+       "values": [
+        "Left",
+        "Right",
+        "No picture (banner)"
+       ],
+       "default": "Left"
+      },
+      {
+       "name": "Media",
+       "label": "Image or screenshot",
+       "type": "image",
+       "required": false,
+       "help": "Required unless there's no picture. Real product screenshots work best."
+      },
+      {
+       "name": "MediaAlt",
+       "label": "Describe the image",
+       "type": "text",
+       "required": false,
+       "help": "Alt text for screen readers. Required with an image."
+      },
+      {
+       "name": "Frame",
+       "label": "Picture shape",
+       "type": "enum",
+       "required": false,
+       "help": "The picture is cropped to this shape.",
+       "values": [
+        "Landscape 4:3",
+        "Square 1:1",
+        "Wide 16:9"
+       ],
+       "default": "Landscape 4:3"
+      },
+      {
+       "name": "FocusPoint",
+       "label": "Keep this part of the picture in view",
+       "type": "text",
+       "required": false,
+       "help": "Where the crop centers, e.g. 30% 0 keeps the left of a wide screenshot. Leave empty for the top left."
+      }
+     ]
+    },
+    {
+     "label": "Schedule",
+     "help": "Optional. For promotions and announcements.",
+     "fields": [
+      {
+       "name": "ShowFrom",
+       "label": "Show from",
+       "type": "date",
+       "required": false,
+       "help": "Leave empty to show now."
+      },
+      {
+       "name": "ShowUntil",
+       "label": "Show until",
+       "type": "date",
+       "required": false,
+       "help": "Leave empty to keep showing."
+      }
+     ]
+    }
+   ]
+  },
+  "cards": {
+   "name": "Cards",
+   "friendlyName": "Tray - Cards",
+   "groups": [
+    {
+     "label": "Card style",
+     "fields": [
+      {
+       "name": "CardVariant",
+       "label": "Card style",
+       "type": "enum",
+       "required": true,
+       "help": "Category cards list a few links; article cards point to one page; contact options carry an audience tag.",
+       "values": [
+        "Category",
+        "Article",
+        "Icon",
+        "Step",
+        "File",
+        "Contact option"
+       ]
+      },
+      {
+       "name": "Columns",
+       "label": "Cards per row",
+       "type": "enum",
+       "required": false,
+       "help": "On phones, cards always stack.",
+       "values": [
+        "2",
+        "3",
+        "4"
+       ],
+       "default": "3"
+      }
+     ]
+    },
+    {
+     "label": "Where the cards come from",
+     "fields": [
+      {
+       "name": "Source",
+       "label": "Choose cards",
+       "type": "enum",
+       "required": false,
+       "help": "From a guide fills the cards from a DITA map section, so they update on every import.",
+       "values": [
+        "Hand-picked",
+        "From a guide"
+       ],
+       "default": "Hand-picked"
+      },
+      {
+       "name": "MapBranch",
+       "label": "Guide section",
+       "type": "link",
+       "required": false,
+       "help": "Required when cards come from a guide."
+      },
+      {
+       "name": "LinksPerCard",
+       "label": "Links on each card",
+       "type": "integer",
+       "required": false,
+       "help": "Category cards only.",
+       "default": "3"
+      },
+      {
+       "name": "Cards",
+       "label": "Cards",
+       "type": "component[]",
+       "required": false,
+       "help": "Hand-picked only. Up to 12, in order.",
+       "max": 12
+      }
+     ]
+    }
+   ]
+  },
+  "faq": {
+   "name": "FAQ",
+   "friendlyName": "Tray - FAQ",
+   "groups": [
+    {
+     "label": "Questions",
+     "fields": [
+      {
+       "name": "Items",
+       "label": "Questions",
+       "type": "component[]",
+       "required": true,
+       "help": "Pick from the FAQ library, in order. Edit an answer there and it updates everywhere."
+      },
+      {
+       "name": "FirstOpen",
+       "label": "Open the first question",
+       "type": "enum",
+       "required": false,
+       "help": "Usually No, so the questions scan like a list.",
+       "values": [
+        "No",
+        "Yes"
+       ],
+       "default": "No"
+      },
+      {
+       "name": "SeeAll",
+       "label": "Link to all questions",
+       "type": "link",
+       "required": false,
+       "help": "e.g. the FAQ page."
+      }
+     ]
+    }
+   ]
+  },
+  "content": {
+   "name": "Content",
+   "friendlyName": "Tray - Content",
+   "groups": [
+    {
+     "label": "Content",
+     "fields": [
+      {
+       "name": "Body",
+       "label": "Page content",
+       "type": "rich",
+       "required": true,
+       "help": "Use H2 for sections and H3 below them. Insert link lists, tables, notes and images from the toolbar."
+      },
+      {
+       "name": "PageNav",
+       "label": "Show an “On this page” list",
+       "type": "enum",
+       "required": false,
+       "help": "Lists the H2s beside the content. Useful when there are four or more.",
+       "values": [
+        "No",
+        "Yes"
+       ],
+       "default": "No"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "components": {
+  "Card": [
+   {
+    "label": "Card",
+    "fields": [
+     {
+      "name": "Title",
+      "label": "Card title",
+      "type": "text",
+      "required": true,
+      "help": "e.g. Access the Admin Console."
+     },
+     {
+      "name": "Text",
+      "label": "Short description",
+      "type": "text-multiline",
+      "required": false,
+      "help": "One sentence."
+     },
+     {
+      "name": "Link",
+      "label": "Link",
+      "type": "link",
+      "required": true,
+      "help": "Where the card goes."
+     },
+     {
+      "name": "Kicker",
+      "label": "Small line above the title",
+      "type": "text",
+      "required": false,
+      "help": "e.g. Article."
+     },
+     {
+      "name": "Icon",
+      "label": "Icon",
+      "type": "enum",
+      "required": false,
+      "help": "From the icon set."
+     },
+     {
+      "name": "Image",
+      "label": "Image",
+      "type": "image",
+      "required": false,
+      "help": "Optional."
+     },
+     {
+      "name": "Audience",
+      "label": "Who sees this card",
+      "type": "categories",
+      "required": false,
+      "help": "Contact options only.",
+      "values": [
+       "Everyone",
+       "Signed out",
+       "Free",
+       "Premium or Families",
+       "Business admin"
+      ]
+     }
+    ]
+   }
+  ],
+  "Table": [
+   {
+    "label": "Table",
+    "fields": [
+     {
+      "name": "Caption",
+      "label": "What the table shows",
+      "type": "text",
+      "required": true,
+      "help": "Read out before the table by screen readers."
+     },
+     {
+      "name": "HeaderRow",
+      "label": "First row is headings",
+      "type": "enum",
+      "required": false,
+      "help": "",
+      "values": [
+       "Yes",
+       "No"
+      ],
+      "default": "Yes"
+     },
+     {
+      "name": "HeaderColumn",
+      "label": "First column is headings",
+      "type": "enum",
+      "required": false,
+      "help": "",
+      "values": [
+       "No",
+       "Yes"
+      ],
+      "default": "No"
+     },
+     {
+      "name": "Rows",
+      "label": "Table",
+      "type": "rich",
+      "required": true,
+      "help": "Edit as a table."
+     }
+    ]
+   }
+  ],
+  "Notice": [
+   {
+    "label": "Notice",
+    "fields": [
+     {
+      "name": "Type",
+      "label": "Kind of notice",
+      "type": "enum",
+      "required": false,
+      "help": "Matches the notes in imported articles.",
+      "values": [
+       "Note",
+       "Tip",
+       "Notice"
+      ],
+      "default": "Note"
+     },
+     {
+      "name": "Text",
+      "label": "Message",
+      "type": "rich",
+      "required": true,
+      "help": "One short message."
+     }
+    ]
+   }
+  ],
+  "FAQ item": [
+   {
+    "label": "Question",
+    "fields": [
+     {
+      "name": "Question",
+      "label": "Question",
+      "type": "text",
+      "required": true,
+      "help": "In the reader's words."
+     },
+     {
+      "name": "Answer",
+      "label": "Answer",
+      "type": "rich",
+      "required": true,
+      "help": "Short, with a link to the full article."
+     },
+     {
+      "name": "Products",
+      "label": "Products",
+      "type": "categories",
+      "required": false,
+      "help": "Helps find it in the library."
+     },
+     {
+      "name": "LastReviewed",
+      "label": "Last reviewed",
+      "type": "date",
+      "required": false,
+      "help": "When someone last checked it's still true."
+     }
+    ]
+   }
+  ]
+ },
+ "pages": {
+  "hub-business.html": {
+   "type": "flex",
+   "label": "Mini hub",
+   "trays": [
+    [
+     "hero",
+     "marketing, search, start-here list",
+     "dark"
+    ],
+    [
+     "cards",
+     "category, from the map",
+     "white"
+    ],
+    [
+     "content",
+     "recent releases list",
+     "wash"
+    ],
+    [
+     "feature",
+     "media right, spotlight",
+     "dark"
+    ],
+    [
+     "cards",
+     "article",
+     "white"
+    ],
+    [
+     "feature",
+     "media right",
+     "cloud"
+    ],
+    [
+     "cards",
+     "file",
+     "white"
+    ],
+    [
+     "faq",
+     "3 items",
+     "white"
+    ],
+    [
+     "feature",
+     "banner",
+     "white"
+    ]
+   ]
+  },
+  "topic-saas-monitoring.html": {
+   "type": "flex",
+   "label": "Topic overview, product",
+   "trays": [
+    [
+     "hero",
+     "marketing, screenshot, proof points",
+     "dark"
+    ],
+    [
+     "content",
+     "table, rich rows",
+     "white"
+    ],
+    [
+     "feature",
+     "media left",
+     "white"
+    ],
+    [
+     "feature",
+     "media right",
+     "cloud"
+    ],
+    [
+     "feature",
+     "media left",
+     "white"
+    ],
+    [
+     "cards",
+     "icon",
+     "dark"
+    ],
+    [
+     "cards",
+     "steps",
+     "white"
+    ],
+    [
+     "faq",
+     "3 items",
+     "white"
+    ],
+    [
+     "feature",
+     "banner, dark",
+     "white"
+    ]
+   ]
+  },
+  "topic-billing.html": {
+   "type": "flex",
+   "label": "Topic overview, utility",
+   "trays": [
+    [
+     "hero",
+     "split, with media",
+     "dark"
+    ],
+    [
+     "content",
+     "link lists, notice, table, On this page",
+     "white"
+    ],
+    [
+     "feature",
+     "banner",
+     "white"
+    ]
+   ]
+  },
+  "faq.html": {
+   "type": "flex",
+   "label": "FAQ page",
+   "trays": [
+    [
+     "hero",
+     "standard",
+     "dark"
+    ],
+    [
+     "faq",
+     "2 groups, On this page",
+     "white"
+    ],
+    [
+     "feature",
+     "banner",
+     "white"
+    ]
+   ]
+  },
+  "contact-us.html": {
+   "type": "flex",
+   "label": "Contact Us",
+   "trays": [
+    [
+     "hero",
+     "standard",
+     "dark"
+    ],
+    [
+     "cards",
+     "contact option, tagged by audience",
+     "white"
+    ]
+   ]
+  },
+  "lifecycle.html": {
+   "type": "flex",
+   "label": "Product lifecycle",
+   "trays": [
+    [
+     "hero",
+     "standard",
+     "dark"
+    ],
+    [
+     "content",
+     "notice, two tables",
+     "white"
+    ]
+   ]
+  },
+  "release-notes.html": {
+   "type": "releases",
+   "label": "Release notes"
+  },
+  "downloads.html": {
+   "type": "downloads",
+   "label": "Downloads"
+  },
+  "known-issues.html": {
+   "type": "issues",
+   "label": "Known issues"
+  }
+ },
+ "scope": {
+  "hero": "Builds on the hero and search band already built for the home page: adds layout, style and the media slot.",
+  "cards": "Builds on the Featured Documentation cards already built: adds card styles, columns and cards from a guide.",
+  "feature": "New.",
+  "faq": "New.",
+  "content": "New.",
+  "Card": "Extends the card already built.",
+  "FAQ item": "New. A shared library of questions.",
+  "Notice": "New for authors; uses the DITA note style already built.",
+  "Table": "New for authors."
+ }
+}

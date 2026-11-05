@@ -52,3 +52,9 @@ deployment as a lookalike site. For client review, protect the deployment
 - The language selector lists placeholder locales (English, Deutsch, Español, Français,
   Italiano, Nederlands, Português). Swap for the confirmed six locales and wire each
   `href` to its per-locale path when the multilingual routing is defined.
+
+## CMS schema (net-new work only)
+
+`data/schema.json` holds the CMS fields for the new work only: the Flex page type, the Release notes, Downloads and Known issues page types and their records, the five trays, and four new components (Card, Table, Notice, FAQ item). The header, footer, articles, search and other pages the team already built are out of scope.
+
+Fields are grouped the way the edit form shows them, with editor-facing labels and help, in the `lastpass_cms` manifest vocabulary (`text`, `rich`, `enum`, `link`, `component[]` and so on), so `tools/schema-gen.mjs` there can generate them as Schema Designer XDR. On every new page, **CMS schema** (bottom right) opens a panel with a tab for the page and one per tray; `components.html` shows the same schemas under each tray's **CMS schema** tab.
