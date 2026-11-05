@@ -29,11 +29,11 @@
      "values": [
       "White",
       "Wash",
-      "Cloud",
+      "Mist",
       "Dark"
      ],
      "default": "White",
-     "why": "Choose one: four tested backgrounds; free colors would drift off brand."
+     "why": "Choose one: four tested backgrounds from the approved build; free colors would drift off brand."
     },
     {
      "name": "Audience",
@@ -1271,7 +1271,7 @@
     [
      "feature",
      "media right",
-     "cloud"
+     "mist"
     ],
     [
      "cards",
@@ -1312,7 +1312,7 @@
     [
      "feature",
      "media right",
-     "cloud"
+     "mist"
     ],
     [
      "feature",
@@ -1495,5 +1495,6 @@
    "Product tag, not a registry",
    "One Product tag list the records share. Downloads read their version from the newest release with the same tag."
   ]
- ]
+ ],
+ "shared_tray_fields": []
 }

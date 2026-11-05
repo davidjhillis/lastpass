@@ -692,13 +692,13 @@ body.show-grid .cl-stage:not(.cl-stage--unit){background-image:linear-gradient(#
 /* =============================================================================
    Unit options shared by every tray: background. Feature options: media side,
    media ratio, focus point. Set as attributes so the CMS writes them directly:
-   <section class="u" data-bg="cloud"> … <article class="mk-tray" data-media="right" style="--ratio:4/3;--focus:15% 0">
+   <section class="u" data-bg="mist"> … <article class="mk-tray" data-media="right" style="--ratio:4/3;--focus:15% 0">
    ============================================================================= */
 .u{padding:88px 0}
 @media (max-width:720px){.u{padding:56px 0}}
 .u[data-bg="white"]{background:#fff}
 .u[data-bg="wash"]{background:var(--t-wash);border-top:1px solid var(--t-line);border-bottom:1px solid var(--t-line)}
-.u[data-bg="cloud"]{background:var(--lp-cloud);border-top:1px solid rgba(40,47,67,.1);border-bottom:1px solid rgba(40,47,67,.1)}
+.u[data-bg="mist"]{background:var(--lp-cloud);border-top:1px solid rgba(40,47,67,.1);border-bottom:1px solid rgba(40,47,67,.1)}
 .u[data-bg="dark"]{background:linear-gradient(180deg,var(--mk-night) 0%,var(--mk-night-2) 100%);color:#fff}
 .u + .u[data-bg="white"],.u[data-bg="white"] + .u[data-bg="white"]{padding-top:24px}
 .u .mk-head{margin-bottom:48px}
@@ -721,7 +721,7 @@ body.show-grid .cl-stage:not(.cl-stage--unit){background-image:linear-gradient(#
 .u[data-bg="dark"] .mk-ticks svg{color:#fff}
 .u[data-bg="dark"] .mk-arrow,.u[data-bg="dark"] .mk-tray-links .t-more{color:#fff}
 .u[data-bg="dark"] .mk-tray-media::before{background:rgba(255,255,255,.06)}
-.u[data-bg="cloud"] .mk-tray-media::before{background:linear-gradient(135deg,#fff,var(--lp-keyword-bg))}
+.u[data-bg="mist"] .mk-tray-media::before{background:linear-gradient(135deg,#fff,var(--lp-keyword-bg))}
 .u[data-bg="dark"] .mk-badge{margin-bottom:4px}
 .mk-tray-copy .mk-badge{align-self:flex-start}
 .mk-tray-copy .mk-actions{margin-top:28px}
@@ -798,7 +798,7 @@ body.show-grid .cl-stage:not(.cl-stage--unit){background-image:linear-gradient(#
 .tp-recipe span{color:var(--lp-text-muted)}
 .tp-recipe li[data-bg="white"]{background:#fff}
 .tp-recipe li[data-bg="wash"]{background:var(--t-wash)}
-.tp-recipe li[data-bg="cloud"]{background:var(--lp-cloud);border-color:rgba(40,47,67,.12)}
+.tp-recipe li[data-bg="mist"]{background:var(--lp-cloud);border-color:rgba(40,47,67,.12)}
 .tp-recipe li[data-bg="dark"]{background:var(--mk-night);border-color:var(--mk-night)}
 .tp-recipe li[data-bg="dark"]::before,.tp-recipe li[data-bg="dark"] span{color:rgba(255,255,255,.7)}
 .tp-recipe li[data-bg="dark"] a{color:#fff}
@@ -929,3 +929,68 @@ body.show-grid .cl-stage:not(.cl-stage--unit){background-image:linear-gradient(#
 .tp-card--slim .tp-copy > p{font-size:15px;color:var(--lp-text-muted)}
 .in-frame .t-notes-toggle,.in-frame .t-dock,.in-frame .rv-nav{display:none!important}
 .t-notes-toggle[hidden]{display:none}
+
+/* =============================================================================
+   APPROVED BASELINE: the Ingeniux build (lastpass-dev-dss.igxdev.com), 5 Nov 2026.
+   Values measured from the live build. Only pages that load templates.css change.
+   ============================================================================= */
+:root{
+  --lp-text-primary:#050606;   /* headings, titles */
+  --lp-text-heading:#050606;
+  --lp-text-body:#262626;      /* neutral-800: body and card text */
+  --lp-text-secondary:#404040; /* neutral-700: nav, secondary */
+  --lp-text-muted:#525252;     /* neutral-600 */
+  --lp-slate:#050606;
+  --lp-cloud:#d0deed;          /* the build's mist band */
+  --lp-mist:#d0deed;
+  --lp-orchid:#9971b6;
+  --cta-link:#050606;
+  --cta-link-hover:#9971b6;
+  --t-line:rgba(161,161,161,.4);       /* the build's --ui-border-color */
+  --t-line-strong:rgba(161,161,161,.6);
+  --t-wash:#f5f5f5;
+}
+/* Utility bar: grey wash, near-black text, Service status + Log in */
+div:has(> .util-bar){background:rgba(115,115,115,.1);border-bottom:1px solid var(--t-line)!important}
+.util-bar,.util-bar a,.util-bar button{color:#050606}
+/* Header: solid white, neutral nav */
+#nav{background:#fff!important;backdrop-filter:none!important;border-bottom-color:transparent!important}
+#nav .navdd-btn{color:#404040}
+#nav .navdd-btn:hover{color:#050606}
+/* Breadcrumb: the build's grey band */
+.t-crumbs{background:rgba(115,115,115,.1);border-bottom:1px solid var(--t-line)}
+.t-crumbs ol{font-size:14px;padding-top:10px;padding-bottom:10px}
+.t-crumbs a,.t-crumbs [aria-current]{color:#050606}
+.t-crumbs [aria-current]{font-weight:400}
+/* Hero: the build's aubergine arc image, 36px semibold headline */
+.t-hero,.mk-hero{background:#5e4270}
+.t-hero-bg{background-image:url('img/hero-approved.jpg');opacity:1}
+.t-hero-scrim{display:none}
+.mk-hero::before{background-image:url('img/hero-approved.jpg');opacity:1}
+.t-hero h1{font-size:36px;font-weight:600;letter-spacing:normal;line-height:1.1}
+.t-hero-sub{font-size:20px;font-weight:600;color:#fff}
+/* Search: the build's grey field */
+.searchwrap{background:#f5f5f5;border:1px solid var(--t-line);border-radius:6px;box-shadow:none;padding:4px 4px 4px 14px}
+.searchwrap:focus-within{border-color:var(--lp-brand);box-shadow:0 0 0 3px rgba(215,19,64,.2);transform:none}
+.searchwrap button{border-radius:8px;font-size:14px;height:40px}
+/* Links: black, regular, underlined; orchid on hover */
+.cta-link,.t-more,.mk-arrow,.ul-opts dd a,.t-table td a{color:#050606;font-weight:400;text-decoration:underline;text-underline-offset:2px}
+.cta-link:hover,.t-more:hover,.mk-arrow:hover,.t-table td a:hover{color:#9971b6}
+.t-card:hover h3,.t-cat h3 a:hover,.t-links a:hover,.t-file:hover b{color:#9971b6}
+/* Quick links: neutral border */
+.t-quick ul{border-color:var(--t-line)}
+.t-quick a{color:#050606}
+.t-quick a:hover{background:#f5f5f5;color:#050606}
+/* Cards and boxes: the build's 6px radius, neutral border */
+.t-cat,.t-card,.t-file,.dl-card,.ct-card,.ki,.t-records,.t-table,.mk-caps,.rc-empty,.tp-card,.ul-comp,.sg,.st{border-radius:6px}
+.t-help,.mk-cta,.mk-spot,.dl-hero-card{border-radius:8px}
+.mk-benefit{border-radius:6px}
+.t-cat-icon,.mk-benefit-icon{border-radius:6px}
+/* Footer: centered, as the build lays it out */
+.site-footer-inner{padding-top:76px}
+.site-footer-cols{justify-content:center;gap:32px 64px}
+.site-footer-col{width:auto}
+.site-footer-connect{justify-content:center;display:flex}
+.site-footer-social{justify-content:center}
+.site-footer-legal{justify-content:center}
+.site-footer-legal span{font-size:14px;line-height:20px;color:#fff}

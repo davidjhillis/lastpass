@@ -147,7 +147,7 @@ def tabs(slug, panels):
         slug, i, slug, i, "" if i == 0 else " hidden", html) for i, (_, html) in enumerate(panels))
     return '<div class="sc-tabs" data-tabs><div class="sc-tablist" role="tablist" aria-label="View">%s</div>%s</div>' % (btns, pans)
 
-SHARED = [("Background", "White, wash, cloud or dark"),
+SHARED = [("Background", "White, wash, mist or dark"),
           ("Audience", "Metadata tag: Everyone, Signed out, Free, Premium or Families, Business admin")]
 
 # ---------------------------------------------------------------- flex trays
@@ -168,7 +168,7 @@ TRAYS = [
       ("Content", "Badge or kicker, heading, text, up to 4 ticks, up to 2 buttons or links")],
      [], "feature tray, spotlight, CTA band, help banner",
      [("Media left, on white (try the options)", "saas", '<section class="u" data-bg="white" aria-labelledby="h-products"', None, "cl-stage--unit"),
-      ("Media right, on cloud", "saas", '<section class="u" data-bg="cloud"', None, "cl-stage--unit"),
+      ("Media right, on mist", "saas", '<section class="u" data-bg="mist"', None, "cl-stage--unit"),
       ("Media right, on dark", "hub", '<section class="u" data-bg="dark"', None, "cl-stage--unit"),
       ("Banner, dark", "saas", '<div class="mk-cta"', None, ""),
       ("Banner, light", "hub", '<div class="t-help"', None, "")]),
@@ -270,7 +270,7 @@ def dl(rows):
 TRY = '''<div class="ul-try" data-try="#ex-feature-0" role="group" aria-label="Try the Feature options">
   <span>Try the options</span>
   <div><b>Media</b><button type="button" data-set="media" data-val="left" aria-pressed="true">Left</button><button type="button" data-set="media" data-val="right" aria-pressed="false">Right</button></div>
-  <div><b>Background</b><button type="button" data-set="bg" data-val="white" aria-pressed="true">White</button><button type="button" data-set="bg" data-val="wash" aria-pressed="false">Wash</button><button type="button" data-set="bg" data-val="cloud" aria-pressed="false">Cloud</button><button type="button" data-set="bg" data-val="dark" aria-pressed="false">Dark</button></div>
+  <div><b>Background</b><button type="button" data-set="bg" data-val="white" aria-pressed="true">White</button><button type="button" data-set="bg" data-val="wash" aria-pressed="false">Wash</button><button type="button" data-set="bg" data-val="mist" aria-pressed="false">Mist</button><button type="button" data-set="bg" data-val="dark" aria-pressed="false">Dark</button></div>
   <div><b>Frame</b><button type="button" data-set="ratio" data-val="4/3" aria-pressed="true">4:3</button><button type="button" data-set="ratio" data-val="1/1" aria-pressed="false">1:1</button><button type="button" data-set="ratio" data-val="16/9" aria-pressed="false">16:9</button></div>
 </div>'''
 
@@ -295,14 +295,13 @@ for slug, name, purpose, options, inside, merges, variants in TRAYS:
       <p class="ul-merges"><b>Replaces</b> %s</p>
       <p class="ul-scope"><b>Scope</b> %s</p>
     </div>
-    <dl class="ul-opts">%s
-      <div><dt>Components</dt><dd><ul class="tp-chips">%s</ul></dd></div>
+    <dl class="ul-opts">%s%s
       <div><dt>Used on</dt><dd>%s</dd></div>
     </dl>
   </div>
   %s
 </section>''' % (slug, slug, slug, name, purpose, merges, SCHEMA["scope"][slug], dl(options),
-                 "".join('<li><a href="#c-%s">%s</a></li>' % (slugify(c), c) for c in inside),
+                 ('\n      <div><dt>Components</dt><dd><ul class="tp-chips">%s</ul></dd></div>' % "".join('<li><a href="#c-%s">%s</a></li>' % (slugify(c), c) for c in inside)) if inside else "",
                  ", ".join('<a href="%s">%s</a>' % (PAGES[k][0], PAGES[k][1]) for k in used), "\n  ".join(figs)))
 
 special_html = []
