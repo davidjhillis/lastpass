@@ -624,6 +624,121 @@
      }
     ]
    }
+  },
+  "faqs": {
+   "name": "FAQ page type",
+   "about": "A fixed layout for the FAQ page: a Topics index, Expand all, and groups of questions picked from the FAQ library. Editors choose and order the groups and their questions; there are no trays to arrange.",
+   "groups": [
+    {
+     "label": "",
+     "fields": [
+      {
+       "name": "Title",
+       "label": "Page name",
+       "type": "text",
+       "required": true,
+       "help": "e.g. Release notes.",
+       "why": "Plain text: used in navigation, breadcrumbs and the H1, where formatting can't appear."
+      },
+      {
+       "name": "Description",
+       "label": "Search description",
+       "type": "text-multiline",
+       "required": true,
+       "help": "Up to 160 characters.",
+       "max": 160,
+       "why": "Plain, with a character limit: search snippets drop formatting and cut long text."
+      },
+      {
+       "name": "Hero",
+       "label": "Hero",
+       "type": "component",
+       "required": true,
+       "help": "One Hero tray, standard layout.",
+       "why": "One Hero tray component: the page has a fixed layout, so it holds a single hero, not a list.",
+       "accepts": "Hero"
+      },
+      {
+       "name": "Group",
+       "label": "Question groups",
+       "type": "component[]",
+       "required": true,
+       "accepts": "FaqGroup",
+       "help": "Each group gets a heading, an entry in the Topics list and a question count, in this order.",
+       "why": "A list of small group components, so editors add, reorder and remove groups in one place."
+      },
+      {
+       "name": "HelpBanner",
+       "label": "Help banner",
+       "type": "component",
+       "required": false,
+       "accepts": "Feature",
+       "help": "Optional. A Feature banner at the foot of the page, e.g. Don’t see your question?",
+       "why": "One Feature component, reusing the banner every other page uses."
+      }
+     ]
+    }
+   ],
+   "record": {
+    "name": "FAQ group",
+    "tab": "FAQ group schema",
+    "lede": "Each group is a small component on the FAQ page: a heading, an optional icon and line, and questions picked from the FAQ library.",
+    "groups": [
+     {
+      "label": "",
+      "fields": [
+       {
+        "name": "Heading",
+        "label": "Group heading",
+        "type": "text",
+        "required": true,
+        "help": "e.g. Billing and trials. Also its entry in the Topics list.",
+        "why": "Plain text: a heading and a list label, styled by the template."
+       },
+       {
+        "name": "Icon",
+        "label": "Icon",
+        "type": "enum",
+        "required": false,
+        "values": [
+         "None",
+         "Cart",
+         "Renew",
+         "Cancel",
+         "Plan",
+         "Questions",
+         "Card",
+         "Shield",
+         "People",
+         "Globe",
+         "Robot",
+         "Settings"
+        ],
+        "default": "None",
+        "help": "Optional. Shown beside the heading.",
+        "why": "Choose one from the site’s icon set, so icons stay consistent and nobody uploads images."
+       },
+       {
+        "name": "Intro",
+        "label": "Line under the heading",
+        "type": "text",
+        "required": false,
+        "help": "e.g. Charges, payments and ending a trial.",
+        "why": "One plain line, so groups stay short."
+       },
+       {
+        "name": "FaqItem",
+        "label": "Questions",
+        "type": "component[]",
+        "required": true,
+        "accepts": "FaqItem",
+        "help": "Pick from the FAQ library, in order. Edit an answer there and it updates everywhere.",
+        "why": "A list of shared items, so one answer can appear on many pages."
+       }
+      ]
+     }
+    ]
+   }
   }
  },
  "trays": {
@@ -1412,35 +1527,8 @@
    ]
   },
   "faq.html": {
-   "type": "flex",
-   "label": "FAQ page",
-   "trays": [
-    [
-     "hero",
-     "standard",
-     "dark"
-    ],
-    [
-     "faq",
-     "AI Monitoring & Protect",
-     "white"
-    ],
-    [
-     "faq",
-     "LastPass VPN and LastPass Plus",
-     "white"
-    ],
-    [
-     "faq",
-     "Billing and trials",
-     "white"
-    ],
-    [
-     "feature",
-     "banner",
-     "white"
-    ]
-   ]
+   "type": "faqs",
+   "label": "FAQ page"
   },
   "contact-us.html": {
    "type": "flex",
@@ -1526,7 +1614,9 @@
   "feature": "Feature",
   "cards": "Cards",
   "faq": "Faq",
-  "content": "Content"
+  "content": "Content",
+  "faqs": "FaqPage",
+  "record:faqs": "FaqGroup"
  },
  "grouping_rule": "Schemas of 6 fields or fewer are one list with no groups. Longer schemas use groups of 3 or more fields; the exception is a small collapsible group for rarely used options (Schedule, Tray settings).",
  "simplifications": [

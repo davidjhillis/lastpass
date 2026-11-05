@@ -208,10 +208,10 @@
             '<p class="sc-lede">Tray ' + (i + 1) + ' of ' + P.trays.length + ': <b>' + esc(tr.name) + '</b>, ' + esc(t[1]) + ', on a ' + esc(t[2]) + ' background.</p>')]);
         });
       }
-      if(T.record) panels.push([T.record.name + ' record', view(S, S.schema_names['record:' + P.type], T.record.name, 'Component schema', T.record.groups, '<p class="sc-lede">Each record is its own item in the CMS; this page lists them.</p>')]);
+      if(T.record) panels.push([T.record.tab || T.record.name + ' record', view(S, S.schema_names['record:' + P.type], T.record.name, 'Component schema', T.record.groups, '<p class="sc-lede">' + esc(T.record.lede || 'Each record is its own item in the CMS; this page lists them.') + '</p>')]);
       var d = document.createElement('dialog'); d.className = 'sc-dialog'; d.id = 'sc-dialog'; d.setAttribute('aria-labelledby', 'sc-title');
       d.innerHTML = '<div class="sc-head"><div><p class="sc-kind">' + esc(T.name) + '</p><h2 id="sc-title">How this page is edited: ' + esc(P.label) + '</h2>' +
-        (P.trays ? '<p class="sc-sub">' + P.trays.length + ' trays, top to bottom. Pick a tab to see the fields an editor fills in.</p>' : '<p class="sc-sub">A fixed layout: the page fields, then the records it lists.</p>') +
+        (P.trays ? '<p class="sc-sub">' + P.trays.length + ' trays, top to bottom. Pick a tab to see the fields an editor fills in.</p>' : '<p class="sc-sub">A fixed layout: the page fields, then the items it lists.</p>') +
         '</div><div class="sc-head-acts">' + (window.FB ? '<button type="button" class="sc-fb">Add feedback</button>' : '') + '<button type="button" class="sc-close" aria-label="Close">&times;</button></div></div>' +
         '<div class="sc-tabs" data-tabs><div class="sc-tablist" role="tablist" aria-label="Schema">' +
         panels.map(function(p, i){ return '<button type="button" role="tab" id="sct-' + i + '" aria-controls="scp-' + i + '" aria-selected="' + (i ? 'false' : 'true') + '"' + (i ? ' tabindex="-1"' : '') + '>' + esc(p[0]) + '</button>'; }).join('') +

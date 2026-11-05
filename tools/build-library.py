@@ -67,7 +67,7 @@ PAGES = {
     "hub": ("hub-business.html", "Mini hub"),
     "saas": ("topic-saas-monitoring.html", "Topic overview, product"),
     "billing": ("topic-billing.html", "Topic overview, utility"),
-    "faq": ("faq.html", "FAQ page"),
+    "faqs": ("faq.html", "FAQ page"),
     "contact": ("contact-us.html", "Contact Us"),
     "lifecycle": ("lifecycle.html", "Product lifecycle"),
     "releases": ("release-notes.html", "Release notes"),
@@ -180,7 +180,7 @@ TRAYS = [
       ("Search", "Off, all of support, or scoped to a product"), ("Media slot", "Image or screenshot (optionally with a Vimeo link), or a start-here list"),
       ("Extras", "Badge, up to 2 buttons, quick links bar, proof points")],
      [], "4 hero variants, quick links, proof strip, start-here card",
-     [("Standard", "faq", '<section class="t-hero', None, ""),
+     [("Standard", "faqs", '<section class="t-hero', None, ""),
       ("Split, with media", "billing", '<section class="t-hero', None, ""),
       ("Marketing, with a screenshot", "saas", '<section class="mk-hero"', None, ""),
       ("Marketing, with search and a start-here list", "hub", '<section class="mk-hero"', None, "")]),
@@ -218,6 +218,11 @@ TNAME = {t[0]: t[1] for t in TRAYS}
 
 # ---------------------------------------------------------------- special page types
 SPECIAL = [
+    ("faqs", "FAQ page", "Groups of questions from the FAQ library, with a Topics index and Expand all.",
+     "Needs a Topics index, counts and Expand all across every group, which a stack of trays can’t give; the groups and questions stay editorial.",
+     [("Groups", "FAQ group: heading, icon, line, questions"), ("Questions", "Picked from the FAQ library, in order"),
+      ("Behavior", "Topics index, counts, Expand all, link to each answer")],
+     [("Topics index and groups", "faqs", '<div class="t-faq-page">', None, "")]),
     ("releases", "Release notes", "Every release as a record, newest first, with filters and a stable link per release.",
      "Needs per-release URLs, a feed and filtering across 351 records, migrated from lastpass.com/upgrade.php.",
      [("Records", "Release: product, version, date, platforms, typed items"), ("Behavior", "Search, product and change-type filters, Show more, links"),
@@ -251,16 +256,15 @@ COMPONENTS = [
 
 # ---------------------------------------------------------------- flex recipes: trays in page order
 RECIPES = {k: [tuple(t) for t in v["trays"]] for k, v in
-           ((kk, SCHEMA["pages"][PAGES[kk][0]]) for kk in ["hub", "saas", "billing", "faq", "contact", "lifecycle"])}
+           ((kk, SCHEMA["pages"][PAGES[kk][0]]) for kk in ["hub", "saas", "billing", "contact", "lifecycle"])}
 FLEX_DESC = {
     "hub": "A homepage for one audience or product area, at marketing weight.",
     "saas": "A product page that sells and teaches: features, benefits, setup steps.",
     "billing": "A support topic broken into sections of hand-picked articles.",
-    "faq": "Questions grouped by product, collapsed until opened.",
     "contact": "Ways to get help; cards tagged by audience show per plan.",
     "lifecycle": "Status definitions beside products, maintained by hand at launch.",
 }
-REQ = {"hub": "Request 1", "saas": "Request 2", "billing": "Request 2", "faq": "Request 3", "contact": "Request 4",
+REQ = {"hub": "Request 1", "saas": "Request 2", "billing": "Request 2", "faqs": "Request 3", "contact": "Request 4",
        "lifecycle": "Request 8", "releases": "Request 5", "downloads": "Request 6", "issues": "Request 7"}
 
 
@@ -354,8 +358,8 @@ for slug, name, purpose, why, options, variants in SPECIAL:
         ("Examples", "\n  ".join(variant_figs("sp-" + slug, variants))),
         ("Page schema", schema_view(SCHEMA["schema_names"][slug], SCHEMA["page_types"][slug]["name"], "Page schema", SCHEMA["page_types"][slug]["groups"],
                                      '<p class="sc-lede">%s</p>' % H.escape(SCHEMA["page_types"][slug]["about"]))),
-        ("%s record schema" % SCHEMA["page_types"][slug]["record"]["name"], schema_view(SCHEMA["schema_names"]["record:" + slug], SCHEMA["page_types"][slug]["record"]["name"], "Component schema", SCHEMA["page_types"][slug]["record"]["groups"],
-                                     '<p class="sc-lede">Each record is its own item in the CMS; this page lists them.</p>'))])))
+        (SCHEMA["page_types"][slug]["record"].get("tab") or "%s record schema" % SCHEMA["page_types"][slug]["record"]["name"], schema_view(SCHEMA["schema_names"]["record:" + slug], SCHEMA["page_types"][slug]["record"]["name"], "Component schema", SCHEMA["page_types"][slug]["record"]["groups"],
+                                     '<p class="sc-lede">%s</p>' % H.escape(SCHEMA["page_types"][slug]["record"].get("lede", "Each record is its own item in the CMS; this page lists them."))))])))
 
 comp_html = "".join('''<article class="ul-comp" id="c-%s">
   <h3>%s</h3><p>%s</p>
@@ -415,6 +419,7 @@ def thumb(k):
 
 
 SPECIAL_DESC = {
+    "faqs": "Groups of questions from the FAQ library, with a Topics index.",
     "releases": "Every release, newest first, with filters.",
     "downloads": "The visitor’s platform first, then every download.",
     "issues": "Open issues with workarounds, and recent fixes.",

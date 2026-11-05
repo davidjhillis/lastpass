@@ -10,14 +10,14 @@ portal (DiscoverCX / Ingeniux concept). Static site — no build step required.
 - `hub-business.html` — Mini hub (template request 1): a topic homepage, here LastPass Business admin
 - `topic-billing.html` — Topic overview (request 2): Billing, with map-fed link lists, a table and a video hero
 - `topic-saas-monitoring.html` — Topic overview at marketing weight: SaaS and AI Monitoring, with a product hero, capability table, benefits band, setup steps and a closing call to action
-- `faq.html` — FAQ page (request 3): reusable FAQ items with an accessible accordion
+- `faq.html` — FAQ page (request 3), its own page type: groups of questions picked from the FAQ library, a Topics index with counts, and Expand all
 
 - `contact-us.html` — Contact Us (request 4): options matched to the visitor's plan, with an audience preview switch
 - `release-notes.html` — Release notes (request 5): all 351 releases from lastpass.com/upgrade.php as filterable records
 - `downloads.html` — Downloads (request 6): the visitor's platform first, versions read from the release notes
 - `known-issues.html` — Known issue tracker (request 7): active issues and recent real fixes
 - `lifecycle.html` — Product lifecycle (request 8): definitions beside products, statuses proposed from release history
-- `index.html` (home) — the page types: one Flex page type (six example layouts, each shown as its stack of trays) and three special page types (Release notes, Downloads, Known issues), plus how each part was kept simple
+- `index.html` (home) — the page types: one Flex page type (five example layouts, each shown as its stack of trays) and four special page types (FAQ, Release notes, Downloads, Known issues), plus how each part was kept simple
 - `components.html` — page-building essentials: 5 flex trays (Hero, Feature, Cards, FAQ, Content) with options and live variants, the shared Background and Audience options, the special page types' parts, 7 components and what is automatic
 
 The five record pages are generated from `data/releases.json` (parsed from lastpass.com/upgrade.php) and `data/products.json` (the product registry): run `python3 tools/build-records.py`, then `python3 tools/build-library.py`.
@@ -54,7 +54,7 @@ deployment as a lookalike site. For client review, protect the deployment
 
 ## CMS schema (net-new work only)
 
-`data/schema.json` holds the CMS fields for the new work only: the Flex page type, the Release notes, Downloads and Known issues page types and their records, the five trays, and four new components (Card, Table, Notice, FAQ item). The header, footer, articles, search and other pages the team already built are out of scope.
+`data/schema.json` holds the CMS fields for the new work only: the Flex page type, the FAQ, Release notes, Downloads and Known issues page types and their records (FAQ groups, releases, downloads, issues), the five trays, and four new components (Card, Table, Notice, FAQ item). The header, footer, articles, search and other pages the team already built are out of scope.
 
 Fields are grouped the way the edit form shows them, with editor-facing labels and help, in the `lastpass_cms` manifest vocabulary (`text`, `rich`, `enum`, `link`, `component[]` and so on), so `tools/schema-gen.mjs` there can generate them as Schema Designer XDR. On every new page, **CMS schema** (bottom right) opens a panel with a tab for the page and one per tray; `components.html` shows the same schemas under each tray's **CMS schema** tab.
 
