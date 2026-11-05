@@ -351,7 +351,7 @@ components_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   <div class="t-hero-in">
     <p class="t-eyebrow">LastPass support portal · design system</p>
     <h1>Page-building essentials</h1>
-    <p class="t-hero-sub">The net-new work: one Flex page type built from %d trays, %d special page types, and %d new components. Header, footer, articles and search are already built and not covered here.</p>
+    <p class="t-hero-sub">The net-new work: the Flex page type, built from %d trays, %d special page types, and %d new components. Header, footer, articles and search are already built and not covered here.</p>
   </div>
 </section>
 
@@ -359,7 +359,7 @@ components_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
 
 <div class="t-wrap ul-body">
   <div class="ul-model">
-    <div><b>Flex tray</b><span>One of %d trays an editor stacks on a Flex page in Page Builder, in any order.</span></div>
+    <div><b>Flex tray</b><span>One of %d trays an editor stacks on a page of the Flex page type in Page Builder, in any order.</span></div>
     <div><b>Special page type</b><span>A fixed layout over records, for pages trays can’t build.</span></div>
     <div><b>New component</b><span>A new piece placed inside a tray: card, table, notice or FAQ item.</span></div>
   </div>
@@ -376,7 +376,7 @@ components_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
 </section>
 </div>
 </main>''' % (len(TRAYS), len(SPECIAL), len(COMPONENTS), nav, len(TRAYS), shared_html, H.escape(SCHEMA["page_types"]["flex"]["about"]),
-             schema_view("FlexPage", "Flex page", "Page schema", SCHEMA["page_types"]["flex"]["groups"]), "\n".join(trays_html),
+             schema_view("Flex", "Flex page type", "Page schema", SCHEMA["page_types"]["flex"]["groups"]), "\n".join(trays_html),
              "\n  ".join(special_html), comp_html)
 
 # ---------------------------------------------------------------- templates.html
@@ -390,7 +390,7 @@ for k, recipe in RECIPES.items():
     flex_cards.append('''<article class="tp-card">
   %s
   <div class="tp-copy">
-    <p class="tp-tags"><span class="tp-tag">%s</span><span class="tp-tag tp-tag--flex">Flex page</span></p>
+    <p class="tp-tags"><span class="tp-tag">%s</span><span class="tp-tag tp-tag--flex">Flex</span></p>
     <h3><a href="%s">%s</a></h3>
     <p>%s</p>
     <p class="tp-sub">Built from %d trays, top to bottom</p>
@@ -426,14 +426,14 @@ templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   <div class="t-hero-in">
     <p class="t-eyebrow">LastPass support portal · design system</p>
     <h1>Four page types cover all eight requests</h1>
-    <p class="t-hero-sub">One Flex page type built from %d trays, plus %d special page types for the pages trays can’t build.</p>
+    <p class="t-hero-sub">The Flex page type, built from %d trays, plus %d special page types for the pages trays can’t build.</p>
     <div class="t-hero-actions" style="justify-content:center"><a class="t-btn t-btn--brand" href="components.html">See the trays and components</a></div>
   </div>
 </section>
 
 <section class="t-section" aria-labelledby="h-flex">
   <div class="t-wrap">
-    <div class="t-head"><div><h2 id="h-flex">Flex page</h2><p>One page type for any page built from trays. Editors stack trays in Page Builder; these six pages are example layouts, each shown as its stack of trays from top to bottom. Every tray also takes a background and an audience tag.</p></div></div>
+    <div class="t-head"><div><h2 id="h-flex">Flex page type</h2><p>The Flex page type: any page built from trays. Editors stack trays in Page Builder; these six pages are example layouts, each shown as its stack of trays from top to bottom. Every tray also takes a background and an audience tag.</p></div></div>
     <div class="tp-grid">%s</div>
   </div>
 </section>
@@ -465,5 +465,5 @@ templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
 with open(os.path.join(ROOT, "components.html"), "w", encoding="utf-8") as f:
     f.write(chrome("Page-building essentials — LastPass Support", "One Flex page type built from five trays, three special page types, and the components inside them.", components_main))
 with open(os.path.join(ROOT, "templates.html"), "w", encoding="utf-8") as f:
-    f.write(chrome("Page types — LastPass Support", "The LastPass support portal page types: one Flex page built from trays, and three special page types.", templates_main))
+    f.write(chrome("Page types — LastPass Support", "The LastPass support portal page types: the Flex page type built from trays, and three special page types.", templates_main))
 print("trays:", len(TRAYS), "| special:", len(SPECIAL), "| components:", len(COMPONENTS), "| flex examples:", len(RECIPES))

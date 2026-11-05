@@ -1,5 +1,5 @@
 {
- "note": "CMS schema for the LastPass support portal page types, organized the way an editor fills them in. Field types use the lastpass_cms manifest vocabulary (tools/schema-gen.mjs turns manifests into Schema Designer XDR) and groups follow docs/spec/field-groups.json (collapsible blocks in the edit form). Each field: name (stable element name), label (what the editor sees), type, required, help, and optional values/default/max. categories are CMS taxonomy tags on the page or tray; trays is the page's Page Builder area. Covers only the net-new work: the Flex page, three special page types, five trays and four components. The header, footer, article, search and other built pages are out of scope. Drives the schema tabs in components.html and the CMS schema panel on every page.",
+ "note": "CMS schema for the LastPass support portal page types, organized the way an editor fills them in. Field types use the lastpass_cms manifest vocabulary (tools/schema-gen.mjs turns manifests into Schema Designer XDR) and groups follow docs/spec/field-groups.json (collapsible blocks in the edit form). Each field: name (stable element name), label (what the editor sees), type, required, help, and optional values/default/max. categories are CMS taxonomy tags on the page or tray; trays is the page's Page Builder area. Covers only the net-new work: the Flex page type, three special page types, five trays and four components. The header, footer, article, search and other built pages are out of scope. Drives the schema tabs in components.html and the CMS schema panel on every page.",
  "types": {
   "text": "Short text",
   "text-multiline": "Text, a few lines",
@@ -77,8 +77,8 @@
  ],
  "page_types": {
   "flex": {
-   "name": "Flex page",
-   "about": "One page type for any page built from trays: hubs, topic overviews, FAQ, contact, landing pages. Fill in the page basics, then stack trays in Page Builder. The first tray is always a Hero.",
+   "name": "Flex page type",
+   "about": "The Flex page type: any page built from trays (hubs, topic overviews, FAQ, contact, landing pages). Fill in the page basics, then stack trays in Page Builder. The first tray is always a Hero.",
    "groups": [
     {
      "label": "Page basics",
@@ -1402,7 +1402,7 @@
  },
  "element_rule": "As tools/schema-gen.mjs writes them: rich xhtml_Name, image xpowerasset_Name, link xpowerlink_Name, component xpowercomponent_Name, lists xpowerlist_ + plural (Name + s, or Name + List when it already ends in s); other types keep the name.",
  "schema_names": {
-  "flex": "FlexPage",
+  "flex": "Flex",
   "releases": "ReleaseNotes",
   "downloads": "Downloads",
   "issues": "KnownIssues",
