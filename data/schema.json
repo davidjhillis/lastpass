@@ -99,7 +99,7 @@
  "page_types": {
   "flex": {
    "name": "Flex page type",
-   "about": "The Flex page type: any page built from trays (hubs, topic overviews, FAQ, contact, landing pages). Fill in the page basics, then stack trays in Page Builder. The first tray is always a Hero.",
+   "about": "The Flex page type: any page built from trays (hubs, topic overviews, contact, landing pages). Fill in the page basics, then stack trays in Page Builder. The first tray is always a Hero.",
    "groups": [
     {
      "label": "",

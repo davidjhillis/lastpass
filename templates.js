@@ -81,8 +81,8 @@
   var PAGES = [
     ['index.html', 'Page types'], ['components.html', 'Essentials'], null,
     ['hub-business.html', 'Mini hub'], ['topic-saas-monitoring.html', 'Topic: product'], ['topic-billing.html', 'Topic: utility'],
-    ['faq.html', 'FAQ'], ['contact-us.html', 'Contact Us'], ['lifecycle.html', 'Lifecycle'], null,
-    ['release-notes.html', 'Release notes'], ['downloads.html', 'Downloads'], ['known-issues.html', 'Known issues']
+    ['contact-us.html', 'Contact Us'], ['lifecycle.html', 'Lifecycle'], null,
+    ['faq.html', 'FAQ'], ['release-notes.html', 'Release notes'], ['downloads.html', 'Downloads'], ['known-issues.html', 'Known issues']
   ];
   if(window.self === window.top && document.querySelector('.t-notes-toggle') && !document.querySelector('.rv-nav')){
     var here = location.pathname.split('/').pop() || 'index.html';

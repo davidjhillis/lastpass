@@ -3,8 +3,8 @@
 and feedback.html (design feedback). templates.html redirects to index.html for old links.
 
 The scope is deliberately small: one Flex page type that editors build from
-five trays (content units) in Page Builder, plus three special page types for
-pages trays can't build (Release notes, Downloads, Known issues). Components
+five trays (content units) in Page Builder, plus four special page types for
+pages trays can't build (FAQ, Release notes, Downloads, Known issues). Components
 are the pieces placed inside a tray. Every example is cut from the page that
 uses it, so the library always shows what is built. Re-run after changing a page:
 
@@ -389,7 +389,7 @@ components_main = '''<main id="main">
   <details class="sc-fields sc-fields--page"><summary>Flex page type schema</summary><p class="sc-lede">%s</p>%s</details>
 %s
 <section class="ul-unit" id="special" aria-labelledby="h-special">
-  <div class="ul-head"><div><p class="ul-kind">Not built from trays</p><h2 id="h-special">Special page types</h2><p class="ul-purpose">Three pages that need records and behavior a stack of trays can’t give. Each has a fixed layout and still uses the Hero tray and the shared components.</p></div></div>
+  <div class="ul-head"><div><p class="ul-kind">Not built from trays</p><h2 id="h-special">Special page types</h2><p class="ul-purpose">Four pages that need a fixed layout and behavior a stack of trays can’t give: the FAQ page’s topic index, and the record lists of release notes, downloads and known issues. Each still uses the Hero tray and the shared components.</p></div></div>
   %s
 </section>
 <section class="ul-unit" id="components" aria-labelledby="h-components">
@@ -440,28 +440,28 @@ templates_main = '''<main id="main">
 <header class="lib-head"><div class="t-wrap">
     <p class="lib-eyebrow">Design review</p>
     <h1>Page types</h1>
-    <p class="lib-sub">One Flex page type for most pages, and three special page types.</p>
+    <p class="lib-sub">One Flex page type for most pages, and four special page types.</p>
   </div></header>
 
 <section class="t-section" aria-labelledby="h-flex">
   <div class="t-wrap">
-    <div class="t-head"><div><h2 id="h-flex">Flex</h2><p>Any page built by stacking trays. Six examples:</p></div><a class="t-more" href="components.html">The trays</a></div>
+    <div class="t-head"><div><h2 id="h-flex">Flex</h2><p>Any page built by stacking trays. Five examples:</p></div><a class="t-more" href="components.html">The trays</a></div>
     <div class="tp-grid tp-grid--3">%s</div>
   </div>
 </section>
 
 <section class="t-section t-section--wash" aria-labelledby="h-special">
   <div class="t-wrap">
-    <div class="t-head"><div><h2 id="h-special">Special page types</h2><p>Fixed layouts that list records.</p></div><a class="t-more" href="components.html#special">How they work</a></div>
+    <div class="t-head"><div><h2 id="h-special">Special page types</h2><p>Fixed layouts for pages a stack of trays can’t build.</p></div><a class="t-more" href="components.html#special">How they work</a></div>
     <div class="tp-grid tp-grid--3">%s</div>
   </div>
 </section>
 </main>''' % ("\n".join(flex_cards), "\n".join(special_cards))
 
 with open(os.path.join(ROOT, "components.html"), "w", encoding="utf-8") as f:
-    f.write(lib_chrome("Essentials — Design review", "One Flex page type built from five trays, three special page types, and the components inside them.", components_main))
+    f.write(lib_chrome("Essentials — Design review", "One Flex page type built from five trays, four special page types, and the components inside them.", components_main))
 with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
-    f.write(lib_chrome("Page types — Design review", "The LastPass support portal page types: the Flex page type built from trays, and three special page types.", templates_main))
+    f.write(lib_chrome("Page types — Design review", "The LastPass support portal page types: the Flex page type built from trays, and four special page types.", templates_main))
 # Old links to templates.html land on the home page
 with open(os.path.join(ROOT, "templates.html"), "w", encoding="utf-8") as f:
     f.write('<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><title>Page types — LastPass Support</title>'
