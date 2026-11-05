@@ -79,6 +79,15 @@ SCHEMA = json.loads(read("data/schema.json"))
 TYPES = SCHEMA["types"]
 
 
+def element_name(f):
+    """The XDR element name tools/schema-gen.mjs writes for this field."""
+    n, t = f["name"], f["type"]
+    if t in ("component[]", "link[]", "pagelink[]"):
+        return "xpowerlist_" + (n + "List" if n.endswith("s") else n + "s")
+    return {"rich": "xhtml_", "image": "xpowerasset_", "asset": "xpowerasset_", "link": "xpowerlink_", "pagelink": "xpowerlink_",
+            "component": "xpowercomponent_"}.get(t, "") + n if t not in ("categories", "trays") else n
+
+
 def schema_groups(groups):
     """Editor-facing schema: fields in the groups the edit form shows, with plain types and options."""
     out = []
@@ -91,13 +100,33 @@ def schema_groups(groups):
                     ('<b>%s</b> <span>default</span>' % H.escape(v)) if v == f.get("default") else H.escape(v) for v in f["values"])
             elif f.get("default"):
                 vals = '<p class="sf-vals"><span>Default</span> <b>%s</b></p>' % H.escape(f["default"])
-            items.append('<li class="sf"><div class="sf-top"><b class="sf-label">%s</b>%s<span class="sf-type">%s</span></div>%s%s<code class="sf-el">%s</code></li>' % (
+            items.append('<li class="sf"><div class="sf-top"><b class="sf-label">%s</b>%s<span class="sf-type">%s</span></div>%s%s<dl class="sf-meta"><div><dt>Element</dt><dd><code>%s</code></dd></div><div><dt>CMS type</dt><dd>%s</dd></div></dl></li>' % (
                 H.escape(f["label"]), '<span class="sf-req">Required</span>' if f["required"] else "", TYPES.get(f["type"], f["type"]),
-                '<p class="sf-help">%s</p>' % H.escape(f["help"]) if f.get("help") else "", vals, f["name"]))
+                '<p class="sf-help">%s</p>' % H.escape(f["help"]) if f.get("help") else "", vals, element_name(f), SCHEMA["cms_types"][f["type"]]))
         n = len(g["fields"])
         out.append('<section class="sg"><h4 class="sg-h">%s <span>%d field%s</span></h4>%s<ul class="sg-fields">%s</ul></section>' % (
             H.escape(g["label"]), n, "" if n == 1 else "s", '<p class="sg-help">%s</p>' % H.escape(g["help"]) if g.get("help") else "", "".join(items)))
     return '<div class="sg-wrap">%s</div>' % "".join(out)
+
+
+def schema_tree(name, friendly, kind, groups):
+    """The schema as Schema Designer lists it: schema, then each group block and its elements, in order."""
+    rows = []
+    for g in groups:
+        rows.append('<li class="st-group"><span class="st-ico" aria-hidden="true">▾</span><code>xpowergroupstart_%s</code><span class="st-lab">%s</span><span class="st-type">Group</span></li>' % (
+            re.sub(r"[^A-Za-z0-9]", "", g["label"]), H.escape(g["label"])))
+        for f in g["fields"]:
+            rows.append('<li class="st-el"><span class="st-ico" aria-hidden="true">%s</span><code>%s</code><span class="st-lab">%s%s</span><span class="st-type">%s</span></li>' % (
+                "◇" if f["type"] in ("categories", "trays") else "·", element_name(f), H.escape(f["label"]),
+                ' <b class="st-req" title="Required">*</b>' if f["required"] else "", SCHEMA["cms_types"][f["type"]]))
+        rows.append('<li class="st-end"><code>xpowergroupend_</code></li>')
+    return ('<figure class="st"><figcaption><span class="st-kind">%s</span><b>%s</b><span>Friendly name “%s” · DSS</span></figcaption>'
+            '<ol>%s</ol><p class="st-note">◇ not a schema element: tags are taxonomy on the item; trays are the Page Builder area. * required.</p></figure>') % (
+        kind, name, H.escape(friendly), "".join(rows))
+
+
+def schema_view(name, friendly, kind, groups, lede=""):
+    return '%s%s<h4 class="sc-h">Field details</h4>%s' % (lede, schema_tree(name, friendly, kind, groups), schema_groups(groups))
 
 
 def tray_groups(slug):
@@ -257,8 +286,8 @@ for slug, name, purpose, options, inside, merges, variants in TRAYS:
     figs = ([TRY] if slug == "feature" else []) + variant_figs(slug, variants)
     tr = SCHEMA["trays"][slug]
     figs = [tabs(slug, [("Examples", "\n".join(figs)),
-                        ("CMS schema", '<p class="sc-lede">Schema <code>%s</code>, friendly name “%s”. Editors see these fields when they add the tray in Page Builder.</p>' % (tr["name"].replace(" ", ""), tr["friendlyName"])
-                         + schema_groups(tray_groups(slug)))])]
+                        ("CMS schema", schema_view(SCHEMA["schema_names"][slug], tr["friendlyName"], "Component schema", tray_groups(slug),
+                                                  '<p class="sc-lede">Editors see these fields when they add the tray in Page Builder.</p>'))])]
     trays_html.append('''<section class="ul-unit" id="%s" aria-labelledby="h-%s">
   <div class="ul-head">
     <div>
@@ -293,8 +322,10 @@ for slug, name, purpose, why, options, variants in SPECIAL:
   %s
 </div>''' % (slug, PAGES[slug][0], name, purpose, why, dl(options), tabs("sp-" + slug, [
         ("Examples", "\n  ".join(variant_figs("sp-" + slug, variants))),
-        ("Page schema", '<p class="sc-lede">%s</p>' % H.escape(SCHEMA["page_types"][slug]["about"]) + schema_groups(SCHEMA["page_types"][slug]["groups"])),
-        ("%s record schema" % SCHEMA["page_types"][slug]["record"]["name"], '<p class="sc-lede">Each record is its own item in the CMS; this page lists them.</p>' + schema_groups(SCHEMA["page_types"][slug]["record"]["groups"]))])))
+        ("Page schema", schema_view(SCHEMA["schema_names"][slug], SCHEMA["page_types"][slug]["name"], "Page schema", SCHEMA["page_types"][slug]["groups"],
+                                     '<p class="sc-lede">%s</p>' % H.escape(SCHEMA["page_types"][slug]["about"]))),
+        ("%s record schema" % SCHEMA["page_types"][slug]["record"]["name"], schema_view(SCHEMA["schema_names"]["record:" + slug], SCHEMA["page_types"][slug]["record"]["name"], "Component schema", SCHEMA["page_types"][slug]["record"]["groups"],
+                                     '<p class="sc-lede">Each record is its own item in the CMS; this page lists them.</p>'))])))
 
 comp_html = "".join('''<article class="ul-comp" id="c-%s">
   <h3>%s</h3><p>%s</p>
@@ -345,7 +376,7 @@ components_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
 </section>
 </div>
 </main>''' % (len(TRAYS), len(SPECIAL), len(COMPONENTS), nav, len(TRAYS), shared_html, H.escape(SCHEMA["page_types"]["flex"]["about"]),
-             schema_groups(SCHEMA["page_types"]["flex"]["groups"]), "\n".join(trays_html),
+             schema_view("FlexPage", "Flex page", "Page schema", SCHEMA["page_types"]["flex"]["groups"]), "\n".join(trays_html),
              "\n  ".join(special_html), comp_html)
 
 # ---------------------------------------------------------------- templates.html

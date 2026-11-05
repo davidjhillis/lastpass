@@ -111,7 +111,9 @@
   var grid = document.querySelector('.ul-grid');
   if(grid){
     var g = false; try { g = localStorage.getItem('t-grid') === '1'; } catch(e){}
-    function setGrid(){ document.body.classList.toggle('show-grid', g); grid.setAttribute('aria-pressed', g ? 'true' : 'false'); grid.textContent = g ? 'Hide grid' : 'Show grid'; }
+    grid.setAttribute('role', 'switch'); grid.removeAttribute('aria-pressed');
+    grid.innerHTML = '<span>Grid</span><span class="t-switch" aria-hidden="true"></span>';
+    function setGrid(){ document.body.classList.toggle('show-grid', g); grid.setAttribute('aria-checked', g ? 'true' : 'false'); }
     grid.addEventListener('click', function(){ g = !g; try { localStorage.setItem('t-grid', g ? '1' : '0'); } catch(e){} setGrid(); });
     setGrid();
   }
@@ -141,12 +143,18 @@
   if(notesBtn && window.self === window.top && !document.querySelector('.ul-body, .tp-grid')){
     var dock = document.createElement('div'); dock.className = 't-dock';
     notesBtn.parentNode.insertBefore(dock, notesBtn);
-    var scBtn = document.createElement('button'); scBtn.type = 'button'; scBtn.className = 't-notes-toggle t-schema-btn';
+    var scBtn = document.createElement('button'); scBtn.type = 'button'; scBtn.className = 't-dock-btn t-schema-btn';
     scBtn.setAttribute('aria-haspopup', 'dialog');
     scBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg><span>CMS schema</span>';
     dock.appendChild(scBtn); dock.appendChild(notesBtn);
     var dlg = null;
     function esc(x){ return String(x).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    function elName(f){
+      var n = f.name, t = f.type;
+      if(t === 'component[]' || t === 'link[]' || t === 'pagelink[]') return 'xpowerlist_' + (/s$/.test(n) ? n + 'List' : n + 's');
+      if(t === 'categories' || t === 'trays') return n;
+      return ({rich: 'xhtml_', image: 'xpowerasset_', asset: 'xpowerasset_', link: 'xpowerlink_', pagelink: 'xpowerlink_', component: 'xpowercomponent_'}[t] || '') + n;
+    }
     function groups(S, gs){
       return '<div class="sg-wrap">' + gs.map(function(g){
         var n = g.fields.length;
@@ -156,21 +164,35 @@
               : (f['default'] ? '<p class="sf-vals"><span>Default</span> <b>' + esc(f['default']) + '</b></p>' : '');
             return '<li class="sf"><div class="sf-top"><b class="sf-label">' + esc(f.label) + '</b>' + (f.required ? '<span class="sf-req">Required</span>' : '') +
               '<span class="sf-type">' + esc(S.types[f.type] || f.type) + '</span></div>' + (f.help ? '<p class="sf-help">' + esc(f.help) + '</p>' : '') + vals +
-              '<code class="sf-el">' + esc(f.name) + '</code></li>';
+              '<dl class="sf-meta"><div><dt>Element</dt><dd><code>' + esc(elName(f)) + '</code></dd></div><div><dt>CMS type</dt><dd>' + esc(S.cms_types[f.type]) + '</dd></div></dl></li>';
           }).join('') + '</ul></section>';
       }).join('') + '</div>';
     }
+    function tree(S, name, friendly, kind, gs){
+      var rows = '';
+      gs.forEach(function(g){
+        rows += '<li class="st-group"><span class="st-ico" aria-hidden="true">▾</span><code>xpowergroupstart_' + esc(g.label.replace(/[^A-Za-z0-9]/g, '')) + '</code><span class="st-lab">' + esc(g.label) + '</span><span class="st-type">Group</span></li>';
+        g.fields.forEach(function(f){
+          rows += '<li class="st-el"><span class="st-ico" aria-hidden="true">' + (f.type === 'categories' || f.type === 'trays' ? '◇' : '·') + '</span><code>' + esc(elName(f)) + '</code><span class="st-lab">' + esc(f.label) +
+            (f.required ? ' <b class="st-req" title="Required">*</b>' : '') + '</span><span class="st-type">' + esc(S.cms_types[f.type]) + '</span></li>';
+        });
+        rows += '<li class="st-end"><code>xpowergroupend_</code></li>';
+      });
+      return '<figure class="st"><figcaption><span class="st-kind">' + kind + '</span><b>' + esc(name) + '</b><span>Friendly name “' + esc(friendly) + '” · DSS</span></figcaption><ol>' + rows +
+        '</ol><p class="st-note">◇ not a schema element: tags are taxonomy on the item; trays are the Page Builder area. * required.</p></figure>';
+    }
+    function view(S, name, friendly, kind, gs, lede){ return (lede || '') + tree(S, name, friendly, kind, gs) + '<h4 class="sc-h">Field details</h4>' + groups(S, gs); }
     function build(S){
       var P = S.pages[page]; if(!P) return null;
-      var T = S.page_types[P.type], panels = [['Page', '<p class="sc-lede">' + esc(T.about) + '</p>' + groups(S, T.groups)]];
+      var T = S.page_types[P.type], panels = [['Page', view(S, S.schema_names[P.type], T.name, 'Page schema', T.groups, '<p class="sc-lede">' + esc(T.about) + '</p>')]];
       if(P.trays){
         P.trays.forEach(function(t, i){
           var tr = S.trays[t[0]];
-          panels.push([(i + 1) + '. ' + tr.name, '<p class="sc-lede">Tray ' + (i + 1) + ' of ' + P.trays.length + ': <b>' + esc(tr.name) + '</b>, ' + esc(t[1]) + ', on a ' + esc(t[2]) + ' background.</p>' +
-            groups(S, tr.groups.concat(S.shared_tray_groups.filter(function(g){ return !(g.skip || []).includes(t[0]); })))]);
+          panels.push([(i + 1) + '. ' + tr.name, view(S, S.schema_names[t[0]], tr.friendlyName, 'Component schema', tr.groups.concat(S.shared_tray_groups.filter(function(g){ return !(g.skip || []).includes(t[0]); })),
+            '<p class="sc-lede">Tray ' + (i + 1) + ' of ' + P.trays.length + ': <b>' + esc(tr.name) + '</b>, ' + esc(t[1]) + ', on a ' + esc(t[2]) + ' background.</p>')]);
         });
       }
-      if(T.record) panels.push([T.record.name + ' record', '<p class="sc-lede">Each record is its own item in the CMS; this page lists them.</p>' + groups(S, T.record.groups)]);
+      if(T.record) panels.push([T.record.name + ' record', view(S, S.schema_names['record:' + P.type], T.record.name, 'Component schema', T.record.groups, '<p class="sc-lede">Each record is its own item in the CMS; this page lists them.</p>')]);
       var d = document.createElement('dialog'); d.className = 'sc-dialog'; d.setAttribute('aria-labelledby', 'sc-title');
       d.innerHTML = '<div class="sc-head"><div><p class="sc-kind">' + esc(T.name) + '</p><h2 id="sc-title">How this page is edited: ' + esc(P.label) + '</h2>' +
         (P.trays ? '<p class="sc-sub">' + P.trays.length + ' trays, top to bottom. Pick a tab to see the fields an editor fills in.</p>' : '<p class="sc-sub">A fixed layout: the page fields, then the records it lists.</p>') +
@@ -197,7 +219,9 @@
   var t = document.querySelector('.t-notes-toggle');
   if(t){
     var on = false; try { on = localStorage.getItem('t-notes') === '1'; } catch(e){}
-    function apply(){ document.body.classList.toggle('show-notes', on); t.setAttribute('aria-pressed', on ? 'true' : 'false'); t.querySelector('span').textContent = on ? 'Hide build notes' : 'Show build notes'; }
+    t.setAttribute('role', 'switch'); t.removeAttribute('aria-pressed');
+    t.innerHTML = '<span>Build notes</span><span class="t-switch" aria-hidden="true"></span>';
+    function apply(){ document.body.classList.toggle('show-notes', on); t.setAttribute('aria-checked', on ? 'true' : 'false'); }
     t.addEventListener('click', function(){ on = !on; try { localStorage.setItem('t-notes', on ? '1' : '0'); } catch(e){} apply(); });
     apply();
   }

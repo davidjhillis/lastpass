@@ -1396,5 +1396,35 @@
   "FAQ item": "New. A shared library of questions.",
   "Notice": "New for authors; uses the DITA note style already built.",
   "Table": "New for authors."
+ },
+ "cms_types": {
+  "text": "String",
+  "text-multiline": "String, multi-line",
+  "integer": "String (number)",
+  "enum": "Enumeration",
+  "date": "Date (localdate)",
+  "rich": "XHTML",
+  "image": "Asset (image)",
+  "link": "Link",
+  "link[]": "List of links (IGX_LINK)",
+  "component": "Component",
+  "component[]": "List of components (IGX_COMPONENT)",
+  "categories": "Taxonomy categories (not a schema element)",
+  "trays": "Page Builder area"
+ },
+ "element_rule": "As tools/schema-gen.mjs writes them: rich xhtml_Name, image xpowerasset_Name, link xpowerlink_Name, component xpowercomponent_Name, lists xpowerlist_ + plural (Name + s, or Name + List when it already ends in s); other types keep the name.",
+ "schema_names": {
+  "flex": "FlexPage",
+  "releases": "ReleaseNotes",
+  "downloads": "Downloads",
+  "issues": "KnownIssues",
+  "record:releases": "Release",
+  "record:downloads": "Download",
+  "record:issues": "KnownIssue",
+  "hero": "Hero",
+  "feature": "Feature",
+  "cards": "Cards",
+  "faq": "Faq",
+  "content": "Content"
  }
 }
