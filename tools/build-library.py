@@ -207,7 +207,7 @@ TRAYS = [
      ["FAQ item"], "FAQ group",
      [("Group", "hub", '<div class="t-faq"', None, "cl-stage--narrow")]),
     ("content", "Content", "Rich text for the body of a page, with link lists, tables, notices and short lists placed inside it.",
-     [("Body", "Rich text, H2 and H3 only"), ("Inside", "Link list, table, notice, media"), ("Navigation", "Adds an “On this page” list from its H2s")],
+     [("Body", "Rich text, H3 and below; the section heading and icon are tray settings"), ("Inside", "Link list, table, notice, media"), ("On this page", "Each tray’s heading joins the page’s list when the page turns it on")],
      ["Table", "Notice"], "link list, tables, capability table, notice, recent-items list",
      [("Link list", "billing", '<ul class="t-links">', None, "cl-stage--narrow"),
       ("Table", "billing", '<div class="t-table"', None, "cl-stage--narrow"),

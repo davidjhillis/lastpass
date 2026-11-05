@@ -60,6 +60,29 @@
      "why": "Plain text: the template makes it the tray's H2."
     },
     {
+     "name": "SectionIcon",
+     "label": "Icon beside the heading",
+     "type": "enum",
+     "required": false,
+     "help": "Optional. Shown beside the section heading and in the On this page list.",
+     "values": [
+      "None",
+      "Cart",
+      "Renew",
+      "Cancel",
+      "Plan",
+      "Questions",
+      "Card",
+      "Shield",
+      "People",
+      "Globe",
+      "Robot",
+      "Settings"
+     ],
+     "default": "None",
+     "why": "Choose one from the site’s icon set, so icons stay consistent and nobody uploads images."
+    },
+    {
      "name": "SectionIntro",
      "label": "Line under the heading",
      "type": "text-multiline",
@@ -113,6 +136,19 @@
        "required": false,
        "help": "Leave empty to use the page name followed by “— LastPass Support”.",
        "why": "Plain text: browser tabs can't show formatting."
+      },
+      {
+       "name": "PageNav",
+       "label": "Show an “On this page” list",
+       "type": "enum",
+       "required": false,
+       "help": "Lists each tray’s section heading, in order, as jump links beside the trays. Turn on for long pages such as FAQs and topic overviews.",
+       "values": [
+        "No",
+        "Yes"
+       ],
+       "default": "No",
+       "why": "One switch on the page: the list builds itself from the trays’ section headings, so adding, renaming or reordering a tray updates it."
       },
       {
        "name": "Trays",
@@ -1036,19 +1072,6 @@
        "required": true,
        "help": "Use H2 for sections and H3 below them. Insert link lists, tables, notes and images from the toolbar.",
        "why": "XHTML, because the message needs links and the odd bold word."
-      },
-      {
-       "name": "PageNav",
-       "label": "Show an “On this page” list",
-       "type": "enum",
-       "required": false,
-       "help": "Lists the H2s beside the content. Useful when there are four or more.",
-       "values": [
-        "No",
-        "Yes"
-       ],
-       "default": "No",
-       "why": "Yes or No as a two-value choice: the CMS has no checkbox type, and this behaves the same."
       }
      ]
     }
@@ -1358,7 +1381,27 @@
     ],
     [
      "content",
-     "link lists, notice, table, On this page",
+     "Purchase: link list and notice",
+     "white"
+    ],
+    [
+     "content",
+     "Renew: link list",
+     "white"
+    ],
+    [
+     "content",
+     "Cancel and refunds: link list",
+     "white"
+    ],
+    [
+     "content",
+     "Tasks by plan: table",
+     "white"
+    ],
+    [
+     "content",
+     "FAQs and troubleshooting: link list",
      "white"
     ],
     [
@@ -1379,7 +1422,17 @@
     ],
     [
      "faq",
-     "2 groups, On this page",
+     "AI Monitoring & Protect",
+     "white"
+    ],
+    [
+     "faq",
+     "LastPass VPN and LastPass Plus",
+     "white"
+    ],
+    [
+     "faq",
+     "Billing and trials",
      "white"
     ],
     [
