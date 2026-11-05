@@ -58,6 +58,10 @@ deployment as a lookalike site. For client review, protect the deployment
 
 Fields are grouped the way the edit form shows them, with editor-facing labels and help, in the `lastpass_cms` manifest vocabulary (`text`, `rich`, `enum`, `link`, `component[]` and so on), so `tools/schema-gen.mjs` there can generate them as Schema Designer XDR. On every new page, **CMS schema** (bottom right) opens a panel with a tab for the page and one per tray; `components.html` shows the same schemas under each tray's **CMS schema** tab.
 
+## Access code
+
+The whole site sits behind a shared access code (`middleware.js`, the same edge gate as the BCSB preview). Visitors see a neutral Ingeniux access page; the right code sets a 30-day cookie. The code is the `BASIC_AUTH_PASSWORD` environment variable in Vercel (Production and Preview). Changing it signs everyone out. If the variable is missing the site answers "Preview is not configured", so set it before deploying.
+
 ## Design feedback
 
 Reviewers pin numbered notes on any design page and track them to sign-off.
