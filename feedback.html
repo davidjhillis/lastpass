@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Design feedback — LastPass Support</title>
+<title>Feedback — Design review</title>
 <meta name="description" content="Reviewer notes on the new LastPass support page designs, with status.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
@@ -38,165 +38,19 @@
 
  /* brand tokens + .cta-link defined in styles.css */
 </style></head>
-<body class="bg-white text-ink">
+<body class="bg-white text-ink lib">
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-3 focus:left-3 focus:bg-white focus:px-4 focus:py-2 focus:rounded-md focus:ring-2 focus:ring-brand-600 focus:font-semibold">Skip to main content</a>
 
-<!-- Utility bar -->
-<div class="hidden sm:block border-b border-slate-100">
-  <div class="util-bar max-w-7xl mx-auto px-6 h-10 flex items-center justify-between gap-6">
-    <div class="langsel relative"><button type="button" class="langbtn flex items-center gap-1.5 hover:text-ink transition" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> <span class="langcur">English</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><ul class="langmenu hidden absolute left-0 top-full mt-2 w-52 bg-white rounded-xl ring-1 ring-slate-200 shadow-xl py-1.5 z-[70] text-left" role="listbox" aria-label="Language">
-    <li role="option" aria-selected="true"><a href="#" hreflang="en" lang="en" class="flex items-center justify-between gap-2 px-3.5 py-2 text-[14px] text-ink font-semibold hover:bg-slate-50">English <span class="text-brand-600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></a></li>
-    <li role="option" aria-selected="false"><a href="#" hreflang="de" lang="de" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Deutsch</a></li>
-    <li role="option" aria-selected="false"><a href="#" hreflang="es" lang="es" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Español</a></li>
-    <li role="option" aria-selected="false"><a href="#" hreflang="fr" lang="fr" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Français</a></li>
-    <li role="option" aria-selected="false"><a href="#" hreflang="it" lang="it" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Italiano</a></li>
-    <li role="option" aria-selected="false"><a href="#" hreflang="nl" lang="nl" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Nederlands</a></li>
-    <li role="option" aria-selected="false"><a href="#" hreflang="pt-BR" lang="pt-BR" class="block px-3.5 py-2 text-[14px] text-slate-600 hover:bg-slate-50 hover:text-ink">Português (Brasil)</a></li>
-  </ul></div>
-    <div class="flex items-center gap-6">
-    <a href="#" class="flex items-center gap-1.5 hover:text-ink transition" title="Service Operational">Service status <span class="status-ok" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></a>
-    <a href="#" class="hover:text-ink transition">Log in</a>
-    </div>
-  </div>
-</div>
-
-<!-- Header -->
-<nav id="nav" class="sticky top-0 z-50 bg-white/95 border-b border-slate-100 transition-shadow duration-200" style="backdrop-filter:saturate(1.4) blur(10px)">
-  <div class="max-w-7xl mx-auto px-6 h-[68px] flex items-center gap-8">
-    <a href="index.html" aria-label="LastPass Support home" class="flex items-center gap-2.5 shrink-0">
-      <img src="img/logo-approved.png" alt="LastPass" class="h-[26px] w-auto" width="433" height="100" decoding="async" fetchpriority="high">
-      
-    </a>
-    <div class="hidden lg:flex items-center gap-6 text-base">
-      <div class="navdd relative">
-        <button type="button" class="navlink font-bold transition-colors navdd-btn text-slate-700 hover:text-ink" aria-expanded="false" aria-haspopup="true">Learn <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div class="navdd-panel" role="menu"><ul><li><a href="https://www.lastpass.com/university" class="">LastPass University</a></li><li><a href="https://usertraining.lastpass.com/" class="">User training</a></li><li><a href="https://admintraining.lastpass.com/" class="">Business admin training</a></li><li><a href="https://community.lastpass.com/resource-center" class="">Resource center</a></li></ul></div>
-      </div>
-      <div class="navdd relative">
-        <button type="button" class="navlink font-bold transition-colors navdd-btn text-slate-700 hover:text-ink" aria-expanded="false" aria-haspopup="true">Connect <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div class="navdd-panel" role="menu"><ul><li><a href="https://community.lastpass.com/discussions" class="">Discussions</a></li><li><a href="https://community.lastpass.com/events/category" class="">Events</a></li></ul></div>
-      </div>
-      <div class="navdd relative">
-        <button type="button" class="navlink font-bold transition-colors navdd-btn text-slate-700 hover:text-ink" aria-expanded="false" aria-haspopup="true">Support <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div class="navdd-panel" role="menu"><ul><li><a href="https://community.lastpass.com/videos" class="">Videos</a></li><li><a href="https://lastpass.com/misc_download2.php" class="">Download LastPass</a></li><li><a href="https://lastpass.com/upgrade.php" class="">Release notes</a></li></ul></div>
-      </div>
-      <div class="navdd relative">
-        <button type="button" class="navlink font-bold transition-colors navdd-btn text-slate-700 hover:text-ink" aria-expanded="false" aria-haspopup="true">Discover <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div class="navdd-panel" role="menu"><ul><li><a href="https://community.lastpass.com/categories/lastpass-central" class="">LastPass Central</a></li><li><a href="https://community.lastpass.com/categories/new-to-lastpass" class="">New to LastPass</a></li><li><a href="https://community.lastpass.com/categories/advanced-features" class="">Advanced features</a></li><li><a href="https://community.lastpass.com/categories/business-features-and-tips" class="">Business features and tips</a></li><li><a href="https://community.lastpass.com/categories/families-and-individuals" class="">Families and individuals</a></li></ul></div>
-      </div>
-    </div>
-    <div class="ml-auto"></div>
-  </div>
-</nav>
-
-<nav class="t-crumbs" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="index.html">Home</a></li>
-    <li><span aria-current="page">Design feedback</span></li>
-  </ol>
-</nav>
 <main id="main">
+<header class="lib-head"><div class="t-wrap">
+    <p class="lib-eyebrow">Design review</p>
+    <h1>Feedback</h1>
+    <p class="lib-sub">Every note from reviewers, across all pages.</p>
+</div></header>
 <div class="t-wrap fb-page">
-  <h1>Design feedback</h1>
-  <p class="fb-page-sub">Every note from reviewers, across all pages.</p>
   <div id="fb-board" class="fb-board" aria-live="polite"><p class="fb-empty">Loading notes…</p></div>
 </div>
 </main>
-
-
-<!-- Footer -->
-<footer class="site-footer">
-  <div class="site-footer-inner">
-    <div class="site-footer-cols">
-      <div class="site-footer-col">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="https://community.lastpass.com/categories/lastpass-central">LastPass Central</a></li>
-          <li><a href="https://community.lastpass.com/">LastPass Community</a></li>
-          <li><a href="https://www.reddit.com/r/LastPassOfficial/">Reddit Community</a></li>
-          <li><a href="https://support.lastpass.com/">LastPass Support Center</a></li>
-          <li><a href="https://www.lastpass.com/university">LastPass University</a></li>
-          <li><a href="https://blog.lastpass.com/">LastPass Blog</a></li>
-        </ul>
-      </div>
-      <div class="site-footer-col">
-        <h4>Products and Services</h4>
-        <ul>
-          <li><a href="https://www.lastpass.com/products/personal">Personal</a></li>
-          <li><a href="https://www.lastpass.com/products/business">Business</a></li>
-          <li><a href="https://www.lastpass.com/partner">Partners</a></li>
-          <li><a href="https://www.lastpass.com/features/saas-protect">SaaS Protect</a></li>
-          <li><a href="https://www.lastpass.com/partner/managed-service-provider">MSPs</a></li>
-        </ul>
-      </div>
-      <div class="site-footer-col">
-        <h4>Our Company</h4>
-        <ul>
-          <li><a href="https://www.lastpass.com/company/about-us">About Us</a></li>
-          <li><a href="https://www.lastpass.com/company/careers">Careers We're hiring</a></li>
-          <li><a href="https://www.lastpass.com/legal-center">Legal Center</a></li>
-          <li><a href="https://compliance.lastpass.com/">Compliance</a></li>
-          <li><a href="contact-us.html">Contact Us</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="site-footer-connect">
-      <ul class="site-footer-social" aria-label="LastPass on social media">
-        <li><a href="https://www.facebook.com/LastPass" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.68 4.53-4.68 1.31 0 2.68.23 2.68.23v2.97h-1.5c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></a></li>
-        <li><a href="https://x.com/LastPass" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg></a></li>
-        <li><a href="https://www.instagram.com/lastpassofficial/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.94c-3.14 0-3.51.01-4.75.07-.9.04-1.38.19-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.33-.28.81-.32 1.71-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.04.9.19 1.38.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.33.13.81.28 1.71.32 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c.9-.04 1.38-.19 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.33.28-.81.32-1.71.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.04-.9-.19-1.38-.32-1.71a2.85 2.85 0 00-.69-1.06 2.85 2.85 0 00-1.06-.69c-.33-.13-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.75-.07zm0 3.3a4.6 4.6 0 110 9.2 4.6 4.6 0 010-9.2zm0 7.59a2.99 2.99 0 100-5.98 2.99 2.99 0 000 5.98zm5.86-7.81a1.08 1.08 0 11-2.15 0 1.08 1.08 0 012.15 0z"/></svg></a></li>
-        <li><a href="https://www.youtube.com/c/LastPass" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32" aria-hidden="true"><path d="M23.5 6.2a3 3 0 00-2.12-2.12C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.53A3 3 0 00.5 6.2 31.2 31.2 0 000 12a31.2 31.2 0 00.5 5.8 3 3 0 002.12 2.12c1.88.53 9.38.53 9.38.53s7.5 0 9.38-.53a3 3 0 002.12-2.12A31.2 31.2 0 0024 12a31.2 31.2 0 00-.5-5.8zM9.6 15.57V8.43L15.8 12l-6.2 3.57z"/></svg></a></li>
-        <li><a href="https://www.linkedin.com/company/lastpass" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0z"/></svg></a></li>
-        <li><a href="https://www.reddit.com/r/LastPassOfficial" aria-label="Reddit"><svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32" aria-hidden="true"><path d="M24 11.78a2.34 2.34 0 00-3.96-1.66c-1.6-1.05-3.75-1.72-6.14-1.8l1.05-4.93 3.43.73a1.67 1.67 0 103.33-.15 1.67 1.67 0 00-3.17-.73l-3.83-.81a.4.4 0 00-.48.31L12.9 8.3c-2.42.07-4.6.74-6.22 1.8a2.34 2.34 0 10-2.58 3.83 4.6 4.6 0 00-.06.73c0 3.7 4.3 6.7 9.6 6.7s9.6-3 9.6-6.7c0-.24-.02-.49-.06-.72A2.34 2.34 0 0024 11.78zM7.6 13.44a1.67 1.67 0 113.33 0 1.67 1.67 0 01-3.33 0zm9.3 4.4c-1.15 1.15-3.35 1.24-4 1.24-.64 0-2.84-.09-3.99-1.24a.43.43 0 01.61-.61c.73.73 2.28.98 3.38.98 1.1 0 2.66-.25 3.38-.98a.43.43 0 11.61.61zm-.29-2.73a1.67 1.67 0 110-3.34 1.67 1.67 0 010 3.34z"/></svg></a></li>
-      </ul>
-    </div>
-    <div class="site-footer-legal">
-      <span>© 2026 LastPass US LP. All rights reserved.</span>
-      <a href="https://www.lastpass.com/legal-center/privacy-notice">Privacy</a>
-      <a href="https://www.lastpass.com/legal-center/terms-of-service/business">Terms</a>
-      <a href="https://www.lastpass.com/legal-center/impressum">Imprint</a>
-      <a href="https://www.lastpass.com/legal-center/your-privacy-choices">Your Privacy Choices</a>
-      <a href="#">Cookie Preferences</a>
-    </div>
-  </div>
-</footer>
-<script>
-var _n=document.getElementById("nav");function _s(){_n.classList.toggle("is-scrolled",window.scrollY>8)}addEventListener("scroll",_s,{passive:true});_s();
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -4% 0px'});
-document.querySelectorAll('.reveal:not(.in)').forEach(function(el){io.observe(el)});
-</script>
-<script>
-(function(){
-  var sel=document.querySelector('.langsel'); if(!sel) return;
-  var btn=sel.querySelector('.langbtn'), menu=sel.querySelector('.langmenu'), cur=sel.querySelector('.langcur');
-  function close(){menu.classList.add('hidden');btn.setAttribute('aria-expanded','false');}
-  btn.addEventListener('click',function(e){e.stopPropagation();var hidden=menu.classList.toggle('hidden');btn.setAttribute('aria-expanded',hidden?'false':'true');});
-  document.addEventListener('click',function(e){if(!sel.contains(e.target))close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();cur.textContent=a.getAttribute('lang')==='en'?'English':a.textContent.trim();
-    menu.querySelectorAll('li').forEach(function(li){li.setAttribute('aria-selected', li.contains(a)?'true':'false');});close();});});
-})();
-</script>
-
-<script>
-(function(){
-  var dds=[].slice.call(document.querySelectorAll('.navdd'));
-  if(!dds.length) return;
-  function closeAll(except){dds.forEach(function(d){if(d!==except){d.classList.remove('open');var b=d.querySelector('.navdd-btn');if(b)b.setAttribute('aria-expanded','false');}});}
-  dds.forEach(function(d){
-    var btn=d.querySelector('.navdd-btn'); if(!btn) return;
-    btn.addEventListener('click',function(e){
-      e.preventDefault(); e.stopPropagation();
-      var open=!d.classList.contains('open');
-      closeAll(d);
-      d.classList.toggle('open', open);
-      btn.setAttribute('aria-expanded', open?'true':'false');
-    });
-  });
-  document.addEventListener('click',function(){closeAll();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
-})();
-</script>
 
 <button type="button" class="t-notes-toggle" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><span>Show build notes</span></button>
 <script src="templates.js" defer></script>

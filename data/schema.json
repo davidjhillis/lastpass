@@ -13,7 +13,7 @@
   "component": "Pick one item",
   "component[]": "List of items",
   "categories": "Tags",
-  "trays": "Trays"
+  "collection": "List of trays"
  },
  "shared_tray_groups": [
   {
@@ -116,11 +116,12 @@
       },
       {
        "name": "Trays",
-       "label": "Trays",
-       "type": "trays",
+       "label": "Content trays",
+       "type": "collection",
        "required": true,
        "help": "Add Hero, Feature, Cards, FAQ and Content trays in Page Builder, in any order after the Hero.",
-       "why": "Page Builder area: editors add, reorder and remove trays here."
+       "why": "A list of tray components, the same field the build’s other pages use: Page Builder adds, orders and removes them.",
+       "accepts": "Hero;Feature;Cards;Faq;Content"
       }
      ]
     }
@@ -153,10 +154,11 @@
       {
        "name": "Hero",
        "label": "Hero",
-       "type": "trays",
+       "type": "component",
        "required": true,
        "help": "One Hero tray, standard layout.",
-       "why": "Page Builder area holding just the Hero tray, so it matches every other page."
+       "why": "One Hero tray component: the page has a fixed layout, so it holds a single hero, not a list.",
+       "accepts": "Hero"
       },
       {
        "name": "Products",
@@ -246,7 +248,7 @@
       "label": "What changed",
       "fields": [
        {
-        "name": "Items",
+        "name": "Change",
         "label": "Changes",
         "type": "component[]",
         "required": true,
@@ -263,15 +265,16 @@
         "why": "A list: each row is a shared item or a typed change, in the editor's order."
        },
        {
-        "name": "FixesIssues",
+        "name": "FixedIssue",
         "label": "Known issues this fixes",
         "type": "component[]",
         "required": false,
         "help": "Picking an issue moves it to Recently resolved and links it here.",
-        "why": "Points to Known issue records, so resolving an issue updates both pages."
+        "why": "Points to Known issue records, so resolving an issue updates both pages.",
+        "accepts": "KnownIssue"
        },
        {
-        "name": "RelatedArticles",
+        "name": "RelatedArticle",
         "label": "Related articles",
         "type": "link[]",
         "required": false,
@@ -620,7 +623,7 @@
        "why": "A sentence or two of plain text under the headline."
       },
       {
-       "name": "Buttons",
+       "name": "Button",
        "label": "Buttons",
        "type": "component[]",
        "required": false,
@@ -699,7 +702,7 @@
        "why": "Plain text for a URL: one optional field turns any image into a video, with no separate video feature."
       },
       {
-       "name": "StartHere",
+       "name": "StartHereStep",
        "label": "Start-here steps",
        "type": "component[]",
        "required": false,
@@ -728,7 +731,7 @@
        "why": "Choose one: Off, all of support or this product map to three search setups."
       },
       {
-       "name": "QuickLinks",
+       "name": "QuickLink",
        "label": "Quick links bar",
        "type": "component[]",
        "required": false,
@@ -737,7 +740,7 @@
        "why": "A list of rows: each shortcut has text, an icon and a link."
       },
       {
-       "name": "ProofPoints",
+       "name": "ProofPoint",
        "label": "Proof points",
        "type": "component[]",
        "required": false,
@@ -781,7 +784,7 @@
        "why": "XHTML, because the message needs links and the odd bold word."
       },
       {
-       "name": "Ticks",
+       "name": "Tick",
        "label": "Bullet points",
        "type": "component[]",
        "required": false,
@@ -853,7 +856,7 @@
        "label": "Picture shape",
        "type": "enum",
        "required": false,
-       "help": "Original shows the whole picture. Pick a shape only for photos; it crops to that shape.",
+       "help": "Original shows the picture as it is. A shape crops photos to fit it; screenshots are never cropped: they sit whole inside the shape.",
        "values": [
         "Original",
         "Landscape 4:3",
@@ -861,7 +864,7 @@
         "Wide 16:9"
        ],
        "default": "Original",
-       "why": "Choose one: screenshots keep their shape so nothing is cut off; three tested shapes crop photos consistently."
+       "why": "Choose one: screenshots keep everything visible; three tested shapes let photos line up across a page."
       },
       {
        "name": "FocusPoint",
@@ -965,13 +968,14 @@
        "why": "A small number the template uses to cut each card's list."
       },
       {
-       "name": "Cards",
+       "name": "Card",
        "label": "Cards",
        "type": "component[]",
        "required": false,
        "help": "Hand-picked only. Up to 12, in order.",
        "max": 12,
-       "why": "A list of Card items in the editor's order."
+       "why": "A list of Card items in the editor's order.",
+       "accepts": "Card"
       }
      ]
     }
@@ -985,12 +989,13 @@
      "label": "",
      "fields": [
       {
-       "name": "Items",
+       "name": "FaqItem",
        "label": "Questions",
        "type": "component[]",
        "required": true,
        "help": "Pick from the FAQ library, in order. Edit an answer there and it updates everywhere.",
-       "why": "A list: each row is a shared item or a typed change, in the editor's order."
+       "why": "A list: each row is a shared item or a typed change, in the editor's order.",
+       "accepts": "FaqItem"
       },
       {
        "name": "FirstOpen",
@@ -1453,9 +1458,9 @@
   "component": "Component",
   "component[]": "List of components (IGX_COMPONENT)",
   "categories": "Taxonomy categories (not a schema element)",
-  "trays": "Page Builder area"
+  "collection": "List of trays (IGX_COMPONENT)"
  },
- "element_rule": "As tools/schema-gen.mjs writes them: rich xhtml_Name, image xpowerasset_Name, link xpowerlink_Name, component xpowercomponent_Name, lists xpowerlist_ + plural (Name + s, or Name + List when it already ends in s); other types keep the name.",
+ "element_rule": "As tools/schema-gen.mjs writes them: rich xhtml_Name, image xpowerasset_Name, link xpowerlink_Name, component xpowercomponent_Name. A list field is named for one item: Button becomes xpowerlist_Buttons (Name + s, or Name + List when it already ends in s), each item xpowercomponent_Button (or xpowerlink_ for links), accepting its own child schema (Schema + Name, e.g. HeroButton) or a shared one (Card, FaqItem). The page’s trays are xpowerlist_Trays, each item a Tray, accepting the tray schemas. Taxonomy categories are not schema elements.",
  "schema_names": {
   "flex": "Flex",
   "releases": "ReleaseNotes",

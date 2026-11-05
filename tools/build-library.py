@@ -84,12 +84,33 @@ def element_name(f):
     """The XDR element name tools/schema-gen.mjs writes for this field."""
     n, t = f["name"], f["type"]
     if t in ("component[]", "link[]", "pagelink[]"):
-        return "xpowerlist_" + (n + "List" if n.endswith("s") else n + "s")
+        return "xpowerlist_" + (n + "List" if n.endswith("s") else n + "s")   # named for one item: Button -> Buttons
+    if t == "collection":
+        return "xpowerlist_" + n                                              # the page's Trays
     return {"rich": "xhtml_", "image": "xpowerasset_", "asset": "xpowerasset_", "link": "xpowerlink_", "pagelink": "xpowerlink_",
-            "component": "xpowercomponent_"}.get(t, "") + n if t not in ("categories", "trays") else n
+            "component": "xpowercomponent_"}.get(t, "") + n if t != "categories" else n
 
 
-def schema_groups(groups):
+def item_of(f, schema):
+    """What one row of a list is, and which schemas it accepts."""
+    t = f["type"]
+    if t == "collection":
+        return "each item xpowercomponent_Tray, accepts " + ", ".join(f["accepts"].split(";"))
+    if t == "component[]":
+        return "each item xpowercomponent_%s, accepts %s" % (f["name"], f.get("accepts") or schema + f["name"])
+    if t in ("link[]", "pagelink[]"):
+        return "each item xpowerlink_" + f["name"]
+    if t == "component" and f.get("accepts"):
+        return "accepts " + f["accepts"]
+    return ""
+
+
+def cms_type(f, schema):
+    i = item_of(f, schema)
+    return SCHEMA["cms_types"][f["type"]] + (" · " + i if i else "")
+
+
+def schema_groups(groups, schema=""):
     """Editor-facing schema: fields in the groups the edit form shows, with plain types and options."""
     out = []
     for g in groups:
@@ -103,7 +124,7 @@ def schema_groups(groups):
                 vals = '<p class="sf-vals"><span>Default</span> <b>%s</b></p>' % H.escape(f["default"])
             items.append('<li class="sf"><div class="sf-top"><b class="sf-label">%s</b>%s<span class="sf-type">%s</span></div>%s%s<dl class="sf-meta"><div><dt>Element</dt><dd><code>%s</code></dd></div><div><dt>CMS type</dt><dd>%s</dd></div><div class="sf-why"><dt>Why this type</dt><dd>%s</dd></div></dl></li>' % (
                 H.escape(f["label"]), '<span class="sf-req">Required</span>' if f["required"] else "", TYPES.get(f["type"], f["type"]),
-                '<p class="sf-help">%s</p>' % H.escape(f["help"]) if f.get("help") else "", vals, element_name(f), SCHEMA["cms_types"][f["type"]], H.escape(f.get("why", ""))))
+                '<p class="sf-help">%s</p>' % H.escape(f["help"]) if f.get("help") else "", vals, element_name(f), H.escape(cms_type(f, schema)), H.escape(f.get("why", ""))))
         n = len(g["fields"])
         head = '<h4 class="sg-h">%s <span>%d field%s</span></h4>' % (H.escape(g["label"]), n, "" if n == 1 else "s") if g["label"] else ""
         out.append('<section class="sg%s">%s%s<ul class="sg-fields">%s</ul></section>' % (
@@ -121,17 +142,17 @@ def schema_tree(name, friendly, kind, groups):
             re.sub(r"[^A-Za-z0-9]", "", g["label"]), H.escape(g["label"])))
         for f in g["fields"]:
             rows.append('<li class="st-el%s">' % (" st-el--flat" if flat else "") + '<span class="st-ico" aria-hidden="true">%s</span><code>%s</code><span class="st-lab">%s%s</span><span class="st-type">%s</span><span class="st-why">%s</span></li>' % (
-                "◇" if f["type"] in ("categories", "trays") else "·", element_name(f), H.escape(f["label"]),
-                ' <b class="st-req" title="Required">*</b>' if f["required"] else "", SCHEMA["cms_types"][f["type"]], H.escape(f.get("why", ""))))
+                "◇" if f["type"] == "categories" else "·", element_name(f), H.escape(f["label"]),
+                ' <b class="st-req" title="Required">*</b>' if f["required"] else "", H.escape(cms_type(f, name)), H.escape(f.get("why", ""))))
         if not flat:
             rows.append('<li class="st-end"><code>xpowergroupend_</code></li>')
     return ('<figure class="st"><figcaption><span class="st-kind">%s</span><b>%s</b><span>Friendly name “%s” · DSS</span></figcaption>'
-            '<ol><li class="st-cols" aria-hidden="true"><span></span><span>Element</span><span>Label</span><span>CMS type</span><span>Why this type</span></li>%s</ol><p class="st-note">◇ not a schema element: tags are taxonomy on the item; trays are the Page Builder area. * required.</p></figure>') % (
+            '<ol><li class="st-cols" aria-hidden="true"><span></span><span>Element</span><span>Label</span><span>CMS type</span><span>Why this type</span></li>%s</ol><p class="st-note">◇ not a schema element: tags are taxonomy on the item. * required.</p></figure>') % (
         kind, name, H.escape(friendly), "".join(rows))
 
 
 def schema_view(name, friendly, kind, groups, lede=""):
-    return '%s%s<h4 class="sc-h">Field details</h4>%s' % (lede, schema_tree(name, friendly, kind, groups), schema_groups(groups))
+    return '%s%s<h4 class="sc-h">Field details</h4>%s' % (lede, schema_tree(name, friendly, kind, groups), schema_groups(groups, name))
 
 
 def tray_groups(slug):
@@ -165,7 +186,7 @@ TRAYS = [
       ("Marketing, with search and a start-here list", "hub", '<section class="mk-hero"', None, "")]),
     ("feature", "Feature", "Media on one side and a message on the other, or a full-width banner that asks for one action.",
      [("Media side", "Left or right, or none for a banner"), ("Media", "Screenshot or photo, optionally with a Vimeo link"),
-      ("Frame", "Original shape (default, never cropped), or 4:3, 1:1 or 16:9 with a focus point for photos"),
+      ("Frame", "Original (default), or 4:3, 1:1 or 16:9. Photos crop to the shape at a focus point; screenshots are never cropped"),
       ("Content", "Badge or kicker, heading, text, up to 4 ticks, up to 2 buttons or links")],
      [], "feature tray, spotlight, CTA band, help banner",
      [("Media left, on white (try the options)", "saas", '<section class="u" data-bg="white" aria-labelledby="h-products"', None, "cl-stage--unit"),
@@ -242,6 +263,17 @@ FLEX_DESC = {
 REQ = {"hub": "Request 1", "saas": "Request 2", "billing": "Request 2", "faq": "Request 3", "contact": "Request 4",
        "lifecycle": "Request 8", "releases": "Request 5", "downloads": "Request 6", "issues": "Request 7"}
 
+
+
+def lib_chrome(title, desc, main):
+    """Review pages (page types, essentials, feedback): no site header, menus or footer."""
+    src = SRC["billing"]
+    b = src.index("<body")
+    skip = src[src.index(">", b) + 1:src.index("<!-- Utility bar -->")]
+    tail = src[src.index('<button type="button" class="t-notes-toggle"'):]
+    out = src[:b] + '<body class="bg-white text-ink lib">' + skip + main + "\n\n" + tail
+    out = re.sub(r"<title>.*?</title>", "<title>%s</title>" % H.escape(title), out, count=1)
+    return re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="%s">' % H.escape(desc), out, count=1)
 
 
 def chrome(title, desc, main):
@@ -331,26 +363,15 @@ comp_html = "".join('''<article class="ul-comp" id="c-%s">
   <div class="ul-spec">%s</div>
   <details class="sc-fields"><summary>Fields</summary>%s</details>
 </article>''' % (slugify(n), n, d, SCHEMA["scope"][n], ", ".join('<a href="#%s">%s</a>' % (t[0], t[1]) for t in TRAYS if t[1] in used), spec,
-                  schema_groups(SCHEMA["components"][n])) for n, d, used, spec in COMPONENTS)
+                  schema_groups(SCHEMA["components"][n], n.replace(" ", "").replace("FAQitem", "FaqItem"))) for n, d, used, spec in COMPONENTS)
 shared_html = "".join('<li><b>%s</b><span>%s</span></li>' % (a, b) for a, b in SHARED)
 
-components_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="index.html">Home</a></li>
-    <li><span aria-current="page">Page-building essentials</span></li>
-  </ol>
-</nav>
-
-<main id="main">
-<section class="t-hero t-hero--center t-hero--compact">
-  <div class="t-hero-bg" aria-hidden="true"></div>
-  <div class="t-hero-scrim" aria-hidden="true"></div>
-  <div class="t-hero-in">
-    <p class="t-eyebrow">LastPass support portal · design system</p>
+components_main = '''<main id="main">
+<header class="lib-head"><div class="t-wrap">
+    <p class="lib-eyebrow">Design review</p>
     <h1>Page-building essentials</h1>
-    <p class="t-hero-sub">The net-new work: the Flex page type, built from %d trays, %d special page types, and %d new components. Header, footer, articles and search are already built and not covered here.</p>
-  </div>
-</section>
+    <p class="lib-sub">The net-new work: the Flex page type, built from %d trays, %d special page types, and %d new components. Header, footer, articles and search are already built and not covered here.</p>
+  </div></header>
 
 <nav class="ul-nav" aria-label="Trays and page types"><div class="t-wrap"><ul>%s</ul><button type="button" class="ul-grid" aria-pressed="false">Show grid</button></div></nav>
 
@@ -411,15 +432,11 @@ flex_cards = [card(k, FLEX_DESC[k]) for k in RECIPES]
 special_cards = [card(s[0], SPECIAL_DESC[s[0]]) for s in SPECIAL]
 
 templates_main = '''<main id="main">
-<section class="t-hero t-hero--center t-hero--compact">
-  <div class="t-hero-bg" aria-hidden="true"></div>
-  <div class="t-hero-scrim" aria-hidden="true"></div>
-  <div class="t-hero-in">
-    <p class="t-eyebrow">LastPass support portal</p>
+<header class="lib-head"><div class="t-wrap">
+    <p class="lib-eyebrow">Design review</p>
     <h1>Page types</h1>
-    <p class="t-hero-sub">One Flex page type for most pages, and three special page types.</p>
-  </div>
-</section>
+    <p class="lib-sub">One Flex page type for most pages, and three special page types.</p>
+  </div></header>
 
 <section class="t-section" aria-labelledby="h-flex">
   <div class="t-wrap">
@@ -437,28 +454,25 @@ templates_main = '''<main id="main">
 </main>''' % ("\n".join(flex_cards), "\n".join(special_cards))
 
 with open(os.path.join(ROOT, "components.html"), "w", encoding="utf-8") as f:
-    f.write(chrome("Page-building essentials — LastPass Support", "One Flex page type built from five trays, three special page types, and the components inside them.", components_main))
+    f.write(lib_chrome("Essentials — Design review", "One Flex page type built from five trays, three special page types, and the components inside them.", components_main))
 with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
-    f.write(chrome("Page types — LastPass Support", "The LastPass support portal page types: the Flex page type built from trays, and three special page types.", templates_main))
+    f.write(lib_chrome("Page types — Design review", "The LastPass support portal page types: the Flex page type built from trays, and three special page types.", templates_main))
 # Old links to templates.html land on the home page
 with open(os.path.join(ROOT, "templates.html"), "w", encoding="utf-8") as f:
     f.write('<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><title>Page types — LastPass Support</title>'
             '<meta name="robots" content="noindex"><link rel="canonical" href="index.html">'
             '<meta http-equiv="refresh" content="0; url=index.html"><script>location.replace("index.html" + location.hash)</script></head>'
             '<body><p><a href="index.html">Page types</a></p></body></html>\n')
-feedback_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="index.html">Home</a></li>
-    <li><span aria-current="page">Design feedback</span></li>
-  </ol>
-</nav>
-<main id="main">
+feedback_main = '''<main id="main">
+<header class="lib-head"><div class="t-wrap">
+    <p class="lib-eyebrow">Design review</p>
+    <h1>Feedback</h1>
+    <p class="lib-sub">Every note from reviewers, across all pages.</p>
+</div></header>
 <div class="t-wrap fb-page">
-  <h1>Design feedback</h1>
-  <p class="fb-page-sub">Every note from reviewers, across all pages.</p>
   <div id="fb-board" class="fb-board" aria-live="polite"><p class="fb-empty">Loading notes…</p></div>
 </div>
 </main>'''
 with open(os.path.join(ROOT, "feedback.html"), "w", encoding="utf-8") as f:
-    f.write(chrome("Design feedback — LastPass Support", "Reviewer notes on the new LastPass support page designs, with status.", feedback_main))
+    f.write(lib_chrome("Feedback — Design review", "Reviewer notes on the new LastPass support page designs, with status.", feedback_main))
 print("trays:", len(TRAYS), "| special:", len(SPECIAL), "| components:", len(COMPONENTS), "| flex examples:", len(RECIPES))

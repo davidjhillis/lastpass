@@ -82,15 +82,15 @@
     ['index.html', 'Page types'], ['components.html', 'Essentials'], null,
     ['hub-business.html', 'Mini hub'], ['topic-saas-monitoring.html', 'Topic: product'], ['topic-billing.html', 'Topic: utility'],
     ['faq.html', 'FAQ'], ['contact-us.html', 'Contact Us'], ['lifecycle.html', 'Lifecycle'], null,
-    ['release-notes.html', 'Release notes'], ['downloads.html', 'Downloads'], ['known-issues.html', 'Known issues'], null,
-    ['feedback.html', 'Feedback']
+    ['release-notes.html', 'Release notes'], ['downloads.html', 'Downloads'], ['known-issues.html', 'Known issues']
   ];
   if(window.self === window.top && document.querySelector('.t-notes-toggle') && !document.querySelector('.rv-nav')){
     var here = location.pathname.split('/').pop() || 'index.html';
     var rv = document.createElement('nav'); rv.className = 'rv-nav'; rv.setAttribute('aria-label', 'Design review pages');
     rv.innerHTML = '<div class="rv-in"><span class="rv-label">Design review</span><ul>' + PAGES.map(function(p){
       return p ? '<li><a href="' + p[0] + '"' + (p[0] === here ? ' aria-current="page"' : '') + '>' + p[1] + '</a></li>' : '<li class="rv-sep" aria-hidden="true"></li>';
-    }).join('') + '</ul></div>';
+    }).join('') + '</ul>' +
+      '<a class="rv-fb" href="feedback.html"' + (here === 'feedback.html' ? ' aria-current="page"' : '') + '><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a></div>';
     document.body.insertBefore(rv, document.body.firstChild);
     document.documentElement.classList.add('has-rv');   // the bar sticks; sticky page parts sit below it
     var cur = rv.querySelector('[aria-current]'), list = rv.querySelector('ul');
@@ -105,7 +105,7 @@
         var k = btn.getAttribute('data-set'), v = btn.getAttribute('data-val');
         if(k === 'media'){ var t = fig.querySelector('.mk-tray'); if(t) t.setAttribute('data-media', v); }
         if(k === 'bg'){ var u = fig.querySelector('.u'); if(u) u.setAttribute('data-bg', v); }
-        if(k === 'ratio'){ var m = fig.querySelector('.mk-tray-media'); if(m) m.style.setProperty('--ratio', v); }
+        if(k === 'ratio'){ var m = fig.querySelector('.mk-tray-media'); if(m){ m.style.setProperty('--ratio', v); m.setAttribute('data-frame', v); } }
         bar.querySelectorAll('button[data-set="' + k + '"]').forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
       });
     });
@@ -153,13 +153,24 @@
     dock.appendChild(scBtn); dock.appendChild(notesBtn);
     var dlg = null;
     function esc(x){ return String(x).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    // As tools/schema-gen.mjs writes them. A list field is named for one item: Button -> xpowerlist_Buttons.
     function elName(f){
       var n = f.name, t = f.type;
       if(t === 'component[]' || t === 'link[]' || t === 'pagelink[]') return 'xpowerlist_' + (/s$/.test(n) ? n + 'List' : n + 's');
-      if(t === 'categories' || t === 'trays') return n;
+      if(t === 'collection') return 'xpowerlist_' + n;
+      if(t === 'categories') return n;
       return ({rich: 'xhtml_', image: 'xpowerasset_', asset: 'xpowerasset_', link: 'xpowerlink_', pagelink: 'xpowerlink_', component: 'xpowercomponent_'}[t] || '') + n;
     }
-    function groups(S, gs){
+    // What one row of a list is, and which schemas it accepts
+    function itemOf(f, schema){
+      if(f.type === 'collection') return 'each item xpowercomponent_Tray, accepts ' + f.accepts.split(';').join(', ');
+      if(f.type === 'component[]') return 'each item xpowercomponent_' + f.name + ', accepts ' + (f.accepts || schema + f.name);
+      if(f.type === 'link[]' || f.type === 'pagelink[]') return 'each item xpowerlink_' + f.name;
+      if(f.type === 'component' && f.accepts) return 'accepts ' + f.accepts;
+      return '';
+    }
+    function cmsType(S, f, schema){ var i = itemOf(f, schema); return S.cms_types[f.type] + (i ? ' · ' + i : ''); }
+    function groups(S, gs, schema){
       return '<div class="sg-wrap">' + gs.map(function(g){
         var n = g.fields.length;
         return '<section class="sg' + (g.label ? '' : ' sg--flat') + '">' + (g.label ? '<h4 class="sg-h">' + esc(g.label) + ' <span>' + n + ' field' + (n === 1 ? '' : 's') + '</span></h4>' : '') +
@@ -168,7 +179,7 @@
               : (f['default'] ? '<p class="sf-vals"><span>Default</span> <b>' + esc(f['default']) + '</b></p>' : '');
             return '<li class="sf"><div class="sf-top"><b class="sf-label">' + esc(f.label) + '</b>' + (f.required ? '<span class="sf-req">Required</span>' : '') +
               '<span class="sf-type">' + esc(S.types[f.type] || f.type) + '</span></div>' + (f.help ? '<p class="sf-help">' + esc(f.help) + '</p>' : '') + vals +
-              '<dl class="sf-meta"><div><dt>Element</dt><dd><code>' + esc(elName(f)) + '</code></dd></div><div><dt>CMS type</dt><dd>' + esc(S.cms_types[f.type]) + '</dd></div><div class="sf-why"><dt>Why this type</dt><dd>' + esc(f.why || '') + '</dd></div></dl></li>';
+              '<dl class="sf-meta"><div><dt>Element</dt><dd><code>' + esc(elName(f)) + '</code></dd></div><div><dt>CMS type</dt><dd>' + esc(cmsType(S, f, schema)) + '</dd></div><div class="sf-why"><dt>Why this type</dt><dd>' + esc(f.why || '') + '</dd></div></dl></li>';
           }).join('') + '</ul></section>';
       }).join('') + '</div>';
     }
@@ -178,15 +189,15 @@
         var flat = !g.label;
         if(!flat) rows += '<li class="st-group"><span class="st-ico" aria-hidden="true">▾</span><code>xpowergroupstart_' + esc(g.label.replace(/[^A-Za-z0-9]/g, '')) + '</code><span class="st-lab">' + esc(g.label) + '</span><span class="st-type">Group</span><span class="st-why"></span></li>';
         g.fields.forEach(function(f){
-          rows += '<li class="st-el' + (flat ? ' st-el--flat' : '') + '"><span class="st-ico" aria-hidden="true">' + (f.type === 'categories' || f.type === 'trays' ? '◇' : '·') + '</span><code>' + esc(elName(f)) + '</code><span class="st-lab">' + esc(f.label) +
-            (f.required ? ' <b class="st-req" title="Required">*</b>' : '') + '</span><span class="st-type">' + esc(S.cms_types[f.type]) + '</span><span class="st-why">' + esc(f.why || '') + '</span></li>';
+          rows += '<li class="st-el' + (flat ? ' st-el--flat' : '') + '"><span class="st-ico" aria-hidden="true">' + (f.type === 'categories' ? '◇' : '·') + '</span><code>' + esc(elName(f)) + '</code><span class="st-lab">' + esc(f.label) +
+            (f.required ? ' <b class="st-req" title="Required">*</b>' : '') + '</span><span class="st-type">' + esc(cmsType(S, f, name)) + '</span><span class="st-why">' + esc(f.why || '') + '</span></li>';
         });
         if(!flat) rows += '<li class="st-end"><code>xpowergroupend_</code></li>';
       });
       return '<figure class="st"><figcaption><span class="st-kind">' + kind + '</span><b>' + esc(name) + '</b><span>Friendly name “' + esc(friendly) + '” · DSS</span></figcaption><ol><li class="st-cols" aria-hidden="true"><span></span><span>Element</span><span>Label</span><span>CMS type</span><span>Why this type</span></li>' + rows +
-        '</ol><p class="st-note">◇ not a schema element: tags are taxonomy on the item; trays are the Page Builder area. * required.</p></figure>';
+        '</ol><p class="st-note">◇ not a schema element: tags are taxonomy on the item. * required.</p></figure>';
     }
-    function view(S, name, friendly, kind, gs, lede){ return (lede || '') + tree(S, name, friendly, kind, gs) + '<h4 class="sc-h">Field details</h4>' + groups(S, gs); }
+    function view(S, name, friendly, kind, gs, lede){ return (lede || '') + tree(S, name, friendly, kind, gs) + '<h4 class="sc-h">Field details</h4>' + groups(S, gs, name); }
     function build(S){
       var P = S.pages[page]; if(!P) return null;
       var T = S.page_types[P.type], panels = [['Page', view(S, S.schema_names[P.type], T.name, 'Page schema', T.groups, '<p class="sc-lede">' + esc(T.about) + '</p>')]];
