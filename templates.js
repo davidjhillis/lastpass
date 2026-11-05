@@ -82,7 +82,8 @@
     ['templates.html', 'Page types'], ['components.html', 'Essentials'], null,
     ['hub-business.html', 'Mini hub'], ['topic-saas-monitoring.html', 'Topic: product'], ['topic-billing.html', 'Topic: utility'],
     ['faq.html', 'FAQ'], ['contact-us.html', 'Contact Us'], ['lifecycle.html', 'Lifecycle'], null,
-    ['release-notes.html', 'Release notes'], ['downloads.html', 'Downloads'], ['known-issues.html', 'Known issues']
+    ['release-notes.html', 'Release notes'], ['downloads.html', 'Downloads'], ['known-issues.html', 'Known issues'], null,
+    ['feedback.html', 'Feedback']
   ];
   if(window.self === window.top && document.querySelector('.t-notes-toggle') && !document.querySelector('.rv-nav')){
     var here = location.pathname.split('/').pop() || 'index.html';
@@ -142,7 +143,7 @@
   var notesBtn = document.querySelector('.t-notes-toggle');
   var page = location.pathname.split('/').pop() || 'index.html';
   // Pages only: the library and index show schemas inline
-  if(notesBtn && window.self === window.top && !document.querySelector('.ul-body, .tp-grid')){
+  if(notesBtn && window.self === window.top && !document.querySelector('.ul-body, .tp-grid, #fb-board')){
     var dock = document.createElement('div'); dock.className = 't-dock';
     notesBtn.parentNode.insertBefore(dock, notesBtn);
     var scBtn = document.createElement('button'); scBtn.type = 'button'; scBtn.className = 't-dock-btn t-schema-btn';
@@ -196,24 +197,26 @@
         });
       }
       if(T.record) panels.push([T.record.name + ' record', view(S, S.schema_names['record:' + P.type], T.record.name, 'Component schema', T.record.groups, '<p class="sc-lede">Each record is its own item in the CMS; this page lists them.</p>')]);
-      var d = document.createElement('dialog'); d.className = 'sc-dialog'; d.setAttribute('aria-labelledby', 'sc-title');
+      var d = document.createElement('dialog'); d.className = 'sc-dialog'; d.id = 'sc-dialog'; d.setAttribute('aria-labelledby', 'sc-title');
       d.innerHTML = '<div class="sc-head"><div><p class="sc-kind">' + esc(T.name) + '</p><h2 id="sc-title">How this page is edited: ' + esc(P.label) + '</h2>' +
         (P.trays ? '<p class="sc-sub">' + P.trays.length + ' trays, top to bottom. Pick a tab to see the fields an editor fills in.</p>' : '<p class="sc-sub">A fixed layout: the page fields, then the records it lists.</p>') +
-        '</div><button type="button" class="sc-close" aria-label="Close">&times;</button></div>' +
+        '</div><div class="sc-head-acts">' + (window.FB ? '<button type="button" class="sc-fb">Add feedback</button>' : '') + '<button type="button" class="sc-close" aria-label="Close">&times;</button></div></div>' +
         '<div class="sc-tabs" data-tabs><div class="sc-tablist" role="tablist" aria-label="Schema">' +
         panels.map(function(p, i){ return '<button type="button" role="tab" id="sct-' + i + '" aria-controls="scp-' + i + '" aria-selected="' + (i ? 'false' : 'true') + '"' + (i ? ' tabindex="-1"' : '') + '>' + esc(p[0]) + '</button>'; }).join('') +
         '</div>' + panels.map(function(p, i){ return '<div role="tabpanel" id="scp-' + i + '" aria-labelledby="sct-' + i + '" class="sc-panel"' + (i ? ' hidden' : '') + '>' + p[1] + '</div>'; }).join('') + '</div>' +
         '<p class="sc-foot">Field types follow the lastpass_cms manifests, so <code>tools/schema-gen.mjs</code> can generate these as Schema Designer XDR.</p>';
       document.body.appendChild(d); wireTabs(d);
       d.querySelector('.sc-close').addEventListener('click', function(){ d.close(); });
+      var fbb = d.querySelector('.sc-fb'); if(fbb) fbb.addEventListener('click', function(){ window.FB.schema(d); });
       d.addEventListener('click', function(e){ if(e.target === d) d.close(); });
-      d.addEventListener('close', function(){ scBtn.focus(); });
+      d.addEventListener('close', function(){ if(!d.open) scBtn.focus(); });
       return d;
     }
+    function openDlg(){ if(window.FB && window.FB.open) window.FB.dock(dlg); else dlg.showModal(); }
     scBtn.addEventListener('click', function(){
-      if(dlg){ dlg.showModal(); return; }
+      if(dlg){ openDlg(); return; }
       fetch('data/schema.json', {cache: 'no-cache'}).then(function(r){ return r.json(); }).then(function(S){
-        dlg = build(S); if(dlg){ dlg.showModal(); var t = dlg.querySelector('[role=tab]'); if(t) t.focus(); }
+        dlg = build(S); if(dlg){ openDlg(); var t = dlg.querySelector('[role=tab]'); if(t) t.focus(); }
       });
     });
   }
@@ -221,13 +224,35 @@
   // Build notes: shows what each block is and where its content comes from
   var t = document.querySelector('.t-notes-toggle');
   // The page-types index has nothing to annotate
-  if(t && document.querySelector('.tp-grid') && !document.querySelector('.ul-body')){ t.hidden = true; t = null; }
+  if(t && ((document.querySelector('.tp-grid') && !document.querySelector('.ul-body')) || document.getElementById('fb-board'))){ t.hidden = true; t = null; }
   if(t){
     var on = false; try { on = localStorage.getItem('t-notes') === '1'; } catch(e){}
     t.setAttribute('role', 'switch'); t.removeAttribute('aria-pressed');
     t.innerHTML = '<span>Build notes</span><span class="t-switch" aria-hidden="true"></span>';
-    function apply(){ document.body.classList.toggle('show-notes', on); t.setAttribute('aria-checked', on ? 'true' : 'false'); }
+    // Labels live in one layer on <body>, so no section's clipping or stacking can hide them
+    var layer = document.createElement('div'); layer.className = 't-note-layer'; layer.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(layer);
+    var queued = false;
+    function layout(){
+      queued = false; layer.textContent = '';
+      if(!on) return;
+      document.querySelectorAll('[data-note]').forEach(function(el){
+        var r = el.getBoundingClientRect(); if(!r.width || !r.height) return;
+        var x = r.left + window.scrollX, y = r.top + window.scrollY;
+        var box = document.createElement('div'); box.className = 't-note-box';
+        var W = document.documentElement.clientWidth, L = Math.max(0, x - 4), R = Math.min(W, x + r.width + 4);
+        box.style.cssText = 'left:' + L + 'px;top:' + (y - 4) + 'px;width:' + (R - L) + 'px;height:' + (r.height + 8) + 'px';
+        var tag = document.createElement('div'); tag.className = 't-note-tag'; tag.textContent = el.getAttribute('data-note');
+        tag.style.cssText = 'left:' + (x + 8) + 'px;top:' + (y - 12) + 'px;max-width:' + Math.max(160, Math.min(416, r.width - 16)) + 'px';
+        layer.appendChild(box); layer.appendChild(tag);
+      });
+    }
+    function relayout(){ if(!queued){ queued = true; requestAnimationFrame(layout); } }
+    function apply(){ document.body.classList.toggle('show-notes', on); t.setAttribute('aria-checked', on ? 'true' : 'false'); relayout(); }
     t.addEventListener('click', function(){ on = !on; try { localStorage.setItem('t-notes', on ? '1' : '0'); } catch(e){} apply(); });
+    window.addEventListener('resize', relayout); window.addEventListener('load', relayout);
+    document.addEventListener('click', function(){ setTimeout(relayout, 60); }, true);
+    if(window.ResizeObserver) new ResizeObserver(relayout).observe(document.body);
     apply();
   }
 })();

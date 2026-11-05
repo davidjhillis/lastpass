@@ -58,3 +58,23 @@ deployment as a lookalike site. For client review, protect the deployment
 `data/schema.json` holds the CMS fields for the new work only: the Flex page type, the Release notes, Downloads and Known issues page types and their records, the five trays, and four new components (Card, Table, Notice, FAQ item). The header, footer, articles, search and other pages the team already built are out of scope.
 
 Fields are grouped the way the edit form shows them, with editor-facing labels and help, in the `lastpass_cms` manifest vocabulary (`text`, `rich`, `enum`, `link`, `component[]` and so on), so `tools/schema-gen.mjs` there can generate them as Schema Designer XDR. On every new page, **CMS schema** (bottom right) opens a panel with a tab for the page and one per tray; `components.html` shows the same schemas under each tray's **CMS schema** tab.
+
+## Design feedback
+
+Reviewers pin numbered notes on any design page and track them to sign-off.
+
+- **On a page:** the **Feedback** button (bottom right) opens a notes column on the right. A reviewer enters their name once (it shows as initials), chooses **+ Add a note**, clicks the spot, and writes the note. Pins show only while the column is open.
+- **Types:** each note is **Design** (how it looks or reads), **Notes** (the build notes) or **Schema** (CMS fields and spec). The type is guessed from where the pin lands and can be changed before posting.
+- **Schema feedback:** the CMS schema pop-up has **Add feedback**. While feedback is on, the pop-up opens beside the notes column instead of blocking the page, so its fields can take pins. Opening a schema note later reopens the pop-up on the right tab. The inline schemas on the Essentials page take pins directly.
+- **All notes:** `feedback.html` lists every note with its type, page link, reviewer, date and status, with type, status, page and reviewer filters and a CSV download. Each link opens the page at that note (`page.html#fb-12`).
+- **Statuses:** Open → Edited – review again (after the design changes) → Approved – closed. Anyone can reopen. Every change records who and when.
+- **Where notes live:** one Markdown file per note in `notes/` on the `feedback` branch, written by `api/feedback.js`. That branch holds only the notes, a README and a `vercel.json` that turns off its deployments, so a note never triggers a build. The first note creates the branch.
+- **Pins survive design changes:** each pin stores the element's path and a short piece of its text. If the path no longer matches, the text finds it again; if neither does, the note is marked Detached and stays in the list.
+- **Without setup**, the tool still works but saves notes in that viewer's browser only, and says so.
+
+### Setup (once)
+
+1. **GitHub token:** GitHub → Settings → Developer settings → Fine-grained tokens → Generate. Repository access: only `davidjhillis/lastpass`. Permissions: **Contents: Read and write**. Copy the token.
+2. **Vercel:** the `lastpass` project → Settings → Environment Variables → add `GITHUB_TOKEN` with that token, for Production and Preview.
+   Optional: `FEEDBACK_PASSCODE` to ask reviewers for a passcode once.
+3. **Redeploy** the branch you'll share so it picks up the variable.

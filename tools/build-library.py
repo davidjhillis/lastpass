@@ -447,4 +447,20 @@ with open(os.path.join(ROOT, "components.html"), "w", encoding="utf-8") as f:
     f.write(chrome("Page-building essentials — LastPass Support", "One Flex page type built from five trays, three special page types, and the components inside them.", components_main))
 with open(os.path.join(ROOT, "templates.html"), "w", encoding="utf-8") as f:
     f.write(chrome("Page types — LastPass Support", "The LastPass support portal page types: the Flex page type built from trays, and three special page types.", templates_main))
+feedback_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="templates.html">Page types</a></li>
+    <li><span aria-current="page">Design feedback</span></li>
+  </ol>
+</nav>
+<main id="main">
+<div class="t-wrap fb-page">
+  <h1>Design feedback</h1>
+  <p class="fb-page-sub">Every note from reviewers, across all pages.</p>
+  <div id="fb-board" class="fb-board" aria-live="polite"><p class="fb-empty">Loading notes…</p></div>
+</div>
+</main>'''
+with open(os.path.join(ROOT, "feedback.html"), "w", encoding="utf-8") as f:
+    f.write(chrome("Design feedback — LastPass Support", "Reviewer notes on the new LastPass support page designs, with status.", feedback_main))
 print("trays:", len(TRAYS), "| special:", len(SPECIAL), "| components:", len(COMPONENTS), "| flex examples:", len(RECIPES))
