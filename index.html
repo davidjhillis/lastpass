@@ -1,9 +1,11 @@
 <!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LastPass Support &amp; Documentation</title>
+<title>Page types — LastPass Support</title>
+<meta name="description" content="The LastPass support portal page types: the Flex page type built from trays, and three special page types.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="templates.css">
 <style>
  body{font-family:'Source Sans 3',Arial,sans-serif;-webkit-font-smoothing:antialiased}
  #nav.is-scrolled{box-shadow:0 8px 24px -18px rgba(5,6,6,.4)}
@@ -53,7 +55,6 @@
   </ul></div>
     <div class="flex items-center gap-6">
     <a href="#" class="flex items-center gap-1.5 hover:text-ink transition" title="Service Operational">Service status <span class="status-ok" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></a>
-    <a href="contact.html" class="hover:text-ink transition">Contact us</a>
     <a href="#" class="hover:text-ink transition">Log in</a>
     </div>
   </div>
@@ -63,8 +64,8 @@
 <nav id="nav" class="sticky top-0 z-50 bg-white/95 border-b border-slate-100 transition-shadow duration-200" style="backdrop-filter:saturate(1.4) blur(10px)">
   <div class="max-w-7xl mx-auto px-6 h-[68px] flex items-center gap-8">
     <a href="index.html" aria-label="LastPass Support home" class="flex items-center gap-2.5 shrink-0">
-      <img src="img/logo-lastpass.png" alt="LastPass" class="h-[26px] w-auto" width="228" height="55" decoding="async" fetchpriority="high">
-      <span class="hidden md:flex items-center gap-2.5"><span class="h-5 w-px bg-slate-200" aria-hidden="true"></span><span class="text-[15px] font-normal text-slate-600 leading-none">Support</span></span>
+      <img src="img/logo-approved.png" alt="LastPass" class="h-[26px] w-auto" width="433" height="100" decoding="async" fetchpriority="high">
+      
     </a>
     <div class="hidden lg:flex items-center gap-6 text-base">
       <div class="navdd relative">
@@ -84,128 +85,70 @@
         <div class="navdd-panel" role="menu"><ul><li><a href="https://community.lastpass.com/categories/lastpass-central" class="">LastPass Central</a></li><li><a href="https://community.lastpass.com/categories/new-to-lastpass" class="">New to LastPass</a></li><li><a href="https://community.lastpass.com/categories/advanced-features" class="">Advanced features</a></li><li><a href="https://community.lastpass.com/categories/business-features-and-tips" class="">Business features and tips</a></li><li><a href="https://community.lastpass.com/categories/families-and-individuals" class="">Families and individuals</a></li></ul></div>
       </div>
     </div>
-    <div class="ml-auto flex items-center gap-3">
-      <a href="#" class="hidden sm:inline text-[15px] font-semibold text-slate-700 hover:text-ink transition">Log in</a>
-      <a href="#" class="btn inline-flex items-center h-10 px-5 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-[15px] font-bold shadow-sm">Get LastPass free</a>
-    </div>
+    <div class="ml-auto"></div>
   </div>
 </nav>
 
 <main id="main">
-
-<!-- Hero — brand purple gradient (aligned with reader .band-scrim); arcs dimmed -->
-<section class="hero overflow-hidden">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-scrim" aria-hidden="true"></div>
-  <div class="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-24 text-center hero-copy">
-    <h1 class="text-4xl sm:text-5xl md:text-[3.25rem] font-semibold text-white tracking-tight leading-[1.1]">Hi! We are here to help you</h1>
-    <p class="text-lg md:text-xl text-white/95 mt-4 max-w-2xl mx-auto font-normal">Type your question below or <a href="#" class="text-white font-semibold underline underline-offset-2 hover:opacity-90">sign in</a> to reach a support agent</p>
-    <form action="search.html" method="get" class="searchwrap mt-8" role="search">
-      <span class="text-slate-400 shrink-0" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
-      <input type="search" name="q" aria-label="Search the LastPass Knowledge Base" placeholder="Type your question here..." class="placeholder-slate-500">
-      <button type="submit" class="btn px-6 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-bold text-[15px] inline-flex items-center justify-center" aria-label="Search">Search</button>
-    </form>
+<section class="t-hero t-hero--center t-hero--compact">
+  <div class="t-hero-bg" aria-hidden="true"></div>
+  <div class="t-hero-scrim" aria-hidden="true"></div>
+  <div class="t-hero-in">
+    <p class="t-eyebrow">LastPass support portal</p>
+    <h1>Page types</h1>
+    <p class="t-hero-sub">One Flex page type for most pages, and three special page types.</p>
   </div>
 </section>
 
-<!-- Quick links — keep our stronger floating pill bar (DCX exception) -->
-<div class="relative z-20 max-w-5xl mx-auto px-6 -mt-8">
-  <div class="reveal in bg-white rounded-2xl border border-[#d71340]/25 shadow-[0_24px_60px_-28px_rgba(215,19,64,.3)] px-2.5 py-2.5 grid grid-cols-3 gap-1.5 sm:flex sm:flex-wrap sm:items-center sm:justify-center" data-stagger>
-    <a href="contact.html" class="qlink inline-flex flex-col sm:flex-row items-center justify-center text-center gap-1 sm:gap-2 px-2 sm:px-4 py-2.5 sm:py-0 sm:h-10 rounded-xl text-[12px] sm:text-[15px] font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> Contact us</a>
-    <a href="https://link.lastpass.com/downloads" class="qlink inline-flex flex-col sm:flex-row items-center justify-center text-center gap-1 sm:gap-2 px-2 sm:px-4 py-2.5 sm:py-0 sm:h-10 rounded-xl text-[12px] sm:text-[15px] font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg> Downloads</a>
-    <a href="https://link.lastpass.com/release-notes" class="qlink inline-flex flex-col sm:flex-row items-center justify-center text-center gap-1 sm:gap-2 px-2 sm:px-4 py-2.5 sm:py-0 sm:h-10 rounded-xl text-[12px] sm:text-[15px] font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg> Release notes</a>
-    <a href="https://link.lastpass.com/view-all-videos" class="qlink inline-flex flex-col sm:flex-row items-center justify-center text-center gap-1 sm:gap-2 px-2 sm:px-4 py-2.5 sm:py-0 sm:h-10 rounded-xl text-[12px] sm:text-[15px] font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg> View all videos</a>
-    <a href="reader.html" class="qlink inline-flex flex-col sm:flex-row items-center justify-center text-center gap-1 sm:gap-2 px-2 sm:px-4 py-2.5 sm:py-0 sm:h-10 rounded-xl text-[12px] sm:text-[15px] font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> View all articles</a>
-    <a href="https://link.lastpass.com/community-home" class="qlink inline-flex flex-col sm:flex-row items-center justify-center text-center gap-1 sm:gap-2 px-2 sm:px-4 py-2.5 sm:py-0 sm:h-10 rounded-xl text-[12px] sm:text-[15px] font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg> LastPass Community</a>
-  </div>
-</div>
-
-<!-- Featured topics — live images + copy -->
-<section id="browse" class="max-w-7xl mx-auto px-6 pt-16 pb-14">
-  <div class="grid md:grid-cols-3 gap-7 reveal" data-stagger>
-    <a href="reader.html" class="tile group rounded-2xl ring-1 ring-slate-200 bg-white overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
-      <div class="aspect-[16/10] overflow-hidden bg-slate-100"><img src="img/photo-getstarted.jpg" alt="Get started with LastPass" class="w-full h-full object-cover" width="800" height="400" loading="lazy" decoding="async"></div>
-      <div class="p-6">
-        <p class="text-[12px] font-bold uppercase tracking-wider text-slate-500">Start with the basics</p>
-        <h3 class="text-xl font-semibold text-ink mt-1.5">Get started</h3>
-        <p class="text-slate-600 mt-1.5 leading-relaxed">Learn the basics of installing and setting up LastPass</p>
-        <span class="inline-flex items-center gap-1 cta-link font-semibold text-[15px] mt-4 group-hover:gap-2 transition-all">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-      </div>
-    </a>
-    <a href="reader.html" class="tile group rounded-2xl ring-1 ring-slate-200 bg-white overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
-      <div class="aspect-[16/10] overflow-hidden bg-slate-100"><img src="img/photo-explore.jpg" alt="Explore LastPass features" class="w-full h-full object-cover" width="800" height="400" loading="lazy" decoding="async"></div>
-      <div class="p-6">
-        <p class="text-[12px] font-bold uppercase tracking-wider text-slate-500">Discover features and tools</p>
-        <h3 class="text-xl font-semibold text-ink mt-1.5">Explore features</h3>
-        <p class="text-slate-600 mt-1.5 leading-relaxed">Learn more about the key features and tools of LastPass</p>
-        <span class="inline-flex items-center gap-1 cta-link font-semibold text-[15px] mt-4 group-hover:gap-2 transition-all">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-      </div>
-    </a>
-    <a href="reader.html" class="tile group rounded-2xl ring-1 ring-slate-200 bg-white overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
-      <div class="aspect-[16/10] overflow-hidden bg-slate-100"><img src="img/photo-admin.jpg" alt="LastPass admin tools" class="w-full h-full object-cover" width="800" height="400" loading="lazy" decoding="async"></div>
-      <div class="p-6">
-        <p class="text-[12px] font-bold uppercase tracking-wider text-slate-500">Manage your organization</p>
-        <h3 class="text-xl font-semibold text-ink mt-1.5">Admin tools</h3>
-        <p class="text-slate-600 mt-1.5 leading-relaxed">Learn how to manage admin settings and use advanced features</p>
-        <span class="inline-flex items-center gap-1 cta-link font-semibold text-[15px] mt-4 group-hover:gap-2 transition-all">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-      </div>
-    </a>
+<section class="t-section" aria-labelledby="h-flex">
+  <div class="t-wrap">
+    <div class="t-head"><div><h2 id="h-flex">Flex</h2><p>Any page built by stacking trays. Six examples:</p></div><a class="t-more" href="components.html">The trays</a></div>
+    <div class="tp-grid tp-grid--3"><article class="tp-card tp-card--slim">
+  <a class="tp-thumb" href="hub-business.html" tabindex="-1" aria-hidden="true"><iframe src="hub-business.html" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>
+  <div class="tp-copy"><h3><a href="hub-business.html">Mini hub</a></h3><p>A homepage for one audience or product area, at marketing weight.</p></div>
+</article>
+<article class="tp-card tp-card--slim">
+  <a class="tp-thumb" href="topic-saas-monitoring.html" tabindex="-1" aria-hidden="true"><iframe src="topic-saas-monitoring.html" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>
+  <div class="tp-copy"><h3><a href="topic-saas-monitoring.html">Topic overview, product</a></h3><p>A product page that sells and teaches: features, benefits, setup steps.</p></div>
+</article>
+<article class="tp-card tp-card--slim">
+  <a class="tp-thumb" href="topic-billing.html" tabindex="-1" aria-hidden="true"><iframe src="topic-billing.html" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>
+  <div class="tp-copy"><h3><a href="topic-billing.html">Topic overview, utility</a></h3><p>A support topic broken into sections of hand-picked articles.</p></div>
+</article>
+<article class="tp-card tp-card--slim">
+  <a class="tp-thumb" href="faq.html" tabindex="-1" aria-hidden="true"><iframe src="faq.html" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>
+  <div class="tp-copy"><h3><a href="faq.html">FAQ page</a></h3><p>Questions grouped by product, collapsed until opened.</p></div>
+</article>
+<article class="tp-card tp-card--slim">
+  <a class="tp-thumb" href="contact-us.html" tabindex="-1" aria-hidden="true"><iframe src="contact-us.html" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>
+  <div class="tp-copy"><h3><a href="contact-us.html">Contact Us</a></h3><p>Ways to get help; cards tagged by audience show per plan.</p></div>
+</article>
+<article class="tp-card tp-card--slim">
+  <a class="tp-thumb" href="lifecycle.html" tabindex="-1" aria-hidden="true"><iframe src="lifecycle.html" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>
+  <div class="tp-copy"><h3><a href="lifecycle.html">Product lifecycle</a></h3><p>Status definitions beside products, maintained by hand at launch.</p></div>
+</article></div>
   </div>
 </section>
 
-<!-- Popular topics — live card grid -->
-<section id="popular" class="bg-cloud border-y border-lp-slate/15">
-  <div class="max-w-7xl mx-auto px-6 py-4">
-    <h2 class="text-2xl md:text-3xl font-semibold text-lp-slate tracking-tight text-center">Popular topics</h2>
-  </div>
-</section>
-<section class="max-w-7xl mx-auto px-6 py-12 pb-20">
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal" data-stagger>
-    <a href="reader.html" class="group flex flex-col rounded-xl bg-white ring-1 ring-slate-200 p-6 hover:shadow-md hover:ring-slate-300 transition">
-      <span class="text-ink mb-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
-      <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Article</p>
-      <h3 class="text-lg font-semibold text-ink mt-1.5 group-hover:text-[color:var(--cta-link)] transition-colors">About passkeys</h3>
-      <p class="text-[15px] text-slate-600 mt-2 leading-relaxed flex-1">Passkeys are a replacement for passwords that provide faster, easier, and more secure sign-ins to websites and apps and work across multiple devices.</p>
-      <span class="inline-flex items-center gap-1 cta-link font-semibold text-[15px] mt-5">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-    </a>
-    <a href="reader.html" class="group flex flex-col rounded-xl bg-white ring-1 ring-slate-200 p-6 hover:shadow-md hover:ring-slate-300 transition">
-      <span class="text-ink mb-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
-      <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Article</p>
-      <h3 class="text-lg font-semibold text-ink mt-1.5 group-hover:text-[color:var(--cta-link)] transition-colors">Having trouble logging in?</h3>
-      <p class="text-[15px] text-slate-600 mt-2 leading-relaxed flex-1">If you can't log in to LastPass, you can try troubleshooting on your own using self-guided resources, or reach out to LastPass Support for further assistance.</p>
-      <span class="inline-flex items-center gap-1 cta-link font-semibold text-[15px] mt-5">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-    </a>
-    <a href="reader.html" class="group flex flex-col rounded-xl bg-white ring-1 ring-slate-200 p-6 hover:shadow-md hover:ring-slate-300 transition">
-      <span class="text-ink mb-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg></span>
-      <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Article</p>
-      <h3 class="text-lg font-semibold text-ink mt-1.5 group-hover:text-[color:var(--cta-link)] transition-colors">Admin Console consolidation</h3>
-      <p class="text-[15px] text-slate-600 mt-2 leading-relaxed flex-1">LastPass is consolidating its Admin Consoles by gradually achieving feature parity between the old and new unified Admin Console across enterprise plans.</p>
-      <span class="inline-flex items-center gap-1 cta-link font-semibold text-[15px] mt-5">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-    </a>
-    <a href="reader.html" class="group flex flex-col rounded-xl bg-white ring-1 ring-slate-200 p-6 hover:shadow-md hover:ring-slate-300 transition">
-      <span class="text-ink mb-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
-      <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Article</p>
-      <h3 class="text-lg font-semibold text-ink mt-1.5 group-hover:text-[color:var(--cta-link)] transition-colors">Verify your login attempt</h3>
-      <p class="text-[15px] text-slate-600 mt-2 leading-relaxed flex-1">If LastPass detects a login attempt from an unidentified location on a new computer, mobile device, or IP address, you'll need to confirm your identity through email verification.</p>
-      <span class="inline-flex items-center gap-1 cta-link font-semibold text-[15px] mt-5">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-    </a>
-    <a href="reader.html" class="group flex flex-col rounded-xl bg-white ring-1 ring-slate-200 p-6 hover:shadow-md hover:ring-slate-300 transition">
-      <span class="text-ink mb-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></span>
-      <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Article</p>
-      <h3 class="text-lg font-semibold text-ink mt-1.5 group-hover:text-[color:var(--cta-link)] transition-colors">Set up account recovery</h3>
-      <p class="text-[15px] text-slate-600 mt-2 leading-relaxed flex-1">Set up and configure all account recovery options so that you can regain access to your LastPass vault if you ever forget your master password.</p>
-      <span class="inline-flex items-center gap-1 cta-link font-semibold text-[15px] mt-5">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-    </a>
-    <a href="reader.html" class="group flex flex-col rounded-xl bg-white ring-1 ring-slate-200 p-6 hover:shadow-md hover:ring-slate-300 transition">
-      <span class="text-ink mb-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></span>
-      <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Article</p>
-      <h3 class="text-lg font-semibold text-ink mt-1.5 group-hover:text-[color:var(--cta-link)] transition-colors">Recover your account</h3>
-      <p class="text-[15px] text-slate-600 mt-2 leading-relaxed flex-1">If the master password for your LastPass account is ever lost or forgotten, you can choose from several account recovery methods to restore access to your vault.</p>
-      <span class="inline-flex items-center gap-1 cta-link font-semibold text-[15px] mt-5">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-    </a>
+<section class="t-section t-section--wash" aria-labelledby="h-special">
+  <div class="t-wrap">
+    <div class="t-head"><div><h2 id="h-special">Special page types</h2><p>Fixed layouts that list records.</p></div><a class="t-more" href="components.html#special">How they work</a></div>
+    <div class="tp-grid tp-grid--3"><article class="tp-card tp-card--slim">
+  <a class="tp-thumb" href="release-notes.html" tabindex="-1" aria-hidden="true"><iframe src="release-notes.html" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>
+  <div class="tp-copy"><h3><a href="release-notes.html">Release notes</a></h3><p>Every release, newest first, with filters.</p></div>
+</article>
+<article class="tp-card tp-card--slim">
+  <a class="tp-thumb" href="downloads.html" tabindex="-1" aria-hidden="true"><iframe src="downloads.html" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>
+  <div class="tp-copy"><h3><a href="downloads.html">Downloads</a></h3><p>The visitor’s platform first, then every download.</p></div>
+</article>
+<article class="tp-card tp-card--slim">
+  <a class="tp-thumb" href="known-issues.html" tabindex="-1" aria-hidden="true"><iframe src="known-issues.html" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>
+  <div class="tp-copy"><h3><a href="known-issues.html">Known issues</a></h3><p>Open issues with workarounds, and recent fixes.</p></div>
+</article></div>
   </div>
 </section>
 </main>
+
 
 <!-- Footer -->
 <footer class="site-footer">
@@ -236,10 +179,10 @@
         <h4>Our Company</h4>
         <ul>
           <li><a href="https://www.lastpass.com/company/about-us">About Us</a></li>
-          <li><a href="https://www.lastpass.com/company/careers">Careers <span class="site-footer-hiring">We're hiring</span></a></li>
+          <li><a href="https://www.lastpass.com/company/careers">Careers We're hiring</a></li>
           <li><a href="https://www.lastpass.com/legal-center">Legal Center</a></li>
           <li><a href="https://compliance.lastpass.com/">Compliance</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
         </ul>
       </div>
     </div>
@@ -254,12 +197,12 @@
       </ul>
     </div>
     <div class="site-footer-legal">
-      <a href="https://www.lastpass.com/legal-center/trademark">© 2026 LastPass US LP. All rights reserved.</a>
-      <a href="https://www.lastpass.com/legal-center/privacy-notice">Privacy Notice</a>
-      <a href="https://www.lastpass.com/legal-center/terms-of-service/business">Terms of Service</a>
+      <span>© 2026 LastPass US LP. All rights reserved.</span>
+      <a href="https://www.lastpass.com/legal-center/privacy-notice">Privacy</a>
+      <a href="https://www.lastpass.com/legal-center/terms-of-service/business">Terms</a>
       <a href="https://www.lastpass.com/legal-center/impressum">Imprint</a>
-      <a href="#">Cookie Preferences</a>
       <a href="https://www.lastpass.com/legal-center/your-privacy-choices">Your Privacy Choices</a>
+      <a href="#">Cookie Preferences</a>
     </div>
   </div>
 </footer>
@@ -301,4 +244,7 @@ document.querySelectorAll('.reveal:not(.in)').forEach(function(el){io.observe(el
 })();
 </script>
 
+<button type="button" class="t-notes-toggle" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><span>Show build notes</span></button>
+<script src="templates.js" defer></script>
+<script src="feedback.js" defer></script>
 </body></html>

@@ -1189,3 +1189,10 @@ div:has(> .util-bar){background:rgba(115,115,115,.1);border-bottom:1px solid var
 @media (min-width:900px){body.fb-open .sc-dialog.fb-docked{right:var(--fb-w);width:min(68rem,calc(100vw - var(--fb-w) - 32px))}}
 body.fb-dialog .fb-pins{z-index:91}
 .fb-flag--info{color:#2f5bb0;background:#eef3fb}
+
+/* Design review bar stays on screen; the site's sticky parts sit below its 40px */
+html.has-rv{scroll-padding-top:40px}
+html.has-rv .rv-nav{position:sticky;top:0;z-index:52}
+html.has-rv #nav{top:40px!important}
+html.has-rv .t-ov-nav,html.has-rv .rc-side{top:136px}
+html.has-rv .ul-nav{top:112px}

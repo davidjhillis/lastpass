@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Build templates.html (page types) and components.html (page-building essentials).
+"""Build index.html (page types, the site home), components.html (page-building essentials)
+and feedback.html (design feedback). templates.html redirects to index.html for old links.
 
 The scope is deliberately small: one Flex page type that editors build from
 five trays (content units) in Page Builder, plus three special page types for
@@ -336,7 +337,6 @@ shared_html = "".join('<li><b>%s</b><span>%s</span></li>' % (a, b) for a, b in S
 components_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   <ol>
     <li><a href="index.html">Home</a></li>
-    <li><a href="templates.html">Page types</a></li>
     <li><span aria-current="page">Page-building essentials</span></li>
   </ol>
 </nav>
@@ -410,14 +410,7 @@ def card(k, line):
 flex_cards = [card(k, FLEX_DESC[k]) for k in RECIPES]
 special_cards = [card(s[0], SPECIAL_DESC[s[0]]) for s in SPECIAL]
 
-templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="index.html">Home</a></li>
-    <li><span aria-current="page">Page types</span></li>
-  </ol>
-</nav>
-
-<main id="main">
+templates_main = '''<main id="main">
 <section class="t-hero t-hero--center t-hero--compact">
   <div class="t-hero-bg" aria-hidden="true"></div>
   <div class="t-hero-scrim" aria-hidden="true"></div>
@@ -445,12 +438,17 @@ templates_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
 
 with open(os.path.join(ROOT, "components.html"), "w", encoding="utf-8") as f:
     f.write(chrome("Page-building essentials — LastPass Support", "One Flex page type built from five trays, three special page types, and the components inside them.", components_main))
-with open(os.path.join(ROOT, "templates.html"), "w", encoding="utf-8") as f:
+with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
     f.write(chrome("Page types — LastPass Support", "The LastPass support portal page types: the Flex page type built from trays, and three special page types.", templates_main))
+# Old links to templates.html land on the home page
+with open(os.path.join(ROOT, "templates.html"), "w", encoding="utf-8") as f:
+    f.write('<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><title>Page types — LastPass Support</title>'
+            '<meta name="robots" content="noindex"><link rel="canonical" href="index.html">'
+            '<meta http-equiv="refresh" content="0; url=index.html"><script>location.replace("index.html" + location.hash)</script></head>'
+            '<body><p><a href="index.html">Page types</a></p></body></html>\n')
 feedback_main = '''<nav class="t-crumbs" aria-label="Breadcrumb">
   <ol>
     <li><a href="index.html">Home</a></li>
-    <li><a href="templates.html">Page types</a></li>
     <li><span aria-current="page">Design feedback</span></li>
   </ol>
 </nav>

@@ -4,7 +4,6 @@ Brand-faithful, responsive HTML templates for the LastPass documentation & suppo
 portal (DiscoverCX / Ingeniux concept). Static site — no build step required.
 
 ## Pages
-- `index.html` — Home / landing
 - `reader.html` — Article / reader (DITA content rail, TOC, video, choice tabs, feedback)
 - `contact.html` — Contact
 - `search.html` — Coveo-style search results
@@ -18,12 +17,12 @@ portal (DiscoverCX / Ingeniux concept). Static site — no build step required.
 - `downloads.html` — Downloads (request 6): the visitor's platform first, versions read from the release notes
 - `known-issues.html` — Known issue tracker (request 7): active issues and recent real fixes
 - `lifecycle.html` — Product lifecycle (request 8): definitions beside products, statuses proposed from release history
-- `templates.html` — the page types: one Flex page type (six example layouts, each shown as its stack of trays) and three special page types (Release notes, Downloads, Known issues), plus how each part was kept simple
+- `index.html` (home) — the page types: one Flex page type (six example layouts, each shown as its stack of trays) and three special page types (Release notes, Downloads, Known issues), plus how each part was kept simple
 - `components.html` — page-building essentials: 5 flex trays (Hero, Feature, Cards, FAQ, Content) with options and live variants, the shared Background and Audience options, the special page types' parts, 7 components and what is automatic
 
 The five record pages are generated from `data/releases.json` (parsed from lastpass.com/upgrade.php) and `data/products.json` (the product registry): run `python3 tools/build-records.py`, then `python3 tools/build-library.py`.
 
-`templates.html` and `components.html` are generated: run `python3 tools/build-library.py` after changing a template page. Each example is cut from the page that uses it, so the library cannot drift from the pages.
+`index.html`, `components.html` and `feedback.html` are generated (`templates.html` only redirects to the home page): run `python3 tools/build-library.py` after changing a template page. Each example is cut from the page that uses it, so the library cannot drift from the pages.
 
 The template pages share `templates.css` and `templates.js`. A **Show build notes** button on each marks every block and where its content comes from (authored, DITA map, release-note records, FAQ items).
 

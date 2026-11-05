@@ -79,7 +79,7 @@
 
   // Review super nav: switch between the new page designs (not part of the site)
   var PAGES = [
-    ['templates.html', 'Page types'], ['components.html', 'Essentials'], null,
+    ['index.html', 'Page types'], ['components.html', 'Essentials'], null,
     ['hub-business.html', 'Mini hub'], ['topic-saas-monitoring.html', 'Topic: product'], ['topic-billing.html', 'Topic: utility'],
     ['faq.html', 'FAQ'], ['contact-us.html', 'Contact Us'], ['lifecycle.html', 'Lifecycle'], null,
     ['release-notes.html', 'Release notes'], ['downloads.html', 'Downloads'], ['known-issues.html', 'Known issues'], null,
@@ -92,6 +92,7 @@
       return p ? '<li><a href="' + p[0] + '"' + (p[0] === here ? ' aria-current="page"' : '') + '>' + p[1] + '</a></li>' : '<li class="rv-sep" aria-hidden="true"></li>';
     }).join('') + '</ul></div>';
     document.body.insertBefore(rv, document.body.firstChild);
+    document.documentElement.classList.add('has-rv');   // the bar sticks; sticky page parts sit below it
     var cur = rv.querySelector('[aria-current]'), list = rv.querySelector('ul');
     if(cur && list.scrollWidth > list.clientWidth){ list.scrollLeft = cur.offsetLeft - list.offsetLeft - 24; }
   }
