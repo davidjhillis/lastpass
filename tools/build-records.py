@@ -178,7 +178,7 @@ DATA = [{"id": r["id"], "p": r["pid"], "d": r["date"].isoformat(), "v": r["v"], 
 rn_main = crumbs(("Release notes", "")) + '<main id="main">\n' + hero(
     "Release notes", "What’s new in LastPass",
     "Every release, newest first. Filter by product or by what changed.",
-    "Hero unit · standard") + '''
+    "Hero tray · standard") + '''
 <div class="t-wrap">
 <div class="rc-layout">
   <aside class="rc-side" aria-label="Filter releases" data-note="Release notes page type · filters · product facets come from the product registry; counts are live">
@@ -335,7 +335,7 @@ fixed_li = "".join('<li><span>%s</span><span class="ki-where">%s · <a href="rel
 ki_main = crumbs(("Known issues", "")) + '<main id="main">\n' + hero(
     "Known issues", "Known issues and fixes",
     "Problems we’ve confirmed, what to do in the meantime, and the release that fixes them.",
-    "Hero unit · standard") + '''
+    "Hero tray · standard") + '''
 <section class="t-section" aria-labelledby="h-active">
   <div class="t-wrap">
     <div class="t-head"><div><h2 id="h-active">Active issues</h2><p>Updated as soon as anything changes.</p></div><a class="rc-feed" href="#">%s Subscribe</a></div>
@@ -411,14 +411,14 @@ lc_rows = "".join('<tr><th scope="row">%s</th><td>%s</td><td class="num">%s</td>
 lc_main = crumbs(("Product lifecycle", "")) + '<main id="main">\n' + hero(
     "Product lifecycle", "Product lifecycle",
     "Where each LastPass product stands, from active to retired, so you can plan ahead.",
-    "Hero unit · standard") + '''
-<section class="t-section" aria-labelledby="h-lc">
+    "Hero tray · standard") + '''
+<section class="t-section" aria-labelledby="h-lc" data-note="Content tray · two tables, hand-maintained at launch (generated here from release history); stacks on phones">
   <div class="t-wrap">
     <h2 id="h-lc" class="sr-only">Lifecycle status</h2>
-    <div class="t-notice t-notice--info" style="margin:0 0 28px" data-note="Content unit · notice · remove once LastPass publishes real statuses">
+    <div class="t-notice t-notice--info" style="margin:0 0 28px" data-note="Notice component, in a Content tray · remove once LastPass publishes real statuses">
       <img src="img/notice_icon.svg" alt="" width="20" height="20"><div><strong class="t-notice-label">Notice:</strong><p>Statuses are proposals. LastPass hasn’t published lifecycle status before. Each status below is proposed from the product’s last release (within a year: Active; one to three years: Active, mature; older: End of life) for LastPass to confirm.</p></div>
     </div>
-    <div class="lc-pair" data-note="Content tray · two tables, hand-maintained at launch (generated here from release history); stacks on phones">
+    <div class="lc-pair">
       <div class="t-table"><table style="min-width:0"><caption>Status definitions</caption><thead><tr><th scope="col">Status</th><th scope="col">Meaning</th></tr></thead><tbody>%s</tbody></table></div>
       <div class="t-table"><table><caption>Products</caption><thead><tr><th scope="col">Product</th><th scope="col">Family</th><th scope="col">Latest version</th><th scope="col">Last release</th><th scope="col">Status</th></tr></thead><tbody>%s</tbody></table></div>
     </div>
@@ -455,11 +455,11 @@ switch = '''
 ct_main = crumbs(("Contact us", "")) + '<main id="main">\n' + hero(
     "Contact us", "How can we help?",
     "The options you see depend on your plan. Sign in to see everything available to you.",
-    "Hero unit · standard, with a design-preview switch", switch) + '''
-<section class="t-section" aria-labelledby="h-ways">
+    "Hero tray · standard, with a design-preview switch", switch) + '''
+<section class="t-section" aria-labelledby="h-ways" data-note="Cards tray · contact option · each has an audience rule (F3); signed-out visitors never see an empty page">
   <div class="t-wrap">
     <div class="t-head"><div><h2 id="h-ways">Ways to get help</h2><p>Which options appear for which plan is set in the CMS, not in code. The rules shown here are examples for LastPass to replace.</p></div></div>
-    <div class="ct-grid" data-note="Cards unit · contact option · each has an audience rule (F3); signed-out visitors never see an empty page">%s</div>
+    <div class="ct-grid">%s</div>
   </div>
 </section>
 </main>

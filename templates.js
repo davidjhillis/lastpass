@@ -251,11 +251,13 @@
       document.querySelectorAll('[data-note]').forEach(function(el){
         var r = el.getBoundingClientRect(); if(!r.width || !r.height) return;
         var x = r.left + window.scrollX, y = r.top + window.scrollY;
-        var box = document.createElement('div'); box.className = 't-note-box';
+        // Trays are the page's blocks: a solid outline with the label inside; components keep the dashed outline
+        var tray = /^(Hero|Feature|Cards|FAQ|Content) tray\b/.test(el.getAttribute('data-note'));
+        var box = document.createElement('div'); box.className = 't-note-box' + (tray ? ' t-note-box--tray' : '');
         var W = document.documentElement.clientWidth, L = Math.max(0, x - 4), R = Math.min(W, x + r.width + 4);
         box.style.cssText = 'left:' + L + 'px;top:' + (y - 4) + 'px;width:' + (R - L) + 'px;height:' + (r.height + 8) + 'px';
-        var tag = document.createElement('div'); tag.className = 't-note-tag'; tag.textContent = el.getAttribute('data-note');
-        tag.style.cssText = 'left:' + (x + 8) + 'px;top:' + (y - 12) + 'px;max-width:' + Math.max(160, Math.min(416, r.width - 16)) + 'px';
+        var tag = document.createElement('div'); tag.className = 't-note-tag' + (tray ? ' t-note-tag--tray' : ''); tag.textContent = el.getAttribute('data-note');
+        tag.style.cssText = 'left:' + (tray ? Math.min(x + r.width, document.documentElement.clientWidth) - 8 : x + 8) + 'px;top:' + (y - 12) + 'px;max-width:' + Math.max(160, Math.min(416, r.width - 16)) + 'px' + (tray ? ';transform:translateX(-100%)' : '');
         layer.appendChild(box); layer.appendChild(tag);
       });
     }
